@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Convertisseur DHEMap vers WAD</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.6; padding: 20px; max-width: 900px; margin: auto; background-color: #f4f4f4; }
+        h1, h2 { color: #333; border-bottom: 2px solid #007ACC; padding-bottom: 5px; }
+        .container { display: flex; gap: 20px; }
+        .editor, .output { flex: 1; }
+        textarea { width: 100%; height: 600px; font-family: monospace; font-size: 14px; border: 1px solid #ccc; border-radius: 4px; padding: 10px; }
+        button { background-color: #007ACC; color: white; border: none; padding: 12px 20px; font-size: 16px; border-radius: 4px; cursor: pointer; transition: background-color 0.2s; }
+        button:hover { background-color: #005f9e; }
+        #downloadLink { display: block; margin-top: 15px; font-weight: bold; }
+        .warning { background-color: #fffbe6; border: 1px solid #ffe58f; padding: 15px; border-radius: 4px; margin-bottom: 20px; }
+        .warning strong { color: #d46b08; }
+        pre { background-color: #eee; padding: 10px; border-radius: 4px; white-space: pre-wrap; word-wrap: break-word; }
+    </style>
+</head>
+<body>
+
+    <h1>Convertisseur DHEMap (JSON) vers WAD</h1>
+    
+    <div class="warning">
+        <strong>Attention :</strong> Cet outil génère un fichier <code>.WAD</code> contenant les données de la carte (Things, Linedefs, etc.). Il ne génère <strong>PAS</strong> les nœuds de compilation (lumps <code>NODES</code>, <code>SSECTORS</code>, <code>BLOCKMAP</code>). Vous devrez passer le fichier <code>.WAD</code> généré dans un compilateur de nœuds (comme ZDBsp, glBSP, etc.) pour le rendre jouable.
+    </div>
+
+    <div class="container">
+        <div class="editor">
+            <h2>1. Collez votre DHEMap JSON ici</h2>
+            <textarea id="jsonInput" placeholder="Collez le contenu de votre fichier .dhemap ici..."></textarea>
+        </div>
+        <div class="output">
+            <h2>2. Générez le WAD</h2>
+            <button onclick="generateWad()">Convertir et Télécharger le .WAD</button>
+            <div id="downloadContainer"></div>
+            <h2>Logs</h2>
+            <pre id="logOutput">En attente de conversion...</pre>
+        </div>
+    </div>
+
+    <script>
+        // Mappages des flags textuels vers leurs valeurs numériques
+        const LINEDEF_FLAGS = {
+            impassable: 0x0001,
+            blockMonsters: 0x0002,
+            twoSided: 0x0004,
+            upperUnpegged: 0x0008,
+            lowerUnpegged: 0x0010,
+            secret: 0x0020,
+            blockSound: 0x0040,
+            neverShowOnMap: 0x0080,
+            alwaysShowOnMap: 0x0100,
+            playerUse: 0x0200, // Specific to Hexen/Boom
+        };
+
+        const THING_FLAGS = {
+            skillEasy: 0x0001,
+            skillNormal: 0x0002,
+            skillHard: 0x0004,
+            ambush: 0x0008,
+            multiplayerOnly: 0x0010,
+        };
+
+        function log(message) {
+            document.getElementById('logOutput').textContent += message + '\n';
+        }
+
+        // Helper pour écrire une chaîne de 8 octets (nom de lump)
+        function writeString(dataView, offset, str) {
+            for (let i = 0; i < 8; i++) {
+                if (i < str.length) {
+                    dataView.setUint8(offset + i, str.charCodeAt(i));
+                } else {
+                    dataView.setUint8(offset + i, 0); // Padding avec null
+                }
+            }
+        }
+
+        function getMapLumpName(mapInfo) {
+            if (mapInfo.game === 'doom' || mapInfo.game === 'heretic') {
+                return `E${mapInfo.episode}M${mapInfo.map}`;
+            }
+            // Doom 2 & Hexen
+            const mapNum = mapInfo.map.toString().padStart(2, '0');
+            return `MAP${mapNum}`;
+        }
+        
+        function createThingsLump(things, game) {
+            const isHexen = game === 'hexen';
+            const thingSize = isHexen ? 20 : 10; // 20 bytes pour Hexen, 10 pour les autres
+            const buffer = new ArrayBuffer(things.length * thingSize);
+            const view = new DataView(buffer);
+
+            things.forEach((thing, i) => {
+                const offset = i * thingSize;
+                let flagsValue = 0;
+                thing.flags.forEach(f => { flagsValue |= (THING_FLAGS[f] || 0); });
+
+                if (isHexen) {
+                    view.setInt16(offset, thing.id || i, true); // Thing ID
+                    view.setInt16(offset + 2, thing.x, true);
+                    view.setInt16(offset + 4, thing.y, true);
+                    view.setInt16(offset + 6, 0, true); // Z-Position (à ajouter au format DHEMap si besoin)
+                    view.setInt16(offset + 8, thing.angle, true);
+                    view.setInt16(offset + 10, thing.type, true);
+                    view.setInt16(offset + 12, flagsValue, true); // Flags (renommés "special" dans le format binaire)
+                    const args = thing.hexenArgs || [0,0,0,0,0];
+                    view.setUint8(offset + 14, 0); // Action Special
+                    for(let j=0; j<5; j++) {
+                        view.setUint8(offset + 15 + j, args[j] || 0);
+                    }
+                } else {
+                    view.setInt16(offset, thing.x, true);
+                    view.setInt16(offset + 2, thing.y, true);
+                    view.setInt16(offset + 4, thing.angle, true);
+                    view.setInt16(offset + 6, thing.type, true);
+                    view.setInt16(offset + 8, flagsValue, true);
+                }
+            });
+            return { name: "THINGS", data: buffer };
+        }
+
+        function createLinedefsLump(linedefs, game) {
+            const isHexen = game === 'hexen';
+            const linedefSize = isHexen ? 16 : 14; // 16 bytes pour Hexen, 14 pour les autres
+            const buffer = new ArrayBuffer(linedefs.length * linedefSize);
+            const view = new DataView(buffer);
+
+            linedefs.forEach((line, i) => {
+                const offset = i * linedefSize;
+                let flagsValue = 0;
+                line.flags.forEach(f => { flagsValue |= (LINEDEF_FLAGS[f] || 0); });
+
+                view.setInt16(offset, line.startVertex, true);
+                view.setInt16(offset + 2, line.endVertex, true);
+                view.setInt16(offset + 4, flagsValue, true);
+
+                if (isHexen) {
+                    const special = line.action ? line.action.special || 0 : 0;
+                    const args = line.hexenArgs || [0,0,0,0,0];
+                    view.setUint8(offset + 6, special);
+                    for(let j=0; j<5; j++) {
+                        view.setUint8(offset + 7 + j, args[j] || 0);
+                    }
+                } else {
+                     view.setInt16(offset + 6, line.action ? line.action.special || 0 : 0, true);
+                     view.setInt16(offset + 8, line.action ? line.action.tag || 0 : 0, true);
+                }
+                
+                view.setInt16(offset + (isHexen ? 12 : 10), line.frontSidedef, true);
+                view.setInt16(offset + (isHexen ? 14 : 12), line.backSidedef != null ? line.backSidedef : -1, true);
+            });
+            return { name: "LINEDEFS", data: buffer };
+        }
+
+        function createSidedefsLump(sidedefs) {
+            const sidedefSize = 30;
+            const buffer = new ArrayBuffer(sidedefs.length * sidedefSize);
+            const view = new DataView(buffer);
+            
+            sidedefs.forEach((side, i) => {
+                const offset = i * sidedefSize;
+                view.setInt16(offset, side.offsetX || 0, true);
+                view.setInt16(offset + 2, side.offsetY || 0, true);
+                writeString(view, offset + 4, side.textureTop.toUpperCase());
+                writeString(view, offset + 12, side.textureBottom.toUpperCase());
+                writeString(view, offset + 20, side.textureMiddle.toUpperCase());
+                view.setInt16(offset + 28, side.sector, true);
+            });
+            return { name: "SIDEDEFS", data: buffer };
+        }
+
+        function createVertexesLump(vertices) {
+            const vertexSize = 4;
+            const buffer = new ArrayBuffer(vertices.length * vertexSize);
+            const view = new DataView(buffer);
+            
+            vertices.forEach((vert, i) => {
+                const offset = i * vertexSize;
+                view.setInt16(offset, vert.x, true);
+                view.setInt16(offset + 2, vert.y, true);
+            });
+            return { name: "VERTEXES", data: buffer };
+        }
+
+        function createSectorsLump(sectors) {
+            const sectorSize = 26;
+            const buffer = new ArrayBuffer(sectors.length * sectorSize);
+            const view = new DataView(buffer);
+            
+            sectors.forEach((sec, i) => {
+                const offset = i * sectorSize;
+                view.setInt16(offset, sec.floorHeight, true);
+                view.setInt16(offset + 2, sec.ceilingHeight, true);
+                writeString(view, offset + 4, sec.floorTexture.toUpperCase());
+                writeString(view, offset + 12, sec.ceilingTexture.toUpperCase());
+                view.setInt16(offset + 20, sec.lightLevel, true);
+                view.setInt16(offset + 22, sec.special, true);
+                view.setInt16(offset + 24, sec.tag || 0, true);
+            });
+            return { name: "SECTORS", data: buffer };
+        }
+
+
+        function generateWad() {
+            const jsonText = document.getElementById('jsonInput').value;
+            const logEl = document.getElementById('logOutput');
+            const downloadContainer = document.getElementById('downloadContainer');
+            
+            logEl.textContent = '';
+            downloadContainer.innerHTML = '';
+            
+            if (!jsonText) {
+                log('Erreur: Le champ JSON est vide.');
+                return;
+            }
+
+            let dhemap;
+            try {
+                dhemap = JSON.parse(jsonText);
+            } catch (e) {
+                log(`Erreur de parsing JSON: ${e.message}`);
+                return;
+            }
+            
+            log('Fichier DHEMap parsé avec succès.');
+            log(`Jeu détecté: ${dhemap.mapInfo.game}`);
+
+            // 1. Créer les lumps
+            const lumps = [];
+            const mapName = getMapLumpName(dhemap.mapInfo);
+            
+            // Marker lump
+            lumps.push({ name: mapName, data: new ArrayBuffer(0) });
+            log(`Création du marqueur de carte: ${mapName}`);
+
+            // Lumps de données
+            lumps.push(createThingsLump(dhemap.things, dhemap.mapInfo.game));
+            lumps.push(createLinedefsLump(dhemap.linedefs, dhemap.mapInfo.game));
+            lumps.push(createSidedefsLump(dhemap.sidedefs));
+            lumps.push(createVertexesLump(dhemap.vertices));
+            lumps.push(createSectorsLump(dhemap.sectors));
+            
+            // Lumps de compilation (vides, à générer par un node builder)
+            lumps.push({ name: "SSECTORS", data: new ArrayBuffer(0) });
+            lumps.push({ name: "NODES", data: new ArrayBuffer(0) });
+            lumps.push({ name: "REJECT", data: new ArrayBuffer(0) });
+            lumps.push({ name: "BLOCKMAP", data: new ArrayBuffer(0) });
+
+            // Lump BEHAVIOR pour Hexen (peut être vide si pas de scripts)
+            if (dhemap.mapInfo.game === 'hexen') {
+                 lumps.push({ name: "BEHAVIOR", data: new ArrayBuffer(0) });
+                 log("Ajout du lump BEHAVIOR (vide) pour le format Hexen.");
+            }
+            
+            log("Lumps de données créés.");
+
+            // 2. Calculer la taille totale des données et les offsets
+            const headerSize = 12;
+            const directoryEntrySize = 16;
+            let currentOffset = headerSize;
+            let totalLumpDataSize = 0;
+            
+            lumps.forEach(lump => {
+                lump.offset = currentOffset;
+                currentOffset += lump.data.byteLength;
+                totalLumpDataSize += lump.data.byteLength;
+            });
+            
+            const directoryOffset = currentOffset;
+            const directorySize = lumps.length * directoryEntrySize;
+            const totalFileSize = headerSize + totalLumpDataSize + directorySize;
+
+            log(`Taille totale du fichier: ${totalFileSize} octets`);
+            
+            // 3. Construire le WAD final
+            const wadBuffer = new ArrayBuffer(totalFileSize);
+            const wadView = new DataView(wadBuffer);
+
+            // Écrire l'en-tête (Header)
+            writeString(wadView, 0, "PWAD"); // "PWAD"
+            wadView.setInt32(4, lumps.length, true); // Nombre de lumps
+            wadView.setInt32(8, directoryOffset, true); // Offset du répertoire
+            
+            // Écrire les données des lumps
+            lumps.forEach(lump => {
+                const lumpData = new Uint8Array(lump.data);
+                const targetArray = new Uint8Array(wadBuffer, lump.offset, lump.data.byteLength);
+                targetArray.set(lumpData);
+            });
+
+            // Écrire le répertoire (Directory)
+            lumps.forEach((lump, i) => {
+                const entryOffset = directoryOffset + (i * directoryEntrySize);
+                wadView.setInt32(entryOffset, lump.offset, true);
+                wadView.setInt32(entryOffset + 4, lump.data.byteLength, true);
+                writeString(wadView, entryOffset + 8, lump.name);
+            });
+
+            log("Fichier WAD assemblé en mémoire.");
+
+            // 4. Créer le lien de téléchargement
+            const blob = new Blob([wadBuffer], { type: 'application/octet-stream' });
+            const url = URL.createObjectURL(blob);
+            
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = `${mapName}.wad`;
+            link.textContent = `Télécharger ${mapName}.wad`;
+            downloadContainer.appendChild(link);
+            
+            log("Prêt à être téléchargé !");
+        }
+    </script>
+</body>
+</html>

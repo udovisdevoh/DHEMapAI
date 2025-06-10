@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Générateur de Prompt DHEMap v2</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            padding: 20px;
+            max-width: 800px;
+            margin: auto;
+            background-color: #f7f9fc;
+            color: #333;
+        }
+        .container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+        h1 {
+            color: #005a9c;
+            text-align: center;
+            border-bottom: 2px solid #e1e4e8;
+            padding-bottom: 15px;
+            margin-bottom: 10px;
+        }
+        .subtitle {
+            text-align: center;
+            color: #586069;
+            margin-bottom: 25px;
+            font-style: italic;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        input[type="text"], select, textarea {
+            width: 100%;
+            padding: 12px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            box-sizing: border-box;
+            transition: border-color 0.2s;
+        }
+        input[type="text"]:focus, select:focus, textarea:focus {
+            border-color: #007ACC;
+            outline: none;
+        }
+        textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+        .button-container {
+            text-align: center;
+            margin-top: 25px;
+            margin-bottom: 25px;
+        }
+        button {
+            background-color: #007ACC;
+            color: white;
+            border: none;
+            padding: 14px 28px;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.2s ease-in-out;
+        }
+        button:hover {
+            background-color: #005f9e;
+        }
+        .output-container {
+            margin-top: 30px;
+            position: relative;
+        }
+        #promptOutput {
+            background-color: #eef2f7;
+            color: #444;
+            font-family: monospace;
+            white-space: pre-wrap;
+        }
+        #copyButton {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: #6c757d;
+            font-size: 14px;
+            padding: 8px 12px;
+            font-weight: normal;
+        }
+        #copyButton:hover {
+            background-color: #5a6268;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Générateur de Prompt DHEMap pour IA</h1>
+        <p class="subtitle">Le prompt généré inclut la spécification complète du format pour guider l'IA.</p>
+
+        <div class="form-group">
+            <label for="gameSelect">Jeu</label>
+            <select id="gameSelect">
+                <option value="doom2">Doom 2</option>
+                <option value="doom">Doom</option>
+                <option value="heretic">Heretic</option>
+                <option value="hexen">Hexen</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="themeSelect">Thème Principal</label>
+            <select id="themeSelect">
+                </select>
+        </div>
+
+        <div class="form-group">
+            <label for="sizeSelect">Taille de la carte</label>
+            <select id="sizeSelect">
+                <option value="petite">Petite (pour un speedmap ou un duel)</option>
+                <option value="moyenne" selected>Moyenne (standard, 5-10 minutes de jeu)</option>
+                <option value="grande">Grande (exploration, 15+ minutes de jeu)</option>
+                <option value="énorme">Énorme (complexe et longue)</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="complexitySelect">Complexité</label>
+            <select id="complexitySelect">
+                <option value="simple">Simple (chemin linéaire, peu de monstres)</option>
+                <option value="modérée" selected>Modérée (quelques secrets, chemins alternatifs)</option>
+                <option value="complexe">Complexe (énigmes, clés, pièges, beaucoup de verticalité)</option>
+            </select>
+        </div>
+        
+        <div class="form-group">
+            <label for="musicInput">Musique (Nom du lump, ex: D_RUNNIN, MUS_HEDGE)</label>
+            <input type="text" id="musicInput" placeholder="Ex: D_STALKS pour Doom 2">
+        </div>
+
+        <div class="form-group">
+            <label for="descriptionText">Description textuelle de la carte</label>
+            <textarea id="descriptionText" placeholder="Décrivez l'ambiance, le point de départ, les lieux clés, le but de la carte..."></textarea>
+        </div>
+
+        <div class="button-container">
+            <button type="button" onclick="generatePrompt()">Générer le Prompt</button>
+        </div>
+
+        <div class="output-container">
+            <label for="promptOutput">Prompt Généré</label>
+            <textarea id="promptOutput" rows="20" readonly></textarea>
+            <button id="copyButton" onclick="copyPrompt()">Copier le Prompt</button>
+        </div>
+    </div>
+
+    <script>
+        const themes = {
+            doom: ["Base Tech", "Base Infernale", "Laboratoire UAC", "Installations Corrompues", "Cité en Ruine"],
+            doom2: ["Base Tech", "Industriel", "Urbain / Ville", "Enfer sur Terre", "Gothique Infernal", "Base Stellaire"],
+            heretic: ["Médiéval Fantastique", "Château Hanté", "Donjon Inondé", "Forêt Maudite", "Cité Engloutie"],
+            hexen: ["Château Médiéval", "Monastère de Glace", "Marais Empoisonné", "Forge Volcanique", "Séminaire Théologique"]
+        };
+        
+        // La documentation complète du format est stockée ici pour être incluse dans le prompt.
+        const dhemapDocumentation = `
+---
+**PARTIE 1 : DOCUMENTATION DU FORMAT DHEMAP**
+---
+
+Avant tout, tu dois comprendre le format de sortie attendu. Voici la documentation complète du format JSON "DHEMap".
+
+**Structure de l'Objet Racine :**
+- \`format\`: Chaîne (doit être "DHEMap").
+- \`version\`: Chaîne (ex: "1.0").
+- \`mapInfo\`: Objet (métadonnées de la carte).
+- \`vertices\`: Tableau d'objets (tous les sommets de la carte).
+- \`linedefs\`: Tableau d'objets (les lignes qui forment les murs).
+- \`sidedefs\`: Tableau d'objets (les surfaces des murs).
+- \`sectors\`: Tableau d'objets (les zones au sol et au plafond).
+- \`things\`: Tableau d'objets (joueurs, monstres, objets).
+- \`scripts\`: Objet (pour les scripts Hexen, optionnel).
+
+**Détail des Objets :**
+
+1.  **mapInfo**
+    - \`game\`: "doom", "doom2", "heretic", ou "hexen".
+    - \`episode\`, \`map\`: Numéros d'épisode/carte.
+    - \`name\`: Nom de la carte.
+    - \`skyTexture\`: Nom de la texture de ciel (ex: "SKY1").
+    - \`music\`: Nom du lump musique (ex: "D_E1M1").
+
+2.  **vertex**
+    - \`id\`: Entier (identifiant unique).
+    - \`x\`, \`y\`: Nombres (coordonnées).
+
+3.  **linedef**
+    - \`id\`: Entier (identifiant unique).
+    - \`startVertex\`, \`endVertex\`: Entiers (IDs des vertices).
+    - \`flags\`: Tableau de chaînes (ex: ["impassable", "twoSided"]).
+    - \`action\`: Objet { \`special\`: Entier, \`tag\`: Entier } (pour les actions Doom/Heretic).
+    - \`hexenArgs\`: Tableau d'entiers (pour les actions Hexen).
+    - \`frontSidedef\`, \`backSidedef\`: Entiers (IDs des sidedefs, backSidedef peut être \`null\`).
+
+4.  **sidedef**
+    - \`id\`: Entier (identifiant unique).
+    - \`offsetX\`, \`offsetY\`: Nombres (décalage de texture).
+    - \`textureTop\`, \`textureMiddle\`, \`textureBottom\`: Chaînes (noms de textures, "-" si absente).
+    - \`sector\`: Entier (ID du secteur auquel ce côté fait face).
+
+5.  **sector**
+    - \`id\`: Entier (identifiant unique).
+    - \`floorHeight\`, \`ceilingHeight\`: Nombres.
+    - \`floorTexture\`, \`ceilingTexture\`: Chaînes (noms des textures plates).
+    - \`lightLevel\`: Entier (0-255).
+    - \`special\`: Entier (type d'effet du secteur).
+    - \`tag\`: Entier (identifiant pour être affecté par un linedef).
+
+6.  **thing**
+    - \`id\`: Entier (identifiant unique).
+    - \`x\`, \`y\`: Nombres (coordonnées).
+    - \`angle\`: Nombre (0-359).
+    - \`type\`: Entier (numéro de l'objet, dépend du jeu).
+    - \`flags\`: Tableau de chaînes (ex: ["skillEasy", "skillNormal", "skillHard"]).
+
+**Exemple de Fichier DHEMap simple :**
+\`\`\`json
+{
+  "format": "DHEMap",
+  "version": "1.0",
+  "mapInfo": {
+    "game": "doom",
+    "episode": 1,
+    "map": 1,
+    "name": "Exemple Simple",
+    "skyTexture": "SKY1",
+    "music": "D_E1M1"
+  },
+  "vertices": [
+    { "id": 0, "x": 0, "y": 0 },
+    { "id": 1, "x": 128, "y": 0 },
+    { "id": 2, "x": 128, "y": 128 },
+    { "id": 3, "x": 0, "y": 128 }
+  ],
+  "linedefs": [
+    { "id": 0, "startVertex": 0, "endVertex": 1, "flags": ["impassable"], "frontSidedef": 0 },
+    { "id": 1, "startVertex": 1, "endVertex": 2, "flags": ["impassable"], "frontSidedef": 1 },
+    { "id": 2, "startVertex": 2, "endVertex": 3, "flags": ["impassable"], "frontSidedef": 2 },
+    { "id": 3, "startVertex": 3, "endVertex": 0, "flags": ["impassable"], "frontSidedef": 3 }
+  ],
+  "sidedefs": [
+    { "id": 0, "offsetX": 0, "offsetY": 0, "textureMiddle": "STARTAN2", "sector": 0 },
+    { "id": 1, "offsetX": 0, "offsetY": 0, "textureMiddle": "STARTAN2", "sector": 0 },
+    { "id": 2, "offsetX": 0, "offsetY": 0, "textureMiddle": "STARTAN2", "sector": 0 },
+    { "id": 3, "offsetX": 0, "offsetY": 0, "textureMiddle": "STARTAN2", "sector": 0 }
+  ],
+  "sectors": [
+    {
+      "id": 0,
+      "floorHeight": 0,
+      "ceilingHeight": 128,
+      "floorTexture": "FLOOR4_8",
+      "ceilingTexture": "CEIL3_1",
+      "lightLevel": 160,
+      "special": 0,
+      "tag": 0
+    }
+  ],
+  "things": [
+    { "id": 0, "x": 64, "y": 64, "angle": 90, "type": 1, "flags": ["skillEasy", "skillNormal", "skillHard"] }
+  ]
+}
+\`\`\`
+`;
+
+        const gameSelect = document.getElementById('gameSelect');
+        const themeSelect = document.getElementById('themeSelect');
+
+        function updateThemes() {
+            const selectedGame = gameSelect.value;
+            const gameThemes = themes[selectedGame];
+            
+            themeSelect.innerHTML = ''; // Vide les options actuelles
+            gameThemes.forEach(theme => {
+                const option = document.createElement('option');
+                option.value = theme;
+                option.textContent = theme;
+                themeSelect.appendChild(option);
+            });
+        }
+
+        function generatePrompt() {
+            const game = document.getElementById('gameSelect').value;
+            const theme = document.getElementById('themeSelect').value;
+            const size = document.getElementById('sizeSelect').value;
+            const complexity = document.getElementById('complexitySelect').value;
+            const music = document.getElementById('musicInput').value || 'Aucune spécifiée';
+            const description = document.getElementById('descriptionText').value;
+
+            const finalRequest = `
+---
+**PARTIE 2 : VOTRE TÂCHE**
+---
+
+Maintenant que vous connaissez le format, votre tâche est de créer une nouvelle carte en générant un objet JSON DHEMap complet et valide qui respecte les spécifications suivantes.
+
+**Spécifications de la Carte à Créer :**
+
+* **Jeu Cible :** ${game}
+* **Thème Principal :** ${theme}
+* **Taille de la Carte :** ${size}
+* **Complexité de la Carte :** ${complexity}
+* **Musique :** ${music}
+
+* **Description Détaillée :**
+    """
+    ${description || "Imagine les détails basés sur le thème et la complexité."}
+    """
+
+**Instructions Finales :**
+
+1.  **Cohérence du Jeu :** Utilise des noms de textures (murs et sols/plafonds), des types de "things" (monstres, objets), et des numéros de spéciaux qui sont valides et courants pour le jeu cible (${game}).
+2.  **Géométrie Valide :** La priorité absolue est de créer une géométrie valide. Chaque secteur doit être un polygone parfaitement fermé par une boucle de linedefs. Fais très attention aux IDs des vertices dans les linedefs.
+3.  **Jouabilité :** Place un "Thing" de départ pour le joueur. Peuple la carte avec des monstres, des munitions et des objets de soin de manière logique pour créer une expérience de jeu agréable et cohérente avec la complexité demandée.
+4.  **JSON Complet :** Le résultat final doit être uniquement le bloc de code JSON, complet et syntaxiquement correct, sans aucun texte ou commentaire additionnel en dehors du JSON lui-même.
+`;
+
+            document.getElementById('promptOutput').value = dhemapDocumentation.trim() + '\n\n' + finalRequest.trim();
+        }
+
+        function copyPrompt() {
+            const output = document.getElementById('promptOutput');
+            if (output.value) {
+                output.select();
+                navigator.clipboard.writeText(output.value).then(() => {
+                    const button = document.getElementById('copyButton');
+                    const originalText = button.textContent;
+                    button.textContent = 'Copié !';
+                    setTimeout(() => {
+                        button.textContent = originalText;
+                    }, 2000);
+                }).catch(err => {
+                    console.error('Erreur lors de la copie : ', err);
+                });
+            }
+        }
+
+        gameSelect.addEventListener('change', updateThemes);
+        window.addEventListener('load', () => {
+            updateThemes();
+            generatePrompt();
+        });
+
+    </script>
+</body>
+</html>
