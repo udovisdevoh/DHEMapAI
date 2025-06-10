@@ -253,7 +253,7 @@ public class MapCompiler
         {
             foreach (var thing in _dhemap.Things)
             {
-                short flags = thing.Flags.Aggregate<string, short>(0, (current, flag) => (short)(current | _thingFlagsMap.GetValueOrDefault(flag.ToLower(), 0)));
+                short flags = thing.Flags.Aggregate<string, short>(0, (current, flag) => (short)(current | _thingFlagsMap.GetValueOrDefault<string, short>(flag.ToLower(), 0)));
                 if (isHexen)
                 {
                     writer.Write((short)thing.Id);
@@ -283,7 +283,7 @@ public class MapCompiler
         {
             foreach (var line in _dhemap.Linedefs)
             {
-                short flags = line.Flags.Aggregate<string, short>(0, (current, flag) => (short)(current | _linedefFlagsMap.GetValueOrDefault(flag.ToLower(), 0)));
+                short flags = line.Flags.Aggregate<string, short>(0, (current, flag) => (short)(current | _linedefFlagsMap.GetValueOrDefault<string, short>(flag.ToLower(), 0)));
                 writer.Write((short)line.StartVertex);
                 writer.Write((short)line.EndVertex);
                 writer.Write(flags);
