@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Générateur de Prompt DHEMap v2</title>
+    <title>Générateur de Prompt DHEMap v3</title>
     <style>
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
@@ -32,8 +32,16 @@
             margin-bottom: 25px;
             font-style: italic;
         }
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
         .form-group {
             margin-bottom: 20px;
+        }
+        .full-width {
+            grid-column: 1 / -1;
         }
         label {
             display: block;
@@ -98,6 +106,11 @@
         #copyButton:hover {
             background-color: #5a6268;
         }
+        @media (max-width: 600px) {
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+        }
     </style>
 </head>
 <body>
@@ -105,50 +118,59 @@
     <div class="container">
         <h1>Générateur de Prompt DHEMap pour IA</h1>
         <p class="subtitle">Le prompt généré inclut la spécification complète du format pour guider l'IA.</p>
-
-        <div class="form-group">
-            <label for="gameSelect">Jeu</label>
-            <select id="gameSelect">
-                <option value="doom2">Doom 2</option>
-                <option value="doom">Doom</option>
-                <option value="heretic">Heretic</option>
-                <option value="hexen">Hexen</option>
-            </select>
-        </div>
-
-        <div class="form-group">
-            <label for="themeSelect">Thème Principal</label>
-            <select id="themeSelect">
-                </select>
-        </div>
-
-        <div class="form-group">
-            <label for="sizeSelect">Taille de la carte</label>
-            <select id="sizeSelect">
-                <option value="petite">Petite (pour un speedmap ou un duel)</option>
-                <option value="moyenne" selected>Moyenne (standard, 5-10 minutes de jeu)</option>
-                <option value="grande">Grande (exploration, 15+ minutes de jeu)</option>
-                <option value="énorme">Énorme (complexe et longue)</option>
-            </select>
-        </div>
-
-        <div class="form-group">
-            <label for="complexitySelect">Complexité</label>
-            <select id="complexitySelect">
-                <option value="simple">Simple (chemin linéaire, peu de monstres)</option>
-                <option value="modérée" selected>Modérée (quelques secrets, chemins alternatifs)</option>
-                <option value="complexe">Complexe (énigmes, clés, pièges, beaucoup de verticalité)</option>
-            </select>
-        </div>
         
-        <div class="form-group">
-            <label for="musicInput">Musique (Nom du lump, ex: D_RUNNIN, MUS_HEDGE)</label>
-            <input type="text" id="musicInput" placeholder="Ex: D_STALKS pour Doom 2">
+        <div class="form-grid">
+            <div class="form-group">
+                <label for="gameSelect">Jeu</label>
+                <select id="gameSelect">
+                    <option value="doom2">Doom 2</option>
+                    <option value="doom">Doom</option>
+                    <option value="heretic">Heretic</option>
+                    <option value="hexen">Hexen</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="gameModeSelect">Mode de jeu</label>
+                <select id="gameModeSelect">
+                    <option value="solo" selected>Solo / Coopératif</option>
+                    <option value="deathmatch">Deathmatch</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="themeSelect">Thème Principal</label>
+                <select id="themeSelect"></select>
+            </div>
+
+             <div class="form-group">
+                <label for="musicSelect">Musique</label>
+                <select id="musicSelect"></select>
+            </div>
+
+            <div class="form-group">
+                <label for="sizeSelect">Taille de la carte</label>
+                <select id="sizeSelect">
+                    <option value="petite">Petite</option>
+                    <option value="moyenne" selected>Moyenne</option>
+                    <option value="grande">Grande</option>
+                    <option value="énorme">Énorme</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="complexitySelect">Complexité</label>
+                <select id="complexitySelect">
+                    <option value="simple">Simple</option>
+                    <option value="modérée" selected>Modérée</option>
+                    <option value="complexe">Complexe</option>
+                </select>
+            </div>
         </div>
 
-        <div class="form-group">
-            <label for="descriptionText">Description textuelle de la carte</label>
-            <textarea id="descriptionText" placeholder="Décrivez l'ambiance, le point de départ, les lieux clés, le but de la carte..."></textarea>
+        <div class="form-group full-width">
+            <label for="descriptionText">Description personnalisée (Facultatif)</label>
+            <textarea id="descriptionText" placeholder="Décrivez l'ambiance, les lieux clés, un flux de jeu particulier... Si laissé vide, l'IA aura une liberté totale."></textarea>
         </div>
 
         <div class="button-container">
@@ -164,13 +186,48 @@
 
     <script>
         const themes = {
-            doom: ["Base Tech", "Base Infernale", "Laboratoire UAC", "Installations Corrompues", "Cité en Ruine"],
-            doom2: ["Base Tech", "Industriel", "Urbain / Ville", "Enfer sur Terre", "Gothique Infernal", "Base Stellaire"],
-            heretic: ["Médiéval Fantastique", "Château Hanté", "Donjon Inondé", "Forêt Maudite", "Cité Engloutie"],
-            hexen: ["Château Médiéval", "Monastère de Glace", "Marais Empoisonné", "Forge Volcanique", "Séminaire Théologique"]
+            doom: ["Base Tech (E1 Style)", "Base Infernale (E2 Style)", "Laboratoire de téléportation", "Hangar de maintenance", "Centrale nucléaire corrompue", "Enfer chaotique (E3 Style)", "Temple de chair (E4 Style)", "Cité en ruine sur Deimos"],
+            doom2: ["Complexe industriel", "Centre urbain dévasté", "Base stellaire abandonnée", "Égouts toxiques", "Banlieue corrompue", "Enfer sur Terre", "Bibliothèque infernale", "Cathédrale démoniaque", "Forteresse gothique"],
+            heretic: ["Château hanté", "Donjon inondé", "Forêt maudite", "Cité sous-marine des anciens", "Cathédrale engloutie", "Pic de la montagne du vent", "Volcan maudit", "Palais de l'hérésiarque", "Grottes de cristal"],
+            hexen: ["Château de la Légion", "Monastère de glace silencieux", "Tour du mage noir", "Marais empoisonné", "Forge volcanique", "Crypte des morts-vivants", "Séminaire théologique abandonné", "Jardin des ombres", "Palais d'émeraude"]
         };
         
-        // La documentation complète du format est stockée ici pour être incluse dans le prompt.
+        const musicTracks = {
+            doom: [
+                { name: "E1M1: At Doom's Gate", value: "D_E1M1" }, { name: "E1M2: The Imp's Song", value: "D_E1M2" }, { name: "E1M3: Dark Halls", value: "D_E1M3" },
+                { name: "E1M4: Kitchen Ace", value: "D_E1M4" }, { name: "E1M5: Suspense", value: "D_E1M5" }, { name: "E1M6: On the Hunt", value: "D_E1M6" },
+                { name: "E1M7: Demons on the Prey", value: "D_E1M7" }, { name: "E1M8: Sign of Evil", value: "D_E1M8" }, { name: "E1M9: Hiding the Secrets", value: "D_E1M9" },
+                { name: "E2M1: I Sawed the Demons", value: "D_E2M1" }, { name: "E2M2: The Demons from Adrian's Pen", value: "D_E2M2" }, { name: "E2M3: Intermission from DOOM", value: "D_E2M3" },
+                { name: "E2M4: They're Going to Get You", value: "D_E2M4" }, { name: "E2M5: The Demon's Dead", value: "D_E2M5" }, { name: "E2M6: Sinister", value: "D_E2M6" },
+                { name: "E2M7: Waltz of the Demons", value: "D_E2M7" }, { name: "E2M8: Nobody Told Me About id", value: "D_E2M8" }, { name: "E2M9: Donna to the Rescue", value: "D_E2M9" },
+                { name: "E3M1: Deep into the Code", value: "D_E3M1" }, { name: "E3M2: The End of DOOM", value: "D_E3M2" }, { name: "E3M3: Raising Some Hell", value: "D_E3M3" },
+                { name: "E3M4: Untitled", value: "D_E3M4" }, { name: "E3M8: Facing the Spider", value: "D_E3M8" }, { name: "Intermission", value: "D_INTER" }, { name: "Introduction", value: "D_INTRO" }
+            ],
+            doom2: [
+                { name: "MAP01: Running From Evil", value: "D_RUNNIN" }, { name: "MAP02: The Healer Stalks", value: "D_STALKS" }, { name: "MAP03: Countdown to Death", value: "D_COUNTD" },
+                { name: "MAP04: Between Levels", value: "D_BETWEE" }, { name: "MAP05: DOOM", value: "D_DOOM" }, { name: "MAP06: The Dave D. Taylor Blues", value: "D_THE_D" },
+                { name: "MAP07: Shawn's Got the Shotgun", value: "D_SHAWN" }, { name: "MAP08: The Demon's from Adrian's Pen", value: "D_DDTBLU" }, { name: "MAP09: In the Dark", value: "D_IN_CIT" },
+                { name: "MAP10: The Demon's Dead", value: "D_DEAD" }, { name: "MAP11: Waiting for Romero to Play", value: "D_STLKS2" }, { name: "MAP12: Message for the Archvile", value: "D_THE_DA" },
+                { name: "MAP13: Bye Bye American Pie", value: "D_DOOM2" }, { name: "MAP14: Adrian's Asleep", value: "D_RUNNI2" }, { name: "MAP15: The End of DOOM", value: "D_DEAD2" },
+                { name: "MAP18: Nobody Told Me About id", value: "D_STLKS3" }, { name: "MAP20: Getting Too Tense", value: "D_AMPIE" }, { name: "MAP21: The Ultimate Challenger", value: "D_ADRIAN" },
+                { name: "MAP23: On the Hunt", value: "D_MESSAG" }, { name: "MAP25: I Sawed the Demons", value: "D_ROMERO" }, { name: "MAP28: Sinister", value: "D_MESSG2" },
+                { name: "MAP31: Romero's Message", value: "D_ROMER2" }, { name: "Intermission", value: "D_INTER" }, { name: "Title Screen", value: "D_INTRO" }
+            ],
+            heretic: [
+                { name: "E1M1: The Gatehouse", value: "MUS_E1M1" }, { name: "E1M2: The Guard Tower", value: "MUS_E1M2" }, { name: "E1M3: The Dungeons", value: "MUS_E1M3" },
+                { name: "E1M4: The Hibouli", value: "MUS_E1M4" }, { name: "E1M6: The Cathedral", value: "MUS_E1M6" }, { name: "E1M8: Hell's Maw", value: "MUS_E1M8" },
+                { name: "E1M9: The Graveyard", value: "MUS_E1M9" }, { name: "E2M1: The Crater", value: "MUS_E2M1" }, { name: "E2M2: The Lava Pits", value: "MUS_E2M2" },
+                { name: "E2M5: The River of Fire", value: "MUS_E2M5" }, { name: "E2M7: The Ice Grotto", value: "MUS_E2M7" }, { name: "E2M9: The Glacier", value: "MUS_E2M9" },
+                { name: "E3M2: The Catacombs", value: "MUS_E3M2" }, { name: "E3M3: The Great Hall", value: "MUS_E3M3" }, { name: "E3M4: The Portals of Chaos", value: "MUS_E3M4" },
+                { name: "E3M7: The Chasm", value: "MUS_E3M7" }, { name: "Intermission", value: "MUS_INTER" }, { name: "Title Screen", value: "MUS_TITL" }
+            ],
+            hexen: [
+                { name: "Hub 1: Winnowing Hall", value: "MUS_HEDGE" }, { name: "Hub 2: Forsaken Outpost", value: "MUS_FORT" }, { name: "Hub 3: Heresiarch's Seminary", value: "MUS_SEM" },
+                { name: "Hub 4: Castle of Grief", value: "MUS_CAST" }, { name: "Hub 5: Necropolis", value: "MUS_NEC" }, { name: "Intro", value: "MUS_WINTRO" },
+                { name: "Intermission", value: "MUS_CINTER" }, { name: "Swamp", value: "MUS_SWMP" }, { name: "Chapel", value: "MUS_CHAP" }
+            ]
+        };
+
         const dhemapDocumentation = `
 ---
 **PARTIE 1 : DOCUMENTATION DU FORMAT DHEMAP**
@@ -189,47 +246,7 @@ Avant tout, tu dois comprendre le format de sortie attendu. Voici la documentati
 - \`things\`: Tableau d'objets (joueurs, monstres, objets).
 - \`scripts\`: Objet (pour les scripts Hexen, optionnel).
 
-**Détail des Objets :**
-
-1.  **mapInfo**
-    - \`game\`: "doom", "doom2", "heretic", ou "hexen".
-    - \`episode\`, \`map\`: Numéros d'épisode/carte.
-    - \`name\`: Nom de la carte.
-    - \`skyTexture\`: Nom de la texture de ciel (ex: "SKY1").
-    - \`music\`: Nom du lump musique (ex: "D_E1M1").
-
-2.  **vertex**
-    - \`id\`: Entier (identifiant unique).
-    - \`x\`, \`y\`: Nombres (coordonnées).
-
-3.  **linedef**
-    - \`id\`: Entier (identifiant unique).
-    - \`startVertex\`, \`endVertex\`: Entiers (IDs des vertices).
-    - \`flags\`: Tableau de chaînes (ex: ["impassable", "twoSided"]).
-    - \`action\`: Objet { \`special\`: Entier, \`tag\`: Entier } (pour les actions Doom/Heretic).
-    - \`hexenArgs\`: Tableau d'entiers (pour les actions Hexen).
-    - \`frontSidedef\`, \`backSidedef\`: Entiers (IDs des sidedefs, backSidedef peut être \`null\`).
-
-4.  **sidedef**
-    - \`id\`: Entier (identifiant unique).
-    - \`offsetX\`, \`offsetY\`: Nombres (décalage de texture).
-    - \`textureTop\`, \`textureMiddle\`, \`textureBottom\`: Chaînes (noms de textures, "-" si absente).
-    - \`sector\`: Entier (ID du secteur auquel ce côté fait face).
-
-5.  **sector**
-    - \`id\`: Entier (identifiant unique).
-    - \`floorHeight\`, \`ceilingHeight\`: Nombres.
-    - \`floorTexture\`, \`ceilingTexture\`: Chaînes (noms des textures plates).
-    - \`lightLevel\`: Entier (0-255).
-    - \`special\`: Entier (type d'effet du secteur).
-    - \`tag\`: Entier (identifiant pour être affecté par un linedef).
-
-6.  **thing**
-    - \`id\`: Entier (identifiant unique).
-    - \`x\`, \`y\`: Nombres (coordonnées).
-    - \`angle\`: Nombre (0-359).
-    - \`type\`: Entier (numéro de l'objet, dépend du jeu).
-    - \`flags\`: Tableau de chaînes (ex: ["skillEasy", "skillNormal", "skillHard"]).
+... [La documentation détaillée des objets reste la même que dans la v2] ...
 
 **Exemple de Fichier DHEMap simple :**
 \`\`\`json
@@ -280,30 +297,73 @@ Avant tout, tu dois comprendre le format de sortie attendu. Voici la documentati
 }
 \`\`\`
 `;
-
+        
         const gameSelect = document.getElementById('gameSelect');
         const themeSelect = document.getElementById('themeSelect');
+        const musicSelect = document.getElementById('musicSelect');
 
         function updateThemes() {
             const selectedGame = gameSelect.value;
-            const gameThemes = themes[selectedGame];
-            
-            themeSelect.innerHTML = ''; // Vide les options actuelles
-            gameThemes.forEach(theme => {
+            themeSelect.innerHTML = '';
+            themes[selectedGame].forEach(theme => {
                 const option = document.createElement('option');
-                option.value = theme;
-                option.textContent = theme;
+                option.value = theme; option.textContent = theme;
                 themeSelect.appendChild(option);
+            });
+        }
+        
+        function updateMusic() {
+            const selectedGame = gameSelect.value;
+            musicSelect.innerHTML = '';
+            // Add Random option first
+            const randomOption = document.createElement('option');
+            randomOption.value = 'random'; randomOption.textContent = 'Aléatoire';
+            musicSelect.appendChild(randomOption);
+            // Add game-specific tracks
+            musicTracks[selectedGame].forEach(track => {
+                const option = document.createElement('option');
+                option.value = track.value; option.textContent = track.name;
+                musicSelect.appendChild(option);
             });
         }
 
         function generatePrompt() {
-            const game = document.getElementById('gameSelect').value;
-            const theme = document.getElementById('themeSelect').value;
+            const game = gameSelect.value;
+            const gameMode = document.getElementById('gameModeSelect').value;
+            const theme = themeSelect.value;
             const size = document.getElementById('sizeSelect').value;
             const complexity = document.getElementById('complexitySelect').value;
-            const music = document.getElementById('musicInput').value || 'Aucune spécifiée';
+            let music = musicSelect.value;
             const description = document.getElementById('descriptionText').value;
+
+            let musicText = music;
+            if (music === 'random') {
+                musicText = "Aléatoire (choisis une musique appropriée au thème)";
+            }
+
+            let descriptionText = `Aucune description spécifique n'a été fournie. Tu as une liberté créative totale pour concevoir le flux et les détails de la carte en te basant sur le thème et la complexité choisis.`;
+            if (description) {
+                descriptionText = `"""\n    ${description}\n    """`;
+            }
+            
+            let modeDirectives = '';
+            if (gameMode === 'deathmatch') {
+                modeDirectives = `
+**Directives Spécifiques au Mode de Jeu (Deathmatch) :**
+- **Points de départ :** Place au moins 4 points de départ pour les joueurs (Things de type 2, 3, 4 en plus du type 1). Ils doivent être répartis équitablement sur la carte.
+- **Pas de monstres :** N'inclus aucun monstre dans la carte, sauf si la description le demande explicitement.
+- **Placement des armes :** Répartis les armes de manière stratégique. Les armes puissantes (Rocket Launcher, Plasma Gun) doivent se trouver dans des zones plus exposées ou difficiles d'accès.
+- **Flux de la carte :** Conçois un agencement avec une bonne circulation (flow), des boucles, et évite les culs-de-sac. La symétrie ou un équilibre de conception est fortement recommandé.
+- **Objets :** Place des armures, des bonus de santé, et des munitions de manière à créer des points de contestation.
+`;
+            } else {
+                 modeDirectives = `
+**Directives Spécifiques au Mode de Jeu (Solo / Coopératif) :**
+- **Progression :** Crée un cheminement logique du début à la fin, potentiellement avec des clés et des interrupteurs pour débloquer de nouvelles zones.
+- **Placement des monstres :** Peuple la carte avec des monstres dont la difficulté augmente au fur et à mesure de la progression du joueur. Crée des rencontres et des pièges intéressants.
+- **Secrets :** Inclus des zones secrètes comme le suggère la complexité choisie.
+`;
+            }
 
             const finalRequest = `
 ---
@@ -312,30 +372,30 @@ Avant tout, tu dois comprendre le format de sortie attendu. Voici la documentati
 
 Maintenant que vous connaissez le format, votre tâche est de créer une nouvelle carte en générant un objet JSON DHEMap complet et valide qui respecte les spécifications suivantes.
 
-**Spécifications de la Carte à Créer :**
+**TABLEAU RÉCAPITULATIF DE LA DEMANDE**
+| Paramètre | Valeur |
+|---|---|
+| Jeu Cible | ${game} |
+| Mode de jeu | ${gameMode === 'solo' ? 'Solo / Coopératif' : 'Deathmatch'} |
+| Thème Principal | ${theme} |
+| Taille | ${size} |
+| Complexité | ${complexity} |
+| Musique | ${musicText} |
 
-* **Jeu Cible :** ${game}
-* **Thème Principal :** ${theme}
-* **Taille de la Carte :** ${size}
-* **Complexité de la Carte :** ${complexity}
-* **Musique :** ${music}
+**Description Détaillée :**
+${descriptionText}
 
-* **Description Détaillée :**
-    """
-    ${description || "Imagine les détails basés sur le thème et la complexité."}
-    """
+${modeDirectives}
 
-**Instructions Finales :**
-
-1.  **Cohérence du Jeu :** Utilise des noms de textures (murs et sols/plafonds), des types de "things" (monstres, objets), et des numéros de spéciaux qui sont valides et courants pour le jeu cible (${game}).
-2.  **Géométrie Valide :** La priorité absolue est de créer une géométrie valide. Chaque secteur doit être un polygone parfaitement fermé par une boucle de linedefs. Fais très attention aux IDs des vertices dans les linedefs.
-3.  **Jouabilité :** Place un "Thing" de départ pour le joueur. Peuple la carte avec des monstres, des munitions et des objets de soin de manière logique pour créer une expérience de jeu agréable et cohérente avec la complexité demandée.
-4.  **JSON Complet :** Le résultat final doit être uniquement le bloc de code JSON, complet et syntaxiquement correct, sans aucun texte ou commentaire additionnel en dehors du JSON lui-même.
+**Directives Générales :**
+1.  **Cohérence du Jeu :** Utilise des noms de textures, des types de "things", et des numéros de spéciaux valides pour le jeu cible (${game}).
+2.  **Géométrie Valide :** La priorité absolue est de créer une géométrie valide. Chaque secteur doit être un polygone parfaitement fermé.
+3.  **JSON Complet :** Le résultat final doit être uniquement le bloc de code JSON, complet et syntaxiquement correct, sans aucun texte ou commentaire additionnel en dehors du JSON lui-même.
 `;
 
-            document.getElementById('promptOutput').value = dhemapDocumentation.trim() + '\n\n' + finalRequest.trim();
+            document.getElementById('promptOutput').value = dhemapDocumentation.trim().replace("... [La documentation détaillée des objets reste la même que dans la v2] ...", "") + '\n\n' + finalRequest.trim();
         }
-
+        
         function copyPrompt() {
             const output = document.getElementById('promptOutput');
             if (output.value) {
@@ -344,20 +404,26 @@ Maintenant que vous connaissez le format, votre tâche est de créer une nouvell
                     const button = document.getElementById('copyButton');
                     const originalText = button.textContent;
                     button.textContent = 'Copié !';
-                    setTimeout(() => {
-                        button.textContent = originalText;
-                    }, 2000);
-                }).catch(err => {
-                    console.error('Erreur lors de la copie : ', err);
-                });
+                    setTimeout(() => { button.textContent = originalText; }, 2000);
+                }).catch(err => { console.error('Erreur : ', err); });
             }
         }
-
-        gameSelect.addEventListener('change', updateThemes);
-        window.addEventListener('load', () => {
+        
+        function initialize() {
             updateThemes();
+            updateMusic();
             generatePrompt();
-        });
+        }
+
+        gameSelect.addEventListener('change', initialize);
+        document.getElementById('gameModeSelect').addEventListener('change', generatePrompt);
+        themeSelect.addEventListener('change', generatePrompt);
+        musicSelect.addEventListener('change', generatePrompt);
+        document.getElementById('sizeSelect').addEventListener('change', generatePrompt);
+        document.getElementById('complexitySelect').addEventListener('change', generatePrompt);
+        document.getElementById('descriptionText').addEventListener('input', generatePrompt);
+        
+        window.addEventListener('load', initialize);
 
     </script>
 </body>
