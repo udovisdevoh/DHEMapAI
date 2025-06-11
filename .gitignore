@@ -4,6 +4,6 @@
 
 /DHEMapConverterCSharp/obj
 /.vs
-/DHEMapConverterCSharp/.vs/DHEMapConverterCSharp
-/DHEMapConverterCSharp/bin/Debug/net5.0
+/DHEMapConverterCSharp/.vs
+/DHEMapConverterCSharp/bin
 /commands.txt
