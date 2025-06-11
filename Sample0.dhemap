@@ -1,0 +1,134 @@
+{
+  "format": "DHEMap",
+  "version": "1.0",
+  "mapInfo": {
+    "game": "doom",
+    "episode": 1,
+    "map": 1,
+    "name": "Hangar Revisité",
+    "skyTexture": "SKY1",
+    "music": "D_E1M1"
+  },
+  "vertices": [
+    { "id": 0, "x": 0, "y": 0 },
+    { "id": 1, "x": 128, "y": 0 },
+    { "id": 2, "x": 128, "y": 128 },
+    { "id": 3, "x": 0, "y": 128 },
+    { "id": 4, "x": 128, "y": 256 },
+    { "id": 5, "x": 0, "y": 256 }
+  ],
+  "linedefs": [
+    {
+      "id": 0,
+      "startVertex": 0,
+      "endVertex": 1,
+      "flags": ["impassable", "twoSided"],
+      "action": {
+        "special": 1,
+        "tag": 1
+      },
+      "frontSidedef": 0,
+      "backSidedef": 1
+    },
+    {
+      "id": 1,
+      "startVertex": 1,
+      "endVertex": 2,
+      "flags": ["impassable"],
+      "frontSidedef": 2
+    },
+    {
+      "id": 2,
+      "startVertex": 2,
+      "endVertex": 3,
+      "flags": ["impassable"],
+      "frontSidedef": 3
+    },
+    {
+      "id": 3,
+      "startVertex": 3,
+      "endVertex": 0,
+      "flags": ["impassable"],
+      "frontSidedef": 4
+    },
+    {
+      "id": 4,
+      "startVertex": 2,
+      "endVertex": 4,
+      "flags": ["impassable"],
+      "frontSidedef": 5
+    },
+    {
+      "id": 5,
+      "startVertex": 4,
+      "endVertex": 5,
+      "flags": ["impassable"],
+      "frontSidedef": 6
+    },
+    {
+      "id": 6,
+      "startVertex": 5,
+      "endVertex": 3,
+      "flags": ["impassable"],
+      "frontSidedef": 7
+    }
+  ],
+  "sidedefs": [
+    { "id": 0, "offsetX": 0, "offsetY": 0, "textureTop": "-", "textureMiddle": "DOOR1", "textureBottom": "-", "sector": 0 },
+    { "id": 1, "offsetX": 0, "offsetY": 0, "textureTop": "-", "textureMiddle": "DOOR1", "textureBottom": "-", "sector": 1 },
+    { "id": 2, "offsetX": 0, "offsetY": 0, "textureTop": "STARTAN2", "textureMiddle": "STARTAN2", "textureBottom": "STARTAN2", "sector": 0 },
+    { "id": 3, "offsetX": 0, "offsetY": 0, "textureTop": "STARTAN2", "textureMiddle": "STARTAN2", "textureBottom": "STARTAN2", "sector": 0 },
+    { "id": 4, "offsetX": 0, "offsetY": 0, "textureTop": "STARTAN2", "textureMiddle": "STARTAN2", "textureBottom": "STARTAN2", "sector": 0 },
+    { "id": 5, "offsetX": 0, "offsetY": 0, "textureTop": "STARTAN2", "textureMiddle": "STARTAN2", "textureBottom": "STARTAN2", "sector": 1 },
+    { "id": 6, "offsetX": 0, "offsetY": 0, "textureTop": "STARTAN2", "textureMiddle": "STARTAN2", "textureBottom": "STARTAN2", "sector": 1 },
+    { "id": 7, "offsetX": 0, "offsetY": 0, "textureTop": "STARTAN2", "textureMiddle": "STARTAN2", "textureBottom": "STARTAN2", "sector": 1 }
+  ],
+  "sectors": [
+    {
+      "id": 0,
+      "floorHeight": 0,
+      "ceilingHeight": 128,
+      "floorTexture": "FLOOR4_8",
+      "ceilingTexture": "CEIL3_1",
+      "lightLevel": 160,
+      "special": 0,
+      "tag": 0
+    },
+    {
+      "id": 1,
+      "floorHeight": 0,
+      "ceilingHeight": 128,
+      "floorTexture": "FLOOR4_8",
+      "ceilingTexture": "F_SKY1",
+      "lightLevel": 200,
+      "special": 9,
+      "tag": 1
+    }
+  ],
+  "things": [
+    {
+      "id": 0,
+      "x": 64,
+      "y": 64,
+      "angle": 90,
+      "type": 1,
+      "flags": ["skillEasy", "skillNormal", "skillHard"]
+    },
+    {
+      "id": 1,
+      "x": 200,
+      "y": 200,
+      "angle": 270,
+      "type": 2035,
+      "flags": ["skillEasy", "skillNormal", "skillHard"]
+    }
+  ],
+  "scripts": {
+    "type": "ACS",
+    "source": [
+      "script 1 OPEN {",
+      "  Door_Open(1, 16, 0);",
+      "}"
+    ]
+  }
+}

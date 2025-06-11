@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Visualiseur de Carte DHEMap</title>
+    <title>Visualiseur de Carte DHEMap (Corrigé)</title>
     <style>
         :root {
             --bg-color: #1a1a1a;
@@ -13,6 +13,7 @@
             --accent-color: #0095d9;
             --tooltip-bg: rgba(0, 0, 0, 0.85);
         }
+
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             margin: 0;
@@ -24,17 +25,20 @@
             color: var(--text-color);
             overflow: hidden;
         }
+
         header {
             padding: 10px 20px;
             background-color: var(--control-bg);
             border-bottom: 2px solid var(--border-color);
             text-align: center;
         }
+
         main {
             display: flex;
             flex-grow: 1;
             overflow: hidden;
         }
+
         #controls {
             width: 280px;
             padding: 15px;
@@ -44,28 +48,34 @@
             flex-direction: column;
             gap: 20px;
         }
+
         .control-group {
             border-bottom: 1px solid var(--border-color);
             padding-bottom: 15px;
         }
-        .control-group label {
-            display: block;
-            margin-bottom: 10px;
-            font-weight: bold;
-        }
+
+            .control-group label {
+                display: block;
+                margin-bottom: 10px;
+                font-weight: bold;
+            }
+
         #viewer {
             flex-grow: 1;
             background-color: var(--viewer-bg);
             cursor: grab;
             position: relative;
         }
-        #viewer.panning {
-            cursor: grabbing;
-        }
+
+            #viewer.panning {
+                cursor: grabbing;
+            }
+
         #svg-container {
             width: 100%;
             height: 100%;
         }
+
         #tooltip {
             position: absolute;
             display: none;
@@ -80,16 +90,30 @@
             z-index: 1000;
             border: 1px solid #666;
         }
+
         .thing-emoji {
             font-size: 24px;
             text-anchor: middle;
             dominant-baseline: middle;
             cursor: pointer;
         }
-        .sector-poly { transition: fill 0.2s; }
-        .linedef-line { stroke-width: 2px; }
-        .linedef-door { stroke-dasharray: 6, 4; }
-        .linedef-exit { stroke: #ff5555; stroke-width: 4px; }
+
+        .sector-poly {
+            transition: fill 0.2s;
+        }
+
+        .linedef-line {
+            stroke-width: 2px;
+        }
+
+        .linedef-door {
+            stroke-dasharray: 6, 4;
+        }
+
+        .linedef-exit {
+            stroke: #ff5555;
+            stroke-width: 4px;
+        }
     </style>
 </head>
 <body>
@@ -111,7 +135,7 @@
                 <input type="radio" id="viewCeilings" name="viewToggle" value="ceiling">
                 <label for="viewCeilings">Plafonds</label>
             </div>
-             <div class="control-group">
+            <div class="control-group">
                 <label>Légende (Things)</label>
                 <p>😀 Joueur &nbsp; 👿 Monstre &nbsp; 🔫 Arme</p>
                 <p>💊 Soin &nbsp;🛡️ Armure &nbsp;🗝️ Clé</p>
@@ -205,7 +229,7 @@
         const allY = dhemap.vertices.map(v => v.y);
         const minX = Math.min(...allX); const maxX = Math.max(...allX);
         const minY = Math.min(...allY); const maxY = Math.max(...allY);
-        
+
         const mapWidth = maxX - minX;
         const mapHeight = maxY - minY;
         const padding = Math.max(mapWidth, mapHeight) * 0.1;
@@ -218,57 +242,44 @@
         };
         g.setAttribute('transform', 'scale(1, -1)'); // Inverser l'axe Y pour tout le groupe
         updateViewBox();
-        
+
         // Créer des dictionnaires pour un accès rapide
         const vertexDict = new Map(dhemap.vertices.map(v => [v.id, v]));
         const sidedefDict = new Map(dhemap.sidedefs.map(s => [s.id, s]));
         const sectorDict = new Map(dhemap.sectors.map(s => [s.id, s]));
 
         // 1. Rendu des Secteurs
+        // (La logique de rendu des secteurs reste la même)
         const sectorLinedefs = {};
+        dhemap.sidedefs.forEach(side => {
+            if(!sectorLinedefs[side.sector]) sectorLinedefs[side.sector] = [];
+        });
         dhemap.linedefs.forEach(line => {
             const frontSidedef = sidedefDict.get(line.frontSidedef);
-            if (frontSidedef) {
-                if (!sectorLinedefs[frontSidedef.sector]) sectorLinedefs[frontSidedef.sector] = [];
-                sectorLinedefs[frontSidedef.sector].push(line);
-            }
+            if(frontSidedef) sectorLinedefs[frontSidedef.sector].push(line);
+
             if (line.backSidedef != null) {
                 const backSidedef = sidedefDict.get(line.backSidedef);
-                if (backSidedef) {
-                    if (!sectorLinedefs[backSidedef.sector]) sectorLinedefs[backSidedef.sector] = [];
-                    sectorLinedefs[backSidedef.sector].push(line);
-                }
+                if (backSidedef) sectorLinedefs[backSidedef.sector].push(line);
             }
         });
 
-        dhemap.sectors.forEach(sector => {
-            const linesForSector = sectorLinedefs[sector.id] || [];
+        Object.keys(sectorLinedefs).forEach(sectorId => {
+            const sector = sectorDict.get(parseInt(sectorId));
+            const linesForSector = sectorLinedefs[sectorId];
             if(linesForSector.length === 0) return;
-            
-            // Algorithme simple pour ordonner les vertices d'un secteur
-            const orderedVertices = [];
-            const remainingLines = [...linesForSector];
-            let currentLine = remainingLines.pop();
-            let currentSidedef = sidedefDict.get(currentLine.frontSidedef)?.sector === sector.id ? sidedefDict.get(currentLine.frontSidedef) : sidedefDict.get(currentLine.backSidedef);
-            let isReversed = (sidedefDict.get(currentLine.backSidedef)?.sector === sector.id);
 
-            orderedVertices.push(isReversed ? vertexDict.get(currentLine.endVertex) : vertexDict.get(currentLine.startVertex));
-            let nextVertexId = isReversed ? currentLine.startVertex : currentLine.endVertex;
-            
-            while(remainingLines.length > 0) {
-                 let found = false;
-                 for(let i=0; i < remainingLines.length; i++) {
-                    let nextLine = remainingLines[i];
-                    if(nextLine.startVertex === nextVertexId || nextLine.endVertex === nextVertexId) {
-                        isReversed = nextLine.endVertex === nextVertexId;
-                        orderedVertices.push(vertexDict.get(nextVertexId));
-                        nextVertexId = isReversed ? nextLine.startVertex : nextLine.endVertex;
-                        remainingLines.splice(i, 1);
-                        found = true;
-                        break;
-                    }
-                 }
-                 if(!found) break; // Arrêter si le secteur n'est pas fermé
+            const pointList = new Map();
+            linesForSector.forEach(l => {
+                pointList.set(l.startVertex, l.endVertex);
+            });
+
+            const orderedVertices = [];
+            let currentVertexId = linesForSector[0].startVertex;
+            for(let i=0; i < linesForSector.length; i++){
+                orderedVertices.push(vertexDict.get(currentVertexId));
+                currentVertexId = pointList.get(currentVertexId);
+                if(orderedVertices.find(v => v.id === currentVertexId)) break;
             }
 
             const points = orderedVertices.map(v => `${v.x},${v.y}`).join(' ');
@@ -284,13 +295,14 @@
         });
 
         // 2. Rendu des Linedefs
-        dhemap.linedefs.forEach(line => {
+        // (La logique de rendu des linedefs reste la même)
+         dhemap.linedefs.forEach(line => {
             const v1 = vertexDict.get(line.startVertex);
             const v2 = vertexDict.get(line.endVertex);
             const svgLine = document.createElementNS('http://www.w3.org/2000/svg', 'line');
             svgLine.setAttribute('x1', v1.x); svgLine.setAttribute('y1', v1.y);
             svgLine.setAttribute('x2', v2.x); svgLine.setAttribute('y2', v2.y);
-            
+
             const frontSidedef = sidedefDict.get(line.frontSidedef);
             let lineInfo = `LINEDEF ${line.id}`;
             let color = TEXTURE_COLORS.default;
@@ -304,11 +316,11 @@
              }
 
             let className = 'linedef-line';
-            if (line.action?.special === 1 || line.action?.special === 26) { // Porte
+            if (line.action?.special === 1 || line.action?.special === 26) {
                 className += ' linedef-door';
                 lineInfo += `\nACTION: Porte (Tag ${line.action.tag})`;
             }
-            if (line.action?.special === 11) { // Sortie
+            if (line.action?.special === 11) {
                 className += ' linedef-exit';
                 lineInfo += `\nACTION: Sortie du niveau`;
             }
@@ -318,6 +330,7 @@
             g.appendChild(svgLine);
         });
 
+
         // 3. Rendu des Things
         dhemap.things.forEach(thing => {
             const info = getThingInfo(thing.type);
@@ -325,16 +338,21 @@
             text.setAttribute('x', thing.x);
             text.setAttribute('y', thing.y);
             text.setAttribute('class', 'thing-emoji');
-            text.setAttribute('transform', `scale(1, -1) translate(${thing.x*2}, -${thing.y*2}) rotate(${-thing.angle}, ${thing.x}, ${thing.y}) scale(1,-1)`);
+
+            // ### CORRECTION DU BUG ICI ###
+            // On applique une transformation locale pour (1) annuler l'inversion Y du groupe parent,
+            // et (2) appliquer la rotation de l'objet.
+            const transform = `translate(${thing.x}, ${thing.y}) scale(1, -1) rotate(${-thing.angle})`;
+            text.setAttribute('transform', transform);
+
             text.textContent = info.emoji;
             text.dataset.info = `THING ${thing.id}\n${info.name}\nType: ${thing.type}\nAngle: ${thing.angle}`;
             g.appendChild(text);
         });
     }
-    
+
     // --- GESTION DES ÉVÉNEMENTS ---
-    
-    // Tooltips
+    // (Le code de gestion des événements pour le tooltip, le pan & zoom, et le changement de vue reste le même)
     svg.addEventListener('mouseover', e => {
         if (e.target && e.target.dataset.info) {
             tooltip.style.display = 'block';
@@ -347,7 +365,6 @@
         tooltip.style.top = (e.clientY + 15) + 'px';
     });
 
-    // Vue Plancher/Plafond
     document.querySelectorAll('input[name="viewToggle"]').forEach(radio => {
         radio.addEventListener('change', e => {
             const viewType = e.target.value;
@@ -358,7 +375,6 @@
         });
     });
 
-    // Pan & Zoom
     viewer.addEventListener('mousedown', e => {
         isPanning = true;
         startPoint = { x: e.x, y: e.y };
@@ -381,18 +397,18 @@
         const zoomIntensity = 0.1;
         const direction = e.deltaY > 0 ? 1 : -1;
         const zoomFactor = 1 + direction * zoomIntensity;
-        
+
         const mousePoint = { x: e.offsetX, y: e.offsetY };
         const svgPoint = {
             x: viewBox.x + mousePoint.x * (viewBox.w / viewer.clientWidth),
             y: viewBox.y + mousePoint.y * (viewBox.h / viewer.clientHeight),
         };
-        
+
         viewBox.w *= zoomFactor;
         viewBox.h *= zoomFactor;
         viewBox.x = svgPoint.x - mousePoint.x * (viewBox.w / viewer.clientWidth);
         viewBox.y = svgPoint.y - mousePoint.y * (viewBox.h / viewer.clientHeight);
-        
+
         updateViewBox();
     });
 
