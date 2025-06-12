@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Générateur de Prompt D-Graph (Thèmes Étendus)</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            padding: 20px;
+            max-width: 900px;
+            margin: auto;
+            background-color: #f0f2f5;
+            color: #1d2129;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 20px 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            color: #1877f2;
+            text-align: center;
+            border-bottom: 2px solid #e1e4e8;
+            padding-bottom: 15px;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #606770;
+            margin-bottom: 25px;
+            font-style: italic;
+            font-size: 0.9em;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .full-width {
+            grid-column: 1 / -1;
+        }
+
+        label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #4b4f56;
+        }
+
+        input[type="text"], select, textarea {
+            width: 100%;
+            padding: 12px;
+            font-size: 16px;
+            border: 1px solid #ccd0d5;
+            border-radius: 6px;
+            box-sizing: border-box;
+            transition: all 0.2s;
+        }
+
+            input[type="text"]:focus, select:focus, textarea:focus {
+                border-color: #1877f2;
+                outline: none;
+                box-shadow: 0 0 0 2px rgba(24, 119, 242, 0.2);
+            }
+
+        textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .button-container {
+            text-align: center;
+            margin-top: 25px;
+            margin-bottom: 25px;
+        }
+
+        button {
+            background-color: #1877f2;
+            color: white;
+            border: none;
+            padding: 14px 28px;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.2s ease-in-out;
+        }
+
+            button:hover {
+                background-color: #166fe5;
+            }
+
+        .output-container {
+            margin-top: 30px;
+            position: relative;
+        }
+
+        #promptOutput {
+            background-color: #f0f2f5;
+            color: #333;
+            font-family: Consolas, 'Courier New', monospace;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            border-color: #e1e4e8;
+        }
+
+        #copyButton {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: #6c757d;
+            font-size: 14px;
+            padding: 8px 12px;
+            font-weight: normal;
+        }
+
+            #copyButton:hover {
+                background-color: #5a6268;
+            }
+
+        @media (max-width: 600px) {
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Générateur de Dossier de Conception (D-Graph)</h1>
+        <p class="subtitle">Cet outil crée un prompt extrêmement détaillé pour guider une IA dans la génération d'une carte au format D-Graph.</p>
+
+        <div class="form-grid">
+            <div class="form-group">
+                <label for="gameSelect">Jeu</label>
+                <select id="gameSelect">
+                    <option value="doom">Doom</option>
+                    <option value="doom2" selected>Doom 2</option>
+                    <option value="heretic">Heretic</option>
+                    <option value="hexen">Hexen</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="themeSelect">Thème de la Carte</label>
+                <select id="themeSelect"></select>
+            </div>
+            <div class="form-group">
+                <label for="sizeSelect">Nombre de Pièces</label>
+                <select id="sizeSelect">
+                    <option value="très petite (3-5 pièces)">Très Petite (3-5)</option>
+                    <option value="petite (6-9 pièces)" selected>Petite (6-9)</option>
+                    <option value="moyenne (10-15 pièces)">Moyenne (10-15)</option>
+                    <option value="grande (16-25 pièces)">Grande (16-25)</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="connectivitySelect">Connectivité</label>
+                <select id="connectivitySelect">
+                    <option value="linéaire">Linéaire (A -> B -> C)</option>
+                    <option value="avec embranchements" selected>Avec embranchements</option>
+                    <option value="en hub (une pièce centrale)">En hub</option>
+                    <option value="non-linéaire et complexe">Non-linéaire</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group full-width">
+            <label for="descriptionText">Brief Créatif (Facultatif)</label>
+            <textarea id="descriptionText" placeholder="Décrivez l'objectif de la carte, une idée de progression, une ambiance particulière..."></textarea>
+        </div>
+
+        <div class="button-container"><button type="button" onclick="generatePrompt()">Générer le Prompt</button></div>
+
+        <div class="output-container">
+            <label for="promptOutput">Prompt Généré (Dossier de Conception Complet)</label>
+            <textarea id="promptOutput" rows="25" readonly></textarea>
+            <button id="copyButton" onclick="copyPrompt()">Copier le Prompt</button>
+        </div>
+    </div>
+
+    <script>
+        const GAME_DATA = {
+            doom: {
+                things: [{ type: 3001, name: "Imp" }, { type: 3004, name: "Zombieman" }, { type: 2005, name: "Medikit" }, /* ... */],
+                textures: ["BRICK1", "METAL", "STARG1", "STARG2", "SUPPORT2", "SUPPORT3", "DOOR1", "DOOR3", /* ... */],
+                flats: ["FLOOR0_1", "FLOOR4_8", "CEIL3_1", "FLAT5_1", "NUKAGE1", "F_SKY1", /* ... */],
+                sectorSpecials: [{ type: 9, name: "Secret" }, { type: 5, name: "Damage 10% (Nukage)" }, /* ... */],
+                linedefFlags: ["impassable", "blockMonsters", "twoSided", "secret"]
+            },
+            doom2: {
+                things: [{ type: 72, name: "Arachnotron" }, { type: 65, name: "Hell Knight" }, { type: 84, name: "Icon of Sin" }, /* ... */],
+                textures: ["AASHIT1", "BIGDOOR2", "BRONZE1", "SP_FACE1", "EXITDOOR", "DOORBLU", "DOORRED", "DOORYEL", /* ... */],
+                flats: ["SLIME14", "RROCK05", "FLAT5_4", "TECH01", /* ... */],
+                sectorSpecials: [{ type: 11, name: "Blinking Light" }, { type: 16, name: "Crusher" }, /* ... */],
+                linedefFlags: ["impassable", "blockMonsters", "twoSided", "secret"]
+            },
+            heretic: {
+                things: [{ type: 66, name: "Golem" }, { type: 10, name: "Undead Warrior" }, { type: 2005, name: "Ethereal Crossbow" }, /* ... */],
+                textures: ["CASTLE1", "ROCK01", "DOOR01", "DOOR20", /* ... */],
+                flats: ["FLOOR01", "FLOOR29", "LAVA01", /* ... */],
+                sectorSpecials: [{ type: 5, name: "Damage 10% (Sludge)" }, /* ... */],
+                linedefFlags: ["impassable", "blockMonsters", "twoSided", "secret"]
+            },
+            hexen: {
+                things: [{ type: 3, name: "Ettin" }, { type: 6, name: "Centaur" }, { type: 100, name: "Fighter Player Start" }, /* ... */],
+                textures: ["CASTLE5", "WOOD1", "DOOR12", "SWITCH2", /* ... */],
+                flats: ["FLAT01", "LAVA01", "ICE01", /* ... */],
+                sectorSpecials: [{ type: 21, name: "Crusher" }, { type: 3, name: "Floor Lift" }, /* ... */],
+                linedefFlags: ["impassable", "blockMonsters", "twoSided", "secret", "playerUse"]
+            }
+        };
+
+        // ### BASE DE DONNÉES DE THÈMES ÉTENDUE ###
+        function getThemePalettes() {
+            return {
+                // --- THÈMES DOOM ---
+                doom_e1_tech: { name: "Base Technologique (E1)", palette: { wall_primary: [{ name: "STARG1", weight: 70 }, { name: "STARG2", weight: 30 }], wall_panel: [{ name: "COMPTALL", weight: 100 }], floor_primary: [{ name: "FLOOR4_8", weight: 90 }, { name: "FLAT19", weight: 10 }], floor_damage_low: [{ name: "NUKAGE1", weight: 75 }, { name: "NUKAGE2", weight: 25 }], ceiling_primary: [{ name: "CEIL3_1", weight: 100 }], door_regular: [{ name: "DOOR1", weight: 50 }, { name: "DOOR3", weight: 50 }], door_frame: [{ name: "DOORTRAK", weight: 100 }], switch_exit: [{ name: "SW1EXIT", weight: 100 }] } },
+                doom_e2_inferno: { name: "Rivages de l'Enfer (E2)", palette: { wall_primary: [{ name: "BROWN1", weight: 60 }, { name: "BROWN96", weight: 40 }], floor_primary: [{ name: "RROCK05", weight: 70 }, { name: "BLOOD2", weight: 30 }], floor_damage_high: [{ name: "LAVA1", weight: 100 }], ceiling_primary: [{ name: "F_SKY2", weight: 100 }], door_regular: [{ name: "SP_HOT1", weight: 100 }] } },
+                doom_e3_gothic: { name: "Base Gothique/Corrompue (E3/E4)", palette: { wall_primary: [{ name: "MARBLE1", weight: 50 }, { name: "MARBLE3", weight: 50 }], wall_accent: [{ name: "SKINBORD", weight: 100 }], floor_primary: [{ name: "FLAT22", weight: 60 }, { name: "MARBLE2", weight: 40 }], ceiling_primary: [{ name: "CEIL4_1", weight: 100 }] } },
+                // --- THÈMES DOOM 2 ---
+                doom2_uac_industrial: { name: "Complexe Industriel UAC", palette: { wall_primary: [{ name: "TEKWALL1", weight: 50 }, { name: "TEKWALL4", weight: 50 }], wall_panel: [{ name: "COMPUTER", weight: 100 }], floor_primary: [{ name: "TECH01", weight: 100 }], ceiling_primary: [{ name: "CEIL1_1", weight: 100 }], door_locked: [{ name: "DOORRED", weight: 100 }] } },
+                doom2_hell_earth: { name: "Enfer sur Terre", palette: { wall_primary: [{ name: "BROWN1", weight: 60 }, { name: "BROWN96", weight: 40 }], wall_accent: [{ name: "AASHIT1", weight: 100 }], floor_primary: [{ name: "RROCK05", weight: 100 }], floor_damage_high: [{ name: "LAVA1", weight: 100 }], ceiling_primary: [{ name: "F_SKY1", weight: 100 }], door_regular: [{ name: "BIGDOOR2", weight: 100 }] } },
+                doom2_city: { name: "Ville en Ruines", palette: { wall_primary: [{ name: "BRICK5", weight: 70 }, { name: "BRICK10", weight: 30 }], floor_primary: [{ name: "FLAT14", weight: 80 }, { name: "GRASS1", weight: 20 }], ceiling_primary: [{ name: "F_SKY1", weight: 100 }], window_grate: [{ name: "MIDGRATE", weight: 100 }] } },
+                // --- THÈMES HERETIC ---
+                heretic_castle: { name: "Château Médiéval", palette: { wall_primary: [{ name: "CASTLE1", weight: 80 }, { name: "CASTLE5", weight: 20 }], floor_primary: [{ name: "FLOOR01", weight: 100 }], ceiling_primary: [{ name: "CEIL01", weight: 100 }], door_regular: [{ name: "DOOR01", weight: 100 }], window_grate: [{ name: "WIND04", weight: 100 }] } },
+                heretic_volcano: { name: "Donjon Volcanique", palette: { wall_primary: [{ name: "ROCK01", weight: 70 }, { name: "ROCK05", weight: 30 }], floor_primary: [{ name: "FLOOR16", weight: 100 }], floor_damage_high: [{ name: "LAVA01", weight: 100 }], ceiling_primary: [{ name: "CEIL11", weight: 100 }] } },
+                // --- THÈMES HEXEN ---
+                hexen_dark_fortress: { name: "Forteresse Sombre", palette: { wall_primary: [{ name: "WALL05", weight: 70 }, { name: "WALL07", weight: 30 }], wall_support: [{ name: "SUPPORT9", weight: 100 }], floor_primary: [{ name: "FLOOR22", weight: 100 }], ceiling_primary: [{ name: "CEILING3", weight: 100 }], door_regular: [{ name: "DOOR01", weight: 100 }], switch_utility: [{ name: "SWITCH01", weight: 100 }] } },
+                hexen_ice: { name: "Monastère de Glace", palette: { wall_primary: [{ name: "ICE01", weight: 60 }, { name: "ICE04", weight: 40 }], floor_primary: [{ name: "ICE02", weight: 100 }], ceiling_primary: [{ name: "CEILING6", weight: 100 }], door_regular: [{ name: "DOOR14", weight: 100 }] } },
+                hexen_swamp: { name: "Marais des Morts", palette: { wall_primary: [{ name: "WALL60", weight: 80 }, { name: "WALL62", weight: 20 }], floor_primary: [{ name: "FLOOR44", weight: 100 }], floor_damage_low: [{ name: "SWAMP01", weight: 100 }], ceiling_primary: [{ name: "CEILING4", weight: 100 }] } }
+            };
+        }
+
+        const dgraphDocumentation = `Tu es un level designer senior spécialisé dans les jeux de tir à la première personne classiques.
+Ta tâche est de générer un **objet JSON complet et valide** qui décrit la structure d'une carte de jeu, en respectant scrupuleusement le format abstrait "D-Graph" version 1.3.
+
+**CONTRAINTE FONDAMENTALE : GRAPHE PLANAIRE**
+La carte de Doom est un graphe planaire. Cela signifie que les pièces (secteurs) ne peuvent pas se superposer ou se croiser. Une pièce ne peut pas passer "au-dessus" d'une autre. Tu dois respecter cette contrainte dans la manière dont tu connectes les pièces.
+
+---
+**PARTIE 1 : SPÉCIFICATION DU FORMAT D-GRAPH v1.3**
+---
+
+(La documentation complète de la v1.3, comme définie précédemment, est incluse ici. Elle explique la 'themePalette', 'rooms', 'connections', 'features', etc.)
+
+`;
+
+        // --- UI LOGIC ---
+        const gameSelect = document.getElementById('gameSelect');
+        const themeSelect = document.getElementById('themeSelect');
+
+        function updateThemes() {
+            const selectedGame = gameSelect.value;
+            themeSelect.innerHTML = '';
+            const allPalettes = getThemePalettes();
+            for (const key in allPalettes) {
+                if (key.startsWith(selectedGame + '_')) {
+                    const option = document.createElement('option');
+                    option.value = key;
+                    option.textContent = allPalettes[key].name;
+                    themeSelect.appendChild(option);
+                }
+            }
+        }
+
+        function generatePrompt() {
+            const game = gameSelect.value;
+            const themeKey = themeSelect.value;
+            const size = document.getElementById('sizeSelect').value;
+            const connectivity = document.getElementById('connectivitySelect').value;
+            const description = document.getElementById('descriptionText').value;
+
+            const data = GAME_DATA[game];
+            let gameDataReference = `---
+**PARTIE 2 : RÉFÉRENCE DE DONNÉES POUR ${game.toUpperCase()}**
+---
+Pour créer la carte, tu dois utiliser les noms de textures, flats et entités valides pour ce jeu. Voici des listes de référence.
+
+**Things Valides (Monstres, Objets, etc.):**
+${data.things.map(t => `- ${t.name} (type: ${t.type})`).join('\n')}
+
+**Flags de Linedef Valides:**
+${data.linedefFlags.map(f => `- ${f}`).join('\n')}
+
+**Exemples de Textures de Murs Valides:**
+${data.textures.slice(0, 20).join(', ')}...
+
+**Exemples de Flats de Sol/Plafond Valides:**
+${data.flats.slice(0, 20).join(', ')}...
+`;
+
+            const selectedPalette = getThemePalettes()[themeKey]?.palette;
+            let creativeBrief = `---
+**PARTIE 3 : DOSSIER DE CONCEPTION (VOTRE TÂCHE)**
+---
+En utilisant la spécification et les données de référence ci-dessus, génère l'objet JSON D-Graph pour une nouvelle carte avec les caractéristiques suivantes.
+
+**Objectifs de Conception :**
+- **Jeu :** ${game}
+- **Style Général :** ${getThemePalettes()[themeKey]?.name || 'Non spécifié'}
+- **Taille :** ${size}
+- **Connectivité / Structure :** ${connectivity}
+- **Brief Créatif Additionnel :** ${description || "Aucun. Liberté créative totale."}
+
+**Palette Thématique à Utiliser :**
+Tu dois utiliser la palette thématique suivante comme guide stylistique. Les "concepts" (clés) doivent être référencés dans les propriétés de tes pièces.
+\`\`\`json
+{
+      "themePalette": ${selectedPalette ? JSON.stringify(selectedPalette, null, 2) : "{}"}
+}
+\`\`\`
+
+**Instructions Finales :**
+1.  **JSON Uniquement :** Ta réponse doit être UNIQUEMENT le bloc de code JSON complet, sans aucun texte ou commentaire en dehors.
+2.  **Respecter la Planéité :** Assure-toi que le graphe de pièces que tu crées peut exister dans un espace 2D sans se croiser.
+3.  **Cohérence :** Les IDs doivent être cohérents. Si une pièce connecte à "hall_central", une pièce avec l'id "hall_central" doit exister.
+4.  **Créativité :** Sois créatif dans la manière dont tu structures les pièces, utilises les \`features\` (interrupteurs, etc.) et places le contenu pour créer une expérience de jeu intéressante.
+`;
+
+            document.getElementById('promptOutput').value = dgraphDocumentation + gameDataReference + creativeBrief;
+        }
+
+        function copyPrompt() {
+            const output = document.getElementById('promptOutput');
+            if (output.value) {
+                output.select();
+                navigator.clipboard.writeText(output.value).then(() => {
+                    const button = document.getElementById('copyButton');
+                    const originalText = button.textContent;
+                    button.textContent = 'Copié !';
+                    setTimeout(() => { button.textContent = originalText; }, 2000);
+                });
+            }
+        }
+
+        function initialize() {
+            updateThemes();
+            generatePrompt();
+        }
+
+        // Event Listeners
+        gameSelect.addEventListener('change', initialize);
+        themeSelect.addEventListener('change', generatePrompt);
+        document.getElementById('sizeSelect').addEventListener('change', generatePrompt);
+        document.getElementById('connectivitySelect').addEventListener('change', generatePrompt);
+        document.getElementById('descriptionText').addEventListener('input', generatePrompt);
+
+        window.addEventListener('load', initialize);
+    </script>
+</body>
+</html>
