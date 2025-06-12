@@ -266,7 +266,8 @@ Les `properties` des pièces font maintenant référence aux concepts en anglais
 
 Exemple de fichier:
 
-```{
+```json
+{
   "format": "D-Graph",
   "version": "1.3",
   "mapInfo": {
