@@ -1,91 +1,161 @@
 {
-  "format": "D-Graph",
-  "version": "1.3",
-  "mapInfo": {
-    "game": "doom",
-    "episode": 1,
-    "map": 1,
-    "name": "La Base Thématique",
-    "music": "D_E1M1"
-  },
-  "themePalette": {
-    "wall_primary": [
-      { "name": "STARG1", "weight": 70 },
-      { "name": "STARG2", "weight": 20 },
-      { "name": "STARGR1", "weight": 10 }
-    ],
-    "wall_panel": [
-      { "name": "COMPTALL", "weight": 100 }
-    ],
-    "wall_secret_indicator": [
-      { "name": "SUPPORT3", "weight": 100 }
-    ],
-    "floor_primary": [
-      { "name": "FLOOR4_8", "weight": 90 },
-      { "name": "FLAT19", "weight": 10 }
-    ],
-    "floor_damage_low": [
-      { "name": "NUKAGE1", "weight": 75 },
-      { "name": "NUKAGE2", "weight": 25 }
-    ],
-    "ceiling_primary": [
-      { "name": "CEIL3_1", "weight": 100 }
-    ],
-    "ceiling_light_source": [
-      { "name": "LIGHT3", "weight": 100 }
-    ],
-    "door_regular": [
-      { "name": "DOOR3", "weight": 100 }
-    ],
-    "door_frame": [
-      { "name": "DOORTRAK", "weight": 100 }
-    ],
-    "switch_exit": [
-      { "name": "SW1EXIT", "weight": 100 }
-    ],
-    "switch_utility": [
-      { "name": "SW1STAR", "weight": 100 }
-    ]
-  },
-  "rooms": [
-    {
-      "id": "start_room",
-      "parentRoom": null,
-      "shapeHint": { "vertices": 4, "description": "Une petite pièce rectangulaire." },
-      "properties": {
-        "floor": "normal", "ceiling": "low", "lightLevel": "normal",
-        "wallTexture": "wall_primary",
-        "floorFlat": "floor_primary",
-        "ceilingFlat": "ceiling_primary"
-      },
-      "contents": { "items": [ { "type": "Player1Start", "count": 1 } ] },
-      "features": []
+    "format": "D-Graph",
+    "version": "1.3",
+    "mapInfo": {
+        "game": "doom",
+        "episode": 1,
+        "map": 1,
+        "name": "La Base Thématique",
+        "music": "D_E1M1"
     },
-    {
-      "id": "sky_chamber",
-      "parentRoom": null,
-      "shapeHint": { "vertices": 8, "description": "Une grande cour octogonale." },
-      "properties": {
-        "floor": "normal", "ceiling": "sky", "lightLevel": "bright",
-        "wallTexture": "wall_primary",
-        "floorFlat": "floor_primary",
-        "ceilingFlat": "sky"
-      },
-      "contents": { "monsters": [ { "type": "Imp", "count": 3 } ] },
-      "features": [
+    "themePalette": {
+        "wall_primary": [
+            {
+                "name": "STARG1",
+                "weight": 70
+            },
+            {
+                "name": "STARG2",
+                "weight": 20
+            },
+            {
+                "name": "STARGR1",
+                "weight": 10
+            }
+        ],
+        "wall_panel": [
+            {
+                "name": "COMPTALL",
+                "weight": 100
+            }
+        ],
+        "wall_secret_indicator": [
+            {
+                "name": "SUPPORT3",
+                "weight": 100
+            }
+        ],
+        "floor_primary": [
+            {
+                "name": "FLOOR4_8",
+                "weight": 90
+            },
+            {
+                "name": "FLAT19",
+                "weight": 10
+            }
+        ],
+        "floor_damage_low": [
+            {
+                "name": "NUKAGE1",
+                "weight": 75
+            },
+            {
+                "name": "NUKAGE2",
+                "weight": 25
+            }
+        ],
+        "ceiling_primary": [
+            {
+                "name": "CEIL3_1",
+                "weight": 100
+            }
+        ],
+        "ceiling_light_source": [
+            {
+                "name": "LIGHT3",
+                "weight": 100
+            }
+        ],
+        "door_regular": [
+            {
+                "name": "DOOR3",
+                "weight": 100
+            }
+        ],
+        "door_frame": [
+            {
+                "name": "DOORTRAK",
+                "weight": 100
+            }
+        ],
+        "switch_exit": [
+            {
+                "name": "SW1EXIT",
+                "weight": 100
+            }
+        ],
+        "switch_utility": [
+            {
+                "name": "SW1STAR",
+                "weight": 100
+            }
+        ]
+    },
+    "rooms": [
         {
-          "type": "ExitSwitch", "count": 1,
-          "properties": { "texture": "SW1EXIT" }
+            "id": "start_room",
+            "parentRoom": null,
+            "shapeHint": {
+                "vertices": 4,
+                "description": "Une petite pièce rectangulaire."
+            },
+            "properties": {
+                "floor": "normal",
+                "ceiling": "low",
+                "lightLevel": "normal",
+                "wallTexture": "wall_primary",
+                "floorFlat": "floor_primary",
+                "ceilingFlat": "ceiling_primary"
+            },
+            "contents": {
+                "items": [
+                    {
+                        "type": "Player1Start",
+                        "count": 1
+                    }
+                ]
+            },
+            "features": []
+        },
+        {
+            "id": "sky_chamber",
+            "parentRoom": null,
+            "shapeHint": {
+                "vertices": 8,
+                "description": "Une grande cour octogonale."
+            },
+            "properties": {
+                "floor": "normal",
+                "ceiling": "sky",
+                "lightLevel": "bright",
+                "wallTexture": "wall_primary",
+                "floorFlat": "floor_primary",
+                "ceilingFlat": "sky"
+            },
+            "contents": {
+                "monsters": [
+                    {
+                        "type": "Imp",
+                        "count": 3
+                    }
+                ]
+            },
+            "features": [
+                {
+                    "type": "ExitSwitch",
+                    "count": 1,
+                    "properties": { "texture": "SW1EXIT" }
+                }
+            ]
         }
-      ]
-    }
-  ],
-  "connections": [
-    {
-      "fromRoom": "start_room",
-      "toRoom": "sky_chamber",
-      "type": "door",
-      "properties": { "texture": "DOOR3" }
-    }
-  ]
+    ],
+    "connections": [
+        {
+            "fromRoom": "start_room",
+            "toRoom": "sky_chamber",
+            "type": "door",
+            "properties": { "texture": "DOOR3" }
+        }
+    ]
 }
