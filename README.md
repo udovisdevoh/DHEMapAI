@@ -173,18 +173,24 @@ Principalement pour Hexen, contient le code ACS (Action Code Script).
 
 # Spécification du Format D-Graph
 
-**Version : 1.2**
+**Version : 1.3**
 
 D-Graph est un format JSON de haut niveau pour la conception de cartes de jeux basés sur le moteur de Doom. Il modélise une carte comme un **graphe**, où les **pièces (`rooms`) sont les nœuds** et les **connexions (`connections`) sont les arêtes**.
 
-La version 1.2 introduit le concept de **Palette Thématique (`themePalette`)**, qui dissocie la définition structurelle de la carte de son apparence visuelle, permettant une plus grande variété et un contrôle plus fin sur l'ambiance.
+La version 1.3 affine le concept de **Palette Thématique (`themePalette`)** pour créer une distinction claire entre la **fonction** d'une surface et son **style** visuel, et standardise les identifiants de concepts en anglais.
+
+## Philosophie
+
+-   **Abstraction Géométrique :** Décrire l'intention ("une grande pièce octogonale") plutôt que les coordonnées des sommets.
+-   **Focus sur la Topologie :** Spécifier quelles pièces sont connectées et comment.
+-   **Fonction vs. Style :** Le **concept** dans la palette (la clé, ex: `wall_primary`) définit la **fonction** de la surface. La **liste des textures** associées à cette clé définit le **style** visuel (pierre, métal, bois, etc.).
 
 ## Structure du Fichier
 
 ```json
 {
   "format": "D-Graph",
-  "version": "1.2",
+  "version": "1.3",
   "mapInfo": { ... },
   "themePalette": { ... },
   "rooms": [ ... ],
@@ -192,74 +198,68 @@ La version 1.2 introduit le concept de **Palette Thématique (`themePalette`)**,
 }
 ```
 
-### L'objet `themePalette` (Nouveau dans la v1.2)
+### L'objet `themePalette`
 
-C'est un objet qui définit l'ensemble des textures et des "flats" à utiliser pour la carte, groupés par **concept de design**. Cela permet à un générateur de faire des choix variés et contextuels tout en maintenant une cohérence esthétique.
+Définit l'ensemble des textures et "flats" à utiliser, groupés par concept fonctionnel. Chaque concept est une clé dont la valeur est un tableau d'objets texturés pondérés.
 
-Chaque clé de cet objet est un concept (ex: `"mur_principal"`), et sa valeur est un tableau d'objets "texturés". Chaque objet texturé contient :
 -   `name`: Le nom réel de la texture ou du flat (ex: `"STARG1"`).
--   `weight`: Un poids numérique (entier) qui représente la probabilité relative d'utilisation de cette texture pour ce concept.
+-   `weight`: Un poids numérique qui représente la probabilité relative d'utilisation de cette texture pour ce concept.
 
-**Exemple de `themePalette`:**
-```json
-"themePalette": {
-  "mur_principal": [
-    { "name": "STARG1", "weight": 80 },
-    { "name": "STARGR1", "weight": 20 }
-  ],
-  "mur_accent": [
-    { "name": "METAL", "weight": 100 }
-  ],
-  "sol_principal": [
-    { "name": "FLOOR4_8", "weight": 100 }
-  ],
-  "plafond_principal": [
-    { "name": "CEIL3_1", "weight": 90 },
-    { "name": "CEIL3_2", "weight": 10 }
-  ],
-  "porte_standard": [
-    { "name": "DOOR3", "weight": 100 }
-  ],
-  "cadre_porte": [
-    { "name": "DOORTRAK", "weight": 100 }
-  ],
-  "interrupteur_sortie": [
-    { "name": "SW1EXIT", "weight": 100 }
-  ]
-}
-```
+#### Concepts de Palette Suggérés
 
-**Liste de Concepts Suggérés :**
--   `mur_principal`, `mur_secondaire`, `mur_support`
--   `sol_principal`, `sol_liquide`, `sol_accent`
--   `plafond_principal`, `plafond_lumineux`
--   `porte_standard`, `porte_verrouillee`, `cadre_porte`
--   `marche_escalier`
--   `panneau_interrupteur`, `interrupteur_sortie`
--   `decoration_technologique`, `decoration_organique`
--   `fenetre`
+**Murs (Walls)**
+| Concept | Description |
+|---|---|
+| `wall_primary` | Texture principale pour les murs intérieurs/extérieurs. |
+| `wall_accent` | Texture pour un mur d'accentuation, une section différente. |
+| `wall_support` | Pour les piliers, contreforts, et autres structures de support. |
+| `wall_secret_indicator` | Texture pour un mur secret, souvent subtilement différente. |
+| `wall_panel` | Pour les panneaux de contrôle, les écrans, les terminaux. |
 
-### Le tableau `rooms`
+**Sols et Plafonds (Floors & Ceilings)**
+| Concept | Description |
+|---|---|
+| `floor_primary` | Flat principal pour les sols. |
+| `floor_accent` | Flat pour une zone de sol différente (ex: un tapis, une estrade). |
+| `floor_damage_low` | Sol causant des dégâts légers (ex: Nukage, 10% de dégâts). |
+| `floor_damage_high` | Sol causant des dégâts élevés (ex: Lave, 20% de dégâts). |
+| `floor_heal` | Sol qui rend de la vie (rare, spécifique à certains mods/jeux). |
+| `ceiling_primary` | Flat principal pour les plafonds. |
+| `ceiling_light_source`| Flat pour les luminaires encastrés dans le plafond. |
+| `ceiling_crusher` | Texture pour un plafond broyeur. |
+| `platform_surface` | Texture de la surface d'une plateforme mobile ou d'un ascenseur. |
 
-La définition des pièces est mise à jour pour utiliser la `themePalette`.
+**Portes et Passages (Doors & Passages)**
+| Concept | Description |
+|---|---|
+| `door_regular` | Texture pour une porte standard. |
+| `door_locked` | Pour les portes nécessitant une clé. |
+| `door_exit` | Pour la porte finale qui termine le niveau. |
+| `door_frame` | Texture pour le cadre ou le mécanisme autour d'une porte. |
+| `stair_riser` | Texture pour la contremarche d'un escalier. |
+| `window_grate` | Texture pour une fenêtre, une grille ou des barreaux. |
 
-| Clé          | Type   | Description                                                                                             |
-|--------------|--------|---------------------------------------------------------------------------------------------------------|
-| `id`         | Chaîne | Un identifiant unique et lisible pour la pièce.                                                         |
-| `parentRoom` | Chaîne ou `null` | ID de la pièce dans laquelle cette pièce est imbriquée.                                         |
-| `shapeHint`  | Objet  | Donne des indices sur la forme géométrique.                                                             |
-| `properties` | Objet  | Décrit l'apparence de la pièce, **en faisant référence aux concepts de la `themePalette`**.               |
-| `contents`   | Objet  | Définit les listes d'objets **placés à l'intérieur** de la pièce.                                           |
-| `features`   | Tableau  | Définit les éléments interactifs **sur les murs** de la pièce (interrupteurs, etc.).                      |
+**Interrupteurs et Mécanismes (Switches & Mechanisms)**
+| Concept | Description |
+|---|---|
+| `switch_utility` | Interrupteur standard pour activer portes, ascenseurs, etc. |
+| `switch_exit` | Interrupteur qui termine le niveau. |
+| `switch_panel_wall` | Texture du mur sur lequel un interrupteur est généralement placé. |
 
-#### Détail de `properties` (Mis à Jour)
-| Clé            | Type   | Description                                                                                         |
-|----------------|--------|-----------------------------------------------------------------------------------------------------|
-| `floor`        | Chaîne | Hauteur abstraite du sol: `"low"`, `"normal"`, `"high"`.                                            |
-| `ceiling`      | Chaîne | Hauteur abstraite du plafond. Mêmes valeurs que `floor`, plus `"sky"`.                                |
-| `lightLevel`   | Chaîne | Niveau de luminosité: `"dark"`, `"normal"`, `"bright"`, `"flickering"`.                             |
-| `wallTexture`  | Chaîne | **Référence** à un concept de mur dans `themePalette` (ex: `"mur_principal"`).                        |
-| `floorFlat`    | Chaîne | **Référence** à un concept de sol dans `themePalette` (ex: `"sol_principal"`).                          |
-| `ceilingFlat`  | Chaîne | **Référence** à un concept de plafond dans `themePalette` (ex: `"plafond_principal"`).                  |
+**Mécaniques Spéciales (Special Mechanics)**
+| Concept | Description |
+|---|---|
+| `teleporter_pad` | Flat pour la surface d'un téléporteur. |
+
+### Le tableau `rooms` (Mis à Jour)
+
+Les `properties` des pièces font maintenant référence aux concepts en anglais de la `themePalette`.
+
+| Clé            | Type   | Description                                                        |
+|----------------|--------|--------------------------------------------------------------------|
+| `wallTexture`  | Chaîne | Référence à un concept de mur (ex: `"wall_primary"`).              |
+| `floorFlat`    | Chaîne | Référence à un concept de sol (ex: `"floor_primary"`).             |
+| `ceilingFlat`  | Chaîne | Référence à un concept de plafond (ex: `"ceiling_primary"`).       |
+| ...autres propriétés... |
 
 *(Les autres sections de la documentation : `mapInfo`, `contents`, `features`, `connections` restent les mêmes.)*
