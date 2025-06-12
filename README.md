@@ -357,4 +357,5 @@ Exemple de fichier:
       "properties": { "texture": "DOOR3" }
     }
   ]
-}```
+}
+```
