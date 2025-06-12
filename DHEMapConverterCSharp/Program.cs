@@ -312,9 +312,9 @@ public class MapCompiler
             {
                 writer.Write(side.OffsetX);
                 writer.Write(side.OffsetY);
-                writer.Write(Encoding.ASCII.GetBytes(side.TextureTop.ToUpper().PadRight(8, '\0').Substring(0, 8)));
-                writer.Write(Encoding.ASCII.GetBytes(side.TextureBottom.ToUpper().PadRight(8, '\0').Substring(0, 8)));
-                writer.Write(Encoding.ASCII.GetBytes(side.TextureMiddle.ToUpper().PadRight(8, '\0').Substring(0, 8)));
+                writer.Write(Encoding.ASCII.GetBytes((side.TextureTop ?? "-").ToUpper().PadRight(8, '\0').Substring(0, 8)));
+                writer.Write(Encoding.ASCII.GetBytes((side.TextureBottom ?? "-").ToUpper().PadRight(8, '\0').Substring(0, 8)));
+                writer.Write(Encoding.ASCII.GetBytes((side.TextureMiddle ?? "-").ToUpper().PadRight(8, '\0').Substring(0, 8)));
                 writer.Write((short)side.Sector);
             }
         }

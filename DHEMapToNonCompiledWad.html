@@ -158,14 +158,14 @@
             const sidedefSize = 30;
             const buffer = new ArrayBuffer(sidedefs.length * sidedefSize);
             const view = new DataView(buffer);
-            
+
             sidedefs.forEach((side, i) => {
                 const offset = i * sidedefSize;
                 view.setInt16(offset, side.offsetX || 0, true);
                 view.setInt16(offset + 2, side.offsetY || 0, true);
-                writeString(view, offset + 4, side.textureTop.toUpperCase());
-                writeString(view, offset + 12, side.textureBottom.toUpperCase());
-                writeString(view, offset + 20, side.textureMiddle.toUpperCase());
+                writeString(view, offset + 4, (side.textureTop || '-').toUpperCase());
+                writeString(view, offset + 12, (side.textureBottom || '-').toUpperCase());
+                writeString(view, offset + 20, (side.textureMiddle || '-').toUpperCase());
                 view.setInt16(offset + 28, side.sector, true);
             });
             return { name: "SIDEDEFS", data: buffer };
