@@ -1,0 +1,251 @@
+{
+  "format": "D-Graph",
+  "version": "1.5",
+  "mapInfo": {
+    "game": "doom2",
+    "map": 13,
+    "name": "La Forteresse Gothique des Damnés",
+    "music": "D_SHAWN2"
+  },
+  "themePalette": {
+    "wall_primary": [
+      { "name": "GSTONE1", "weight": 40 },
+      { "name": "STONE2", "weight": 40 },
+      { "name": "MARBLE3", "weight": 20 }
+    ],
+    "wall_accent": [
+      { "name": "WOOD3", "weight": 60 },
+      { "name": "BRICK7", "weight": 40 }
+    ],
+    "wall_support": [
+      { "name": "SUPPORT2", "weight": 70 },
+      { "name": "SUPPORT3", "weight": 30 }
+    ],
+    "wall_secret_indicator": [
+      { "name": "SHAWN2", "weight": 80 },
+      { "name": "BRICK11", "weight": 20 }
+    ],
+    "wall_panel": [
+      { "name": "MARBFAC2", "weight": 50 },
+      { "name": "SP_FACE1", "weight": 50 }
+    ],
+    "floor_primary": [
+      { "name": "FLAT5_1", "weight": 50 },
+      { "name": "FLOOR4_6", "weight": 50 }
+    ],
+    "floor_accent": [
+      { "name": "MFLR8_1", "weight": 60 },
+      { "name": "FLAT17", "weight": 40 }
+    ],
+    "floor_damage_low": [
+      { "name": "SLIME05", "weight": 100 }
+    ],
+    "floor_damage_high": [
+      { "name": "LAVA4", "weight": 100 }
+    ],
+    "ceiling_primary": [
+      { "name": "CEIL3_1", "weight": 70 },
+      { "name": "FLAT2", "weight": 30 }
+    ],
+    "ceiling_light_source": [
+      { "name": "TLITE6_1", "weight": 100 }
+    ],
+    "ceiling_crusher": [
+      { "name": "GSTONE1", "weight": 100 }
+    ],
+    "platform_surface": [
+      { "name": "FLAT23", "weight": 100 }
+    ],
+    "door_regular": [
+      { "name": "BIGDOOR1", "weight": 70 },
+      { "name": "DOOR1", "weight": 30 }
+    ],
+    "door_locked": [
+      { "name": "DOORBLU", "weight": 50 },
+      { "name": "DOORRED", "weight": 50 }
+    ],
+    "door_exit": [
+      { "name": "EXITDOOR", "weight": 100 }
+    ],
+    "door_frame": [
+      { "name": "DOORTRAK", "weight": 100 }
+    ],
+    "stair_riser": [
+      { "name": "STEP1", "weight": 100 }
+    ],
+    "window_grate": [
+      { "name": "MIDGRATE", "weight": 100 }
+    ],
+    "switch_utility": [
+      { "name": "SW1MARB", "weight": 50 },
+      { "name": "SW1STON", "weight": 50 }
+    ],
+    "switch_exit": [
+      { "name": "SW1EXIT", "weight": 100 }
+    ],
+    "switch_panel_wall": [
+      { "name": "SWTCHPNL", "weight": 100 }
+    ],
+    "teleporter_pad": [
+      { "name": "GATE1", "weight": 100 }
+    ]
+  },
+  "rooms": [
+    {
+      "id": "start_chamber",
+      "parentRoom": null,
+      "shapeHint": { "vertices": 4, "description": "Petite crypte de départ, rectangulaire." },
+      "properties": { "floor": "normal", "ceiling": "normal", "lightLevel": "dark", "wallTexture": "wall_primary", "floorFlat": "floor_primary", "ceilingFlat": "ceiling_primary", "tag": null },
+      "contents": { "items": [{ "name": "Player1Start", "typeId": 1, "count": 1 }, { "name": "Shotgun", "typeId": 2007, "count": 1 }], "monsters": [], "decorations": [] },
+      "features": []
+    },
+    {
+      "id": "grand_entrance",
+      "parentRoom": null,
+      "shapeHint": { "vertices": 6, "description": "Long vestibule menant à la nef, avec de hauts plafonds voûtés." },
+      "properties": { "floor": "normal", "ceiling": "high", "lightLevel": "normal", "wallTexture": "wall_primary", "floorFlat": "floor_accent", "ceilingFlat": "ceiling_primary", "tag": null },
+      "contents": { "items": [], "monsters": [{ "name": "Zombieman", "typeId": 3004, "count": 4 }], "decorations": [] },
+      "features": []
+    },
+    {
+      "id": "cathedral_nave",
+      "parentRoom": null,
+      "shapeHint": { "vertices": 12, "description": "Vaste nef centrale cruciforme servant de hub principal, avec des piliers massifs." },
+      "properties": { "floor": "normal", "ceiling": "very_high", "lightLevel": "bright", "wallTexture": "wall_primary", "floorFlat": "floor_accent", "ceilingFlat": "ceiling_primary", "tag": null },
+      "contents": { "items": [{ "name": "4 Shotgun Shells", "typeId": 2046, "count": 2 }], "monsters": [{ "name": "Imp", "typeId": 3001, "count": 5 }, { "name": "Shotgun Guy", "typeId": 9, "count": 2 }], "decorations": [] },
+      "features": []
+    },
+    {
+      "id": "nave_pillar_1",
+      "parentRoom": "cathedral_nave",
+      "shapeHint": { "vertices": 4, "description": "Pilier de soutien nord." },
+      "properties": { "floor": "normal", "ceiling": "very_high", "lightLevel": "bright", "wallTexture": "wall_support", "floorFlat": "floor_accent", "ceilingFlat": "ceiling_primary", "tag": null },
+      "contents": { "items": [], "monsters": [], "decorations": [] },
+      "features": []
+    },
+    {
+      "id": "east_cloister",
+      "parentRoom": null,
+      "shapeHint": { "vertices": 6, "description": "Cloître est, un couloir en L menant à la branche de la clé bleue." },
+      "properties": { "floor": "normal", "ceiling": "high", "lightLevel": "normal", "wallTexture": "wall_accent", "floorFlat": "floor_primary", "ceilingFlat": "ceiling_primary", "tag": null },
+      "contents": { "items": [], "monsters": [{ "name": "Demon", "typeId": 3002, "count": 2 }], "decorations": [] },
+      "features": []
+    },
+    {
+      "id": "scriptorium",
+      "parentRoom": null,
+      "shapeHint": { "vertices": 8, "description": "Salle de lecture octogonale avec des étagères de livres implicites." },
+      "properties": { "floor": "normal", "ceiling": "high", "lightLevel": "normal", "wallTexture": "wall_accent", "floorFlat": "floor_primary", "ceilingFlat": "ceiling_primary", "tag": null },
+      "contents": { "items": [], "monsters": [{ "name": "Imp", "typeId": 3001, "count": 3 }], "decorations": [] },
+      "features": []
+    },
+    {
+      "id": "hidden_archives",
+      "parentRoom": null,
+      "shapeHint": { "vertices": 4, "description": "Petite pièce secrète avec des récompenses." },
+      "properties": { "floor": "normal", "ceiling": "high", "lightLevel": "dark", "wallTexture": "wall_primary", "floorFlat": "floor_primary", "ceilingFlat": "ceiling_primary", "tag": null },
+      "contents": { "items": [{ "name": "Super Shotgun", "typeId": 82, "count": 1 }, { "name": "Box of Shotgun Shells", "typeId": 2049, "count": 1 }], "monsters": [], "decorations": [] },
+      "features": []
+    },
+    {
+      "id": "wizard_tower_antechamber",
+      "parentRoom": null,
+      "shapeHint": { "vertices": 4, "description": "Escalier en colimaçon menant à la tour du sorcier." },
+      "properties": { "floor": "high", "ceiling": "high", "lightLevel": "normal", "wallTexture": "wall_primary", "floorFlat": "stair_riser", "ceilingFlat": "ceiling_primary", "tag": null },
+      "contents": { "items": [], "monsters": [{ "name": "Cacodemon", "typeId": 3005, "count": 1 }], "decorations": [] },
+      "features": []
+    },
+    {
+      "id": "wizard_tower",
+      "parentRoom": null,
+      "shapeHint": { "vertices": 5, "description": "Sommet de la tour, une petite pièce pentagonale." },
+      "properties": { "floor": "very_high", "ceiling": "very_high", "lightLevel": "bright", "wallTexture": "wall_primary", "floorFlat": "floor_accent", "ceilingFlat": "ceiling_light_source", "tag": null },
+      "contents": { "items": [{ "name": "Blue Skull Key", "typeId": 40, "count": 1 }], "monsters": [{ "name": "Hell Knight", "typeId": 69, "count": 1 }], "decorations": [] },
+      "features": []
+    },
+    {
+      "id": "west_cloister",
+      "parentRoom": null,
+      "shapeHint": { "vertices": 4, "description": "Couloir ouest menant à la crypte et au clocher." },
+      "properties": { "floor": "normal", "ceiling": "normal", "lightLevel": "dark", "wallTexture": "wall_accent", "floorFlat": "floor_primary", "ceilingFlat": "ceiling_primary", "tag": null },
+      "contents": { "items": [], "monsters": [{ "name": "Spectre", "typeId": 58, "count": 2 }], "decorations": [] },
+      "features": []
+    },
+    {
+      "id": "sunken_crypt",
+      "parentRoom": null,
+      "shapeHint": { "vertices": 8, "description": "Grande crypte octogonale avec un sol inondé de liquide toxique." },
+      "properties": { "floor": "low", "ceiling": "normal", "lightLevel": "dark", "wallTexture": "wall_primary", "floorFlat": "floor_damage_low", "ceilingFlat": "ceiling_primary", "tag": null },
+      "contents": { "items": [{ "name": "Radiation Suit", "typeId": 2045, "count": 1 }], "monsters": [{ "name": "Imp", "typeId": 3001, "count": 4 }], "decorations": [{ "name": "Exploding Barrel", "typeId": 2035, "count": 3 }] },
+      "features": []
+    },
+    {
+      "id": "bell_tower_base",
+      "parentRoom": null,
+      "shapeHint": { "vertices": 4, "description": "Base du clocher contenant l'interrupteur de l'ascenseur." },
+      "properties": { "floor": "normal", "ceiling": "very_high", "lightLevel": "normal", "wallTexture": "wall_primary", "floorFlat": "floor_primary", "ceilingFlat": "ceiling_primary", "tag": null },
+      "contents": { "items": [], "monsters": [{ "name": "Revenant", "typeId": 66, "count": 1 }], "decorations": [] },
+      "features": [
+        { "name": "LiftSwitch", "actionId": 21, "count": 1, "properties": { "texture_concept": "switch_utility", "targetTag": 10 } }
+      ]
+    },
+    {
+      "id": "belfry_platform",
+      "parentRoom": "bell_tower_base",
+      "shapeHint": { "vertices": 4, "description": "Plateforme d'ascenseur menant au beffroi." },
+      "properties": { "floor": "normal", "ceiling": "very_high", "lightLevel": "normal", "wallTexture": "wall_support", "floorFlat": "platform_surface", "ceilingFlat": "ceiling_primary", "tag": 10 },
+      "contents": { "items": [], "monsters": [], "decorations": [] },
+      "features": []
+    },
+    {
+      "id": "belfry",
+      "parentRoom": null,
+      "shapeHint": { "vertices": 4, "description": "Le beffroi au sommet de la tour, ouvert sur le ciel." },
+      "properties": { "floor": "very_high", "ceiling": "sky", "lightLevel": "bright", "wallTexture": "wall_primary", "floorFlat": "platform_surface", "ceilingFlat": "F_SKY1", "tag": null },
+      "contents": { "items": [{ "name": "Red Skull Key", "typeId": 38, "count": 1 }], "monsters": [{ "name": "Arachnotron", "typeId": 68, "count": 1 }], "decorations": [] },
+      "features": []
+    },
+    {
+      "id": "altar_approach",
+      "parentRoom": null,
+      "shapeHint": { "vertices": 4, "description": "Antichambre avant l'autel, nécessite la clé bleue." },
+      "properties": { "floor": "normal", "ceiling": "high", "lightLevel": "normal", "wallTexture": "wall_panel", "floorFlat": "floor_accent", "ceilingFlat": "ceiling_primary", "tag": null },
+      "contents": { "items": [], "monsters": [{ "name": "Heavy Weapon Dude", "typeId": 64, "count": 2 }], "decorations": [] },
+      "features": []
+    },
+    {
+      "id": "sacrificial_chamber",
+      "parentRoom": null,
+      "shapeHint": { "vertices": 8, "description": "Arène finale avec un autel central, entourée de lave." },
+      "properties": { "floor": "high", "ceiling": "very_high", "lightLevel": "flickering", "wallTexture": "wall_panel", "floorFlat": "floor_damage_high", "ceilingFlat": "ceiling_light_source", "tag": null },
+      "contents": { "items": [{ "name": "Megasphere", "typeId": 83, "count": 1 }], "monsters": [{ "name": "Baron of Hell", "typeId": 3003, "count": 1 }, { "name": "Arch-Vile", "typeId": 65, "count": 1 }], "decorations": [] },
+      "features": []
+    },
+    {
+      "id": "exit_chamber",
+      "parentRoom": null,
+      "shapeHint": { "vertices": 4, "description": "Petite salle avec le portail de sortie." },
+      "properties": { "floor": "high", "ceiling": "high", "lightLevel": "bright", "wallTexture": "wall_primary", "floorFlat": "floor_primary", "ceilingFlat": "ceiling_primary", "tag": null },
+      "contents": { "items": [], "monsters": [], "decorations": [] },
+      "features": [
+        { "name": "ExitSwitch", "actionId": 11, "count": 1, "properties": { "texture_concept": "switch_exit" } }
+      ]
+    }
+  ],
+  "connections": [
+    { "fromRoom": "start_chamber", "toRoom": "grand_entrance", "type": "door", "properties": { "texture_concept": "door_regular" } },
+    { "fromRoom": "grand_entrance", "toRoom": "cathedral_nave", "type": "opening", "properties": {} },
+    { "fromRoom": "cathedral_nave", "toRoom": "east_cloister", "type": "opening", "properties": {} },
+    { "fromRoom": "cathedral_nave", "toRoom": "west_cloister", "type": "opening", "properties": {} },
+    { "fromRoom": "east_cloister", "toRoom": "scriptorium", "type": "door", "properties": { "texture_concept": "door_regular" } },
+    { "fromRoom": "scriptorium", "toRoom": "hidden_archives", "type": "secret_door", "properties": { "texture_concept": "wall_secret_indicator" } },
+    { "fromRoom": "scriptorium", "toRoom": "wizard_tower_antechamber", "type": "opening", "properties": { "description": "Un escalier monte vers la tour." } },
+    { "fromRoom": "wizard_tower_antechamber", "toRoom": "wizard_tower", "type": "opening", "properties": {} },
+    { "fromRoom": "west_cloister", "toRoom": "sunken_crypt", "type": "opening", "properties": { "description": "Des marches descendent dans la crypte." } },
+    { "fromRoom": "sunken_crypt", "toRoom": "bell_tower_base", "type": "door", "properties": { "texture_concept": "door_regular" } },
+    { "fromRoom": "belfry_platform", "toRoom": "belfry", "type": "opening", "properties": { "description": "La plateforme monte au beffroi." } },
+    { "fromRoom": "cathedral_nave", "toRoom": "altar_approach", "type": "locked_door", "properties": { "texture_concept": "door_locked", "key": "blue" } },
+    { "fromRoom": "altar_approach", "toRoom": "sacrificial_chamber", "type": "locked_door", "properties": { "texture_concept": "door_locked", "key": "red" } },
+    { "fromRoom": "sacrificial_chamber", "toRoom": "exit_chamber", "type": "door", "properties": { "texture_concept": "door_regular" } }
+  ]
+}

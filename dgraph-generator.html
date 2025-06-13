@@ -534,6 +534,11 @@ En utilisant la palette que TU as créée à la tâche 1, conçois et écris les
         * Pour modéliser un **escalier** entre deux pièces, crée une connexion de type '"opening"' et assigne des valeurs de 'floor' différentes aux deux pièces (ex: 'room_a' a '"floor": "normal"' et 'room_b' a '"floor": "high"').
         * Pour modéliser un **ascenseur (lift)**, crée une 'feature' de type '"PlatformLift"' à l'intérieur de la pièce ('room') où il se trouve.
 7.  **Cohérence des IDs :** Tous les identifiants ('id' de pièce, 'parentRoom', 'fromRoom', 'toRoom') et les références aux concepts de la 'themePalette' doivent être exacts et cohérents à travers tout le document.
+8.  **Validation Croisée des Concepts de Palette : Assure-toi que le concept de la themePalette que tu utilises correspond à la propriété que tu définis.
+      Les concepts sont groupés par fonction (Murs, Sols/Plafonds, etc.). Respecte cette logique.
+      Une propriété comme floorFlat ou ceilingFlat doit uniquement faire référence à un concept de la catégorie 'Sols/Plafonds' (ex: floor_primary, floor_damage_low, ceiling_light_source).
+      Une propriété comme wallTexture doit faire référence à un concept de la catégorie 'Murs'.
+      NE PAS FAIRE : { "floorFlat": "stair_riser", ... } car stair_riser est un concept de mur (contremarche), pas un concept de sol.
 `;
 
             document.getElementById('promptOutput').value = dgraphSpecification + gameDataReference + creativeBrief;
