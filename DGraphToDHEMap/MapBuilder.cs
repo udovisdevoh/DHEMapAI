@@ -8,9 +8,6 @@ using DGraphBuilder.Models.Dhemap;
 
 namespace DGraphBuilder.Generation
 {
-    /// <summary>
-    /// Construit la géométrie DHEMap à partir d'une disposition physique calculée.
-    /// </summary>
     public class MapBuilder
     {
         private readonly DGraphFile _dgraph;
@@ -19,8 +16,7 @@ namespace DGraphBuilder.Generation
         private Dictionary<int, Vertex> _vertexLookup;
         private int _nextId;
 
-        // Classe interne pour stocker la géométrie construite d'une pièce.
-        private class BuiltRoom { public PhysicalRoom PlacedRoom; public Sector DhemapSector; public Dictionary<string, Linedef> Walls = new Dictionary<string, Linedef>(); }
+        private class BuiltRoom { public PhysicalRoom PlacedRoom; public Sector DhemapSector; public List<Linedef> Linedefs = new List<Linedef>(); }
 
         public MapBuilder(DGraphFile dgraph, Random random)
         {
@@ -49,9 +45,6 @@ namespace DGraphBuilder.Generation
                 }
             }
 
-            // La logique pour les pièces imbriquées doit être appelée ici, après la construction principale.
-            // Pour l'instant, cette fonctionnalité reste simplifiée.
-
             return _dhemap;
         }
 
@@ -76,18 +69,20 @@ namespace DGraphBuilder.Generation
             var sector = CreateSectorFromRoom(pRoom.DGraphRoom);
             _dhemap.Sectors.Add(sector);
 
-            var v1 = AddVertex(rect.Left, rect.Top);
-            var v2 = AddVertex(rect.Right, rect.Top);
-            var v3 = AddVertex(rect.Right, rect.Bottom);
-            var v4 = AddVertex(rect.Left, rect.Bottom);
+            var v1 = AddVertex(rect.Left, rect.Top);     // Top-Left
+            var v2 = AddVertex(rect.Right, rect.Top);    // Top-Right
+            var v3 = AddVertex(rect.Right, rect.Bottom); // Bottom-Right
+            var v4 = AddVertex(rect.Left, rect.Bottom);  // Bottom-Left
 
             string wallTexture = GetTexture(pRoom.DGraphRoom.Properties.WallTexture);
 
             var builtRoom = new BuiltRoom { PlacedRoom = pRoom, DhemapSector = sector };
-            builtRoom.Walls["North"] = AddLinedef(v4, v3, sector.Id, wallTexture);
-            builtRoom.Walls["East"] = AddLinedef(v3, v2, sector.Id, wallTexture);
-            builtRoom.Walls["South"] = AddLinedef(v2, v1, sector.Id, wallTexture);
-            builtRoom.Walls["West"] = AddLinedef(v1, v4, sector.Id, wallTexture);
+
+            // Correction de l'ordre d'enroulement (winding order) pour être cohérent (ex: contre-horaire)
+            builtRoom.Linedefs.Add(AddLinedef(v1, v2, sector.Id, wallTexture)); // Top wall
+            builtRoom.Linedefs.Add(AddLinedef(v2, v3, sector.Id, wallTexture)); // Right wall
+            builtRoom.Linedefs.Add(AddLinedef(v3, v4, sector.Id, wallTexture)); // Bottom wall
+            builtRoom.Linedefs.Add(AddLinedef(v4, v1, sector.Id, wallTexture)); // Left wall
 
             PlaceThings(pRoom.DGraphRoom, rect);
             return builtRoom;
@@ -100,26 +95,58 @@ namespace DGraphBuilder.Generation
             var (fromWall, toWall) = FindClosestWalls(from, to);
             if (fromWall == null || toWall == null) return;
 
-            MakeLineTwoSided(fromWall, to.DhemapSector.Id, connection, from);
+            float openingSize = 64;
+            var fromOpening = SplitLinedef(from, fromWall, openingSize);
+
+            // Remplacer l'ancien mur de la pièce 'to' par la nouvelle ouverture
             _dhemap.Linedefs.Remove(toWall);
-        }
+            var toSideId = AddSidedef(to.DhemapSector.Id, GetTexture("door_frame"));
 
-        private void MakeLineTwoSided(Linedef line, int otherSectorId, Connection connection, BuiltRoom fromRoom)
-        {
-            line.Flags.Remove("impassable");
-            if (!line.Flags.Contains("twoSided")) line.Flags.Add("twoSided");
+            // Créer le linedef inversé pour la pièce 'to'
+            var backOpening = AddLinedef(
+                _vertexLookup[fromOpening.opening.EndVertex],
+                _vertexLookup[fromOpening.opening.StartVertex],
+                to.DhemapSector.Id,
+                "-");
 
-            // CORRECTION : Le chemin d'accès correct est via PlacedRoom.
-            string texture = GetTexture(connection.Type.Contains("door") ? "door_frame" : fromRoom.PlacedRoom.DGraphRoom.Properties.WallTexture);
-            var backSidedef = new Sidedef { Id = _nextId++, Sector = otherSectorId, TextureMiddle = texture, TextureTop = "-", TextureBottom = "-" };
-            _dhemap.Sidedefs.Add(backSidedef);
-            line.BackSidedef = backSidedef.Id;
+            // Lier les deux côtés
+            fromOpening.opening.BackSidedef = toSideId;
+            fromOpening.opening.Flags.Add("twoSided");
+
+            backOpening.BackSidedef = fromOpening.opening.FrontSidedef;
+            backOpening.Flags.Add("twoSided");
 
             if (connection.Type.Contains("door"))
             {
-                line.Action = new ActionInfo { Special = 1, Tag = line.Id + 1000 }; // Tagging simple pour l'exemple
-                // Une implémentation complète créerait un vrai secteur de porte et assignerait son tag.
+                fromOpening.opening.Action = new ActionInfo { Special = 1, Tag = fromOpening.opening.Id + 1000 };
             }
+        }
+
+        private (Linedef opening, Linedef[] newWalls) SplitLinedef(BuiltRoom room, Linedef line, float openingSize)
+        {
+            int originalSectorId = room.DhemapSector.Id;
+            _dhemap.Linedefs.Remove(line);
+            room.Linedefs.Remove(line);
+
+            var v_start = _vertexLookup[line.StartVertex];
+            var v_end = _vertexLookup[line.EndVertex];
+
+            var lineVec = new Vector2(v_end.X - v_start.X, v_end.Y - v_start.Y);
+            var lineLength = lineVec.Length();
+            lineVec = Vector2.Normalize(lineVec);
+
+            float midPointDist = lineLength / 2f;
+            var v_open1 = AddVertex(v_start.X + lineVec.X * (midPointDist - openingSize / 2), v_start.Y + lineVec.Y * (midPointDist - openingSize / 2));
+            var v_open2 = AddVertex(v_start.X + lineVec.X * (midPointDist + openingSize / 2), v_start.Y + lineVec.Y * (midPointDist + openingSize / 2));
+
+            var sideTexture = _dhemap.Sidedefs.First(s => s.Id == line.FrontSidedef).TextureMiddle;
+
+            var wall1 = AddLinedef(v_start, v_open1, originalSectorId, sideTexture);
+            var opening = AddLinedef(v_open1, v_open2, originalSectorId, "-");
+            var wall2 = AddLinedef(v_open2, v_end, originalSectorId, sideTexture);
+
+            room.Linedefs.AddRange(new[] { wall1, opening, wall2 });
+            return (opening, new[] { wall1, wall2 });
         }
 
         private (Linedef, Linedef) FindClosestWalls(BuiltRoom r1, BuiltRoom r2)
@@ -127,9 +154,9 @@ namespace DGraphBuilder.Generation
             Linedef bestL1 = null, bestL2 = null;
             float minDist = float.MaxValue;
 
-            foreach (var l1 in r1.Walls.Values.Where(l => l.BackSidedef == null))
+            foreach (var l1 in r1.Linedefs.Where(l => l.BackSidedef == null))
             {
-                foreach (var l2 in r2.Walls.Values.Where(l => l.BackSidedef == null))
+                foreach (var l2 in r2.Linedefs.Where(l => l.BackSidedef == null))
                 {
                     var mid1 = GetLinedefMidpoint(l1);
                     var mid2 = GetLinedefMidpoint(l2);
@@ -148,7 +175,7 @@ namespace DGraphBuilder.Generation
 
         private Vector2 GetLinedefMidpoint(Linedef line) { var v1 = _vertexLookup[line.StartVertex]; var v2 = _vertexLookup[line.EndVertex]; return new Vector2((v1.X + v2.X) / 2, (v1.Y + v2.Y) / 2); }
         private Vertex AddVertex(float x, float y) { var v = new Vertex { Id = _nextId++, X = x, Y = y }; _dhemap.Vertices.Add(v); _vertexLookup[v.Id] = v; return v; }
-        private Linedef AddLinedef(Vertex v1, Vertex v2, int sectorId, string texture, bool isTwoSided = false) { var sideId = AddSidedef(sectorId, texture); var line = new Linedef { Id = _nextId++, StartVertex = v1.Id, EndVertex = v2.Id, FrontSidedef = sideId }; if (isTwoSided) { line.BackSidedef = AddSidedef(sectorId, texture); line.Flags.Add("twoSided"); } else { line.Flags.Add("impassable"); } _dhemap.Linedefs.Add(line); return line; }
+        private Linedef AddLinedef(Vertex v1, Vertex v2, int sectorId, string texture) { var sideId = AddSidedef(sectorId, texture); var line = new Linedef { Id = _nextId++, StartVertex = v1.Id, EndVertex = v2.Id, FrontSidedef = sideId }; line.Flags.Add("impassable"); _dhemap.Linedefs.Add(line); return line; }
         private int AddSidedef(int sectorId, string texture) { var side = new Sidedef { Id = _nextId++, Sector = sectorId, TextureMiddle = texture, TextureTop = "-", TextureBottom = "-" }; _dhemap.Sidedefs.Add(side); return side.Id; }
         private Sector CreateSectorFromRoom(Room roomData) { return new Sector { Id = _nextId++, Tag = roomData.Properties.Tag ?? 0, FloorTexture = GetTexture(roomData.Properties.FloorFlat), CeilingTexture = (roomData.Properties.Ceiling == "sky" ? "F_SKY1" : GetTexture(roomData.Properties.CeilingFlat)), LightLevel = GetLight(roomData.Properties.LightLevel), FloorHeight = GetHeight(roomData.Properties.Floor), CeilingHeight = GetHeight(roomData.Properties.Ceiling, 128) }; }
         private void PlaceThings(Room roomData, RectangleF bounds) { var items = roomData.Contents?.Items ?? new List<ContentItem>(); var monsters = roomData.Contents?.Monsters ?? new List<ContentItem>(); foreach (var item in items.Concat(monsters)) for (int i = 0; i < item.Count; i++) _dhemap.Things.Add(new Thing { Id = _nextId++, X = bounds.X + (float)(_random.NextDouble() * bounds.Width), Y = bounds.Y + (float)(_random.NextDouble() * bounds.Height), Angle = _random.Next(8) * 45, Type = item.TypeId, Flags = new List<string> { "skillEasy", "skillNormal", "skillHard" } }); }
