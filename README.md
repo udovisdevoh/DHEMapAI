@@ -1,5 +1,5 @@
 ## Documentation du format DGraph
-(DGRAPH.md)
+[a relative link](DGRAPH.md)
 
 ## Documentation du format DHEMap
-(DHEMAP.md)
+[a relative link](DHEMAP.md)
