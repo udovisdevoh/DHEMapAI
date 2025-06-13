@@ -1,2087 +1,2090 @@
 {
-  "Format": "DHEMap",
-  "Version": "1.0",
-  "MapInfo": {
-    "Game": "doom",
-    "Episode": 0,
-    "Map": 2,
-    "Name": "Le Pr\u00E9cipice de Soufre",
-    "SkyTexture": "SKY1",
-    "Music": "D_E2M6"
+  "format": "DHEMap",
+  "version": "1.0",
+  "mapInfo": {
+    "game": "doom",
+    "episode": 0,
+    "map": 2,
+    "name": "Le Pr\u00E9cipice de Soufre",
+    "skyTexture": "SKY1",
+    "music": "D_E2M6"
   },
-  "Vertices": [
+  "vertices": [
     {
-      "Id": 1,
-      "X": -1158.8337,
-      "Y": -1571.8904
+      "id": 1,
+      "x": 711.02515,
+      "y": 2556.6655
     },
     {
-      "Id": 2,
-      "X": -539.83374,
-      "Y": -1571.8904
+      "id": 2,
+      "x": 1138.0251,
+      "y": 2556.6655
     },
     {
-      "Id": 3,
-      "X": -539.83374,
-      "Y": -1101.8904
+      "id": 3,
+      "x": 1138.0251,
+      "y": 3060.6655
     },
     {
-      "Id": 4,
-      "X": -1158.8337,
-      "Y": -1101.8904
+      "id": 4,
+      "x": 711.02515,
+      "y": 3060.6655
     },
     {
-      "Id": 18,
-      "X": -1002.9949,
-      "Y": -1043.4978
+      "id": 18,
+      "x": 1165.2468,
+      "y": 1926.6841
     },
     {
-      "Id": 19,
-      "X": -412.99487,
-      "Y": -1043.4978
+      "id": 19,
+      "x": 1635.2468,
+      "y": 1926.6841
     },
     {
-      "Id": 20,
-      "X": -412.99487,
-      "Y": -473.4978
+      "id": 20,
+      "x": 1635.2468,
+      "y": 2430.684
     },
     {
-      "Id": 21,
-      "X": -1002.9949,
-      "Y": -473.4978
+      "id": 21,
+      "x": 1165.2468,
+      "y": 2430.684
     },
     {
-      "Id": 33,
-      "X": -305.64462,
-      "Y": -851.1534
+      "id": 33,
+      "x": 1726.8416,
+      "y": 1773.8708
     },
     {
-      "Id": 34,
-      "X": 323.35538,
-      "Y": -851.1534
+      "id": 34,
+      "x": 2215.8416,
+      "y": 1773.8708
     },
     {
-      "Id": 35,
-      "X": 323.35538,
-      "Y": -329.15338
+      "id": 35,
+      "x": 2215.8416,
+      "y": 2356.8708
     },
     {
-      "Id": 36,
-      "X": -305.64462,
-      "Y": -329.15338
+      "id": 36,
+      "x": 1726.8416,
+      "y": 2356.8708
     },
     {
-      "Id": 49,
-      "X": -3.726654,
-      "Y": -188.67627
+      "id": 49,
+      "x": 2224.251,
+      "y": 1182.0924
     },
     {
-      "Id": 50,
-      "X": 388.27335,
-      "Y": -188.67627
+      "id": 50,
+      "x": 2609.251,
+      "y": 1182.0924
     },
     {
-      "Id": 51,
-      "X": 388.27335,
-      "Y": 370.32373
+      "id": 51,
+      "x": 2609.251,
+      "y": 1628.0924
     },
     {
-      "Id": 52,
-      "X": -3.726654,
-      "Y": 370.32373
+      "id": 52,
+      "x": 2224.251,
+      "y": 1628.0924
     },
     {
-      "Id": 64,
-      "X": -139.37941,
-      "Y": 481.86896
+      "id": 64,
+      "x": 1538.7721,
+      "y": 742.7339
     },
     {
-      "Id": 65,
-      "X": 339.6206,
-      "Y": 481.86896
+      "id": 65,
+      "x": 2139.772,
+      "y": 742.7339
     },
     {
-      "Id": 66,
-      "X": 339.6206,
-      "Y": 1037.8689
+      "id": 66,
+      "x": 2139.772,
+      "y": 1194.7339
     },
     {
-      "Id": 67,
-      "X": -139.37941,
-      "Y": 1037.8689
+      "id": 67,
+      "x": 1538.7721,
+      "y": 1194.7339
     },
     {
-      "Id": 79,
-      "X": -379.1007,
-      "Y": 1153.8657
+      "id": 79,
+      "x": 2327.263,
+      "y": 679.73596
     },
     {
-      "Id": 80,
-      "X": 206.89929,
-      "Y": 1153.8657
+      "id": 80,
+      "x": 2847.263,
+      "y": 679.73596
     },
     {
-      "Id": 81,
-      "X": 206.89929,
-      "Y": 1607.8657
+      "id": 81,
+      "x": 2847.263,
+      "y": 1140.736
     },
     {
-      "Id": 82,
-      "X": -379.1007,
-      "Y": 1607.8657
+      "id": 82,
+      "x": 2327.263,
+      "y": 1140.736
     },
     {
-      "Id": 94,
-      "X": -1088.6067,
-      "Y": 823.6743
+      "id": 94,
+      "x": 2776.5127,
+      "y": 1433.5095
     },
     {
-      "Id": 95,
-      "X": -459.6067,
-      "Y": 823.6743
+      "id": 95,
+      "x": 3288.5127,
+      "y": 1433.5095
     },
     {
-      "Id": 96,
-      "X": -459.6067,
-      "Y": 1460.6743
+      "id": 96,
+      "x": 3288.5127,
+      "y": 2053.5095
     },
     {
-      "Id": 97,
-      "X": -1088.6067,
-      "Y": 1460.6743
+      "id": 97,
+      "x": 2776.5127,
+      "y": 2053.5095
     },
     {
-      "Id": 109,
-      "X": -1541.1973,
-      "Y": -728.8655
+      "id": 109,
+      "x": 643.8392,
+      "y": 1923.1816
     },
     {
-      "Id": 110,
-      "X": -1070.1973,
-      "Y": -728.8655
+      "id": 110,
+      "x": 1084.8391,
+      "y": 1923.1816
     },
     {
-      "Id": 111,
-      "X": -1070.1973,
-      "Y": -292.86548
+      "id": 111,
+      "x": 1084.8391,
+      "y": 2390.1816
     },
     {
-      "Id": 112,
-      "X": -1541.1973,
-      "Y": -292.86548
+      "id": 112,
+      "x": 643.8392,
+      "y": 2390.1816
     },
     {
-      "Id": 124,
-      "X": 413.37012,
-      "Y": -805.0887
+      "id": 124,
+      "x": 1635.8082,
+      "y": 188.93195
     },
     {
-      "Id": 125,
-      "X": 1038.3701,
-      "Y": -805.0887
+      "id": 125,
+      "x": 2242.808,
+      "y": 188.93195
     },
     {
-      "Id": 126,
-      "X": 1038.3701,
-      "Y": -258.08868
+      "id": 126,
+      "x": 2242.808,
+      "y": 630.93195
     },
     {
-      "Id": 127,
-      "X": 413.37012,
-      "Y": -258.08868
+      "id": 127,
+      "x": 1635.8082,
+      "y": 630.93195
     },
     {
-      "Id": 137,
-      "X": 465.09882,
-      "Y": 470.83655
+      "id": 137,
+      "x": 951.74976,
+      "y": 141.48553
     },
     {
-      "Id": 138,
-      "X": 868.0988,
-      "Y": 470.83655
+      "id": 138,
+      "x": 1540.7498,
+      "y": 141.48553
     },
     {
-      "Id": 139,
-      "X": 868.0988,
-      "Y": 1066.8365
+      "id": 139,
+      "x": 1540.7498,
+      "y": 561.48553
     },
     {
-      "Id": 140,
-      "X": 465.09882,
-      "Y": 1066.8365
+      "id": 140,
+      "x": 951.74976,
+      "y": 561.48553
     },
     {
-      "Id": 154,
-      "X": 942.32227,
-      "Y": -67.73323
+      "id": 154,
+      "x": 2879.4346,
+      "y": 784.1526
     },
     {
-      "Id": 155,
-      "X": 1569.3223,
-      "Y": -67.73323
+      "id": 155,
+      "x": 3493.4346,
+      "y": 784.1526
     },
     {
-      "Id": 156,
-      "X": 1569.3223,
-      "Y": 546.2668
+      "id": 156,
+      "x": 3493.4346,
+      "y": 1304.1526
     },
     {
-      "Id": 157,
-      "X": 942.32227,
-      "Y": 546.2668
+      "id": 157,
+      "x": 2879.4346,
+      "y": 1304.1526
     },
     {
-      "Id": 167,
-      "X": 1682.5581,
-      "Y": -504.83914
+      "id": 167,
+      "x": 3136.8188,
+      "y": 128.00006
     },
     {
-      "Id": 168,
-      "X": 2236.558,
-      "Y": -504.83914
+      "id": 168,
+      "x": 3707.8188,
+      "y": 128.00006
     },
     {
-      "Id": 169,
-      "X": 2236.558,
-      "Y": -31.839142
+      "id": 169,
+      "x": 3707.8188,
+      "y": 688.00006
     },
     {
-      "Id": 170,
-      "X": 1682.5581,
-      "Y": -31.839142
+      "id": 170,
+      "x": 3136.8188,
+      "y": 688.00006
     },
     {
-      "Id": 181,
-      "X": 931.48535,
-      "Y": 560.4837
+      "id": 181,
+      "x": 333.68347,
+      "y": 191.77313
     },
     {
-      "Id": 182,
-      "X": 1484.4854,
-      "Y": 560.4837
+      "id": 182,
+      "x": 802.6835,
+      "y": 191.77313
     },
     {
-      "Id": 183,
-      "X": 1484.4854,
-      "Y": 972.4837
+      "id": 183,
+      "x": 802.6835,
+      "y": 720.77313
     },
     {
-      "Id": 184,
-      "X": 931.48535,
-      "Y": 972.4837
+      "id": 184,
+      "x": 333.68347,
+      "y": 720.77313
     },
     {
-      "Id": 198,
-      "X": 456.4057,
-      "Y": -69.86101
+      "id": 198,
+      "x": 128,
+      "y": 771.89124
     },
     {
-      "Id": 199,
-      "X": 858.4057,
-      "Y": -69.86101
+      "id": 199,
+      "x": 753,
+      "y": 771.89124
     },
     {
-      "Id": 200,
-      "X": 858.4057,
-      "Y": 399.13898
+      "id": 200,
+      "x": 753,
+      "y": 1175.8912
     },
     {
-      "Id": 201,
-      "X": 456.4057,
-      "Y": 399.13898
+      "id": 201,
+      "x": 128,
+      "y": 1175.8912
     },
     {
-      "Id": 215,
-      "X": -685.5443,
-      "Y": -225.5303
+      "id": 215,
+      "x": 829.95374,
+      "y": 835.5548
     },
     {
-      "Id": 216,
-      "X": -107.54431,
-      "Y": -225.5303
+      "id": 216,
+      "x": 1381.9537,
+      "y": 835.5548
     },
     {
-      "Id": 217,
-      "X": -107.54431,
-      "Y": 374.4697
+      "id": 217,
+      "x": 1381.9537,
+      "y": 1229.5548
     },
     {
-      "Id": 218,
-      "X": -685.5443,
-      "Y": 374.4697
+      "id": 218,
+      "x": 829.95374,
+      "y": 1229.5548
     },
     {
-      "Id": 230,
-      "X": -1256.2354,
-      "Y": 109.008545
+      "id": 230,
+      "x": 948.8574,
+      "y": 1300.6869
     },
     {
-      "Id": 231,
-      "X": -759.23535,
-      "Y": 109.008545
+      "id": 231,
+      "x": 1584.8574,
+      "y": 1300.6869
     },
     {
-      "Id": 232,
-      "X": -759.23535,
-      "Y": 556.00854
+      "id": 232,
+      "x": 1584.8574,
+      "y": 1765.6869
     },
     {
-      "Id": 233,
-      "X": -1256.2354,
-      "Y": 556.00854
+      "id": 233,
+      "x": 948.8574,
+      "y": 1765.6869
     }
   ],
-  "Linedefs": [
+  "linedefs": [
     {
-      "Id": 6,
-      "StartVertex": 4,
-      "EndVertex": 3,
-      "Flags": [
+      "id": 6,
+      "startVertex": 4,
+      "endVertex": 3,
+      "flags": [
+        "impassable"
+      ],
+      "frontSidedef": 5
+    },
+    {
+      "id": 8,
+      "startVertex": 3,
+      "endVertex": 2,
+      "flags": [
+        "impassable"
+      ],
+      "frontSidedef": 7
+    },
+    {
+      "id": 10,
+      "startVertex": 2,
+      "endVertex": 1,
+      "flags": [
         "twoSided"
       ],
-      "Action": {
-        "Special": 1,
-        "Tag": 1006
+      "action": {
+        "special": 1,
+        "tag": 1010
       },
-      "FrontSidedef": 5,
-      "BackSidedef": 242
+      "frontSidedef": 9,
+      "backSidedef": 242
     },
     {
-      "Id": 8,
-      "StartVertex": 3,
-      "EndVertex": 2,
-      "Flags": [
+      "id": 12,
+      "startVertex": 1,
+      "endVertex": 4,
+      "flags": [
         "impassable"
       ],
-      "FrontSidedef": 7
+      "frontSidedef": 11
     },
     {
-      "Id": 10,
-      "StartVertex": 2,
-      "EndVertex": 1,
-      "Flags": [
+      "id": 23,
+      "startVertex": 21,
+      "endVertex": 20,
+      "flags": [
         "impassable"
       ],
-      "FrontSidedef": 9
+      "frontSidedef": 22
     },
     {
-      "Id": 12,
-      "StartVertex": 1,
-      "EndVertex": 4,
-      "Flags": [
-        "impassable"
-      ],
-      "FrontSidedef": 11
-    },
-    {
-      "Id": 23,
-      "StartVertex": 21,
-      "EndVertex": 20,
-      "Flags": [
-        "impassable"
-      ],
-      "FrontSidedef": 22
-    },
-    {
-      "Id": 25,
-      "StartVertex": 20,
-      "EndVertex": 19,
-      "Flags": [
+      "id": 25,
+      "startVertex": 20,
+      "endVertex": 19,
+      "flags": [
         "twoSided"
       ],
-      "FrontSidedef": 24,
-      "BackSidedef": 243
+      "frontSidedef": 24,
+      "backSidedef": 243
     },
     {
-      "Id": 29,
-      "StartVertex": 18,
-      "EndVertex": 21,
-      "Flags": [
-        "twoSided"
-      ],
-      "FrontSidedef": 28,
-      "BackSidedef": 248
-    },
-    {
-      "Id": 38,
-      "StartVertex": 36,
-      "EndVertex": 35,
-      "Flags": [
-        "twoSided"
-      ],
-      "FrontSidedef": 37,
-      "BackSidedef": 244
-    },
-    {
-      "Id": 40,
-      "StartVertex": 35,
-      "EndVertex": 34,
-      "Flags": [
+      "id": 27,
+      "startVertex": 19,
+      "endVertex": 18,
+      "flags": [
         "impassable"
       ],
-      "FrontSidedef": 39
+      "frontSidedef": 26
     },
     {
-      "Id": 42,
-      "StartVertex": 34,
-      "EndVertex": 33,
-      "Flags": [
+      "id": 38,
+      "startVertex": 36,
+      "endVertex": 35,
+      "flags": [
         "impassable"
       ],
-      "FrontSidedef": 41
+      "frontSidedef": 37
     },
     {
-      "Id": 54,
-      "StartVertex": 52,
-      "EndVertex": 51,
-      "Flags": [
-        "twoSided"
+      "id": 40,
+      "startVertex": 35,
+      "endVertex": 34,
+      "flags": [
+        "impassable"
       ],
-      "FrontSidedef": 53,
-      "BackSidedef": 245
+      "frontSidedef": 39
     },
     {
-      "Id": 56,
-      "StartVertex": 51,
-      "EndVertex": 50,
-      "Flags": [
+      "id": 42,
+      "startVertex": 34,
+      "endVertex": 33,
+      "flags": [
         "twoSided"
       ],
-      "Action": {
-        "Special": 1,
-        "Tag": 1056
+      "frontSidedef": 41,
+      "backSidedef": 244
+    },
+    {
+      "id": 54,
+      "startVertex": 52,
+      "endVertex": 51,
+      "flags": [
+        "impassable"
+      ],
+      "frontSidedef": 53
+    },
+    {
+      "id": 56,
+      "startVertex": 51,
+      "endVertex": 50,
+      "flags": [
+        "twoSided"
+      ],
+      "action": {
+        "special": 1,
+        "tag": 1056
       },
-      "FrontSidedef": 55,
-      "BackSidedef": 252
+      "frontSidedef": 55,
+      "backSidedef": 252
     },
     {
-      "Id": 60,
-      "StartVertex": 49,
-      "EndVertex": 52,
-      "Flags": [
-        "impassable"
-      ],
-      "FrontSidedef": 59
-    },
-    {
-      "Id": 69,
-      "StartVertex": 67,
-      "EndVertex": 66,
-      "Flags": [
+      "id": 58,
+      "startVertex": 50,
+      "endVertex": 49,
+      "flags": [
         "twoSided"
       ],
-      "FrontSidedef": 68,
-      "BackSidedef": 246
+      "frontSidedef": 57,
+      "backSidedef": 245
     },
     {
-      "Id": 71,
-      "StartVertex": 66,
-      "EndVertex": 65,
-      "Flags": [
+      "id": 69,
+      "startVertex": 67,
+      "endVertex": 66,
+      "flags": [
         "impassable"
       ],
-      "FrontSidedef": 70
+      "frontSidedef": 68
     },
     {
-      "Id": 75,
-      "StartVertex": 64,
-      "EndVertex": 67,
-      "Flags": [
+      "id": 73,
+      "startVertex": 65,
+      "endVertex": 64,
+      "flags": [
         "impassable"
       ],
-      "FrontSidedef": 74
+      "frontSidedef": 72
     },
     {
-      "Id": 84,
-      "StartVertex": 82,
-      "EndVertex": 81,
-      "Flags": [
+      "id": 75,
+      "startVertex": 64,
+      "endVertex": 67,
+      "flags": [
         "impassable"
       ],
-      "FrontSidedef": 83
+      "frontSidedef": 74
     },
     {
-      "Id": 86,
-      "StartVertex": 81,
-      "EndVertex": 80,
-      "Flags": [
-        "impassable"
-      ],
-      "FrontSidedef": 85
-    },
-    {
-      "Id": 90,
-      "StartVertex": 79,
-      "EndVertex": 82,
-      "Flags": [
+      "id": 84,
+      "startVertex": 82,
+      "endVertex": 81,
+      "flags": [
         "twoSided"
       ],
-      "FrontSidedef": 89,
-      "BackSidedef": 247
+      "frontSidedef": 83,
+      "backSidedef": 247
     },
     {
-      "Id": 99,
-      "StartVertex": 97,
-      "EndVertex": 96,
-      "Flags": [
+      "id": 86,
+      "startVertex": 81,
+      "endVertex": 80,
+      "flags": [
         "impassable"
       ],
-      "FrontSidedef": 98
+      "frontSidedef": 85
     },
     {
-      "Id": 103,
-      "StartVertex": 95,
-      "EndVertex": 94,
-      "Flags": [
+      "id": 88,
+      "startVertex": 80,
+      "endVertex": 79,
+      "flags": [
         "impassable"
       ],
-      "FrontSidedef": 102
+      "frontSidedef": 87
     },
     {
-      "Id": 105,
-      "StartVertex": 94,
-      "EndVertex": 97,
-      "Flags": [
+      "id": 99,
+      "startVertex": 97,
+      "endVertex": 96,
+      "flags": [
         "impassable"
       ],
-      "FrontSidedef": 104
+      "frontSidedef": 98
     },
     {
-      "Id": 114,
-      "StartVertex": 112,
-      "EndVertex": 111,
-      "Flags": [
+      "id": 101,
+      "startVertex": 96,
+      "endVertex": 95,
+      "flags": [
         "impassable"
       ],
-      "FrontSidedef": 113
+      "frontSidedef": 100
     },
     {
-      "Id": 118,
-      "StartVertex": 110,
-      "EndVertex": 109,
-      "Flags": [
+      "id": 105,
+      "startVertex": 94,
+      "endVertex": 97,
+      "flags": [
         "impassable"
       ],
-      "FrontSidedef": 117
+      "frontSidedef": 104
     },
     {
-      "Id": 120,
-      "StartVertex": 109,
-      "EndVertex": 112,
-      "Flags": [
+      "id": 114,
+      "startVertex": 112,
+      "endVertex": 111,
+      "flags": [
         "impassable"
       ],
-      "FrontSidedef": 119
+      "frontSidedef": 113
     },
     {
-      "Id": 129,
-      "StartVertex": 127,
-      "EndVertex": 126,
-      "Flags": [
+      "id": 118,
+      "startVertex": 110,
+      "endVertex": 109,
+      "flags": [
+        "impassable"
+      ],
+      "frontSidedef": 117
+    },
+    {
+      "id": 120,
+      "startVertex": 109,
+      "endVertex": 112,
+      "flags": [
+        "impassable"
+      ],
+      "frontSidedef": 119
+    },
+    {
+      "id": 131,
+      "startVertex": 126,
+      "endVertex": 125,
+      "flags": [
+        "impassable"
+      ],
+      "frontSidedef": 130
+    },
+    {
+      "id": 133,
+      "startVertex": 125,
+      "endVertex": 124,
+      "flags": [
+        "impassable"
+      ],
+      "frontSidedef": 132
+    },
+    {
+      "id": 135,
+      "startVertex": 124,
+      "endVertex": 127,
+      "flags": [
         "twoSided"
       ],
-      "FrontSidedef": 128,
-      "BackSidedef": 250
+      "frontSidedef": 134,
+      "backSidedef": 250
     },
     {
-      "Id": 131,
-      "StartVertex": 126,
-      "EndVertex": 125,
-      "Flags": [
+      "id": 142,
+      "startVertex": 140,
+      "endVertex": 139,
+      "flags": [
         "impassable"
       ],
-      "FrontSidedef": 130
+      "frontSidedef": 141
     },
     {
-      "Id": 133,
-      "StartVertex": 125,
-      "EndVertex": 124,
-      "Flags": [
+      "id": 146,
+      "startVertex": 138,
+      "endVertex": 137,
+      "flags": [
         "impassable"
       ],
-      "FrontSidedef": 132
+      "frontSidedef": 145
     },
     {
-      "Id": 142,
-      "StartVertex": 140,
-      "EndVertex": 139,
-      "Flags": [
-        "impassable"
-      ],
-      "FrontSidedef": 141
-    },
-    {
-      "Id": 144,
-      "StartVertex": 139,
-      "EndVertex": 138,
-      "Flags": [
+      "id": 148,
+      "startVertex": 137,
+      "endVertex": 140,
+      "flags": [
         "twoSided"
       ],
-      "Action": {
-        "Special": 1,
-        "Tag": 1144
+      "action": {
+        "special": 1,
+        "tag": 1148
       },
-      "FrontSidedef": 143,
-      "BackSidedef": 251
+      "frontSidedef": 147,
+      "backSidedef": 251
     },
     {
-      "Id": 148,
-      "StartVertex": 137,
-      "EndVertex": 140,
-      "Flags": [
+      "id": 159,
+      "startVertex": 157,
+      "endVertex": 156,
+      "flags": [
         "impassable"
       ],
-      "FrontSidedef": 147
+      "frontSidedef": 158
     },
     {
-      "Id": 159,
-      "StartVertex": 157,
-      "EndVertex": 156,
-      "Flags": [
+      "id": 161,
+      "startVertex": 156,
+      "endVertex": 155,
+      "flags": [
         "impassable"
       ],
-      "FrontSidedef": 158
+      "frontSidedef": 160
     },
     {
-      "Id": 161,
-      "StartVertex": 156,
-      "EndVertex": 155,
-      "Flags": [
-        "impassable"
-      ],
-      "FrontSidedef": 160
-    },
-    {
-      "Id": 163,
-      "StartVertex": 155,
-      "EndVertex": 154,
-      "Flags": [
+      "id": 163,
+      "startVertex": 155,
+      "endVertex": 154,
+      "flags": [
         "twoSided"
       ],
-      "FrontSidedef": 162,
-      "BackSidedef": 253
+      "frontSidedef": 162,
+      "backSidedef": 253
     },
     {
-      "Id": 172,
-      "StartVertex": 170,
-      "EndVertex": 169,
-      "Flags": [
+      "id": 174,
+      "startVertex": 169,
+      "endVertex": 168,
+      "flags": [
         "impassable"
       ],
-      "FrontSidedef": 171
+      "frontSidedef": 173
     },
     {
-      "Id": 174,
-      "StartVertex": 169,
-      "EndVertex": 168,
-      "Flags": [
+      "id": 176,
+      "startVertex": 168,
+      "endVertex": 167,
+      "flags": [
         "impassable"
       ],
-      "FrontSidedef": 173
+      "frontSidedef": 175
     },
     {
-      "Id": 176,
-      "StartVertex": 168,
-      "EndVertex": 167,
-      "Flags": [
+      "id": 178,
+      "startVertex": 167,
+      "endVertex": 170,
+      "flags": [
         "impassable"
       ],
-      "FrontSidedef": 175
+      "frontSidedef": 177
     },
     {
-      "Id": 186,
-      "StartVertex": 184,
-      "EndVertex": 183,
-      "Flags": [
-        "impassable"
-      ],
-      "FrontSidedef": 185
-    },
-    {
-      "Id": 188,
-      "StartVertex": 183,
-      "EndVertex": 182,
-      "Flags": [
-        "impassable"
-      ],
-      "FrontSidedef": 187
-    },
-    {
-      "Id": 190,
-      "StartVertex": 182,
-      "EndVertex": 181,
-      "Flags": [
-        "impassable"
-      ],
-      "FrontSidedef": 189
-    },
-    {
-      "Id": 205,
-      "StartVertex": 200,
-      "EndVertex": 199,
-      "Flags": [
-        "impassable"
-      ],
-      "FrontSidedef": 204
-    },
-    {
-      "Id": 207,
-      "StartVertex": 199,
-      "EndVertex": 198,
-      "Flags": [
-        "impassable"
-      ],
-      "FrontSidedef": 206
-    },
-    {
-      "Id": 209,
-      "StartVertex": 198,
-      "EndVertex": 201,
-      "Flags": [
+      "id": 186,
+      "startVertex": 184,
+      "endVertex": 183,
+      "flags": [
         "twoSided"
       ],
-      "FrontSidedef": 208,
-      "BackSidedef": 255
-    },
-    {
-      "Id": 220,
-      "StartVertex": 218,
-      "EndVertex": 217,
-      "Flags": [
-        "impassable"
-      ],
-      "FrontSidedef": 219
-    },
-    {
-      "Id": 224,
-      "StartVertex": 216,
-      "EndVertex": 215,
-      "Flags": [
-        "impassable"
-      ],
-      "FrontSidedef": 223
-    },
-    {
-      "Id": 226,
-      "StartVertex": 215,
-      "EndVertex": 218,
-      "Flags": [
-        "twoSided"
-      ],
-      "Action": {
-        "Special": 1,
-        "Tag": 1226
+      "action": {
+        "special": 1,
+        "tag": 1186
       },
-      "FrontSidedef": 225,
-      "BackSidedef": 256
+      "frontSidedef": 185,
+      "backSidedef": 254
     },
     {
-      "Id": 235,
-      "StartVertex": 233,
-      "EndVertex": 232,
-      "Flags": [
+      "id": 190,
+      "startVertex": 182,
+      "endVertex": 181,
+      "flags": [
         "impassable"
       ],
-      "FrontSidedef": 234
+      "frontSidedef": 189
     },
     {
-      "Id": 239,
-      "StartVertex": 231,
-      "EndVertex": 230,
-      "Flags": [
+      "id": 192,
+      "startVertex": 181,
+      "endVertex": 184,
+      "flags": [
         "impassable"
       ],
-      "FrontSidedef": 238
+      "frontSidedef": 191
     },
     {
-      "Id": 241,
-      "StartVertex": 230,
-      "EndVertex": 233,
-      "Flags": [
+      "id": 203,
+      "startVertex": 201,
+      "endVertex": 200,
+      "flags": [
         "impassable"
       ],
-      "FrontSidedef": 240
+      "frontSidedef": 202
+    },
+    {
+      "id": 205,
+      "startVertex": 200,
+      "endVertex": 199,
+      "flags": [
+        "twoSided"
+      ],
+      "frontSidedef": 204,
+      "backSidedef": 255
+    },
+    {
+      "id": 209,
+      "startVertex": 198,
+      "endVertex": 201,
+      "flags": [
+        "impassable"
+      ],
+      "frontSidedef": 208
+    },
+    {
+      "id": 220,
+      "startVertex": 218,
+      "endVertex": 217,
+      "flags": [
+        "twoSided"
+      ],
+      "action": {
+        "special": 1,
+        "tag": 1220
+      },
+      "frontSidedef": 219,
+      "backSidedef": 256
+    },
+    {
+      "id": 222,
+      "startVertex": 217,
+      "endVertex": 216,
+      "flags": [
+        "impassable"
+      ],
+      "frontSidedef": 221
+    },
+    {
+      "id": 224,
+      "startVertex": 216,
+      "endVertex": 215,
+      "flags": [
+        "impassable"
+      ],
+      "frontSidedef": 223
+    },
+    {
+      "id": 235,
+      "startVertex": 233,
+      "endVertex": 232,
+      "flags": [
+        "impassable"
+      ],
+      "frontSidedef": 234
+    },
+    {
+      "id": 237,
+      "startVertex": 232,
+      "endVertex": 231,
+      "flags": [
+        "impassable"
+      ],
+      "frontSidedef": 236
+    },
+    {
+      "id": 241,
+      "startVertex": 230,
+      "endVertex": 233,
+      "flags": [
+        "impassable"
+      ],
+      "frontSidedef": 240
     }
   ],
-  "Sidedefs": [
-    {
-      "Id": 5,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "ROCK05",
-      "TextureBottom": "-",
-      "Sector": 0
-    },
-    {
-      "Id": 7,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "ROCK05",
-      "TextureBottom": "-",
-      "Sector": 0
-    },
-    {
-      "Id": 9,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "ROCK05",
-      "TextureBottom": "-",
-      "Sector": 0
-    },
-    {
-      "Id": 11,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "ROCK05",
-      "TextureBottom": "-",
-      "Sector": 0
-    },
-    {
-      "Id": 22,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "MARBLE1",
-      "TextureBottom": "-",
-      "Sector": 17
-    },
-    {
-      "Id": 24,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "MARBLE1",
-      "TextureBottom": "-",
-      "Sector": 17
-    },
-    {
-      "Id": 26,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "MARBLE1",
-      "TextureBottom": "-",
-      "Sector": 17
-    },
-    {
-      "Id": 28,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "MARBLE1",
-      "TextureBottom": "-",
-      "Sector": 17
-    },
-    {
-      "Id": 37,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "ROCK05",
-      "TextureBottom": "-",
-      "Sector": 32
-    },
-    {
-      "Id": 39,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "ROCK05",
-      "TextureBottom": "-",
-      "Sector": 32
-    },
-    {
-      "Id": 41,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "ROCK05",
-      "TextureBottom": "-",
-      "Sector": 32
-    },
-    {
-      "Id": 43,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "ROCK05",
-      "TextureBottom": "-",
-      "Sector": 32
-    },
-    {
-      "Id": 53,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "ROCK05",
-      "TextureBottom": "-",
-      "Sector": 48
-    },
-    {
-      "Id": 55,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "ROCK05",
-      "TextureBottom": "-",
-      "Sector": 48
-    },
-    {
-      "Id": 57,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "ROCK05",
-      "TextureBottom": "-",
-      "Sector": 48
-    },
-    {
-      "Id": 59,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "ROCK05",
-      "TextureBottom": "-",
-      "Sector": 48
-    },
-    {
-      "Id": 68,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "MARBLE1",
-      "TextureBottom": "-",
-      "Sector": 63
-    },
-    {
-      "Id": 70,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "MARBLE1",
-      "TextureBottom": "-",
-      "Sector": 63
-    },
-    {
-      "Id": 72,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "MARBLE1",
-      "TextureBottom": "-",
-      "Sector": 63
-    },
-    {
-      "Id": 74,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "MARBLE1",
-      "TextureBottom": "-",
-      "Sector": 63
-    },
-    {
-      "Id": 83,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "MARBLE1",
-      "TextureBottom": "-",
-      "Sector": 78
-    },
-    {
-      "Id": 85,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "MARBLE1",
-      "TextureBottom": "-",
-      "Sector": 78
-    },
-    {
-      "Id": 87,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "MARBLE1",
-      "TextureBottom": "-",
-      "Sector": 78
-    },
-    {
-      "Id": 89,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "MARBLE1",
-      "TextureBottom": "-",
-      "Sector": 78
-    },
-    {
-      "Id": 98,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "SKIN3",
-      "TextureBottom": "-",
-      "Sector": 93
-    },
-    {
-      "Id": 100,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "SKIN3",
-      "TextureBottom": "-",
-      "Sector": 93
-    },
-    {
-      "Id": 102,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "SKIN3",
-      "TextureBottom": "-",
-      "Sector": 93
-    },
-    {
-      "Id": 104,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "SKIN3",
-      "TextureBottom": "-",
-      "Sector": 93
-    },
-    {
-      "Id": 113,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "SP_HOT1",
-      "TextureBottom": "-",
-      "Sector": 108
-    },
-    {
-      "Id": 115,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "SP_HOT1",
-      "TextureBottom": "-",
-      "Sector": 108
-    },
-    {
-      "Id": 117,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "SP_HOT1",
-      "TextureBottom": "-",
-      "Sector": 108
-    },
-    {
-      "Id": 119,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "SP_HOT1",
-      "TextureBottom": "-",
-      "Sector": 108
-    },
-    {
-      "Id": 128,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "SUPPORT2",
-      "TextureBottom": "-",
-      "Sector": 123
-    },
-    {
-      "Id": 130,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "SUPPORT2",
-      "TextureBottom": "-",
-      "Sector": 123
-    },
-    {
-      "Id": 132,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "SUPPORT2",
-      "TextureBottom": "-",
-      "Sector": 123
-    },
-    {
-      "Id": 134,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "SUPPORT2",
-      "TextureBottom": "-",
-      "Sector": 123
-    },
-    {
-      "Id": 141,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "ROCK05",
-      "TextureBottom": "-",
-      "Sector": 136
-    },
-    {
-      "Id": 143,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "ROCK05",
-      "TextureBottom": "-",
-      "Sector": 136
-    },
-    {
-      "Id": 145,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "ROCK05",
-      "TextureBottom": "-",
-      "Sector": 136
-    },
-    {
-      "Id": 147,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "ROCK05",
-      "TextureBottom": "-",
-      "Sector": 136
-    },
-    {
-      "Id": 158,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "BRICK9",
-      "TextureBottom": "-",
-      "Sector": 153
-    },
-    {
-      "Id": 160,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "BRICK9",
-      "TextureBottom": "-",
-      "Sector": 153
-    },
-    {
-      "Id": 162,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "BRICK9",
-      "TextureBottom": "-",
-      "Sector": 153
-    },
-    {
-      "Id": 164,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "BRICK9",
-      "TextureBottom": "-",
-      "Sector": 153
-    },
-    {
-      "Id": 171,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "ROCK05",
-      "TextureBottom": "-",
-      "Sector": 166
-    },
-    {
-      "Id": 173,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "ROCK05",
-      "TextureBottom": "-",
-      "Sector": 166
-    },
-    {
-      "Id": 175,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "ROCK05",
-      "TextureBottom": "-",
-      "Sector": 166
-    },
-    {
-      "Id": 177,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "ROCK05",
-      "TextureBottom": "-",
-      "Sector": 166
-    },
-    {
-      "Id": 185,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "SP_HOT1",
-      "TextureBottom": "-",
-      "Sector": 180
-    },
-    {
-      "Id": 187,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "SP_HOT1",
-      "TextureBottom": "-",
-      "Sector": 180
-    },
-    {
-      "Id": 189,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "SP_HOT1",
-      "TextureBottom": "-",
-      "Sector": 180
-    },
-    {
-      "Id": 191,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "SP_HOT1",
-      "TextureBottom": "-",
-      "Sector": 180
-    },
-    {
-      "Id": 202,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "SHAWN2",
-      "TextureBottom": "-",
-      "Sector": 197
-    },
-    {
-      "Id": 204,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "SHAWN2",
-      "TextureBottom": "-",
-      "Sector": 197
-    },
-    {
-      "Id": 206,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "SHAWN2",
-      "TextureBottom": "-",
-      "Sector": 197
-    },
-    {
-      "Id": 208,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "SHAWN2",
-      "TextureBottom": "-",
-      "Sector": 197
-    },
-    {
-      "Id": 219,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "SKIN3",
-      "TextureBottom": "-",
-      "Sector": 214
-    },
-    {
-      "Id": 221,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "SKIN3",
-      "TextureBottom": "-",
-      "Sector": 214
-    },
-    {
-      "Id": 223,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "SKIN3",
-      "TextureBottom": "-",
-      "Sector": 214
-    },
-    {
-      "Id": 225,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "SKIN3",
-      "TextureBottom": "-",
-      "Sector": 214
-    },
-    {
-      "Id": 234,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "SP_HOT1",
-      "TextureBottom": "-",
-      "Sector": 229
-    },
-    {
-      "Id": 236,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "SP_HOT1",
-      "TextureBottom": "-",
-      "Sector": 229
-    },
-    {
-      "Id": 238,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "SP_HOT1",
-      "TextureBottom": "-",
-      "Sector": 229
-    },
-    {
-      "Id": 240,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "SP_HOT1",
-      "TextureBottom": "-",
-      "Sector": 229
-    },
-    {
-      "Id": 242,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "DOORTRAK",
-      "TextureBottom": "-",
-      "Sector": 17
-    },
-    {
-      "Id": 243,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "MARBLE1",
-      "TextureBottom": "-",
-      "Sector": 32
-    },
-    {
-      "Id": 244,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "MARBLE1",
-      "TextureBottom": "-",
-      "Sector": 48
-    },
-    {
-      "Id": 245,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "ROCK05",
-      "TextureBottom": "-",
-      "Sector": 63
-    },
-    {
-      "Id": 246,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "MARBLE1",
-      "TextureBottom": "-",
-      "Sector": 78
-    },
-    {
-      "Id": 247,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "ROCK05",
-      "TextureBottom": "-",
-      "Sector": 93
-    },
-    {
-      "Id": 248,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "MARBLE1",
-      "TextureBottom": "-",
-      "Sector": 108
-    },
-    {
-      "Id": 249,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "ROCK05",
-      "TextureBottom": "-",
-      "Sector": 123
-    },
-    {
-      "Id": 250,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "SUPPORT2",
-      "TextureBottom": "-",
-      "Sector": 136
-    },
-    {
-      "Id": 251,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "DOORTRAK",
-      "TextureBottom": "-",
-      "Sector": 180
-    },
-    {
-      "Id": 252,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "DOORTRAK",
-      "TextureBottom": "-",
-      "Sector": 153
-    },
-    {
-      "Id": 253,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "BRICK9",
-      "TextureBottom": "-",
-      "Sector": 166
-    },
-    {
-      "Id": 254,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "DOORTRAK",
-      "TextureBottom": "-",
-      "Sector": 197
-    },
-    {
-      "Id": 255,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "SKIN3",
-      "TextureBottom": "-",
-      "Sector": 214
-    },
-    {
-      "Id": 256,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "DOORTRAK",
-      "TextureBottom": "-",
-      "Sector": 229
+  "sidedefs": [
+    {
+      "id": 5,
+      "offsetX": 0,
+      "offsetY": 0,
+      "textureTop": "-",
+      "textureMiddle": "ROCK05",
+      "textureBottom": "-",
+      "sector": 0
+    },
+    {
+      "id": 7,
+      "offsetX": 0,
+      "offsetY": 0,
+      "textureTop": "-",
+      "textureMiddle": "ROCK05",
+      "textureBottom": "-",
+      "sector": 0
+    },
+    {
+      "id": 9,
+      "offsetX": 0,
+      "offsetY": 0,
+      "textureTop": "-",
+      "textureMiddle": "ROCK05",
+      "textureBottom": "-",
+      "sector": 0
+    },
+    {
+      "id": 11,
+      "offsetX": 0,
+      "offsetY": 0,
+      "textureTop": "-",
+      "textureMiddle": "ROCK05",
+      "textureBottom": "-",
+      "sector": 0
+    },
+    {
+      "id": 22,
+      "offsetX": 0,
+      "offsetY": 0,
+      "textureTop": "-",
+      "textureMiddle": "MARBLE1",
+      "textureBottom": "-",
+      "sector": 17
+    },
+    {
+      "id": 24,
+      "offsetX": 0,
+      "offsetY": 0,
+      "textureTop": "-",
+      "textureMiddle": "MARBLE1",
+      "textureBottom": "-",
+      "sector": 17
+    },
+    {
+      "id": 26,
+      "offsetX": 0,
+      "offsetY": 0,
+      "textureTop": "-",
+      "textureMiddle": "MARBLE1",
+      "textureBottom": "-",
+      "sector": 17
+    },
+    {
+      "id": 28,
+      "offsetX": 0,
+      "offsetY": 0,
+      "textureTop": "-",
+      "textureMiddle": "MARBLE1",
+      "textureBottom": "-",
+      "sector": 17
+    },
+    {
+      "id": 37,
+      "offsetX": 0,
+      "offsetY": 0,
+      "textureTop": "-",
+      "textureMiddle": "MARBLE1",
+      "textureBottom": "-",
+      "sector": 32
+    },
+    {
+      "id": 39,
+      "offsetX": 0,
+      "offsetY": 0,
+      "textureTop": "-",
+      "textureMiddle": "MARBLE1",
+      "textureBottom": "-",
+      "sector": 32
+    },
+    {
+      "id": 41,
+      "offsetX": 0,
+      "offsetY": 0,
+      "textureTop": "-",
+      "textureMiddle": "MARBLE1",
+      "textureBottom": "-",
+      "sector": 32
+    },
+    {
+      "id": 43,
+      "offsetX": 0,
+      "offsetY": 0,
+      "textureTop": "-",
+      "textureMiddle": "MARBLE1",
+      "textureBottom": "-",
+      "sector": 32
+    },
+    {
+      "id": 53,
+      "offsetX": 0,
+      "offsetY": 0,
+      "textureTop": "-",
+      "textureMiddle": "MARBLE1",
+      "textureBottom": "-",
+      "sector": 48
+    },
+    {
+      "id": 55,
+      "offsetX": 0,
+      "offsetY": 0,
+      "textureTop": "-",
+      "textureMiddle": "MARBLE1",
+      "textureBottom": "-",
+      "sector": 48
+    },
+    {
+      "id": 57,
+      "offsetX": 0,
+      "offsetY": 0,
+      "textureTop": "-",
+      "textureMiddle": "MARBLE1",
+      "textureBottom": "-",
+      "sector": 48
+    },
+    {
+      "id": 59,
+      "offsetX": 0,
+      "offsetY": 0,
+      "textureTop": "-",
+      "textureMiddle": "MARBLE1",
+      "textureBottom": "-",
+      "sector": 48
+    },
+    {
+      "id": 68,
+      "offsetX": 0,
+      "offsetY": 0,
+      "textureTop": "-",
+      "textureMiddle": "ROCK05",
+      "textureBottom": "-",
+      "sector": 63
+    },
+    {
+      "id": 70,
+      "offsetX": 0,
+      "offsetY": 0,
+      "textureTop": "-",
+      "textureMiddle": "ROCK05",
+      "textureBottom": "-",
+      "sector": 63
+    },
+    {
+      "id": 72,
+      "offsetX": 0,
+      "offsetY": 0,
+      "textureTop": "-",
+      "textureMiddle": "ROCK05",
+      "textureBottom": "-",
+      "sector": 63
+    },
+    {
+      "id": 74,
+      "offsetX": 0,
+      "offsetY": 0,
+      "textureTop": "-",
+      "textureMiddle": "ROCK05",
+      "textureBottom": "-",
+      "sector": 63
+    },
+    {
+      "id": 83,
+      "offsetX": 0,
+      "offsetY": 0,
+      "textureTop": "-",
+      "textureMiddle": "ROCK05",
+      "textureBottom": "-",
+      "sector": 78
+    },
+    {
+      "id": 85,
+      "offsetX": 0,
+      "offsetY": 0,
+      "textureTop": "-",
+      "textureMiddle": "ROCK05",
+      "textureBottom": "-",
+      "sector": 78
+    },
+    {
+      "id": 87,
+      "offsetX": 0,
+      "offsetY": 0,
+      "textureTop": "-",
+      "textureMiddle": "ROCK05",
+      "textureBottom": "-",
+      "sector": 78
+    },
+    {
+      "id": 89,
+      "offsetX": 0,
+      "offsetY": 0,
+      "textureTop": "-",
+      "textureMiddle": "ROCK05",
+      "textureBottom": "-",
+      "sector": 78
+    },
+    {
+      "id": 98,
+      "offsetX": 0,
+      "offsetY": 0,
+      "textureTop": "-",
+      "textureMiddle": "SKIN3",
+      "textureBottom": "-",
+      "sector": 93
+    },
+    {
+      "id": 100,
+      "offsetX": 0,
+      "offsetY": 0,
+      "textureTop": "-",
+      "textureMiddle": "SKIN3",
+      "textureBottom": "-",
+      "sector": 93
+    },
+    {
+      "id": 102,
+      "offsetX": 0,
+      "offsetY": 0,
+      "textureTop": "-",
+      "textureMiddle": "SKIN3",
+      "textureBottom": "-",
+      "sector": 93
+    },
+    {
+      "id": 104,
+      "offsetX": 0,
+      "offsetY": 0,
+      "textureTop": "-",
+      "textureMiddle": "SKIN3",
+      "textureBottom": "-",
+      "sector": 93
+    },
+    {
+      "id": 113,
+      "offsetX": 0,
+      "offsetY": 0,
+      "textureTop": "-",
+      "textureMiddle": "SP_HOT1",
+      "textureBottom": "-",
+      "sector": 108
+    },
+    {
+      "id": 115,
+      "offsetX": 0,
+      "offsetY": 0,
+      "textureTop": "-",
+      "textureMiddle": "SP_HOT1",
+      "textureBottom": "-",
+      "sector": 108
+    },
+    {
+      "id": 117,
+      "offsetX": 0,
+      "offsetY": 0,
+      "textureTop": "-",
+      "textureMiddle": "SP_HOT1",
+      "textureBottom": "-",
+      "sector": 108
+    },
+    {
+      "id": 119,
+      "offsetX": 0,
+      "offsetY": 0,
+      "textureTop": "-",
+      "textureMiddle": "SP_HOT1",
+      "textureBottom": "-",
+      "sector": 108
+    },
+    {
+      "id": 128,
+      "offsetX": 0,
+      "offsetY": 0,
+      "textureTop": "-",
+      "textureMiddle": "SUPPORT3",
+      "textureBottom": "-",
+      "sector": 123
+    },
+    {
+      "id": 130,
+      "offsetX": 0,
+      "offsetY": 0,
+      "textureTop": "-",
+      "textureMiddle": "SUPPORT3",
+      "textureBottom": "-",
+      "sector": 123
+    },
+    {
+      "id": 132,
+      "offsetX": 0,
+      "offsetY": 0,
+      "textureTop": "-",
+      "textureMiddle": "SUPPORT3",
+      "textureBottom": "-",
+      "sector": 123
+    },
+    {
+      "id": 134,
+      "offsetX": 0,
+      "offsetY": 0,
+      "textureTop": "-",
+      "textureMiddle": "SUPPORT3",
+      "textureBottom": "-",
+      "sector": 123
+    },
+    {
+      "id": 141,
+      "offsetX": 0,
+      "offsetY": 0,
+      "textureTop": "-",
+      "textureMiddle": "ROCK05",
+      "textureBottom": "-",
+      "sector": 136
+    },
+    {
+      "id": 143,
+      "offsetX": 0,
+      "offsetY": 0,
+      "textureTop": "-",
+      "textureMiddle": "ROCK05",
+      "textureBottom": "-",
+      "sector": 136
+    },
+    {
+      "id": 145,
+      "offsetX": 0,
+      "offsetY": 0,
+      "textureTop": "-",
+      "textureMiddle": "ROCK05",
+      "textureBottom": "-",
+      "sector": 136
+    },
+    {
+      "id": 147,
+      "offsetX": 0,
+      "offsetY": 0,
+      "textureTop": "-",
+      "textureMiddle": "ROCK05",
+      "textureBottom": "-",
+      "sector": 136
+    },
+    {
+      "id": 158,
+      "offsetX": 0,
+      "offsetY": 0,
+      "textureTop": "-",
+      "textureMiddle": "BRICK9",
+      "textureBottom": "-",
+      "sector": 153
+    },
+    {
+      "id": 160,
+      "offsetX": 0,
+      "offsetY": 0,
+      "textureTop": "-",
+      "textureMiddle": "BRICK9",
+      "textureBottom": "-",
+      "sector": 153
+    },
+    {
+      "id": 162,
+      "offsetX": 0,
+      "offsetY": 0,
+      "textureTop": "-",
+      "textureMiddle": "BRICK9",
+      "textureBottom": "-",
+      "sector": 153
+    },
+    {
+      "id": 164,
+      "offsetX": 0,
+      "offsetY": 0,
+      "textureTop": "-",
+      "textureMiddle": "BRICK9",
+      "textureBottom": "-",
+      "sector": 153
+    },
+    {
+      "id": 171,
+      "offsetX": 0,
+      "offsetY": 0,
+      "textureTop": "-",
+      "textureMiddle": "ROCK05",
+      "textureBottom": "-",
+      "sector": 166
+    },
+    {
+      "id": 173,
+      "offsetX": 0,
+      "offsetY": 0,
+      "textureTop": "-",
+      "textureMiddle": "ROCK05",
+      "textureBottom": "-",
+      "sector": 166
+    },
+    {
+      "id": 175,
+      "offsetX": 0,
+      "offsetY": 0,
+      "textureTop": "-",
+      "textureMiddle": "ROCK05",
+      "textureBottom": "-",
+      "sector": 166
+    },
+    {
+      "id": 177,
+      "offsetX": 0,
+      "offsetY": 0,
+      "textureTop": "-",
+      "textureMiddle": "ROCK05",
+      "textureBottom": "-",
+      "sector": 166
+    },
+    {
+      "id": 185,
+      "offsetX": 0,
+      "offsetY": 0,
+      "textureTop": "-",
+      "textureMiddle": "TEKWALL2",
+      "textureBottom": "-",
+      "sector": 180
+    },
+    {
+      "id": 187,
+      "offsetX": 0,
+      "offsetY": 0,
+      "textureTop": "-",
+      "textureMiddle": "TEKWALL2",
+      "textureBottom": "-",
+      "sector": 180
+    },
+    {
+      "id": 189,
+      "offsetX": 0,
+      "offsetY": 0,
+      "textureTop": "-",
+      "textureMiddle": "TEKWALL2",
+      "textureBottom": "-",
+      "sector": 180
+    },
+    {
+      "id": 191,
+      "offsetX": 0,
+      "offsetY": 0,
+      "textureTop": "-",
+      "textureMiddle": "TEKWALL2",
+      "textureBottom": "-",
+      "sector": 180
+    },
+    {
+      "id": 202,
+      "offsetX": 0,
+      "offsetY": 0,
+      "textureTop": "-",
+      "textureMiddle": "SHAWN2",
+      "textureBottom": "-",
+      "sector": 197
+    },
+    {
+      "id": 204,
+      "offsetX": 0,
+      "offsetY": 0,
+      "textureTop": "-",
+      "textureMiddle": "SHAWN2",
+      "textureBottom": "-",
+      "sector": 197
+    },
+    {
+      "id": 206,
+      "offsetX": 0,
+      "offsetY": 0,
+      "textureTop": "-",
+      "textureMiddle": "SHAWN2",
+      "textureBottom": "-",
+      "sector": 197
+    },
+    {
+      "id": 208,
+      "offsetX": 0,
+      "offsetY": 0,
+      "textureTop": "-",
+      "textureMiddle": "SHAWN2",
+      "textureBottom": "-",
+      "sector": 197
+    },
+    {
+      "id": 219,
+      "offsetX": 0,
+      "offsetY": 0,
+      "textureTop": "-",
+      "textureMiddle": "SHAWN2",
+      "textureBottom": "-",
+      "sector": 214
+    },
+    {
+      "id": 221,
+      "offsetX": 0,
+      "offsetY": 0,
+      "textureTop": "-",
+      "textureMiddle": "SHAWN2",
+      "textureBottom": "-",
+      "sector": 214
+    },
+    {
+      "id": 223,
+      "offsetX": 0,
+      "offsetY": 0,
+      "textureTop": "-",
+      "textureMiddle": "SHAWN2",
+      "textureBottom": "-",
+      "sector": 214
+    },
+    {
+      "id": 225,
+      "offsetX": 0,
+      "offsetY": 0,
+      "textureTop": "-",
+      "textureMiddle": "SHAWN2",
+      "textureBottom": "-",
+      "sector": 214
+    },
+    {
+      "id": 234,
+      "offsetX": 0,
+      "offsetY": 0,
+      "textureTop": "-",
+      "textureMiddle": "TEKWALL2",
+      "textureBottom": "-",
+      "sector": 229
+    },
+    {
+      "id": 236,
+      "offsetX": 0,
+      "offsetY": 0,
+      "textureTop": "-",
+      "textureMiddle": "TEKWALL2",
+      "textureBottom": "-",
+      "sector": 229
+    },
+    {
+      "id": 238,
+      "offsetX": 0,
+      "offsetY": 0,
+      "textureTop": "-",
+      "textureMiddle": "TEKWALL2",
+      "textureBottom": "-",
+      "sector": 229
+    },
+    {
+      "id": 240,
+      "offsetX": 0,
+      "offsetY": 0,
+      "textureTop": "-",
+      "textureMiddle": "TEKWALL2",
+      "textureBottom": "-",
+      "sector": 229
+    },
+    {
+      "id": 242,
+      "offsetX": 0,
+      "offsetY": 0,
+      "textureTop": "-",
+      "textureMiddle": "DOORTRAK",
+      "textureBottom": "-",
+      "sector": 17
+    },
+    {
+      "id": 243,
+      "offsetX": 0,
+      "offsetY": 0,
+      "textureTop": "-",
+      "textureMiddle": "ROCK05",
+      "textureBottom": "-",
+      "sector": 32
+    },
+    {
+      "id": 244,
+      "offsetX": 0,
+      "offsetY": 0,
+      "textureTop": "-",
+      "textureMiddle": "ROCK05",
+      "textureBottom": "-",
+      "sector": 48
+    },
+    {
+      "id": 245,
+      "offsetX": 0,
+      "offsetY": 0,
+      "textureTop": "-",
+      "textureMiddle": "ROCK05",
+      "textureBottom": "-",
+      "sector": 63
+    },
+    {
+      "id": 246,
+      "offsetX": 0,
+      "offsetY": 0,
+      "textureTop": "-",
+      "textureMiddle": "ROCK05",
+      "textureBottom": "-",
+      "sector": 78
+    },
+    {
+      "id": 247,
+      "offsetX": 0,
+      "offsetY": 0,
+      "textureTop": "-",
+      "textureMiddle": "MARBLE1",
+      "textureBottom": "-",
+      "sector": 93
+    },
+    {
+      "id": 248,
+      "offsetX": 0,
+      "offsetY": 0,
+      "textureTop": "-",
+      "textureMiddle": "ROCK05",
+      "textureBottom": "-",
+      "sector": 108
+    },
+    {
+      "id": 249,
+      "offsetX": 0,
+      "offsetY": 0,
+      "textureTop": "-",
+      "textureMiddle": "MARBLE1",
+      "textureBottom": "-",
+      "sector": 123
+    },
+    {
+      "id": 250,
+      "offsetX": 0,
+      "offsetY": 0,
+      "textureTop": "-",
+      "textureMiddle": "SUPPORT3",
+      "textureBottom": "-",
+      "sector": 136
+    },
+    {
+      "id": 251,
+      "offsetX": 0,
+      "offsetY": 0,
+      "textureTop": "-",
+      "textureMiddle": "DOORTRAK",
+      "textureBottom": "-",
+      "sector": 180
+    },
+    {
+      "id": 252,
+      "offsetX": 0,
+      "offsetY": 0,
+      "textureTop": "-",
+      "textureMiddle": "DOORTRAK",
+      "textureBottom": "-",
+      "sector": 153
+    },
+    {
+      "id": 253,
+      "offsetX": 0,
+      "offsetY": 0,
+      "textureTop": "-",
+      "textureMiddle": "BRICK9",
+      "textureBottom": "-",
+      "sector": 166
+    },
+    {
+      "id": 254,
+      "offsetX": 0,
+      "offsetY": 0,
+      "textureTop": "-",
+      "textureMiddle": "DOORTRAK",
+      "textureBottom": "-",
+      "sector": 197
+    },
+    {
+      "id": 255,
+      "offsetX": 0,
+      "offsetY": 0,
+      "textureTop": "-",
+      "textureMiddle": "SKIN3",
+      "textureBottom": "-",
+      "sector": 214
+    },
+    {
+      "id": 256,
+      "offsetX": 0,
+      "offsetY": 0,
+      "textureTop": "-",
+      "textureMiddle": "DOORTRAK",
+      "textureBottom": "-",
+      "sector": 229
     }
   ],
-  "Sectors": [
+  "sectors": [
     {
-      "Id": 0,
-      "FloorHeight": 128,
-      "CeilingHeight": 128,
-      "FloorTexture": "RROCK02",
-      "CeilingTexture": "CEIL1_1",
-      "LightLevel": 160,
-      "Special": 0,
-      "Tag": 0
+      "id": 0,
+      "floorHeight": 128,
+      "ceilingHeight": 128,
+      "floorTexture": "FLAT14",
+      "ceilingTexture": "RROCK04",
+      "lightLevel": 160,
+      "special": 0,
+      "tag": 0
     },
     {
-      "Id": 17,
-      "FloorHeight": 128,
-      "CeilingHeight": 128,
-      "FloorTexture": "FLAT14",
-      "CeilingTexture": "F_SKY1",
-      "LightLevel": 220,
-      "Special": 0,
-      "Tag": 0
+      "id": 17,
+      "floorHeight": 128,
+      "ceilingHeight": 128,
+      "floorTexture": "RROCK02",
+      "ceilingTexture": "F_SKY1",
+      "lightLevel": 220,
+      "special": 0,
+      "tag": 0
     },
     {
-      "Id": 32,
-      "FloorHeight": 0,
-      "CeilingHeight": 128,
-      "FloorTexture": "RROCK02",
-      "CeilingTexture": "F_SKY1",
-      "LightLevel": 220,
-      "Special": 0,
-      "Tag": 0
+      "id": 32,
+      "floorHeight": 0,
+      "ceilingHeight": 128,
+      "floorTexture": "RROCK02",
+      "ceilingTexture": "F_SKY1",
+      "lightLevel": 220,
+      "special": 0,
+      "tag": 0
     },
     {
-      "Id": 48,
-      "FloorHeight": 0,
-      "CeilingHeight": 128,
-      "FloorTexture": "FLAT14",
-      "CeilingTexture": "F_SKY1",
-      "LightLevel": 220,
-      "Special": 0,
-      "Tag": 0
+      "id": 48,
+      "floorHeight": 0,
+      "ceilingHeight": 128,
+      "floorTexture": "FLAT14",
+      "ceilingTexture": "F_SKY1",
+      "lightLevel": 220,
+      "special": 0,
+      "tag": 0
     },
     {
-      "Id": 63,
-      "FloorHeight": 0,
-      "CeilingHeight": 128,
-      "FloorTexture": "MFLR8_1",
-      "CeilingTexture": "RROCK04",
-      "LightLevel": 160,
-      "Special": 0,
-      "Tag": 0
+      "id": 63,
+      "floorHeight": 0,
+      "ceilingHeight": 128,
+      "floorTexture": "MFLR8_1",
+      "ceilingTexture": "CEIL1_1",
+      "lightLevel": 160,
+      "special": 0,
+      "tag": 0
     },
     {
-      "Id": 78,
-      "FloorHeight": 0,
-      "CeilingHeight": 128,
-      "FloorTexture": "MFLR8_1",
-      "CeilingTexture": "RROCK04",
-      "LightLevel": 80,
-      "Special": 0,
-      "Tag": 0
+      "id": 78,
+      "floorHeight": 0,
+      "ceilingHeight": 128,
+      "floorTexture": "MFLR8_1",
+      "ceilingTexture": "RROCK04",
+      "lightLevel": 80,
+      "special": 0,
+      "tag": 0
     },
     {
-      "Id": 93,
-      "FloorHeight": 0,
-      "CeilingHeight": 128,
-      "FloorTexture": "MFLR8_1",
-      "CeilingTexture": "TLITE6_1",
-      "LightLevel": 220,
-      "Special": 0,
-      "Tag": 0
+      "id": 93,
+      "floorHeight": 0,
+      "ceilingHeight": 128,
+      "floorTexture": "MFLR8_1",
+      "ceilingTexture": "TLITE6_1",
+      "lightLevel": 220,
+      "special": 0,
+      "tag": 0
     },
     {
-      "Id": 108,
-      "FloorHeight": 128,
-      "CeilingHeight": 128,
-      "FloorTexture": "PLAT1",
-      "CeilingTexture": "TLITE6_1",
-      "LightLevel": 160,
-      "Special": 0,
-      "Tag": 0
+      "id": 108,
+      "floorHeight": 128,
+      "ceilingHeight": 128,
+      "floorTexture": "PLAT1",
+      "ceilingTexture": "TLITE6_1",
+      "lightLevel": 160,
+      "special": 0,
+      "tag": 0
     },
     {
-      "Id": 123,
-      "FloorHeight": -32,
-      "CeilingHeight": 128,
-      "FloorTexture": "PLAT1",
-      "CeilingTexture": "F_SKY1",
-      "LightLevel": 220,
-      "Special": 0,
-      "Tag": 101
+      "id": 123,
+      "floorHeight": -32,
+      "ceilingHeight": 128,
+      "floorTexture": "PLAT1",
+      "ceilingTexture": "F_SKY1",
+      "lightLevel": 220,
+      "special": 0,
+      "tag": 101
     },
     {
-      "Id": 136,
-      "FloorHeight": 0,
-      "CeilingHeight": 128,
-      "FloorTexture": "RROCK02",
-      "CeilingTexture": "F_SKY1",
-      "LightLevel": 220,
-      "Special": 0,
-      "Tag": 0
+      "id": 136,
+      "floorHeight": 0,
+      "ceilingHeight": 128,
+      "floorTexture": "FLAT14",
+      "ceilingTexture": "F_SKY1",
+      "lightLevel": 220,
+      "special": 0,
+      "tag": 0
     },
     {
-      "Id": 153,
-      "FloorHeight": 0,
-      "CeilingHeight": 128,
-      "FloorTexture": "FLAT14",
-      "CeilingTexture": "RROCK04",
-      "LightLevel": 80,
-      "Special": 0,
-      "Tag": 0
+      "id": 153,
+      "floorHeight": 0,
+      "ceilingHeight": 128,
+      "floorTexture": "FLAT14",
+      "ceilingTexture": "RROCK04",
+      "lightLevel": 80,
+      "special": 0,
+      "tag": 0
     },
     {
-      "Id": 166,
-      "FloorHeight": 0,
-      "CeilingHeight": 0,
-      "FloorTexture": "FLAT14",
-      "CeilingTexture": "RROCK04",
-      "LightLevel": 160,
-      "Special": 0,
-      "Tag": 0
+      "id": 166,
+      "floorHeight": 0,
+      "ceilingHeight": 0,
+      "floorTexture": "FLAT14",
+      "ceilingTexture": "CEIL1_1",
+      "lightLevel": 160,
+      "special": 0,
+      "tag": 0
     },
     {
-      "Id": 180,
-      "FloorHeight": 0,
-      "CeilingHeight": 128,
-      "FloorTexture": "PLAT1",
-      "CeilingTexture": "RROCK04",
-      "LightLevel": 160,
-      "Special": 0,
-      "Tag": 0
+      "id": 180,
+      "floorHeight": 0,
+      "ceilingHeight": 128,
+      "floorTexture": "PLAT1",
+      "ceilingTexture": "CEIL1_1",
+      "lightLevel": 160,
+      "special": 0,
+      "tag": 0
     },
     {
-      "Id": 197,
-      "FloorHeight": 0,
-      "CeilingHeight": 128,
-      "FloorTexture": "RROCK02",
-      "CeilingTexture": "RROCK04",
-      "LightLevel": 160,
-      "Special": 0,
-      "Tag": 0
+      "id": 197,
+      "floorHeight": 0,
+      "ceilingHeight": 128,
+      "floorTexture": "FLAT14",
+      "ceilingTexture": "RROCK04",
+      "lightLevel": 160,
+      "special": 0,
+      "tag": 0
     },
     {
-      "Id": 214,
-      "FloorHeight": 0,
-      "CeilingHeight": 128,
-      "FloorTexture": "MFLR8_1",
-      "CeilingTexture": "RROCK04",
-      "LightLevel": 220,
-      "Special": 0,
-      "Tag": 0
+      "id": 214,
+      "floorHeight": 0,
+      "ceilingHeight": 128,
+      "floorTexture": "MFLR8_1",
+      "ceilingTexture": "CEIL1_1",
+      "lightLevel": 220,
+      "special": 0,
+      "tag": 0
     },
     {
-      "Id": 229,
-      "FloorHeight": 0,
-      "CeilingHeight": 128,
-      "FloorTexture": "FLAT14",
-      "CeilingTexture": "TLITE6_1",
-      "LightLevel": 220,
-      "Special": 0,
-      "Tag": 0
+      "id": 229,
+      "floorHeight": 0,
+      "ceilingHeight": 128,
+      "floorTexture": "RROCK02",
+      "ceilingTexture": "TLITE6_1",
+      "lightLevel": 220,
+      "special": 0,
+      "tag": 0
     }
   ],
-  "Things": [
+  "things": [
     {
-      "Id": 13,
-      "X": -789.17773,
-      "Y": -1527.1938,
-      "Angle": 135,
-      "Type": 1,
-      "Flags": [
+      "id": 13,
+      "x": 1068.5896,
+      "y": 2713.157,
+      "angle": 270,
+      "type": 1,
+      "flags": [
         "skillEasy",
         "skillNormal",
         "skillHard"
       ]
     },
     {
-      "Id": 14,
-      "X": -592.1157,
-      "Y": -1374.2673,
-      "Angle": 315,
-      "Type": 2007,
-      "Flags": [
+      "id": 14,
+      "x": 978.7308,
+      "y": 3031.3772,
+      "angle": 315,
+      "type": 2007,
+      "flags": [
         "skillEasy",
         "skillNormal",
         "skillHard"
       ]
     },
     {
-      "Id": 15,
-      "X": -819.93115,
-      "Y": -1254.2859,
-      "Angle": 315,
-      "Type": 2046,
-      "Flags": [
+      "id": 15,
+      "x": 1011.47473,
+      "y": 3024.6702,
+      "angle": 0,
+      "type": 2046,
+      "flags": [
         "skillEasy",
         "skillNormal",
         "skillHard"
       ]
     },
     {
-      "Id": 16,
-      "X": -680.6823,
-      "Y": -1152.5481,
-      "Angle": 180,
-      "Type": 2046,
-      "Flags": [
+      "id": 16,
+      "x": 825.4355,
+      "y": 2557.5713,
+      "angle": 135,
+      "type": 2046,
+      "flags": [
         "skillEasy",
         "skillNormal",
         "skillHard"
       ]
     },
     {
-      "Id": 30,
-      "X": -644.95337,
-      "Y": -825.19946,
-      "Angle": 180,
-      "Type": 3001,
-      "Flags": [
+      "id": 30,
+      "x": 1546.0426,
+      "y": 2276.7544,
+      "angle": 135,
+      "type": 3001,
+      "flags": [
         "skillEasy",
         "skillNormal",
         "skillHard"
       ]
     },
     {
-      "Id": 31,
-      "X": -980.4986,
-      "Y": -912.6404,
-      "Angle": 90,
-      "Type": 3001,
-      "Flags": [
+      "id": 31,
+      "x": 1223.609,
+      "y": 2258.9531,
+      "angle": 225,
+      "type": 3001,
+      "flags": [
         "skillEasy",
         "skillNormal",
         "skillHard"
       ]
     },
     {
-      "Id": 45,
-      "X": 74.21832,
-      "Y": -842.5426,
-      "Angle": 45,
-      "Type": 9,
-      "Flags": [
+      "id": 45,
+      "x": 2112.6846,
+      "y": 1868.0135,
+      "angle": 225,
+      "type": 9,
+      "flags": [
         "skillEasy",
         "skillNormal",
         "skillHard"
       ]
     },
     {
-      "Id": 46,
-      "X": -177.68533,
-      "Y": -729.8662,
-      "Angle": 90,
-      "Type": 9,
-      "Flags": [
+      "id": 46,
+      "x": 1923.4857,
+      "y": 2215.6924,
+      "angle": 225,
+      "type": 9,
+      "flags": [
         "skillEasy",
         "skillNormal",
         "skillHard"
       ]
     },
     {
-      "Id": 47,
-      "X": -193.62094,
-      "Y": -812.8575,
-      "Angle": 225,
-      "Type": 3001,
-      "Flags": [
+      "id": 47,
+      "x": 2177.942,
+      "y": 1921.0576,
+      "angle": 180,
+      "type": 3001,
+      "flags": [
         "skillEasy",
         "skillNormal",
         "skillHard"
       ]
     },
     {
-      "Id": 61,
-      "X": 293.10806,
-      "Y": -151.46771,
-      "Angle": 90,
-      "Type": 2002,
-      "Flags": [
+      "id": 61,
+      "x": 2571.671,
+      "y": 1580.8696,
+      "angle": 135,
+      "type": 2002,
+      "flags": [
         "skillEasy",
         "skillNormal",
         "skillHard"
       ]
     },
     {
-      "Id": 62,
-      "X": 78.10136,
-      "Y": 280.31073,
-      "Angle": 45,
-      "Type": 3005,
-      "Flags": [
+      "id": 62,
+      "x": 2396.1907,
+      "y": 1371.344,
+      "angle": 135,
+      "type": 3005,
+      "flags": [
         "skillEasy",
         "skillNormal",
         "skillHard"
       ]
     },
     {
-      "Id": 76,
-      "X": -96.01445,
-      "Y": 794.3933,
-      "Angle": 225,
-      "Type": 3002,
-      "Flags": [
+      "id": 76,
+      "x": 2048.7834,
+      "y": 1109.3136,
+      "angle": 0,
+      "type": 3002,
+      "flags": [
         "skillEasy",
         "skillNormal",
         "skillHard"
       ]
     },
     {
-      "Id": 77,
-      "X": -79.719604,
-      "Y": 521.39923,
-      "Angle": 270,
-      "Type": 3002,
-      "Flags": [
+      "id": 77,
+      "x": 1806.577,
+      "y": 872.6587,
+      "angle": 90,
+      "type": 3002,
+      "flags": [
         "skillEasy",
         "skillNormal",
         "skillHard"
       ]
     },
     {
-      "Id": 91,
-      "X": -256.90646,
-      "Y": 1596.2665,
-      "Angle": 135,
-      "Type": 2013,
-      "Flags": [
+      "id": 91,
+      "x": 2428.3093,
+      "y": 723.02466,
+      "angle": 90,
+      "type": 2013,
+      "flags": [
         "skillEasy",
         "skillNormal",
         "skillHard"
       ]
     },
     {
-      "Id": 92,
-      "X": -333.49637,
-      "Y": 1296.8192,
-      "Angle": 135,
-      "Type": 58,
-      "Flags": [
+      "id": 92,
+      "x": 2520.3862,
+      "y": 783.42004,
+      "angle": 180,
+      "type": 58,
+      "flags": [
         "skillEasy",
         "skillNormal",
         "skillHard"
       ]
     },
     {
-      "Id": 106,
-      "X": -666.049,
-      "Y": 935.2355,
-      "Angle": 135,
-      "Type": 5,
-      "Flags": [
+      "id": 106,
+      "x": 2854.339,
+      "y": 1470.2098,
+      "angle": 0,
+      "type": 5,
+      "flags": [
         "skillEasy",
         "skillNormal",
         "skillHard"
       ]
     },
     {
-      "Id": 107,
-      "X": -516.59717,
-      "Y": 868.1735,
-      "Angle": 45,
-      "Type": 2018,
-      "Flags": [
+      "id": 107,
+      "x": 3205.5913,
+      "y": 1861.9728,
+      "angle": 45,
+      "type": 2018,
+      "flags": [
         "skillEasy",
         "skillNormal",
         "skillHard"
       ]
     },
     {
-      "Id": 121,
-      "X": -1374.1425,
-      "Y": -652.8992,
-      "Angle": 225,
-      "Type": 9,
-      "Flags": [
+      "id": 121,
+      "x": 834.42676,
+      "y": 2038.9916,
+      "angle": 0,
+      "type": 9,
+      "flags": [
         "skillEasy",
         "skillNormal",
         "skillHard"
       ]
     },
     {
-      "Id": 122,
-      "X": -1165.3885,
-      "Y": -719.37866,
-      "Angle": 0,
-      "Type": 9,
-      "Flags": [
+      "id": 122,
+      "x": 967.9375,
+      "y": 1924.8882,
+      "angle": 270,
+      "type": 9,
+      "flags": [
         "skillEasy",
         "skillNormal",
         "skillHard"
       ]
     },
     {
-      "Id": 149,
-      "X": 465.8091,
-      "Y": 549.7084,
-      "Angle": 135,
-      "Type": 2010,
-      "Flags": [
+      "id": 149,
+      "x": 1129.8826,
+      "y": 189.65579,
+      "angle": 135,
+      "type": 2010,
+      "flags": [
         "skillEasy",
         "skillNormal",
         "skillHard"
       ]
     },
     {
-      "Id": 150,
-      "X": 677.1972,
-      "Y": 914.44,
-      "Angle": 45,
-      "Type": 3001,
-      "Flags": [
+      "id": 150,
+      "x": 1516.0712,
+      "y": 225.64264,
+      "angle": 225,
+      "type": 3001,
+      "flags": [
         "skillEasy",
         "skillNormal",
         "skillHard"
       ]
     },
     {
-      "Id": 151,
-      "X": 664.21216,
-      "Y": 898.83984,
-      "Angle": 180,
-      "Type": 3001,
-      "Flags": [
+      "id": 151,
+      "x": 1177.0719,
+      "y": 428.1667,
+      "angle": 135,
+      "type": 3001,
+      "flags": [
         "skillEasy",
         "skillNormal",
         "skillHard"
       ]
     },
     {
-      "Id": 152,
-      "X": 738.9004,
-      "Y": 918.84204,
-      "Angle": 270,
-      "Type": 3001,
-      "Flags": [
+      "id": 152,
+      "x": 1264.5077,
+      "y": 422.55286,
+      "angle": 270,
+      "type": 3001,
+      "flags": [
         "skillEasy",
         "skillNormal",
         "skillHard"
       ]
     },
     {
-      "Id": 179,
-      "X": 1782.9081,
-      "Y": -272.0112,
-      "Angle": 180,
-      "Type": 83,
-      "Flags": [
+      "id": 179,
+      "x": 3142.8489,
+      "y": 195.17052,
+      "angle": 270,
+      "type": 83,
+      "flags": [
         "skillEasy",
         "skillNormal",
         "skillHard"
       ]
     },
     {
-      "Id": 193,
-      "X": 1203.2213,
-      "Y": 667.4234,
-      "Angle": 45,
-      "Type": 3004,
-      "Flags": [
+      "id": 193,
+      "x": 452.88574,
+      "y": 442.59036,
+      "angle": 180,
+      "type": 3004,
+      "flags": [
         "skillEasy",
         "skillNormal",
         "skillHard"
       ]
     },
     {
-      "Id": 194,
-      "X": 1158.5621,
-      "Y": 952.9929,
-      "Angle": 135,
-      "Type": 3004,
-      "Flags": [
+      "id": 194,
+      "x": 549.14343,
+      "y": 239.51405,
+      "angle": 180,
+      "type": 3004,
+      "flags": [
         "skillEasy",
         "skillNormal",
         "skillHard"
       ]
     },
     {
-      "Id": 195,
-      "X": 1307.4316,
-      "Y": 611.2013,
-      "Angle": 135,
-      "Type": 3004,
-      "Flags": [
+      "id": 195,
+      "x": 492.55084,
+      "y": 435.66318,
+      "angle": 180,
+      "type": 3004,
+      "flags": [
         "skillEasy",
         "skillNormal",
         "skillHard"
       ]
     },
     {
-      "Id": 196,
-      "X": 982.39343,
-      "Y": 884.9182,
-      "Angle": 0,
-      "Type": 3004,
-      "Flags": [
+      "id": 196,
+      "x": 577.7576,
+      "y": 496.73157,
+      "angle": 135,
+      "type": 3004,
+      "flags": [
         "skillEasy",
         "skillNormal",
         "skillHard"
       ]
     },
     {
-      "Id": 210,
-      "X": 757.9091,
-      "Y": 200.17961,
-      "Angle": 135,
-      "Type": 3002,
-      "Flags": [
+      "id": 210,
+      "x": 211.82838,
+      "y": 896.5331,
+      "angle": 180,
+      "type": 3002,
+      "flags": [
         "skillEasy",
         "skillNormal",
         "skillHard"
       ]
     },
     {
-      "Id": 211,
-      "X": 825.4303,
-      "Y": 46.070618,
-      "Angle": 45,
-      "Type": 3006,
-      "Flags": [
+      "id": 211,
+      "x": 248.21124,
+      "y": 1149.7693,
+      "angle": 45,
+      "type": 3006,
+      "flags": [
         "skillEasy",
         "skillNormal",
         "skillHard"
       ]
     },
     {
-      "Id": 212,
-      "X": 695.07117,
-      "Y": 92.16606,
-      "Angle": 225,
-      "Type": 3006,
-      "Flags": [
+      "id": 212,
+      "x": 487.74548,
+      "y": 940.5774,
+      "angle": 135,
+      "type": 3006,
+      "flags": [
         "skillEasy",
         "skillNormal",
         "skillHard"
       ]
     },
     {
-      "Id": 213,
-      "X": 767.8364,
-      "Y": 157.9491,
-      "Angle": 315,
-      "Type": 3006,
-      "Flags": [
+      "id": 213,
+      "x": 681.38257,
+      "y": 973.9113,
+      "angle": 0,
+      "type": 3006,
+      "flags": [
         "skillEasy",
         "skillNormal",
         "skillHard"
       ]
     },
     {
-      "Id": 227,
-      "X": -246.84467,
-      "Y": 8.69339,
-      "Angle": 315,
-      "Type": 2025,
-      "Flags": [
+      "id": 227,
+      "x": 970.88654,
+      "y": 1027.8704,
+      "angle": 90,
+      "type": 2025,
+      "flags": [
         "skillEasy",
         "skillNormal",
         "skillHard"
       ]
     },
     {
-      "Id": 228,
-      "X": -432.7146,
-      "Y": -204.5821,
-      "Angle": 135,
-      "Type": 3003,
-      "Flags": [
+      "id": 228,
+      "x": 889.6127,
+      "y": 1112.9065,
+      "angle": 225,
+      "type": 3003,
+      "flags": [
         "skillEasy",
         "skillNormal",
         "skillHard"
