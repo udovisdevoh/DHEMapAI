@@ -12,650 +12,344 @@
   "Vertices": [
     {
       "Id": 1,
-      "X": 0,
-      "Y": 0
+      "X": -1158.8337,
+      "Y": -1571.8904
     },
     {
       "Id": 2,
-      "X": 431,
-      "Y": 0
+      "X": -539.83374,
+      "Y": -1571.8904
     },
     {
       "Id": 3,
-      "X": 431,
-      "Y": 386
+      "X": -539.83374,
+      "Y": -1101.8904
     },
     {
       "Id": 4,
-      "X": 0,
-      "Y": 386
+      "X": -1158.8337,
+      "Y": -1101.8904
     },
     {
       "Id": 18,
-      "X": 367,
-      "Y": 14.5
+      "X": -1002.9949,
+      "Y": -1043.4978
     },
     {
       "Id": 19,
-      "X": 623,
-      "Y": 14.5
+      "X": -412.99487,
+      "Y": -1043.4978
     },
     {
       "Id": 20,
-      "X": 623,
-      "Y": 371.5
+      "X": -412.99487,
+      "Y": -473.4978
     },
     {
       "Id": 21,
-      "X": 367,
-      "Y": 371.5
+      "X": -1002.9949,
+      "Y": -473.4978
     },
     {
       "Id": 33,
-      "X": 183.5,
-      "Y": 0
+      "X": -305.64462,
+      "Y": -851.1534
     },
     {
       "Id": 34,
-      "X": 247.5,
-      "Y": 0
+      "X": 323.35538,
+      "Y": -851.1534
     },
     {
-      "Id": 41,
-      "X": 463,
-      "Y": 14.5
+      "Id": 35,
+      "X": 323.35538,
+      "Y": -329.15338
     },
     {
-      "Id": 42,
-      "X": 527,
-      "Y": 14.5
+      "Id": 36,
+      "X": -305.64462,
+      "Y": -329.15338
     },
     {
-      "Id": 56,
-      "X": 473.5,
-      "Y": -4.5
+      "Id": 49,
+      "X": -3.726654,
+      "Y": -188.67627
     },
     {
-      "Id": 57,
-      "X": 772.5,
-      "Y": -4.5
+      "Id": 50,
+      "X": 388.27335,
+      "Y": -188.67627
     },
     {
-      "Id": 58,
-      "X": 772.5,
-      "Y": 390.5
+      "Id": 51,
+      "X": 388.27335,
+      "Y": 370.32373
     },
     {
-      "Id": 59,
-      "X": 473.5,
-      "Y": 390.5
+      "Id": 52,
+      "X": -3.726654,
+      "Y": 370.32373
     },
     {
-      "Id": 72,
-      "X": 463,
-      "Y": 14.5
+      "Id": 64,
+      "X": -139.37941,
+      "Y": 481.86896
     },
     {
-      "Id": 73,
-      "X": 527,
-      "Y": 14.5
+      "Id": 65,
+      "X": 339.6206,
+      "Y": 481.86896
+    },
+    {
+      "Id": 66,
+      "X": 339.6206,
+      "Y": 1037.8689
+    },
+    {
+      "Id": 67,
+      "X": -139.37941,
+      "Y": 1037.8689
+    },
+    {
+      "Id": 79,
+      "X": -379.1007,
+      "Y": 1153.8657
     },
     {
       "Id": 80,
-      "X": 591,
-      "Y": -4.5
+      "X": 206.89929,
+      "Y": 1153.8657
     },
     {
       "Id": 81,
-      "X": 655,
-      "Y": -4.5
+      "X": 206.89929,
+      "Y": 1607.8657
+    },
+    {
+      "Id": 82,
+      "X": -379.1007,
+      "Y": 1607.8657
+    },
+    {
+      "Id": 94,
+      "X": -1088.6067,
+      "Y": 823.6743
     },
     {
       "Id": 95,
-      "X": 329.5,
-      "Y": -281
+      "X": -459.6067,
+      "Y": 823.6743
     },
     {
       "Id": 96,
-      "X": 660.5,
-      "Y": -281
+      "X": -459.6067,
+      "Y": 1460.6743
     },
     {
       "Id": 97,
-      "X": 660.5,
-      "Y": 182
+      "X": -1088.6067,
+      "Y": 1460.6743
     },
     {
-      "Id": 98,
-      "X": 329.5,
-      "Y": 182
+      "Id": 109,
+      "X": -1541.1973,
+      "Y": -728.8655
     },
     {
       "Id": 110,
-      "X": 463,
-      "Y": 14.5
+      "X": -1070.1973,
+      "Y": -728.8655
     },
     {
       "Id": 111,
-      "X": 527,
-      "Y": 14.5
+      "X": -1070.1973,
+      "Y": -292.86548
     },
     {
-      "Id": 118,
-      "X": 463,
-      "Y": -281
+      "Id": 112,
+      "X": -1541.1973,
+      "Y": -292.86548
     },
     {
-      "Id": 119,
-      "X": 527,
-      "Y": -281
+      "Id": 124,
+      "X": 413.37012,
+      "Y": -805.0887
     },
     {
-      "Id": 133,
-      "X": 576.5,
-      "Y": -47.5
+      "Id": 125,
+      "X": 1038.3701,
+      "Y": -805.0887
     },
     {
-      "Id": 134,
-      "X": 968.5,
-      "Y": -47.5
+      "Id": 126,
+      "X": 1038.3701,
+      "Y": -258.08868
     },
     {
-      "Id": 135,
-      "X": 968.5,
-      "Y": 433.5
+      "Id": 127,
+      "X": 413.37012,
+      "Y": -258.08868
     },
     {
-      "Id": 136,
-      "X": 576.5,
-      "Y": 433.5
+      "Id": 137,
+      "X": 465.09882,
+      "Y": 470.83655
     },
     {
-      "Id": 148,
-      "X": 591,
-      "Y": -4.5
+      "Id": 138,
+      "X": 868.0988,
+      "Y": 470.83655
     },
     {
-      "Id": 149,
-      "X": 655,
-      "Y": -4.5
+      "Id": 139,
+      "X": 868.0988,
+      "Y": 1066.8365
+    },
+    {
+      "Id": 140,
+      "X": 465.09882,
+      "Y": 1066.8365
+    },
+    {
+      "Id": 154,
+      "X": 942.32227,
+      "Y": -67.73323
+    },
+    {
+      "Id": 155,
+      "X": 1569.3223,
+      "Y": -67.73323
     },
     {
       "Id": 156,
-      "X": 740.5,
-      "Y": -47.5
+      "X": 1569.3223,
+      "Y": 546.2668
     },
     {
       "Id": 157,
-      "X": 804.5,
-      "Y": -47.5
+      "X": 942.32227,
+      "Y": 546.2668
     },
     {
-      "Id": 171,
-      "X": 722.5,
-      "Y": 58.5
+      "Id": 167,
+      "X": 1682.5581,
+      "Y": -504.83914
     },
     {
-      "Id": 172,
-      "X": 1214.5,
-      "Y": 58.5
+      "Id": 168,
+      "X": 2236.558,
+      "Y": -504.83914
     },
     {
-      "Id": 173,
-      "X": 1214.5,
-      "Y": 327.5
+      "Id": 169,
+      "X": 2236.558,
+      "Y": -31.839142
     },
     {
-      "Id": 174,
-      "X": 722.5,
-      "Y": 327.5
+      "Id": 170,
+      "X": 1682.5581,
+      "Y": -31.839142
     },
     {
-      "Id": 186,
-      "X": 740.5,
-      "Y": -47.5
+      "Id": 181,
+      "X": 931.48535,
+      "Y": 560.4837
     },
     {
-      "Id": 187,
-      "X": 804.5,
-      "Y": -47.5
+      "Id": 182,
+      "X": 1484.4854,
+      "Y": 560.4837
     },
     {
-      "Id": 194,
-      "X": 936.5,
-      "Y": 58.5
+      "Id": 183,
+      "X": 1484.4854,
+      "Y": 972.4837
     },
     {
-      "Id": 195,
-      "X": 1000.5,
-      "Y": 58.5
+      "Id": 184,
+      "X": 931.48535,
+      "Y": 972.4837
     },
     {
-      "Id": 209,
-      "X": 617.5,
-      "Y": 217.5
+      "Id": 198,
+      "X": 456.4057,
+      "Y": -69.86101
     },
     {
-      "Id": 210,
-      "X": 927.5,
-      "Y": 217.5
+      "Id": 199,
+      "X": 858.4057,
+      "Y": -69.86101
     },
     {
-      "Id": 211,
-      "X": 927.5,
-      "Y": 649.5
+      "Id": 200,
+      "X": 858.4057,
+      "Y": 399.13898
     },
     {
-      "Id": 212,
-      "X": 617.5,
-      "Y": 649.5
+      "Id": 201,
+      "X": 456.4057,
+      "Y": 399.13898
     },
     {
-      "Id": 222,
-      "X": 740.5,
-      "Y": -47.5
+      "Id": 215,
+      "X": -685.5443,
+      "Y": -225.5303
     },
     {
-      "Id": 223,
-      "X": 804.5,
-      "Y": -47.5
+      "Id": 216,
+      "X": -107.54431,
+      "Y": -225.5303
+    },
+    {
+      "Id": 217,
+      "X": -107.54431,
+      "Y": 374.4697
+    },
+    {
+      "Id": 218,
+      "X": -685.5443,
+      "Y": 374.4697
     },
     {
       "Id": 230,
-      "X": 740.5,
-      "Y": 217.5
+      "X": -1256.2354,
+      "Y": 109.008545
     },
     {
       "Id": 231,
-      "X": 804.5,
-      "Y": 217.5
+      "X": -759.23535,
+      "Y": 109.008545
     },
     {
-      "Id": 245,
-      "X": 623.5,
-      "Y": -313
+      "Id": 232,
+      "X": -759.23535,
+      "Y": 556.00854
     },
     {
-      "Id": 246,
-      "X": 921.5,
-      "Y": -313
-    },
-    {
-      "Id": 247,
-      "X": 921.5,
-      "Y": 90
-    },
-    {
-      "Id": 248,
-      "X": 623.5,
-      "Y": 90
-    },
-    {
-      "Id": 258,
-      "X": 740.5,
-      "Y": -47.5
-    },
-    {
-      "Id": 259,
-      "X": 804.5,
-      "Y": -47.5
-    },
-    {
-      "Id": 266,
-      "X": 740.5,
-      "Y": -313
-    },
-    {
-      "Id": 267,
-      "X": 804.5,
-      "Y": -313
-    },
-    {
-      "Id": 281,
-      "X": 1022.5,
-      "Y": 4.5
-    },
-    {
-      "Id": 282,
-      "X": 1406.5,
-      "Y": 4.5
-    },
-    {
-      "Id": 283,
-      "X": 1406.5,
-      "Y": 381.5
-    },
-    {
-      "Id": 284,
-      "X": 1022.5,
-      "Y": 381.5
-    },
-    {
-      "Id": 296,
-      "X": 936.5,
-      "Y": 58.5
-    },
-    {
-      "Id": 297,
-      "X": 1000.5,
-      "Y": 58.5
-    },
-    {
-      "Id": 304,
-      "X": 1182.5,
-      "Y": 4.5
-    },
-    {
-      "Id": 305,
-      "X": 1246.5,
-      "Y": 4.5
-    },
-    {
-      "Id": 319,
-      "X": 563.5,
-      "Y": 510
-    },
-    {
-      "Id": 320,
-      "X": 981.5,
-      "Y": 510
-    },
-    {
-      "Id": 321,
-      "X": 981.5,
-      "Y": 789
-    },
-    {
-      "Id": 322,
-      "X": 563.5,
-      "Y": 789
-    },
-    {
-      "Id": 336,
-      "X": 740.5,
-      "Y": 217.5
-    },
-    {
-      "Id": 337,
-      "X": 804.5,
-      "Y": 217.5
-    },
-    {
-      "Id": 344,
-      "X": 740.5,
-      "Y": 510
-    },
-    {
-      "Id": 345,
-      "X": 804.5,
-      "Y": 510
-    },
-    {
-      "Id": 359,
-      "X": 581.5,
-      "Y": -565
-    },
-    {
-      "Id": 360,
-      "X": 963.5,
-      "Y": -565
-    },
-    {
-      "Id": 361,
-      "X": 963.5,
-      "Y": -61
-    },
-    {
-      "Id": 362,
-      "X": 581.5,
-      "Y": -61
-    },
-    {
-      "Id": 373,
-      "X": 740.5,
-      "Y": -313
-    },
-    {
-      "Id": 374,
-      "X": 804.5,
-      "Y": -313
-    },
-    {
-      "Id": 381,
-      "X": 740.5,
-      "Y": -565
-    },
-    {
-      "Id": 382,
-      "X": 804.5,
-      "Y": -565
-    },
-    {
-      "Id": 396,
-      "X": 1213.5,
-      "Y": -3
-    },
-    {
-      "Id": 397,
-      "X": 1599.5,
-      "Y": -3
-    },
-    {
-      "Id": 398,
-      "X": 1599.5,
-      "Y": 389
-    },
-    {
-      "Id": 399,
-      "X": 1213.5,
-      "Y": 389
-    },
-    {
-      "Id": 411,
-      "X": 1182.5,
-      "Y": 4.5
-    },
-    {
-      "Id": 412,
-      "X": 1246.5,
-      "Y": 4.5
-    },
-    {
-      "Id": 419,
-      "X": 1374.5,
-      "Y": -3
-    },
-    {
-      "Id": 420,
-      "X": 1438.5,
-      "Y": -3
-    },
-    {
-      "Id": 434,
-      "X": 871.5,
-      "Y": 444.5
-    },
-    {
-      "Id": 435,
-      "X": 1219.5,
-      "Y": 444.5
-    },
-    {
-      "Id": 436,
-      "X": 1219.5,
-      "Y": 854.5
-    },
-    {
-      "Id": 437,
-      "X": 871.5,
-      "Y": 854.5
-    },
-    {
-      "Id": 451,
-      "X": 740.5,
-      "Y": 510
-    },
-    {
-      "Id": 452,
-      "X": 804.5,
-      "Y": 510
-    },
-    {
-      "Id": 459,
-      "X": 1013.5,
-      "Y": 444.5
-    },
-    {
-      "Id": 460,
-      "X": 1077.5,
-      "Y": 444.5
-    },
-    {
-      "Id": 474,
-      "X": 1120,
-      "Y": 455.5
-    },
-    {
-      "Id": 475,
-      "X": 1447,
-      "Y": 455.5
-    },
-    {
-      "Id": 476,
-      "X": 1447,
-      "Y": 843.5
-    },
-    {
-      "Id": 477,
-      "X": 1120,
-      "Y": 843.5
-    },
-    {
-      "Id": 491,
-      "X": 1013.5,
-      "Y": 444.5
-    },
-    {
-      "Id": 492,
-      "X": 1077.5,
-      "Y": 444.5
-    },
-    {
-      "Id": 499,
-      "X": 1251.5,
-      "Y": 455.5
-    },
-    {
-      "Id": 500,
-      "X": 1315.5,
-      "Y": 455.5
-    },
-    {
-      "Id": 514,
-      "X": 1259,
-      "Y": 467
-    },
-    {
-      "Id": 515,
-      "X": 1635,
-      "Y": 467
-    },
-    {
-      "Id": 516,
-      "X": 1635,
-      "Y": 832
-    },
-    {
-      "Id": 517,
-      "X": 1259,
-      "Y": 832
-    },
-    {
-      "Id": 529,
-      "X": 1251.5,
-      "Y": 455.5
-    },
-    {
-      "Id": 530,
-      "X": 1315.5,
-      "Y": 455.5
-    },
-    {
-      "Id": 537,
-      "X": 1415,
-      "Y": 467
-    },
-    {
-      "Id": 538,
-      "X": 1479,
-      "Y": 467
-    },
-    {
-      "Id": 552,
-      "X": 1545,
-      "Y": 436.5
-    },
-    {
-      "Id": 553,
-      "X": 1853,
-      "Y": 436.5
-    },
-    {
-      "Id": 554,
-      "X": 1853,
-      "Y": 862.5
-    },
-    {
-      "Id": 555,
-      "X": 1545,
-      "Y": 862.5
-    },
-    {
-      "Id": 565,
-      "X": 1415,
-      "Y": 467
-    },
-    {
-      "Id": 566,
-      "X": 1479,
-      "Y": 467
-    },
-    {
-      "Id": 573,
-      "X": 1667,
-      "Y": 436.5
-    },
-    {
-      "Id": 574,
-      "X": 1731,
-      "Y": 436.5
-    },
-    {
-      "Id": 588,
-      "X": 737.22,
-      "Y": 142.495
-    },
-    {
-      "Id": 589,
-      "X": 807.77997,
-      "Y": 142.495
-    },
-    {
-      "Id": 590,
-      "X": 807.77997,
-      "Y": 243.50499
-    },
-    {
-      "Id": 591,
-      "X": 737.22,
-      "Y": 243.50499
+      "Id": 233,
+      "X": -1256.2354,
+      "Y": 556.00854
     }
   ],
   "Linedefs": [
     {
-      "Id": 8,
-      "StartVertex": 2,
+      "Id": 6,
+      "StartVertex": 4,
       "EndVertex": 3,
+      "Flags": [
+        "twoSided"
+      ],
+      "Action": {
+        "Special": 1,
+        "Tag": 1006
+      },
+      "FrontSidedef": 5,
+      "BackSidedef": 242
+    },
+    {
+      "Id": 8,
+      "StartVertex": 3,
+      "EndVertex": 2,
       "Flags": [
         "impassable"
       ],
@@ -663,8 +357,8 @@
     },
     {
       "Id": 10,
-      "StartVertex": 3,
-      "EndVertex": 4,
+      "StartVertex": 2,
+      "EndVertex": 1,
       "Flags": [
         "impassable"
       ],
@@ -672,347 +366,245 @@
     },
     {
       "Id": 12,
-      "StartVertex": 4,
-      "EndVertex": 1,
+      "StartVertex": 1,
+      "EndVertex": 4,
       "Flags": [
         "impassable"
       ],
       "FrontSidedef": 11
     },
     {
-      "Id": 25,
-      "StartVertex": 19,
+      "Id": 23,
+      "StartVertex": 21,
       "EndVertex": 20,
       "Flags": [
         "impassable"
       ],
-      "FrontSidedef": 24
+      "FrontSidedef": 22
     },
     {
-      "Id": 27,
+      "Id": 25,
       "StartVertex": 20,
-      "EndVertex": 21,
+      "EndVertex": 19,
       "Flags": [
-        "impassable"
+        "twoSided"
       ],
-      "FrontSidedef": 26
+      "FrontSidedef": 24,
+      "BackSidedef": 243
     },
     {
       "Id": 29,
-      "StartVertex": 21,
-      "EndVertex": 18,
+      "StartVertex": 18,
+      "EndVertex": 21,
       "Flags": [
-        "impassable"
+        "twoSided"
       ],
-      "FrontSidedef": 28
-    },
-    {
-      "Id": 36,
-      "StartVertex": 1,
-      "EndVertex": 33,
-      "Flags": [
-        "impassable"
-      ],
-      "FrontSidedef": 35
+      "FrontSidedef": 28,
+      "BackSidedef": 248
     },
     {
       "Id": 38,
-      "StartVertex": 33,
-      "EndVertex": 34,
+      "StartVertex": 36,
+      "EndVertex": 35,
       "Flags": [
-        "impassable",
         "twoSided"
       ],
-      "Action": {
-        "Special": 26,
-        "Tag": 32
-      },
       "FrontSidedef": 37,
-      "BackSidedef": 49
+      "BackSidedef": 244
     },
     {
       "Id": 40,
-      "StartVertex": 34,
-      "EndVertex": 2,
+      "StartVertex": 35,
+      "EndVertex": 34,
       "Flags": [
         "impassable"
       ],
       "FrontSidedef": 39
     },
     {
-      "Id": 44,
-      "StartVertex": 18,
-      "EndVertex": 41,
-      "Flags": [
-        "impassable"
-      ],
-      "FrontSidedef": 43
-    },
-    {
-      "Id": 46,
-      "StartVertex": 41,
-      "EndVertex": 42,
-      "Flags": [
-        "impassable",
-        "twoSided"
-      ],
-      "FrontSidedef": 45,
-      "BackSidedef": 50
-    },
-    {
-      "Id": 48,
-      "StartVertex": 42,
-      "EndVertex": 19,
-      "Flags": [
-        "impassable"
-      ],
-      "FrontSidedef": 47
-    },
-    {
-      "Id": 52,
+      "Id": 42,
       "StartVertex": 34,
-      "EndVertex": 41,
-      "Flags": [
-        "impassable"
-      ],
-      "FrontSidedef": 51
-    },
-    {
-      "Id": 54,
-      "StartVertex": 42,
       "EndVertex": 33,
       "Flags": [
         "impassable"
       ],
-      "FrontSidedef": 53
+      "FrontSidedef": 41
     },
     {
-      "Id": 63,
-      "StartVertex": 57,
-      "EndVertex": 58,
+      "Id": 54,
+      "StartVertex": 52,
+      "EndVertex": 51,
+      "Flags": [
+        "twoSided"
+      ],
+      "FrontSidedef": 53,
+      "BackSidedef": 245
+    },
+    {
+      "Id": 56,
+      "StartVertex": 51,
+      "EndVertex": 50,
+      "Flags": [
+        "twoSided"
+      ],
+      "Action": {
+        "Special": 1,
+        "Tag": 1056
+      },
+      "FrontSidedef": 55,
+      "BackSidedef": 252
+    },
+    {
+      "Id": 60,
+      "StartVertex": 49,
+      "EndVertex": 52,
       "Flags": [
         "impassable"
       ],
-      "FrontSidedef": 62
+      "FrontSidedef": 59
     },
     {
-      "Id": 65,
-      "StartVertex": 58,
-      "EndVertex": 59,
+      "Id": 69,
+      "StartVertex": 67,
+      "EndVertex": 66,
+      "Flags": [
+        "twoSided"
+      ],
+      "FrontSidedef": 68,
+      "BackSidedef": 246
+    },
+    {
+      "Id": 71,
+      "StartVertex": 66,
+      "EndVertex": 65,
       "Flags": [
         "impassable"
       ],
-      "FrontSidedef": 64
-    },
-    {
-      "Id": 67,
-      "StartVertex": 59,
-      "EndVertex": 56,
-      "Flags": [
-        "impassable"
-      ],
-      "FrontSidedef": 66
+      "FrontSidedef": 70
     },
     {
       "Id": 75,
-      "StartVertex": 18,
-      "EndVertex": 72,
+      "StartVertex": 64,
+      "EndVertex": 67,
       "Flags": [
         "impassable"
       ],
       "FrontSidedef": 74
     },
     {
-      "Id": 77,
-      "StartVertex": 72,
-      "EndVertex": 73,
-      "Flags": [
-        "impassable",
-        "twoSided"
-      ],
-      "Action": {
-        "Special": 26,
-        "Tag": 71
-      },
-      "FrontSidedef": 76,
-      "BackSidedef": 88
-    },
-    {
-      "Id": 79,
-      "StartVertex": 73,
-      "EndVertex": 19,
-      "Flags": [
-        "impassable"
-      ],
-      "FrontSidedef": 78
-    },
-    {
-      "Id": 83,
-      "StartVertex": 56,
-      "EndVertex": 80,
-      "Flags": [
-        "impassable"
-      ],
-      "FrontSidedef": 82
-    },
-    {
-      "Id": 85,
-      "StartVertex": 80,
+      "Id": 84,
+      "StartVertex": 82,
       "EndVertex": 81,
       "Flags": [
-        "impassable",
-        "twoSided"
-      ],
-      "FrontSidedef": 84,
-      "BackSidedef": 89
-    },
-    {
-      "Id": 87,
-      "StartVertex": 81,
-      "EndVertex": 57,
-      "Flags": [
         "impassable"
       ],
-      "FrontSidedef": 86
+      "FrontSidedef": 83
     },
     {
-      "Id": 91,
-      "StartVertex": 73,
+      "Id": 86,
+      "StartVertex": 81,
       "EndVertex": 80,
       "Flags": [
         "impassable"
       ],
-      "FrontSidedef": 90
+      "FrontSidedef": 85
     },
     {
-      "Id": 93,
-      "StartVertex": 81,
-      "EndVertex": 72,
+      "Id": 90,
+      "StartVertex": 79,
+      "EndVertex": 82,
       "Flags": [
-        "impassable"
+        "twoSided"
       ],
-      "FrontSidedef": 92
+      "FrontSidedef": 89,
+      "BackSidedef": 247
     },
     {
-      "Id": 102,
-      "StartVertex": 96,
-      "EndVertex": 97,
-      "Flags": [
-        "impassable"
-      ],
-      "FrontSidedef": 101
-    },
-    {
-      "Id": 104,
+      "Id": 99,
       "StartVertex": 97,
-      "EndVertex": 98,
-      "Flags": [
-        "impassable"
-      ],
-      "FrontSidedef": 103
-    },
-    {
-      "Id": 106,
-      "StartVertex": 98,
-      "EndVertex": 95,
-      "Flags": [
-        "impassable"
-      ],
-      "FrontSidedef": 105
-    },
-    {
-      "Id": 113,
-      "StartVertex": 18,
-      "EndVertex": 110,
-      "Flags": [
-        "impassable"
-      ],
-      "FrontSidedef": 112
-    },
-    {
-      "Id": 115,
-      "StartVertex": 110,
-      "EndVertex": 111,
-      "Flags": [
-        "impassable",
-        "twoSided"
-      ],
-      "Action": {
-        "Special": 26,
-        "Tag": 109
-      },
-      "FrontSidedef": 114,
-      "BackSidedef": 126
-    },
-    {
-      "Id": 117,
-      "StartVertex": 111,
-      "EndVertex": 19,
-      "Flags": [
-        "impassable"
-      ],
-      "FrontSidedef": 116
-    },
-    {
-      "Id": 121,
-      "StartVertex": 95,
-      "EndVertex": 118,
-      "Flags": [
-        "impassable"
-      ],
-      "FrontSidedef": 120
-    },
-    {
-      "Id": 123,
-      "StartVertex": 118,
-      "EndVertex": 119,
-      "Flags": [
-        "impassable",
-        "twoSided"
-      ],
-      "FrontSidedef": 122,
-      "BackSidedef": 127
-    },
-    {
-      "Id": 125,
-      "StartVertex": 119,
       "EndVertex": 96,
       "Flags": [
         "impassable"
       ],
-      "FrontSidedef": 124
+      "FrontSidedef": 98
     },
     {
-      "Id": 129,
-      "StartVertex": 111,
-      "EndVertex": 118,
+      "Id": 103,
+      "StartVertex": 95,
+      "EndVertex": 94,
       "Flags": [
         "impassable"
       ],
-      "FrontSidedef": 128
+      "FrontSidedef": 102
+    },
+    {
+      "Id": 105,
+      "StartVertex": 94,
+      "EndVertex": 97,
+      "Flags": [
+        "impassable"
+      ],
+      "FrontSidedef": 104
+    },
+    {
+      "Id": 114,
+      "StartVertex": 112,
+      "EndVertex": 111,
+      "Flags": [
+        "impassable"
+      ],
+      "FrontSidedef": 113
+    },
+    {
+      "Id": 118,
+      "StartVertex": 110,
+      "EndVertex": 109,
+      "Flags": [
+        "impassable"
+      ],
+      "FrontSidedef": 117
+    },
+    {
+      "Id": 120,
+      "StartVertex": 109,
+      "EndVertex": 112,
+      "Flags": [
+        "impassable"
+      ],
+      "FrontSidedef": 119
+    },
+    {
+      "Id": 129,
+      "StartVertex": 127,
+      "EndVertex": 126,
+      "Flags": [
+        "twoSided"
+      ],
+      "FrontSidedef": 128,
+      "BackSidedef": 250
     },
     {
       "Id": 131,
-      "StartVertex": 119,
-      "EndVertex": 110,
+      "StartVertex": 126,
+      "EndVertex": 125,
       "Flags": [
         "impassable"
       ],
       "FrontSidedef": 130
     },
     {
-      "Id": 140,
-      "StartVertex": 134,
-      "EndVertex": 135,
+      "Id": 133,
+      "StartVertex": 125,
+      "EndVertex": 124,
       "Flags": [
         "impassable"
       ],
-      "FrontSidedef": 139
+      "FrontSidedef": 132
     },
     {
       "Id": 142,
-      "StartVertex": 135,
-      "EndVertex": 136,
+      "StartVertex": 140,
+      "EndVertex": 139,
       "Flags": [
         "impassable"
       ],
@@ -1020,49 +612,30 @@
     },
     {
       "Id": 144,
-      "StartVertex": 136,
-      "EndVertex": 133,
+      "StartVertex": 139,
+      "EndVertex": 138,
       "Flags": [
-        "impassable"
-      ],
-      "FrontSidedef": 143
-    },
-    {
-      "Id": 151,
-      "StartVertex": 56,
-      "EndVertex": 148,
-      "Flags": [
-        "impassable"
-      ],
-      "FrontSidedef": 150
-    },
-    {
-      "Id": 153,
-      "StartVertex": 148,
-      "EndVertex": 149,
-      "Flags": [
-        "impassable",
         "twoSided"
       ],
       "Action": {
-        "Special": 26,
-        "Tag": 147
+        "Special": 1,
+        "Tag": 1144
       },
-      "FrontSidedef": 152,
-      "BackSidedef": 164
+      "FrontSidedef": 143,
+      "BackSidedef": 251
     },
     {
-      "Id": 155,
-      "StartVertex": 149,
-      "EndVertex": 57,
+      "Id": 148,
+      "StartVertex": 137,
+      "EndVertex": 140,
       "Flags": [
         "impassable"
       ],
-      "FrontSidedef": 154
+      "FrontSidedef": 147
     },
     {
       "Id": 159,
-      "StartVertex": 133,
+      "StartVertex": 157,
       "EndVertex": 156,
       "Flags": [
         "impassable"
@@ -1072,134 +645,80 @@
     {
       "Id": 161,
       "StartVertex": 156,
-      "EndVertex": 157,
+      "EndVertex": 155,
       "Flags": [
-        "impassable",
-        "twoSided"
+        "impassable"
       ],
-      "FrontSidedef": 160,
-      "BackSidedef": 165
+      "FrontSidedef": 160
     },
     {
       "Id": 163,
-      "StartVertex": 157,
-      "EndVertex": 134,
+      "StartVertex": 155,
+      "EndVertex": 154,
       "Flags": [
-        "impassable"
-      ],
-      "FrontSidedef": 162
-    },
-    {
-      "Id": 167,
-      "StartVertex": 149,
-      "EndVertex": 156,
-      "Flags": [
-        "impassable"
-      ],
-      "FrontSidedef": 166
-    },
-    {
-      "Id": 169,
-      "StartVertex": 157,
-      "EndVertex": 148,
-      "Flags": [
-        "impassable"
-      ],
-      "FrontSidedef": 168
-    },
-    {
-      "Id": 178,
-      "StartVertex": 172,
-      "EndVertex": 173,
-      "Flags": [
-        "impassable"
-      ],
-      "FrontSidedef": 177
-    },
-    {
-      "Id": 180,
-      "StartVertex": 173,
-      "EndVertex": 174,
-      "Flags": [
-        "impassable"
-      ],
-      "FrontSidedef": 179
-    },
-    {
-      "Id": 182,
-      "StartVertex": 174,
-      "EndVertex": 171,
-      "Flags": [
-        "impassable"
-      ],
-      "FrontSidedef": 181
-    },
-    {
-      "Id": 189,
-      "StartVertex": 133,
-      "EndVertex": 186,
-      "Flags": [
-        "impassable"
-      ],
-      "FrontSidedef": 188
-    },
-    {
-      "Id": 191,
-      "StartVertex": 186,
-      "EndVertex": 187,
-      "Flags": [
-        "impassable",
         "twoSided"
       ],
-      "Action": {
-        "Special": 26,
-        "Tag": 185
-      },
-      "FrontSidedef": 190,
-      "BackSidedef": 202
+      "FrontSidedef": 162,
+      "BackSidedef": 253
     },
     {
-      "Id": 193,
-      "StartVertex": 187,
-      "EndVertex": 134,
+      "Id": 172,
+      "StartVertex": 170,
+      "EndVertex": 169,
       "Flags": [
         "impassable"
       ],
-      "FrontSidedef": 192
+      "FrontSidedef": 171
     },
     {
-      "Id": 197,
-      "StartVertex": 171,
-      "EndVertex": 194,
+      "Id": 174,
+      "StartVertex": 169,
+      "EndVertex": 168,
       "Flags": [
         "impassable"
       ],
-      "FrontSidedef": 196
+      "FrontSidedef": 173
     },
     {
-      "Id": 199,
-      "StartVertex": 194,
-      "EndVertex": 195,
-      "Flags": [
-        "impassable",
-        "twoSided"
-      ],
-      "FrontSidedef": 198,
-      "BackSidedef": 203
-    },
-    {
-      "Id": 201,
-      "StartVertex": 195,
-      "EndVertex": 172,
+      "Id": 176,
+      "StartVertex": 168,
+      "EndVertex": 167,
       "Flags": [
         "impassable"
       ],
-      "FrontSidedef": 200
+      "FrontSidedef": 175
+    },
+    {
+      "Id": 186,
+      "StartVertex": 184,
+      "EndVertex": 183,
+      "Flags": [
+        "impassable"
+      ],
+      "FrontSidedef": 185
+    },
+    {
+      "Id": 188,
+      "StartVertex": 183,
+      "EndVertex": 182,
+      "Flags": [
+        "impassable"
+      ],
+      "FrontSidedef": 187
+    },
+    {
+      "Id": 190,
+      "StartVertex": 182,
+      "EndVertex": 181,
+      "Flags": [
+        "impassable"
+      ],
+      "FrontSidedef": 189
     },
     {
       "Id": 205,
-      "StartVertex": 187,
-      "EndVertex": 194,
+      "StartVertex": 200,
+      "EndVertex": 199,
       "Flags": [
         "impassable"
       ],
@@ -1207,1122 +726,81 @@
     },
     {
       "Id": 207,
-      "StartVertex": 195,
-      "EndVertex": 186,
+      "StartVertex": 199,
+      "EndVertex": 198,
       "Flags": [
         "impassable"
       ],
       "FrontSidedef": 206
     },
     {
-      "Id": 216,
-      "StartVertex": 210,
-      "EndVertex": 211,
+      "Id": 209,
+      "StartVertex": 198,
+      "EndVertex": 201,
       "Flags": [
-        "impassable"
+        "twoSided"
       ],
-      "FrontSidedef": 215
-    },
-    {
-      "Id": 218,
-      "StartVertex": 211,
-      "EndVertex": 212,
-      "Flags": [
-        "impassable"
-      ],
-      "FrontSidedef": 217
+      "FrontSidedef": 208,
+      "BackSidedef": 255
     },
     {
       "Id": 220,
-      "StartVertex": 212,
-      "EndVertex": 209,
+      "StartVertex": 218,
+      "EndVertex": 217,
       "Flags": [
         "impassable"
       ],
       "FrontSidedef": 219
     },
     {
-      "Id": 225,
-      "StartVertex": 133,
-      "EndVertex": 222,
+      "Id": 224,
+      "StartVertex": 216,
+      "EndVertex": 215,
       "Flags": [
         "impassable"
       ],
-      "FrontSidedef": 224
+      "FrontSidedef": 223
     },
     {
-      "Id": 227,
-      "StartVertex": 222,
-      "EndVertex": 223,
+      "Id": 226,
+      "StartVertex": 215,
+      "EndVertex": 218,
       "Flags": [
-        "impassable",
         "twoSided"
       ],
       "Action": {
-        "Special": 26,
-        "Tag": 221
+        "Special": 1,
+        "Tag": 1226
       },
-      "FrontSidedef": 226,
-      "BackSidedef": 238
-    },
-    {
-      "Id": 229,
-      "StartVertex": 223,
-      "EndVertex": 134,
-      "Flags": [
-        "impassable"
-      ],
-      "FrontSidedef": 228
-    },
-    {
-      "Id": 233,
-      "StartVertex": 209,
-      "EndVertex": 230,
-      "Flags": [
-        "impassable"
-      ],
-      "FrontSidedef": 232
+      "FrontSidedef": 225,
+      "BackSidedef": 256
     },
     {
       "Id": 235,
-      "StartVertex": 230,
-      "EndVertex": 231,
-      "Flags": [
-        "impassable",
-        "twoSided"
-      ],
-      "FrontSidedef": 234,
-      "BackSidedef": 239
-    },
-    {
-      "Id": 237,
-      "StartVertex": 231,
-      "EndVertex": 210,
+      "StartVertex": 233,
+      "EndVertex": 232,
       "Flags": [
         "impassable"
       ],
-      "FrontSidedef": 236
+      "FrontSidedef": 234
+    },
+    {
+      "Id": 239,
+      "StartVertex": 231,
+      "EndVertex": 230,
+      "Flags": [
+        "impassable"
+      ],
+      "FrontSidedef": 238
     },
     {
       "Id": 241,
-      "StartVertex": 223,
-      "EndVertex": 230,
+      "StartVertex": 230,
+      "EndVertex": 233,
       "Flags": [
         "impassable"
       ],
       "FrontSidedef": 240
-    },
-    {
-      "Id": 243,
-      "StartVertex": 231,
-      "EndVertex": 222,
-      "Flags": [
-        "impassable"
-      ],
-      "FrontSidedef": 242
-    },
-    {
-      "Id": 252,
-      "StartVertex": 246,
-      "EndVertex": 247,
-      "Flags": [
-        "impassable"
-      ],
-      "FrontSidedef": 251
-    },
-    {
-      "Id": 254,
-      "StartVertex": 247,
-      "EndVertex": 248,
-      "Flags": [
-        "impassable"
-      ],
-      "FrontSidedef": 253
-    },
-    {
-      "Id": 256,
-      "StartVertex": 248,
-      "EndVertex": 245,
-      "Flags": [
-        "impassable"
-      ],
-      "FrontSidedef": 255
-    },
-    {
-      "Id": 261,
-      "StartVertex": 133,
-      "EndVertex": 258,
-      "Flags": [
-        "impassable"
-      ],
-      "FrontSidedef": 260
-    },
-    {
-      "Id": 263,
-      "StartVertex": 258,
-      "EndVertex": 259,
-      "Flags": [
-        "impassable",
-        "twoSided"
-      ],
-      "Action": {
-        "Special": 26,
-        "Tag": 257
-      },
-      "FrontSidedef": 262,
-      "BackSidedef": 274
-    },
-    {
-      "Id": 265,
-      "StartVertex": 259,
-      "EndVertex": 134,
-      "Flags": [
-        "impassable"
-      ],
-      "FrontSidedef": 264
-    },
-    {
-      "Id": 269,
-      "StartVertex": 245,
-      "EndVertex": 266,
-      "Flags": [
-        "impassable"
-      ],
-      "FrontSidedef": 268
-    },
-    {
-      "Id": 271,
-      "StartVertex": 266,
-      "EndVertex": 267,
-      "Flags": [
-        "impassable",
-        "twoSided"
-      ],
-      "FrontSidedef": 270,
-      "BackSidedef": 275
-    },
-    {
-      "Id": 273,
-      "StartVertex": 267,
-      "EndVertex": 246,
-      "Flags": [
-        "impassable"
-      ],
-      "FrontSidedef": 272
-    },
-    {
-      "Id": 277,
-      "StartVertex": 259,
-      "EndVertex": 266,
-      "Flags": [
-        "impassable"
-      ],
-      "FrontSidedef": 276
-    },
-    {
-      "Id": 279,
-      "StartVertex": 267,
-      "EndVertex": 258,
-      "Flags": [
-        "impassable"
-      ],
-      "FrontSidedef": 278
-    },
-    {
-      "Id": 288,
-      "StartVertex": 282,
-      "EndVertex": 283,
-      "Flags": [
-        "impassable"
-      ],
-      "FrontSidedef": 287
-    },
-    {
-      "Id": 290,
-      "StartVertex": 283,
-      "EndVertex": 284,
-      "Flags": [
-        "impassable"
-      ],
-      "FrontSidedef": 289
-    },
-    {
-      "Id": 292,
-      "StartVertex": 284,
-      "EndVertex": 281,
-      "Flags": [
-        "impassable"
-      ],
-      "FrontSidedef": 291
-    },
-    {
-      "Id": 299,
-      "StartVertex": 171,
-      "EndVertex": 296,
-      "Flags": [
-        "impassable"
-      ],
-      "FrontSidedef": 298
-    },
-    {
-      "Id": 301,
-      "StartVertex": 296,
-      "EndVertex": 297,
-      "Flags": [
-        "impassable",
-        "twoSided"
-      ],
-      "Action": {
-        "Special": 26,
-        "Tag": 295
-      },
-      "FrontSidedef": 300,
-      "BackSidedef": 312
-    },
-    {
-      "Id": 303,
-      "StartVertex": 297,
-      "EndVertex": 172,
-      "Flags": [
-        "impassable"
-      ],
-      "FrontSidedef": 302
-    },
-    {
-      "Id": 307,
-      "StartVertex": 281,
-      "EndVertex": 304,
-      "Flags": [
-        "impassable"
-      ],
-      "FrontSidedef": 306
-    },
-    {
-      "Id": 309,
-      "StartVertex": 304,
-      "EndVertex": 305,
-      "Flags": [
-        "impassable",
-        "twoSided"
-      ],
-      "FrontSidedef": 308,
-      "BackSidedef": 313
-    },
-    {
-      "Id": 311,
-      "StartVertex": 305,
-      "EndVertex": 282,
-      "Flags": [
-        "impassable"
-      ],
-      "FrontSidedef": 310
-    },
-    {
-      "Id": 315,
-      "StartVertex": 297,
-      "EndVertex": 304,
-      "Flags": [
-        "impassable"
-      ],
-      "FrontSidedef": 314
-    },
-    {
-      "Id": 317,
-      "StartVertex": 305,
-      "EndVertex": 296,
-      "Flags": [
-        "impassable"
-      ],
-      "FrontSidedef": 316
-    },
-    {
-      "Id": 326,
-      "StartVertex": 320,
-      "EndVertex": 321,
-      "Flags": [
-        "impassable"
-      ],
-      "FrontSidedef": 325
-    },
-    {
-      "Id": 328,
-      "StartVertex": 321,
-      "EndVertex": 322,
-      "Flags": [
-        "impassable"
-      ],
-      "FrontSidedef": 327
-    },
-    {
-      "Id": 330,
-      "StartVertex": 322,
-      "EndVertex": 319,
-      "Flags": [
-        "impassable"
-      ],
-      "FrontSidedef": 329
-    },
-    {
-      "Id": 339,
-      "StartVertex": 209,
-      "EndVertex": 336,
-      "Flags": [
-        "impassable"
-      ],
-      "FrontSidedef": 338
-    },
-    {
-      "Id": 341,
-      "StartVertex": 336,
-      "EndVertex": 337,
-      "Flags": [
-        "impassable",
-        "twoSided"
-      ],
-      "Action": {
-        "Special": 26,
-        "Tag": 335
-      },
-      "FrontSidedef": 340,
-      "BackSidedef": 352
-    },
-    {
-      "Id": 343,
-      "StartVertex": 337,
-      "EndVertex": 210,
-      "Flags": [
-        "impassable"
-      ],
-      "FrontSidedef": 342
-    },
-    {
-      "Id": 347,
-      "StartVertex": 319,
-      "EndVertex": 344,
-      "Flags": [
-        "impassable"
-      ],
-      "FrontSidedef": 346
-    },
-    {
-      "Id": 349,
-      "StartVertex": 344,
-      "EndVertex": 345,
-      "Flags": [
-        "impassable",
-        "twoSided"
-      ],
-      "FrontSidedef": 348,
-      "BackSidedef": 353
-    },
-    {
-      "Id": 351,
-      "StartVertex": 345,
-      "EndVertex": 320,
-      "Flags": [
-        "impassable"
-      ],
-      "FrontSidedef": 350
-    },
-    {
-      "Id": 355,
-      "StartVertex": 337,
-      "EndVertex": 344,
-      "Flags": [
-        "impassable"
-      ],
-      "FrontSidedef": 354
-    },
-    {
-      "Id": 357,
-      "StartVertex": 345,
-      "EndVertex": 336,
-      "Flags": [
-        "impassable"
-      ],
-      "FrontSidedef": 356
-    },
-    {
-      "Id": 366,
-      "StartVertex": 360,
-      "EndVertex": 361,
-      "Flags": [
-        "impassable"
-      ],
-      "FrontSidedef": 365
-    },
-    {
-      "Id": 368,
-      "StartVertex": 361,
-      "EndVertex": 362,
-      "Flags": [
-        "impassable"
-      ],
-      "FrontSidedef": 367
-    },
-    {
-      "Id": 370,
-      "StartVertex": 362,
-      "EndVertex": 359,
-      "Flags": [
-        "impassable"
-      ],
-      "FrontSidedef": 369
-    },
-    {
-      "Id": 376,
-      "StartVertex": 245,
-      "EndVertex": 373,
-      "Flags": [
-        "impassable"
-      ],
-      "FrontSidedef": 375
-    },
-    {
-      "Id": 378,
-      "StartVertex": 373,
-      "EndVertex": 374,
-      "Flags": [
-        "impassable",
-        "twoSided"
-      ],
-      "Action": {
-        "Special": 26,
-        "Tag": 372
-      },
-      "FrontSidedef": 377,
-      "BackSidedef": 389
-    },
-    {
-      "Id": 380,
-      "StartVertex": 374,
-      "EndVertex": 246,
-      "Flags": [
-        "impassable"
-      ],
-      "FrontSidedef": 379
-    },
-    {
-      "Id": 384,
-      "StartVertex": 359,
-      "EndVertex": 381,
-      "Flags": [
-        "impassable"
-      ],
-      "FrontSidedef": 383
-    },
-    {
-      "Id": 386,
-      "StartVertex": 381,
-      "EndVertex": 382,
-      "Flags": [
-        "impassable",
-        "twoSided"
-      ],
-      "FrontSidedef": 385,
-      "BackSidedef": 390
-    },
-    {
-      "Id": 388,
-      "StartVertex": 382,
-      "EndVertex": 360,
-      "Flags": [
-        "impassable"
-      ],
-      "FrontSidedef": 387
-    },
-    {
-      "Id": 392,
-      "StartVertex": 374,
-      "EndVertex": 381,
-      "Flags": [
-        "impassable"
-      ],
-      "FrontSidedef": 391
-    },
-    {
-      "Id": 394,
-      "StartVertex": 382,
-      "EndVertex": 373,
-      "Flags": [
-        "impassable"
-      ],
-      "FrontSidedef": 393
-    },
-    {
-      "Id": 403,
-      "StartVertex": 397,
-      "EndVertex": 398,
-      "Flags": [
-        "impassable"
-      ],
-      "FrontSidedef": 402
-    },
-    {
-      "Id": 405,
-      "StartVertex": 398,
-      "EndVertex": 399,
-      "Flags": [
-        "impassable"
-      ],
-      "FrontSidedef": 404
-    },
-    {
-      "Id": 407,
-      "StartVertex": 399,
-      "EndVertex": 396,
-      "Flags": [
-        "impassable"
-      ],
-      "FrontSidedef": 406
-    },
-    {
-      "Id": 414,
-      "StartVertex": 281,
-      "EndVertex": 411,
-      "Flags": [
-        "impassable"
-      ],
-      "FrontSidedef": 413
-    },
-    {
-      "Id": 416,
-      "StartVertex": 411,
-      "EndVertex": 412,
-      "Flags": [
-        "impassable",
-        "twoSided"
-      ],
-      "Action": {
-        "Special": 26,
-        "Tag": 410
-      },
-      "FrontSidedef": 415,
-      "BackSidedef": 427
-    },
-    {
-      "Id": 418,
-      "StartVertex": 412,
-      "EndVertex": 282,
-      "Flags": [
-        "impassable"
-      ],
-      "FrontSidedef": 417
-    },
-    {
-      "Id": 422,
-      "StartVertex": 396,
-      "EndVertex": 419,
-      "Flags": [
-        "impassable"
-      ],
-      "FrontSidedef": 421
-    },
-    {
-      "Id": 424,
-      "StartVertex": 419,
-      "EndVertex": 420,
-      "Flags": [
-        "impassable",
-        "twoSided"
-      ],
-      "FrontSidedef": 423,
-      "BackSidedef": 428
-    },
-    {
-      "Id": 426,
-      "StartVertex": 420,
-      "EndVertex": 397,
-      "Flags": [
-        "impassable"
-      ],
-      "FrontSidedef": 425
-    },
-    {
-      "Id": 430,
-      "StartVertex": 412,
-      "EndVertex": 419,
-      "Flags": [
-        "impassable"
-      ],
-      "FrontSidedef": 429
-    },
-    {
-      "Id": 432,
-      "StartVertex": 420,
-      "EndVertex": 411,
-      "Flags": [
-        "impassable"
-      ],
-      "FrontSidedef": 431
-    },
-    {
-      "Id": 441,
-      "StartVertex": 435,
-      "EndVertex": 436,
-      "Flags": [
-        "impassable"
-      ],
-      "FrontSidedef": 440
-    },
-    {
-      "Id": 443,
-      "StartVertex": 436,
-      "EndVertex": 437,
-      "Flags": [
-        "impassable"
-      ],
-      "FrontSidedef": 442
-    },
-    {
-      "Id": 445,
-      "StartVertex": 437,
-      "EndVertex": 434,
-      "Flags": [
-        "impassable"
-      ],
-      "FrontSidedef": 444
-    },
-    {
-      "Id": 454,
-      "StartVertex": 319,
-      "EndVertex": 451,
-      "Flags": [
-        "impassable"
-      ],
-      "FrontSidedef": 453
-    },
-    {
-      "Id": 456,
-      "StartVertex": 451,
-      "EndVertex": 452,
-      "Flags": [
-        "impassable",
-        "twoSided"
-      ],
-      "FrontSidedef": 455,
-      "BackSidedef": 467
-    },
-    {
-      "Id": 458,
-      "StartVertex": 452,
-      "EndVertex": 320,
-      "Flags": [
-        "impassable"
-      ],
-      "FrontSidedef": 457
-    },
-    {
-      "Id": 462,
-      "StartVertex": 434,
-      "EndVertex": 459,
-      "Flags": [
-        "impassable"
-      ],
-      "FrontSidedef": 461
-    },
-    {
-      "Id": 464,
-      "StartVertex": 459,
-      "EndVertex": 460,
-      "Flags": [
-        "impassable",
-        "twoSided"
-      ],
-      "Action": {
-        "Special": 26,
-        "Tag": 450
-      },
-      "FrontSidedef": 463,
-      "BackSidedef": 468
-    },
-    {
-      "Id": 466,
-      "StartVertex": 460,
-      "EndVertex": 435,
-      "Flags": [
-        "impassable"
-      ],
-      "FrontSidedef": 465
-    },
-    {
-      "Id": 470,
-      "StartVertex": 452,
-      "EndVertex": 459,
-      "Flags": [
-        "impassable"
-      ],
-      "FrontSidedef": 469
-    },
-    {
-      "Id": 472,
-      "StartVertex": 460,
-      "EndVertex": 451,
-      "Flags": [
-        "impassable"
-      ],
-      "FrontSidedef": 471
-    },
-    {
-      "Id": 481,
-      "StartVertex": 475,
-      "EndVertex": 476,
-      "Flags": [
-        "impassable"
-      ],
-      "FrontSidedef": 480
-    },
-    {
-      "Id": 483,
-      "StartVertex": 476,
-      "EndVertex": 477,
-      "Flags": [
-        "impassable"
-      ],
-      "FrontSidedef": 482
-    },
-    {
-      "Id": 485,
-      "StartVertex": 477,
-      "EndVertex": 474,
-      "Flags": [
-        "impassable"
-      ],
-      "FrontSidedef": 484
-    },
-    {
-      "Id": 494,
-      "StartVertex": 434,
-      "EndVertex": 491,
-      "Flags": [
-        "impassable"
-      ],
-      "FrontSidedef": 493
-    },
-    {
-      "Id": 496,
-      "StartVertex": 491,
-      "EndVertex": 492,
-      "Flags": [
-        "impassable",
-        "twoSided"
-      ],
-      "Action": {
-        "Special": 26,
-        "Tag": 490
-      },
-      "FrontSidedef": 495,
-      "BackSidedef": 507
-    },
-    {
-      "Id": 498,
-      "StartVertex": 492,
-      "EndVertex": 435,
-      "Flags": [
-        "impassable"
-      ],
-      "FrontSidedef": 497
-    },
-    {
-      "Id": 502,
-      "StartVertex": 474,
-      "EndVertex": 499,
-      "Flags": [
-        "impassable"
-      ],
-      "FrontSidedef": 501
-    },
-    {
-      "Id": 504,
-      "StartVertex": 499,
-      "EndVertex": 500,
-      "Flags": [
-        "impassable",
-        "twoSided"
-      ],
-      "FrontSidedef": 503,
-      "BackSidedef": 508
-    },
-    {
-      "Id": 506,
-      "StartVertex": 500,
-      "EndVertex": 475,
-      "Flags": [
-        "impassable"
-      ],
-      "FrontSidedef": 505
-    },
-    {
-      "Id": 510,
-      "StartVertex": 492,
-      "EndVertex": 499,
-      "Flags": [
-        "impassable"
-      ],
-      "FrontSidedef": 509
-    },
-    {
-      "Id": 512,
-      "StartVertex": 500,
-      "EndVertex": 491,
-      "Flags": [
-        "impassable"
-      ],
-      "FrontSidedef": 511
-    },
-    {
-      "Id": 521,
-      "StartVertex": 515,
-      "EndVertex": 516,
-      "Flags": [
-        "impassable"
-      ],
-      "FrontSidedef": 520
-    },
-    {
-      "Id": 523,
-      "StartVertex": 516,
-      "EndVertex": 517,
-      "Flags": [
-        "impassable"
-      ],
-      "FrontSidedef": 522
-    },
-    {
-      "Id": 525,
-      "StartVertex": 517,
-      "EndVertex": 514,
-      "Flags": [
-        "impassable"
-      ],
-      "FrontSidedef": 524
-    },
-    {
-      "Id": 532,
-      "StartVertex": 474,
-      "EndVertex": 529,
-      "Flags": [
-        "impassable"
-      ],
-      "FrontSidedef": 531
-    },
-    {
-      "Id": 534,
-      "StartVertex": 529,
-      "EndVertex": 530,
-      "Flags": [
-        "impassable",
-        "twoSided"
-      ],
-      "Action": {
-        "Special": 26,
-        "Tag": 528
-      },
-      "FrontSidedef": 533,
-      "BackSidedef": 545
-    },
-    {
-      "Id": 536,
-      "StartVertex": 530,
-      "EndVertex": 475,
-      "Flags": [
-        "impassable"
-      ],
-      "FrontSidedef": 535
-    },
-    {
-      "Id": 540,
-      "StartVertex": 514,
-      "EndVertex": 537,
-      "Flags": [
-        "impassable"
-      ],
-      "FrontSidedef": 539
-    },
-    {
-      "Id": 542,
-      "StartVertex": 537,
-      "EndVertex": 538,
-      "Flags": [
-        "impassable",
-        "twoSided"
-      ],
-      "FrontSidedef": 541,
-      "BackSidedef": 546
-    },
-    {
-      "Id": 544,
-      "StartVertex": 538,
-      "EndVertex": 515,
-      "Flags": [
-        "impassable"
-      ],
-      "FrontSidedef": 543
-    },
-    {
-      "Id": 548,
-      "StartVertex": 530,
-      "EndVertex": 537,
-      "Flags": [
-        "impassable"
-      ],
-      "FrontSidedef": 547
-    },
-    {
-      "Id": 550,
-      "StartVertex": 538,
-      "EndVertex": 529,
-      "Flags": [
-        "impassable"
-      ],
-      "FrontSidedef": 549
-    },
-    {
-      "Id": 559,
-      "StartVertex": 553,
-      "EndVertex": 554,
-      "Flags": [
-        "impassable"
-      ],
-      "FrontSidedef": 558
-    },
-    {
-      "Id": 561,
-      "StartVertex": 554,
-      "EndVertex": 555,
-      "Flags": [
-        "impassable"
-      ],
-      "FrontSidedef": 560
-    },
-    {
-      "Id": 563,
-      "StartVertex": 555,
-      "EndVertex": 552,
-      "Flags": [
-        "impassable"
-      ],
-      "FrontSidedef": 562
-    },
-    {
-      "Id": 568,
-      "StartVertex": 514,
-      "EndVertex": 565,
-      "Flags": [
-        "impassable"
-      ],
-      "FrontSidedef": 567
-    },
-    {
-      "Id": 570,
-      "StartVertex": 565,
-      "EndVertex": 566,
-      "Flags": [
-        "impassable",
-        "twoSided"
-      ],
-      "Action": {
-        "Special": 26,
-        "Tag": 564
-      },
-      "FrontSidedef": 569,
-      "BackSidedef": 581
-    },
-    {
-      "Id": 572,
-      "StartVertex": 566,
-      "EndVertex": 515,
-      "Flags": [
-        "impassable"
-      ],
-      "FrontSidedef": 571
-    },
-    {
-      "Id": 576,
-      "StartVertex": 552,
-      "EndVertex": 573,
-      "Flags": [
-        "impassable"
-      ],
-      "FrontSidedef": 575
-    },
-    {
-      "Id": 578,
-      "StartVertex": 573,
-      "EndVertex": 574,
-      "Flags": [
-        "impassable",
-        "twoSided"
-      ],
-      "FrontSidedef": 577,
-      "BackSidedef": 582
-    },
-    {
-      "Id": 580,
-      "StartVertex": 574,
-      "EndVertex": 553,
-      "Flags": [
-        "impassable"
-      ],
-      "FrontSidedef": 579
-    },
-    {
-      "Id": 584,
-      "StartVertex": 566,
-      "EndVertex": 573,
-      "Flags": [
-        "impassable"
-      ],
-      "FrontSidedef": 583
-    },
-    {
-      "Id": 586,
-      "StartVertex": 574,
-      "EndVertex": 565,
-      "Flags": [
-        "impassable"
-      ],
-      "FrontSidedef": 585
-    },
-    {
-      "Id": 593,
-      "StartVertex": 588,
-      "EndVertex": 589,
-      "Flags": [
-        "twoSided"
-      ],
-      "FrontSidedef": 592,
-      "BackSidedef": 594
-    },
-    {
-      "Id": 596,
-      "StartVertex": 589,
-      "EndVertex": 590,
-      "Flags": [
-        "twoSided"
-      ],
-      "FrontSidedef": 595,
-      "BackSidedef": 597
-    },
-    {
-      "Id": 599,
-      "StartVertex": 590,
-      "EndVertex": 591,
-      "Flags": [
-        "twoSided"
-      ],
-      "FrontSidedef": 598,
-      "BackSidedef": 600
-    },
-    {
-      "Id": 602,
-      "StartVertex": 591,
-      "EndVertex": 588,
-      "Flags": [
-        "twoSided"
-      ],
-      "FrontSidedef": 601,
-      "BackSidedef": 603
     }
   ],
   "Sidedefs": [
@@ -2331,7 +809,7 @@
       "OffsetX": 0,
       "OffsetY": 0,
       "TextureTop": "-",
-      "TextureMiddle": "MARBLE1",
+      "TextureMiddle": "ROCK05",
       "TextureBottom": "-",
       "Sector": 0
     },
@@ -2340,7 +818,7 @@
       "OffsetX": 0,
       "OffsetY": 0,
       "TextureTop": "-",
-      "TextureMiddle": "MARBLE1",
+      "TextureMiddle": "ROCK05",
       "TextureBottom": "-",
       "Sector": 0
     },
@@ -2349,7 +827,7 @@
       "OffsetX": 0,
       "OffsetY": 0,
       "TextureTop": "-",
-      "TextureMiddle": "MARBLE1",
+      "TextureMiddle": "ROCK05",
       "TextureBottom": "-",
       "Sector": 0
     },
@@ -2358,7 +836,7 @@
       "OffsetX": 0,
       "OffsetY": 0,
       "TextureTop": "-",
-      "TextureMiddle": "MARBLE1",
+      "TextureMiddle": "ROCK05",
       "TextureBottom": "-",
       "Sector": 0
     },
@@ -2399,83 +877,38 @@
       "Sector": 17
     },
     {
-      "Id": 35,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "MARBLE1",
-      "TextureBottom": "-",
-      "Sector": 0
-    },
-    {
       "Id": 37,
       "OffsetX": 0,
       "OffsetY": 0,
       "TextureTop": "-",
-      "TextureMiddle": "BIGDOOR2",
+      "TextureMiddle": "ROCK05",
       "TextureBottom": "-",
-      "Sector": 0
+      "Sector": 32
     },
     {
       "Id": 39,
       "OffsetX": 0,
       "OffsetY": 0,
       "TextureTop": "-",
-      "TextureMiddle": "MARBLE1",
+      "TextureMiddle": "ROCK05",
       "TextureBottom": "-",
-      "Sector": 0
+      "Sector": 32
+    },
+    {
+      "Id": 41,
+      "OffsetX": 0,
+      "OffsetY": 0,
+      "TextureTop": "-",
+      "TextureMiddle": "ROCK05",
+      "TextureBottom": "-",
+      "Sector": 32
     },
     {
       "Id": 43,
       "OffsetX": 0,
       "OffsetY": 0,
       "TextureTop": "-",
-      "TextureMiddle": "MARBLE1",
-      "TextureBottom": "-",
-      "Sector": 17
-    },
-    {
-      "Id": 45,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "BIGDOOR2",
-      "TextureBottom": "-",
-      "Sector": 17
-    },
-    {
-      "Id": 47,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "MARBLE1",
-      "TextureBottom": "-",
-      "Sector": 17
-    },
-    {
-      "Id": 49,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "DOORTRAK",
-      "TextureBottom": "-",
-      "Sector": 32
-    },
-    {
-      "Id": 50,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "DOORTRAK",
-      "TextureBottom": "-",
-      "Sector": 32
-    },
-    {
-      "Id": 51,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "DOORTRAK",
+      "TextureMiddle": "ROCK05",
       "TextureBottom": "-",
       "Sector": 32
     },
@@ -2484,45 +917,63 @@
       "OffsetX": 0,
       "OffsetY": 0,
       "TextureTop": "-",
-      "TextureMiddle": "DOORTRAK",
+      "TextureMiddle": "ROCK05",
       "TextureBottom": "-",
-      "Sector": 32
+      "Sector": 48
     },
     {
-      "Id": 60,
+      "Id": 55,
       "OffsetX": 0,
       "OffsetY": 0,
       "TextureTop": "-",
       "TextureMiddle": "ROCK05",
       "TextureBottom": "-",
-      "Sector": 55
+      "Sector": 48
     },
     {
-      "Id": 62,
+      "Id": 57,
       "OffsetX": 0,
       "OffsetY": 0,
       "TextureTop": "-",
       "TextureMiddle": "ROCK05",
       "TextureBottom": "-",
-      "Sector": 55
+      "Sector": 48
     },
     {
-      "Id": 64,
+      "Id": 59,
       "OffsetX": 0,
       "OffsetY": 0,
       "TextureTop": "-",
       "TextureMiddle": "ROCK05",
       "TextureBottom": "-",
-      "Sector": 55
+      "Sector": 48
     },
     {
-      "Id": 66,
+      "Id": 68,
       "OffsetX": 0,
       "OffsetY": 0,
       "TextureTop": "-",
-      "TextureMiddle": "ROCK05",
+      "TextureMiddle": "MARBLE1",
       "TextureBottom": "-",
-      "Sector": 55
+      "Sector": 63
+    },
+    {
+      "Id": 70,
+      "OffsetX": 0,
+      "OffsetY": 0,
+      "TextureTop": "-",
+      "TextureMiddle": "MARBLE1",
+      "TextureBottom": "-",
+      "Sector": 63
+    },
+    {
+      "Id": 72,
+      "OffsetX": 0,
+      "OffsetY": 0,
+      "TextureTop": "-",
+      "TextureMiddle": "MARBLE1",
+      "TextureBottom": "-",
+      "Sector": 63
     },
     {
       "Id": 74,
@@ -2531,232 +982,151 @@
       "TextureTop": "-",
       "TextureMiddle": "MARBLE1",
       "TextureBottom": "-",
-      "Sector": 17
+      "Sector": 63
     },
     {
-      "Id": 76,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "BIGDOOR2",
-      "TextureBottom": "-",
-      "Sector": 17
-    },
-    {
-      "Id": 78,
+      "Id": 83,
       "OffsetX": 0,
       "OffsetY": 0,
       "TextureTop": "-",
       "TextureMiddle": "MARBLE1",
       "TextureBottom": "-",
-      "Sector": 17
+      "Sector": 78
     },
     {
-      "Id": 82,
+      "Id": 85,
       "OffsetX": 0,
       "OffsetY": 0,
       "TextureTop": "-",
-      "TextureMiddle": "ROCK05",
+      "TextureMiddle": "MARBLE1",
       "TextureBottom": "-",
-      "Sector": 55
+      "Sector": 78
     },
     {
-      "Id": 84,
+      "Id": 87,
       "OffsetX": 0,
       "OffsetY": 0,
       "TextureTop": "-",
-      "TextureMiddle": "BIGDOOR2",
+      "TextureMiddle": "MARBLE1",
       "TextureBottom": "-",
-      "Sector": 55
-    },
-    {
-      "Id": 86,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "ROCK05",
-      "TextureBottom": "-",
-      "Sector": 55
-    },
-    {
-      "Id": 88,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "DOORTRAK",
-      "TextureBottom": "-",
-      "Sector": 71
+      "Sector": 78
     },
     {
       "Id": 89,
       "OffsetX": 0,
       "OffsetY": 0,
       "TextureTop": "-",
-      "TextureMiddle": "DOORTRAK",
-      "TextureBottom": "-",
-      "Sector": 71
-    },
-    {
-      "Id": 90,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "DOORTRAK",
-      "TextureBottom": "-",
-      "Sector": 71
-    },
-    {
-      "Id": 92,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "DOORTRAK",
-      "TextureBottom": "-",
-      "Sector": 71
-    },
-    {
-      "Id": 99,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "TEKWALL2",
-      "TextureBottom": "-",
-      "Sector": 94
-    },
-    {
-      "Id": 101,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "TEKWALL2",
-      "TextureBottom": "-",
-      "Sector": 94
-    },
-    {
-      "Id": 103,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "TEKWALL2",
-      "TextureBottom": "-",
-      "Sector": 94
-    },
-    {
-      "Id": 105,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "TEKWALL2",
-      "TextureBottom": "-",
-      "Sector": 94
-    },
-    {
-      "Id": 112,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
       "TextureMiddle": "MARBLE1",
       "TextureBottom": "-",
-      "Sector": 17
+      "Sector": 78
     },
     {
-      "Id": 114,
+      "Id": 98,
       "OffsetX": 0,
       "OffsetY": 0,
       "TextureTop": "-",
-      "TextureMiddle": "BIGDOOR2",
+      "TextureMiddle": "SKIN3",
       "TextureBottom": "-",
-      "Sector": 17
+      "Sector": 93
     },
     {
-      "Id": 116,
+      "Id": 100,
       "OffsetX": 0,
       "OffsetY": 0,
       "TextureTop": "-",
-      "TextureMiddle": "MARBLE1",
+      "TextureMiddle": "SKIN3",
       "TextureBottom": "-",
-      "Sector": 17
+      "Sector": 93
     },
     {
-      "Id": 120,
+      "Id": 102,
       "OffsetX": 0,
       "OffsetY": 0,
       "TextureTop": "-",
-      "TextureMiddle": "TEKWALL2",
+      "TextureMiddle": "SKIN3",
       "TextureBottom": "-",
-      "Sector": 94
+      "Sector": 93
     },
     {
-      "Id": 122,
+      "Id": 104,
       "OffsetX": 0,
       "OffsetY": 0,
       "TextureTop": "-",
-      "TextureMiddle": "BIGDOOR2",
+      "TextureMiddle": "SKIN3",
       "TextureBottom": "-",
-      "Sector": 94
+      "Sector": 93
     },
     {
-      "Id": 124,
+      "Id": 113,
       "OffsetX": 0,
       "OffsetY": 0,
       "TextureTop": "-",
-      "TextureMiddle": "TEKWALL2",
+      "TextureMiddle": "SP_HOT1",
       "TextureBottom": "-",
-      "Sector": 94
+      "Sector": 108
     },
     {
-      "Id": 126,
+      "Id": 115,
       "OffsetX": 0,
       "OffsetY": 0,
       "TextureTop": "-",
-      "TextureMiddle": "DOORTRAK",
+      "TextureMiddle": "SP_HOT1",
       "TextureBottom": "-",
-      "Sector": 109
+      "Sector": 108
     },
     {
-      "Id": 127,
+      "Id": 117,
       "OffsetX": 0,
       "OffsetY": 0,
       "TextureTop": "-",
-      "TextureMiddle": "DOORTRAK",
+      "TextureMiddle": "SP_HOT1",
       "TextureBottom": "-",
-      "Sector": 109
+      "Sector": 108
+    },
+    {
+      "Id": 119,
+      "OffsetX": 0,
+      "OffsetY": 0,
+      "TextureTop": "-",
+      "TextureMiddle": "SP_HOT1",
+      "TextureBottom": "-",
+      "Sector": 108
     },
     {
       "Id": 128,
       "OffsetX": 0,
       "OffsetY": 0,
       "TextureTop": "-",
-      "TextureMiddle": "DOORTRAK",
+      "TextureMiddle": "SUPPORT2",
       "TextureBottom": "-",
-      "Sector": 109
+      "Sector": 123
     },
     {
       "Id": 130,
       "OffsetX": 0,
       "OffsetY": 0,
       "TextureTop": "-",
-      "TextureMiddle": "DOORTRAK",
+      "TextureMiddle": "SUPPORT2",
       "TextureBottom": "-",
-      "Sector": 109
+      "Sector": 123
     },
     {
-      "Id": 137,
+      "Id": 132,
       "OffsetX": 0,
       "OffsetY": 0,
       "TextureTop": "-",
-      "TextureMiddle": "ROCK05",
+      "TextureMiddle": "SUPPORT2",
       "TextureBottom": "-",
-      "Sector": 132
+      "Sector": 123
     },
     {
-      "Id": 139,
+      "Id": 134,
       "OffsetX": 0,
       "OffsetY": 0,
       "TextureTop": "-",
-      "TextureMiddle": "ROCK05",
+      "TextureMiddle": "SUPPORT2",
       "TextureBottom": "-",
-      "Sector": 132
+      "Sector": 123
     },
     {
       "Id": 141,
@@ -2765,7 +1135,7 @@
       "TextureTop": "-",
       "TextureMiddle": "ROCK05",
       "TextureBottom": "-",
-      "Sector": 132
+      "Sector": 136
     },
     {
       "Id": 143,
@@ -2774,97 +1144,79 @@
       "TextureTop": "-",
       "TextureMiddle": "ROCK05",
       "TextureBottom": "-",
-      "Sector": 132
+      "Sector": 136
     },
     {
-      "Id": 150,
+      "Id": 145,
       "OffsetX": 0,
       "OffsetY": 0,
       "TextureTop": "-",
       "TextureMiddle": "ROCK05",
       "TextureBottom": "-",
-      "Sector": 55
+      "Sector": 136
     },
     {
-      "Id": 152,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "BIGDOOR2",
-      "TextureBottom": "-",
-      "Sector": 55
-    },
-    {
-      "Id": 154,
+      "Id": 147,
       "OffsetX": 0,
       "OffsetY": 0,
       "TextureTop": "-",
       "TextureMiddle": "ROCK05",
       "TextureBottom": "-",
-      "Sector": 55
+      "Sector": 136
     },
     {
       "Id": 158,
       "OffsetX": 0,
       "OffsetY": 0,
       "TextureTop": "-",
-      "TextureMiddle": "ROCK05",
+      "TextureMiddle": "BRICK9",
       "TextureBottom": "-",
-      "Sector": 132
+      "Sector": 153
     },
     {
       "Id": 160,
       "OffsetX": 0,
       "OffsetY": 0,
       "TextureTop": "-",
-      "TextureMiddle": "BIGDOOR2",
+      "TextureMiddle": "BRICK9",
       "TextureBottom": "-",
-      "Sector": 132
+      "Sector": 153
     },
     {
       "Id": 162,
       "OffsetX": 0,
       "OffsetY": 0,
       "TextureTop": "-",
-      "TextureMiddle": "ROCK05",
+      "TextureMiddle": "BRICK9",
       "TextureBottom": "-",
-      "Sector": 132
+      "Sector": 153
     },
     {
       "Id": 164,
       "OffsetX": 0,
       "OffsetY": 0,
       "TextureTop": "-",
-      "TextureMiddle": "DOORTRAK",
+      "TextureMiddle": "BRICK9",
       "TextureBottom": "-",
-      "Sector": 147
+      "Sector": 153
     },
     {
-      "Id": 165,
+      "Id": 171,
       "OffsetX": 0,
       "OffsetY": 0,
       "TextureTop": "-",
-      "TextureMiddle": "DOORTRAK",
+      "TextureMiddle": "ROCK05",
       "TextureBottom": "-",
-      "Sector": 147
+      "Sector": 166
     },
     {
-      "Id": 166,
+      "Id": 173,
       "OffsetX": 0,
       "OffsetY": 0,
       "TextureTop": "-",
-      "TextureMiddle": "DOORTRAK",
+      "TextureMiddle": "ROCK05",
       "TextureBottom": "-",
-      "Sector": 147
-    },
-    {
-      "Id": 168,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "DOORTRAK",
-      "TextureBottom": "-",
-      "Sector": 147
+      "Sector": 166
     },
     {
       "Id": 175,
@@ -2873,7 +1225,7 @@
       "TextureTop": "-",
       "TextureMiddle": "ROCK05",
       "TextureBottom": "-",
-      "Sector": 170
+      "Sector": 166
     },
     {
       "Id": 177,
@@ -2882,232 +1234,151 @@
       "TextureTop": "-",
       "TextureMiddle": "ROCK05",
       "TextureBottom": "-",
-      "Sector": 170
+      "Sector": 166
     },
     {
-      "Id": 179,
+      "Id": 185,
       "OffsetX": 0,
       "OffsetY": 0,
       "TextureTop": "-",
-      "TextureMiddle": "ROCK05",
+      "TextureMiddle": "SP_HOT1",
       "TextureBottom": "-",
-      "Sector": 170
+      "Sector": 180
     },
     {
-      "Id": 181,
+      "Id": 187,
       "OffsetX": 0,
       "OffsetY": 0,
       "TextureTop": "-",
-      "TextureMiddle": "ROCK05",
+      "TextureMiddle": "SP_HOT1",
       "TextureBottom": "-",
-      "Sector": 170
+      "Sector": 180
     },
     {
-      "Id": 188,
+      "Id": 189,
       "OffsetX": 0,
       "OffsetY": 0,
       "TextureTop": "-",
-      "TextureMiddle": "ROCK05",
+      "TextureMiddle": "SP_HOT1",
       "TextureBottom": "-",
-      "Sector": 132
+      "Sector": 180
     },
     {
-      "Id": 190,
+      "Id": 191,
       "OffsetX": 0,
       "OffsetY": 0,
       "TextureTop": "-",
-      "TextureMiddle": "BIGDOOR2",
+      "TextureMiddle": "SP_HOT1",
       "TextureBottom": "-",
-      "Sector": 132
-    },
-    {
-      "Id": 192,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "ROCK05",
-      "TextureBottom": "-",
-      "Sector": 132
-    },
-    {
-      "Id": 196,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "ROCK05",
-      "TextureBottom": "-",
-      "Sector": 170
-    },
-    {
-      "Id": 198,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "BIGDOOR2",
-      "TextureBottom": "-",
-      "Sector": 170
-    },
-    {
-      "Id": 200,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "ROCK05",
-      "TextureBottom": "-",
-      "Sector": 170
+      "Sector": 180
     },
     {
       "Id": 202,
       "OffsetX": 0,
       "OffsetY": 0,
       "TextureTop": "-",
-      "TextureMiddle": "DOORTRAK",
+      "TextureMiddle": "SHAWN2",
       "TextureBottom": "-",
-      "Sector": 185
-    },
-    {
-      "Id": 203,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "DOORTRAK",
-      "TextureBottom": "-",
-      "Sector": 185
+      "Sector": 197
     },
     {
       "Id": 204,
       "OffsetX": 0,
       "OffsetY": 0,
       "TextureTop": "-",
-      "TextureMiddle": "DOORTRAK",
+      "TextureMiddle": "SHAWN2",
       "TextureBottom": "-",
-      "Sector": 185
+      "Sector": 197
     },
     {
       "Id": 206,
       "OffsetX": 0,
       "OffsetY": 0,
       "TextureTop": "-",
-      "TextureMiddle": "DOORTRAK",
+      "TextureMiddle": "SHAWN2",
       "TextureBottom": "-",
-      "Sector": 185
+      "Sector": 197
     },
     {
-      "Id": 213,
+      "Id": 208,
       "OffsetX": 0,
       "OffsetY": 0,
       "TextureTop": "-",
-      "TextureMiddle": "SUPPORT3",
+      "TextureMiddle": "SHAWN2",
       "TextureBottom": "-",
-      "Sector": 208
-    },
-    {
-      "Id": 215,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "SUPPORT3",
-      "TextureBottom": "-",
-      "Sector": 208
-    },
-    {
-      "Id": 217,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "SUPPORT3",
-      "TextureBottom": "-",
-      "Sector": 208
+      "Sector": 197
     },
     {
       "Id": 219,
       "OffsetX": 0,
       "OffsetY": 0,
       "TextureTop": "-",
-      "TextureMiddle": "SUPPORT3",
+      "TextureMiddle": "SKIN3",
       "TextureBottom": "-",
-      "Sector": 208
+      "Sector": 214
     },
     {
-      "Id": 224,
+      "Id": 221,
       "OffsetX": 0,
       "OffsetY": 0,
       "TextureTop": "-",
-      "TextureMiddle": "ROCK05",
+      "TextureMiddle": "SKIN3",
       "TextureBottom": "-",
-      "Sector": 132
+      "Sector": 214
     },
     {
-      "Id": 226,
+      "Id": 223,
       "OffsetX": 0,
       "OffsetY": 0,
       "TextureTop": "-",
-      "TextureMiddle": "BIGDOOR2",
+      "TextureMiddle": "SKIN3",
       "TextureBottom": "-",
-      "Sector": 132
+      "Sector": 214
     },
     {
-      "Id": 228,
+      "Id": 225,
       "OffsetX": 0,
       "OffsetY": 0,
       "TextureTop": "-",
-      "TextureMiddle": "ROCK05",
+      "TextureMiddle": "SKIN3",
       "TextureBottom": "-",
-      "Sector": 132
-    },
-    {
-      "Id": 232,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "SUPPORT3",
-      "TextureBottom": "-",
-      "Sector": 208
+      "Sector": 214
     },
     {
       "Id": 234,
       "OffsetX": 0,
       "OffsetY": 0,
       "TextureTop": "-",
-      "TextureMiddle": "BIGDOOR2",
+      "TextureMiddle": "SP_HOT1",
       "TextureBottom": "-",
-      "Sector": 208
+      "Sector": 229
     },
     {
       "Id": 236,
       "OffsetX": 0,
       "OffsetY": 0,
       "TextureTop": "-",
-      "TextureMiddle": "SUPPORT3",
+      "TextureMiddle": "SP_HOT1",
       "TextureBottom": "-",
-      "Sector": 208
+      "Sector": 229
     },
     {
       "Id": 238,
       "OffsetX": 0,
       "OffsetY": 0,
       "TextureTop": "-",
-      "TextureMiddle": "DOORTRAK",
+      "TextureMiddle": "SP_HOT1",
       "TextureBottom": "-",
-      "Sector": 221
-    },
-    {
-      "Id": 239,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "DOORTRAK",
-      "TextureBottom": "-",
-      "Sector": 221
+      "Sector": 229
     },
     {
       "Id": 240,
       "OffsetX": 0,
       "OffsetY": 0,
       "TextureTop": "-",
-      "TextureMiddle": "DOORTRAK",
+      "TextureMiddle": "SP_HOT1",
       "TextureBottom": "-",
-      "Sector": 221
+      "Sector": 229
     },
     {
       "Id": 242,
@@ -3116,25 +1387,97 @@
       "TextureTop": "-",
       "TextureMiddle": "DOORTRAK",
       "TextureBottom": "-",
-      "Sector": 221
+      "Sector": 17
+    },
+    {
+      "Id": 243,
+      "OffsetX": 0,
+      "OffsetY": 0,
+      "TextureTop": "-",
+      "TextureMiddle": "MARBLE1",
+      "TextureBottom": "-",
+      "Sector": 32
+    },
+    {
+      "Id": 244,
+      "OffsetX": 0,
+      "OffsetY": 0,
+      "TextureTop": "-",
+      "TextureMiddle": "MARBLE1",
+      "TextureBottom": "-",
+      "Sector": 48
+    },
+    {
+      "Id": 245,
+      "OffsetX": 0,
+      "OffsetY": 0,
+      "TextureTop": "-",
+      "TextureMiddle": "ROCK05",
+      "TextureBottom": "-",
+      "Sector": 63
+    },
+    {
+      "Id": 246,
+      "OffsetX": 0,
+      "OffsetY": 0,
+      "TextureTop": "-",
+      "TextureMiddle": "MARBLE1",
+      "TextureBottom": "-",
+      "Sector": 78
+    },
+    {
+      "Id": 247,
+      "OffsetX": 0,
+      "OffsetY": 0,
+      "TextureTop": "-",
+      "TextureMiddle": "ROCK05",
+      "TextureBottom": "-",
+      "Sector": 93
+    },
+    {
+      "Id": 248,
+      "OffsetX": 0,
+      "OffsetY": 0,
+      "TextureTop": "-",
+      "TextureMiddle": "MARBLE1",
+      "TextureBottom": "-",
+      "Sector": 108
     },
     {
       "Id": 249,
       "OffsetX": 0,
       "OffsetY": 0,
       "TextureTop": "-",
-      "TextureMiddle": "BRICK9",
+      "TextureMiddle": "ROCK05",
       "TextureBottom": "-",
-      "Sector": 244
+      "Sector": 123
+    },
+    {
+      "Id": 250,
+      "OffsetX": 0,
+      "OffsetY": 0,
+      "TextureTop": "-",
+      "TextureMiddle": "SUPPORT2",
+      "TextureBottom": "-",
+      "Sector": 136
     },
     {
       "Id": 251,
       "OffsetX": 0,
       "OffsetY": 0,
       "TextureTop": "-",
-      "TextureMiddle": "BRICK9",
+      "TextureMiddle": "DOORTRAK",
       "TextureBottom": "-",
-      "Sector": 244
+      "Sector": 180
+    },
+    {
+      "Id": 252,
+      "OffsetX": 0,
+      "OffsetY": 0,
+      "TextureTop": "-",
+      "TextureMiddle": "DOORTRAK",
+      "TextureBottom": "-",
+      "Sector": 153
     },
     {
       "Id": 253,
@@ -3143,1186 +1486,34 @@
       "TextureTop": "-",
       "TextureMiddle": "BRICK9",
       "TextureBottom": "-",
-      "Sector": 244
+      "Sector": 166
+    },
+    {
+      "Id": 254,
+      "OffsetX": 0,
+      "OffsetY": 0,
+      "TextureTop": "-",
+      "TextureMiddle": "DOORTRAK",
+      "TextureBottom": "-",
+      "Sector": 197
     },
     {
       "Id": 255,
       "OffsetX": 0,
       "OffsetY": 0,
       "TextureTop": "-",
-      "TextureMiddle": "BRICK9",
-      "TextureBottom": "-",
-      "Sector": 244
-    },
-    {
-      "Id": 260,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "ROCK05",
-      "TextureBottom": "-",
-      "Sector": 132
-    },
-    {
-      "Id": 262,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "BIGDOOR2",
-      "TextureBottom": "-",
-      "Sector": 132
-    },
-    {
-      "Id": 264,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "ROCK05",
-      "TextureBottom": "-",
-      "Sector": 132
-    },
-    {
-      "Id": 268,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "BRICK9",
-      "TextureBottom": "-",
-      "Sector": 244
-    },
-    {
-      "Id": 270,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "BIGDOOR2",
-      "TextureBottom": "-",
-      "Sector": 244
-    },
-    {
-      "Id": 272,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "BRICK9",
-      "TextureBottom": "-",
-      "Sector": 244
-    },
-    {
-      "Id": 274,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "DOORTRAK",
-      "TextureBottom": "-",
-      "Sector": 257
-    },
-    {
-      "Id": 275,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "DOORTRAK",
-      "TextureBottom": "-",
-      "Sector": 257
-    },
-    {
-      "Id": 276,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "DOORTRAK",
-      "TextureBottom": "-",
-      "Sector": 257
-    },
-    {
-      "Id": 278,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "DOORTRAK",
-      "TextureBottom": "-",
-      "Sector": 257
-    },
-    {
-      "Id": 285,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "ROCK05",
-      "TextureBottom": "-",
-      "Sector": 280
-    },
-    {
-      "Id": 287,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "ROCK05",
-      "TextureBottom": "-",
-      "Sector": 280
-    },
-    {
-      "Id": 289,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "ROCK05",
-      "TextureBottom": "-",
-      "Sector": 280
-    },
-    {
-      "Id": 291,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "ROCK05",
-      "TextureBottom": "-",
-      "Sector": 280
-    },
-    {
-      "Id": 298,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "ROCK05",
-      "TextureBottom": "-",
-      "Sector": 170
-    },
-    {
-      "Id": 300,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "BIGDOOR2",
-      "TextureBottom": "-",
-      "Sector": 170
-    },
-    {
-      "Id": 302,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "ROCK05",
-      "TextureBottom": "-",
-      "Sector": 170
-    },
-    {
-      "Id": 306,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "ROCK05",
-      "TextureBottom": "-",
-      "Sector": 280
-    },
-    {
-      "Id": 308,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "BIGDOOR2",
-      "TextureBottom": "-",
-      "Sector": 280
-    },
-    {
-      "Id": 310,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "ROCK05",
-      "TextureBottom": "-",
-      "Sector": 280
-    },
-    {
-      "Id": 312,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "DOORTRAK",
-      "TextureBottom": "-",
-      "Sector": 295
-    },
-    {
-      "Id": 313,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "DOORTRAK",
-      "TextureBottom": "-",
-      "Sector": 295
-    },
-    {
-      "Id": 314,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "DOORTRAK",
-      "TextureBottom": "-",
-      "Sector": 295
-    },
-    {
-      "Id": 316,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "DOORTRAK",
-      "TextureBottom": "-",
-      "Sector": 295
-    },
-    {
-      "Id": 323,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "MARBLE1",
-      "TextureBottom": "-",
-      "Sector": 318
-    },
-    {
-      "Id": 325,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "MARBLE1",
-      "TextureBottom": "-",
-      "Sector": 318
-    },
-    {
-      "Id": 327,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "MARBLE1",
-      "TextureBottom": "-",
-      "Sector": 318
-    },
-    {
-      "Id": 329,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "MARBLE1",
-      "TextureBottom": "-",
-      "Sector": 318
-    },
-    {
-      "Id": 338,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "SUPPORT3",
-      "TextureBottom": "-",
-      "Sector": 208
-    },
-    {
-      "Id": 340,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "BIGDOOR2",
-      "TextureBottom": "-",
-      "Sector": 208
-    },
-    {
-      "Id": 342,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "SUPPORT3",
-      "TextureBottom": "-",
-      "Sector": 208
-    },
-    {
-      "Id": 346,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "MARBLE1",
-      "TextureBottom": "-",
-      "Sector": 318
-    },
-    {
-      "Id": 348,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "BIGDOOR2",
-      "TextureBottom": "-",
-      "Sector": 318
-    },
-    {
-      "Id": 350,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "MARBLE1",
-      "TextureBottom": "-",
-      "Sector": 318
-    },
-    {
-      "Id": 352,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "DOORTRAK",
-      "TextureBottom": "-",
-      "Sector": 335
-    },
-    {
-      "Id": 353,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "DOORTRAK",
-      "TextureBottom": "-",
-      "Sector": 335
-    },
-    {
-      "Id": 354,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "DOORTRAK",
-      "TextureBottom": "-",
-      "Sector": 335
-    },
-    {
-      "Id": 356,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "DOORTRAK",
-      "TextureBottom": "-",
-      "Sector": 335
-    },
-    {
-      "Id": 363,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "ROCK05",
-      "TextureBottom": "-",
-      "Sector": 358
-    },
-    {
-      "Id": 365,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "ROCK05",
-      "TextureBottom": "-",
-      "Sector": 358
-    },
-    {
-      "Id": 367,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "ROCK05",
-      "TextureBottom": "-",
-      "Sector": 358
-    },
-    {
-      "Id": 369,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "ROCK05",
-      "TextureBottom": "-",
-      "Sector": 358
-    },
-    {
-      "Id": 375,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "BRICK9",
-      "TextureBottom": "-",
-      "Sector": 244
-    },
-    {
-      "Id": 377,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "BIGDOOR2",
-      "TextureBottom": "-",
-      "Sector": 244
-    },
-    {
-      "Id": 379,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "BRICK9",
-      "TextureBottom": "-",
-      "Sector": 244
-    },
-    {
-      "Id": 383,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "ROCK05",
-      "TextureBottom": "-",
-      "Sector": 358
-    },
-    {
-      "Id": 385,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "BIGDOOR2",
-      "TextureBottom": "-",
-      "Sector": 358
-    },
-    {
-      "Id": 387,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "ROCK05",
-      "TextureBottom": "-",
-      "Sector": 358
-    },
-    {
-      "Id": 389,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "DOORTRAK",
-      "TextureBottom": "-",
-      "Sector": 372
-    },
-    {
-      "Id": 390,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "DOORTRAK",
-      "TextureBottom": "-",
-      "Sector": 372
-    },
-    {
-      "Id": 391,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "DOORTRAK",
-      "TextureBottom": "-",
-      "Sector": 372
-    },
-    {
-      "Id": 393,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "DOORTRAK",
-      "TextureBottom": "-",
-      "Sector": 372
-    },
-    {
-      "Id": 400,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
       "TextureMiddle": "SKIN3",
       "TextureBottom": "-",
-      "Sector": 395
+      "Sector": 214
     },
     {
-      "Id": 402,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "SKIN3",
-      "TextureBottom": "-",
-      "Sector": 395
-    },
-    {
-      "Id": 404,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "SKIN3",
-      "TextureBottom": "-",
-      "Sector": 395
-    },
-    {
-      "Id": 406,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "SKIN3",
-      "TextureBottom": "-",
-      "Sector": 395
-    },
-    {
-      "Id": 413,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "ROCK05",
-      "TextureBottom": "-",
-      "Sector": 280
-    },
-    {
-      "Id": 415,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "BIGDOOR2",
-      "TextureBottom": "-",
-      "Sector": 280
-    },
-    {
-      "Id": 417,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "ROCK05",
-      "TextureBottom": "-",
-      "Sector": 280
-    },
-    {
-      "Id": 421,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "SKIN3",
-      "TextureBottom": "-",
-      "Sector": 395
-    },
-    {
-      "Id": 423,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "BIGDOOR2",
-      "TextureBottom": "-",
-      "Sector": 395
-    },
-    {
-      "Id": 425,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "SKIN3",
-      "TextureBottom": "-",
-      "Sector": 395
-    },
-    {
-      "Id": 427,
+      "Id": 256,
       "OffsetX": 0,
       "OffsetY": 0,
       "TextureTop": "-",
       "TextureMiddle": "DOORTRAK",
       "TextureBottom": "-",
-      "Sector": 410
-    },
-    {
-      "Id": 428,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "DOORTRAK",
-      "TextureBottom": "-",
-      "Sector": 410
-    },
-    {
-      "Id": 429,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "DOORTRAK",
-      "TextureBottom": "-",
-      "Sector": 410
-    },
-    {
-      "Id": 431,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "DOORTRAK",
-      "TextureBottom": "-",
-      "Sector": 410
-    },
-    {
-      "Id": 438,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "TEKWALL2",
-      "TextureBottom": "-",
-      "Sector": 433
-    },
-    {
-      "Id": 440,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "TEKWALL2",
-      "TextureBottom": "-",
-      "Sector": 433
-    },
-    {
-      "Id": 442,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "TEKWALL2",
-      "TextureBottom": "-",
-      "Sector": 433
-    },
-    {
-      "Id": 444,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "TEKWALL2",
-      "TextureBottom": "-",
-      "Sector": 433
-    },
-    {
-      "Id": 453,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "MARBLE1",
-      "TextureBottom": "-",
-      "Sector": 318
-    },
-    {
-      "Id": 455,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "BIGDOOR2",
-      "TextureBottom": "-",
-      "Sector": 318
-    },
-    {
-      "Id": 457,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "MARBLE1",
-      "TextureBottom": "-",
-      "Sector": 318
-    },
-    {
-      "Id": 461,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "TEKWALL2",
-      "TextureBottom": "-",
-      "Sector": 433
-    },
-    {
-      "Id": 463,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "BIGDOOR2",
-      "TextureBottom": "-",
-      "Sector": 433
-    },
-    {
-      "Id": 465,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "TEKWALL2",
-      "TextureBottom": "-",
-      "Sector": 433
-    },
-    {
-      "Id": 467,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "DOORTRAK",
-      "TextureBottom": "-",
-      "Sector": 450
-    },
-    {
-      "Id": 468,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "DOORTRAK",
-      "TextureBottom": "-",
-      "Sector": 450
-    },
-    {
-      "Id": 469,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "DOORTRAK",
-      "TextureBottom": "-",
-      "Sector": 450
-    },
-    {
-      "Id": 471,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "DOORTRAK",
-      "TextureBottom": "-",
-      "Sector": 450
-    },
-    {
-      "Id": 478,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "SKIN3",
-      "TextureBottom": "-",
-      "Sector": 473
-    },
-    {
-      "Id": 480,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "SKIN3",
-      "TextureBottom": "-",
-      "Sector": 473
-    },
-    {
-      "Id": 482,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "SKIN3",
-      "TextureBottom": "-",
-      "Sector": 473
-    },
-    {
-      "Id": 484,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "SKIN3",
-      "TextureBottom": "-",
-      "Sector": 473
-    },
-    {
-      "Id": 493,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "TEKWALL2",
-      "TextureBottom": "-",
-      "Sector": 433
-    },
-    {
-      "Id": 495,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "BIGDOOR2",
-      "TextureBottom": "-",
-      "Sector": 433
-    },
-    {
-      "Id": 497,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "TEKWALL2",
-      "TextureBottom": "-",
-      "Sector": 433
-    },
-    {
-      "Id": 501,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "SKIN3",
-      "TextureBottom": "-",
-      "Sector": 473
-    },
-    {
-      "Id": 503,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "BIGDOOR2",
-      "TextureBottom": "-",
-      "Sector": 473
-    },
-    {
-      "Id": 505,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "SKIN3",
-      "TextureBottom": "-",
-      "Sector": 473
-    },
-    {
-      "Id": 507,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "DOORTRAK",
-      "TextureBottom": "-",
-      "Sector": 490
-    },
-    {
-      "Id": 508,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "DOORTRAK",
-      "TextureBottom": "-",
-      "Sector": 490
-    },
-    {
-      "Id": 509,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "DOORTRAK",
-      "TextureBottom": "-",
-      "Sector": 490
-    },
-    {
-      "Id": 511,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "DOORTRAK",
-      "TextureBottom": "-",
-      "Sector": 490
-    },
-    {
-      "Id": 518,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "SKIN3",
-      "TextureBottom": "-",
-      "Sector": 513
-    },
-    {
-      "Id": 520,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "SKIN3",
-      "TextureBottom": "-",
-      "Sector": 513
-    },
-    {
-      "Id": 522,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "SKIN3",
-      "TextureBottom": "-",
-      "Sector": 513
-    },
-    {
-      "Id": 524,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "SKIN3",
-      "TextureBottom": "-",
-      "Sector": 513
-    },
-    {
-      "Id": 531,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "SKIN3",
-      "TextureBottom": "-",
-      "Sector": 473
-    },
-    {
-      "Id": 533,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "BIGDOOR2",
-      "TextureBottom": "-",
-      "Sector": 473
-    },
-    {
-      "Id": 535,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "SKIN3",
-      "TextureBottom": "-",
-      "Sector": 473
-    },
-    {
-      "Id": 539,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "SKIN3",
-      "TextureBottom": "-",
-      "Sector": 513
-    },
-    {
-      "Id": 541,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "BIGDOOR2",
-      "TextureBottom": "-",
-      "Sector": 513
-    },
-    {
-      "Id": 543,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "SKIN3",
-      "TextureBottom": "-",
-      "Sector": 513
-    },
-    {
-      "Id": 545,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "DOORTRAK",
-      "TextureBottom": "-",
-      "Sector": 528
-    },
-    {
-      "Id": 546,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "DOORTRAK",
-      "TextureBottom": "-",
-      "Sector": 528
-    },
-    {
-      "Id": 547,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "DOORTRAK",
-      "TextureBottom": "-",
-      "Sector": 528
-    },
-    {
-      "Id": 549,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "DOORTRAK",
-      "TextureBottom": "-",
-      "Sector": 528
-    },
-    {
-      "Id": 556,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "TEKWALL2",
-      "TextureBottom": "-",
-      "Sector": 551
-    },
-    {
-      "Id": 558,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "TEKWALL2",
-      "TextureBottom": "-",
-      "Sector": 551
-    },
-    {
-      "Id": 560,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "TEKWALL2",
-      "TextureBottom": "-",
-      "Sector": 551
-    },
-    {
-      "Id": 562,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "TEKWALL2",
-      "TextureBottom": "-",
-      "Sector": 551
-    },
-    {
-      "Id": 567,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "SKIN3",
-      "TextureBottom": "-",
-      "Sector": 513
-    },
-    {
-      "Id": 569,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "BIGDOOR2",
-      "TextureBottom": "-",
-      "Sector": 513
-    },
-    {
-      "Id": 571,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "SKIN3",
-      "TextureBottom": "-",
-      "Sector": 513
-    },
-    {
-      "Id": 575,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "TEKWALL2",
-      "TextureBottom": "-",
-      "Sector": 551
-    },
-    {
-      "Id": 577,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "BIGDOOR2",
-      "TextureBottom": "-",
-      "Sector": 551
-    },
-    {
-      "Id": 579,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "TEKWALL2",
-      "TextureBottom": "-",
-      "Sector": 551
-    },
-    {
-      "Id": 581,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "DOORTRAK",
-      "TextureBottom": "-",
-      "Sector": 564
-    },
-    {
-      "Id": 582,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "DOORTRAK",
-      "TextureBottom": "-",
-      "Sector": 564
-    },
-    {
-      "Id": 583,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "DOORTRAK",
-      "TextureBottom": "-",
-      "Sector": 564
-    },
-    {
-      "Id": 585,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "DOORTRAK",
-      "TextureBottom": "-",
-      "Sector": 564
-    },
-    {
-      "Id": 592,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "ROCK05",
-      "TextureBottom": "-",
-      "Sector": 587
-    },
-    {
-      "Id": 594,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "ROCK05",
-      "TextureBottom": "-",
-      "Sector": 132
-    },
-    {
-      "Id": 595,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "ROCK05",
-      "TextureBottom": "-",
-      "Sector": 587
-    },
-    {
-      "Id": 597,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "ROCK05",
-      "TextureBottom": "-",
-      "Sector": 132
-    },
-    {
-      "Id": 598,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "ROCK05",
-      "TextureBottom": "-",
-      "Sector": 587
-    },
-    {
-      "Id": 600,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "ROCK05",
-      "TextureBottom": "-",
-      "Sector": 132
-    },
-    {
-      "Id": 601,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "ROCK05",
-      "TextureBottom": "-",
-      "Sector": 587
-    },
-    {
-      "Id": 603,
-      "OffsetX": 0,
-      "OffsetY": 0,
-      "TextureTop": "-",
-      "TextureMiddle": "ROCK05",
-      "TextureBottom": "-",
-      "Sector": 132
+      "Sector": 229
     }
   ],
   "Sectors": [
@@ -4331,7 +1522,7 @@
       "FloorHeight": 128,
       "CeilingHeight": 128,
       "FloorTexture": "RROCK02",
-      "CeilingTexture": "RROCK04",
+      "CeilingTexture": "CEIL1_1",
       "LightLevel": 160,
       "Special": 0,
       "Tag": 0
@@ -4348,16 +1539,16 @@
     },
     {
       "Id": 32,
-      "FloorHeight": 128,
-      "CeilingHeight": 132,
+      "FloorHeight": 0,
+      "CeilingHeight": 128,
       "FloorTexture": "RROCK02",
-      "CeilingTexture": "RROCK04",
-      "LightLevel": 160,
+      "CeilingTexture": "F_SKY1",
+      "LightLevel": 220,
       "Special": 0,
-      "Tag": 33
+      "Tag": 0
     },
     {
-      "Id": 55,
+      "Id": 48,
       "FloorHeight": 0,
       "CeilingHeight": 128,
       "FloorTexture": "FLAT14",
@@ -4367,57 +1558,7 @@
       "Tag": 0
     },
     {
-      "Id": 71,
-      "FloorHeight": 128,
-      "CeilingHeight": 132,
-      "FloorTexture": "FLAT14",
-      "CeilingTexture": "F_SKY1",
-      "LightLevel": 160,
-      "Special": 0,
-      "Tag": 72
-    },
-    {
-      "Id": 94,
-      "FloorHeight": 128,
-      "CeilingHeight": 128,
-      "FloorTexture": "PLAT1",
-      "CeilingTexture": "TLITE6_1",
-      "LightLevel": 160,
-      "Special": 0,
-      "Tag": 0
-    },
-    {
-      "Id": 109,
-      "FloorHeight": 128,
-      "CeilingHeight": 132,
-      "FloorTexture": "FLAT14",
-      "CeilingTexture": "F_SKY1",
-      "LightLevel": 160,
-      "Special": 0,
-      "Tag": 110
-    },
-    {
-      "Id": 132,
-      "FloorHeight": 0,
-      "CeilingHeight": 128,
-      "FloorTexture": "FLAT14",
-      "CeilingTexture": "F_SKY1",
-      "LightLevel": 220,
-      "Special": 0,
-      "Tag": 0
-    },
-    {
-      "Id": 147,
-      "FloorHeight": 0,
-      "CeilingHeight": 4,
-      "FloorTexture": "FLAT14",
-      "CeilingTexture": "F_SKY1",
-      "LightLevel": 160,
-      "Special": 0,
-      "Tag": 148
-    },
-    {
-      "Id": 170,
+      "Id": 63,
       "FloorHeight": 0,
       "CeilingHeight": 128,
       "FloorTexture": "MFLR8_1",
@@ -4427,17 +1568,37 @@
       "Tag": 0
     },
     {
-      "Id": 185,
+      "Id": 78,
       "FloorHeight": 0,
-      "CeilingHeight": 4,
-      "FloorTexture": "FLAT14",
-      "CeilingTexture": "F_SKY1",
-      "LightLevel": 160,
+      "CeilingHeight": 128,
+      "FloorTexture": "MFLR8_1",
+      "CeilingTexture": "RROCK04",
+      "LightLevel": 80,
       "Special": 0,
-      "Tag": 186
+      "Tag": 0
     },
     {
-      "Id": 208,
+      "Id": 93,
+      "FloorHeight": 0,
+      "CeilingHeight": 128,
+      "FloorTexture": "MFLR8_1",
+      "CeilingTexture": "TLITE6_1",
+      "LightLevel": 220,
+      "Special": 0,
+      "Tag": 0
+    },
+    {
+      "Id": 108,
+      "FloorHeight": 128,
+      "CeilingHeight": 128,
+      "FloorTexture": "PLAT1",
+      "CeilingTexture": "TLITE6_1",
+      "LightLevel": 160,
+      "Special": 0,
+      "Tag": 0
+    },
+    {
+      "Id": 123,
       "FloorHeight": -32,
       "CeilingHeight": 128,
       "FloorTexture": "PLAT1",
@@ -4447,57 +1608,7 @@
       "Tag": 101
     },
     {
-      "Id": 221,
-      "FloorHeight": 0,
-      "CeilingHeight": 4,
-      "FloorTexture": "FLAT14",
-      "CeilingTexture": "F_SKY1",
-      "LightLevel": 160,
-      "Special": 0,
-      "Tag": 222
-    },
-    {
-      "Id": 244,
-      "FloorHeight": 0,
-      "CeilingHeight": 128,
-      "FloorTexture": "RROCK02",
-      "CeilingTexture": "RROCK04",
-      "LightLevel": 80,
-      "Special": 0,
-      "Tag": 0
-    },
-    {
-      "Id": 257,
-      "FloorHeight": 0,
-      "CeilingHeight": 4,
-      "FloorTexture": "FLAT14",
-      "CeilingTexture": "F_SKY1",
-      "LightLevel": 160,
-      "Special": 0,
-      "Tag": 258
-    },
-    {
-      "Id": 280,
-      "FloorHeight": 0,
-      "CeilingHeight": 128,
-      "FloorTexture": "MFLR8_1",
-      "CeilingTexture": "RROCK04",
-      "LightLevel": 80,
-      "Special": 0,
-      "Tag": 0
-    },
-    {
-      "Id": 295,
-      "FloorHeight": 0,
-      "CeilingHeight": 4,
-      "FloorTexture": "MFLR8_1",
-      "CeilingTexture": "RROCK04",
-      "LightLevel": 160,
-      "Special": 0,
-      "Tag": 296
-    },
-    {
-      "Id": 318,
+      "Id": 136,
       "FloorHeight": 0,
       "CeilingHeight": 128,
       "FloorTexture": "RROCK02",
@@ -4507,17 +1618,17 @@
       "Tag": 0
     },
     {
-      "Id": 335,
-      "FloorHeight": -32,
-      "CeilingHeight": -28,
-      "FloorTexture": "PLAT1",
-      "CeilingTexture": "F_SKY1",
-      "LightLevel": 160,
+      "Id": 153,
+      "FloorHeight": 0,
+      "CeilingHeight": 128,
+      "FloorTexture": "FLAT14",
+      "CeilingTexture": "RROCK04",
+      "LightLevel": 80,
       "Special": 0,
-      "Tag": 336
+      "Tag": 0
     },
     {
-      "Id": 358,
+      "Id": 166,
       "FloorHeight": 0,
       "CeilingHeight": 0,
       "FloorTexture": "FLAT14",
@@ -4527,37 +1638,7 @@
       "Tag": 0
     },
     {
-      "Id": 372,
-      "FloorHeight": 0,
-      "CeilingHeight": 4,
-      "FloorTexture": "RROCK02",
-      "CeilingTexture": "RROCK04",
-      "LightLevel": 160,
-      "Special": 0,
-      "Tag": 373
-    },
-    {
-      "Id": 395,
-      "FloorHeight": 0,
-      "CeilingHeight": 128,
-      "FloorTexture": "MFLR8_1",
-      "CeilingTexture": "TLITE6_1",
-      "LightLevel": 220,
-      "Special": 0,
-      "Tag": 0
-    },
-    {
-      "Id": 410,
-      "FloorHeight": 0,
-      "CeilingHeight": 4,
-      "FloorTexture": "MFLR8_1",
-      "CeilingTexture": "RROCK04",
-      "LightLevel": 160,
-      "Special": 0,
-      "Tag": 411
-    },
-    {
-      "Id": 433,
+      "Id": 180,
       "FloorHeight": 0,
       "CeilingHeight": 128,
       "FloorTexture": "PLAT1",
@@ -4567,37 +1648,17 @@
       "Tag": 0
     },
     {
-      "Id": 450,
-      "FloorHeight": 0,
-      "CeilingHeight": 4,
-      "FloorTexture": "RROCK02",
-      "CeilingTexture": "F_SKY1",
-      "LightLevel": 160,
-      "Special": 0,
-      "Tag": 451
-    },
-    {
-      "Id": 473,
+      "Id": 197,
       "FloorHeight": 0,
       "CeilingHeight": 128,
       "FloorTexture": "RROCK02",
-      "CeilingTexture": "CEIL1_1",
+      "CeilingTexture": "RROCK04",
       "LightLevel": 160,
       "Special": 0,
       "Tag": 0
     },
     {
-      "Id": 490,
-      "FloorHeight": 0,
-      "CeilingHeight": 4,
-      "FloorTexture": "PLAT1",
-      "CeilingTexture": "RROCK04",
-      "LightLevel": 160,
-      "Special": 0,
-      "Tag": 491
-    },
-    {
-      "Id": 513,
+      "Id": 214,
       "FloorHeight": 0,
       "CeilingHeight": 128,
       "FloorTexture": "MFLR8_1",
@@ -4607,41 +1668,11 @@
       "Tag": 0
     },
     {
-      "Id": 528,
-      "FloorHeight": 0,
-      "CeilingHeight": 4,
-      "FloorTexture": "RROCK02",
-      "CeilingTexture": "CEIL1_1",
-      "LightLevel": 160,
-      "Special": 0,
-      "Tag": 529
-    },
-    {
-      "Id": 551,
+      "Id": 229,
       "FloorHeight": 0,
       "CeilingHeight": 128,
-      "FloorTexture": "RROCK02",
+      "FloorTexture": "FLAT14",
       "CeilingTexture": "TLITE6_1",
-      "LightLevel": 220,
-      "Special": 0,
-      "Tag": 0
-    },
-    {
-      "Id": 564,
-      "FloorHeight": 0,
-      "CeilingHeight": 4,
-      "FloorTexture": "MFLR8_1",
-      "CeilingTexture": "RROCK04",
-      "LightLevel": 160,
-      "Special": 0,
-      "Tag": 565
-    },
-    {
-      "Id": 587,
-      "FloorHeight": -32,
-      "CeilingHeight": 128,
-      "FloorTexture": "LAVA1",
-      "CeilingTexture": "F_SKY1",
       "LightLevel": 220,
       "Special": 0,
       "Tag": 0
@@ -4650,9 +1681,9 @@
   "Things": [
     {
       "Id": 13,
-      "X": 341.98566,
-      "Y": 20.947098,
-      "Angle": 270,
+      "X": -789.17773,
+      "Y": -1527.1938,
+      "Angle": 135,
       "Type": 1,
       "Flags": [
         "skillEasy",
@@ -4662,9 +1693,9 @@
     },
     {
       "Id": 14,
-      "X": 326.6074,
-      "Y": 148.21269,
-      "Angle": 135,
+      "X": -592.1157,
+      "Y": -1374.2673,
+      "Angle": 315,
       "Type": 2007,
       "Flags": [
         "skillEasy",
@@ -4674,9 +1705,9 @@
     },
     {
       "Id": 15,
-      "X": 226.39249,
-      "Y": 337.78464,
-      "Angle": 225,
+      "X": -819.93115,
+      "Y": -1254.2859,
+      "Angle": 315,
       "Type": 2046,
       "Flags": [
         "skillEasy",
@@ -4686,8 +1717,8 @@
     },
     {
       "Id": 16,
-      "X": 97.73308,
-      "Y": 298.125,
+      "X": -680.6823,
+      "Y": -1152.5481,
       "Angle": 180,
       "Type": 2046,
       "Flags": [
@@ -4698,9 +1729,9 @@
     },
     {
       "Id": 30,
-      "X": 581.5894,
-      "Y": 357.26617,
-      "Angle": 225,
+      "X": -644.95337,
+      "Y": -825.19946,
+      "Angle": 180,
       "Type": 3001,
       "Flags": [
         "skillEasy",
@@ -4710,9 +1741,9 @@
     },
     {
       "Id": 31,
-      "X": 399.02448,
-      "Y": 160.46979,
-      "Angle": 45,
+      "X": -980.4986,
+      "Y": -912.6404,
+      "Angle": 90,
       "Type": 3001,
       "Flags": [
         "skillEasy",
@@ -4721,35 +1752,11 @@
       ]
     },
     {
-      "Id": 68,
-      "X": 694.7402,
-      "Y": 162.74854,
-      "Angle": 315,
-      "Type": 9,
-      "Flags": [
-        "skillEasy",
-        "skillNormal",
-        "skillHard"
-      ]
-    },
-    {
-      "Id": 69,
-      "X": 588.07733,
-      "Y": 47.915356,
-      "Angle": 135,
-      "Type": 9,
-      "Flags": [
-        "skillEasy",
-        "skillNormal",
-        "skillHard"
-      ]
-    },
-    {
-      "Id": 70,
-      "X": 744.2228,
-      "Y": 188.46347,
+      "Id": 45,
+      "X": 74.21832,
+      "Y": -842.5426,
       "Angle": 45,
-      "Type": 3001,
+      "Type": 9,
       "Flags": [
         "skillEasy",
         "skillNormal",
@@ -4757,11 +1764,23 @@
       ]
     },
     {
-      "Id": 107,
-      "X": 448.91327,
-      "Y": -133.98099,
+      "Id": 46,
+      "X": -177.68533,
+      "Y": -729.8662,
+      "Angle": 90,
+      "Type": 9,
+      "Flags": [
+        "skillEasy",
+        "skillNormal",
+        "skillHard"
+      ]
+    },
+    {
+      "Id": 47,
+      "X": -193.62094,
+      "Y": -812.8575,
       "Angle": 225,
-      "Type": 9,
+      "Type": 3001,
       "Flags": [
         "skillEasy",
         "skillNormal",
@@ -4769,22 +1788,10 @@
       ]
     },
     {
-      "Id": 108,
-      "X": 522.48395,
-      "Y": 148.5592,
-      "Angle": 135,
-      "Type": 9,
-      "Flags": [
-        "skillEasy",
-        "skillNormal",
-        "skillHard"
-      ]
-    },
-    {
-      "Id": 145,
-      "X": 689.3798,
-      "Y": 330.2107,
-      "Angle": 135,
+      "Id": 61,
+      "X": 293.10806,
+      "Y": -151.46771,
+      "Angle": 90,
       "Type": 2002,
       "Flags": [
         "skillEasy",
@@ -4793,10 +1800,10 @@
       ]
     },
     {
-      "Id": 146,
-      "X": 597.94324,
-      "Y": 61.84529,
-      "Angle": 315,
+      "Id": 62,
+      "X": 78.10136,
+      "Y": 280.31073,
+      "Angle": 45,
       "Type": 3005,
       "Flags": [
         "skillEasy",
@@ -4805,10 +1812,10 @@
       ]
     },
     {
-      "Id": 183,
-      "X": 909.0509,
-      "Y": 86.98128,
-      "Angle": 45,
+      "Id": 76,
+      "X": -96.01445,
+      "Y": 794.3933,
+      "Angle": 225,
       "Type": 3002,
       "Flags": [
         "skillEasy",
@@ -4817,10 +1824,10 @@
       ]
     },
     {
-      "Id": 184,
-      "X": 1116.183,
-      "Y": 113.624405,
-      "Angle": 315,
+      "Id": 77,
+      "X": -79.719604,
+      "Y": 521.39923,
+      "Angle": 270,
       "Type": 3002,
       "Flags": [
         "skillEasy",
@@ -4829,9 +1836,9 @@
       ]
     },
     {
-      "Id": 293,
-      "X": 1379.0963,
-      "Y": 347.90933,
+      "Id": 91,
+      "X": -256.90646,
+      "Y": 1596.2665,
       "Angle": 135,
       "Type": 2013,
       "Flags": [
@@ -4841,10 +1848,10 @@
       ]
     },
     {
-      "Id": 294,
-      "X": 1254.6152,
-      "Y": 52.22081,
-      "Angle": 270,
+      "Id": 92,
+      "X": -333.49637,
+      "Y": 1296.8192,
+      "Angle": 135,
       "Type": 58,
       "Flags": [
         "skillEasy",
@@ -4853,70 +1860,10 @@
       ]
     },
     {
-      "Id": 331,
-      "X": 957.37646,
-      "Y": 695.80554,
-      "Angle": 225,
-      "Type": 2010,
-      "Flags": [
-        "skillEasy",
-        "skillNormal",
-        "skillHard"
-      ]
-    },
-    {
-      "Id": 332,
-      "X": 732.4389,
-      "Y": 621.34143,
-      "Angle": 315,
-      "Type": 3001,
-      "Flags": [
-        "skillEasy",
-        "skillNormal",
-        "skillHard"
-      ]
-    },
-    {
-      "Id": 333,
-      "X": 589.76385,
-      "Y": 752.2113,
-      "Angle": 180,
-      "Type": 3001,
-      "Flags": [
-        "skillEasy",
-        "skillNormal",
-        "skillHard"
-      ]
-    },
-    {
-      "Id": 334,
-      "X": 625.8434,
-      "Y": 785.07275,
-      "Angle": 270,
-      "Type": 3001,
-      "Flags": [
-        "skillEasy",
-        "skillNormal",
-        "skillHard"
-      ]
-    },
-    {
-      "Id": 371,
-      "X": 919.8301,
-      "Y": -322.51825,
-      "Angle": 315,
-      "Type": 83,
-      "Flags": [
-        "skillEasy",
-        "skillNormal",
-        "skillHard"
-      ]
-    },
-    {
-      "Id": 408,
-      "X": 1577.2426,
-      "Y": 329.4426,
-      "Angle": 180,
+      "Id": 106,
+      "X": -666.049,
+      "Y": 935.2355,
+      "Angle": 135,
       "Type": 5,
       "Flags": [
         "skillEasy",
@@ -4925,10 +1872,10 @@
       ]
     },
     {
-      "Id": 409,
-      "X": 1229.5769,
-      "Y": 380.15393,
-      "Angle": 270,
+      "Id": 107,
+      "X": -516.59717,
+      "Y": 868.1735,
+      "Angle": 45,
       "Type": 2018,
       "Flags": [
         "skillEasy",
@@ -4937,11 +1884,11 @@
       ]
     },
     {
-      "Id": 446,
-      "X": 1036.3054,
-      "Y": 657.0765,
-      "Angle": 315,
-      "Type": 3004,
+      "Id": 121,
+      "X": -1374.1425,
+      "Y": -652.8992,
+      "Angle": 225,
+      "Type": 9,
       "Flags": [
         "skillEasy",
         "skillNormal",
@@ -4949,10 +1896,82 @@
       ]
     },
     {
-      "Id": 447,
-      "X": 905.8065,
-      "Y": 834.5172,
+      "Id": 122,
+      "X": -1165.3885,
+      "Y": -719.37866,
+      "Angle": 0,
+      "Type": 9,
+      "Flags": [
+        "skillEasy",
+        "skillNormal",
+        "skillHard"
+      ]
+    },
+    {
+      "Id": 149,
+      "X": 465.8091,
+      "Y": 549.7084,
+      "Angle": 135,
+      "Type": 2010,
+      "Flags": [
+        "skillEasy",
+        "skillNormal",
+        "skillHard"
+      ]
+    },
+    {
+      "Id": 150,
+      "X": 677.1972,
+      "Y": 914.44,
+      "Angle": 45,
+      "Type": 3001,
+      "Flags": [
+        "skillEasy",
+        "skillNormal",
+        "skillHard"
+      ]
+    },
+    {
+      "Id": 151,
+      "X": 664.21216,
+      "Y": 898.83984,
+      "Angle": 180,
+      "Type": 3001,
+      "Flags": [
+        "skillEasy",
+        "skillNormal",
+        "skillHard"
+      ]
+    },
+    {
+      "Id": 152,
+      "X": 738.9004,
+      "Y": 918.84204,
       "Angle": 270,
+      "Type": 3001,
+      "Flags": [
+        "skillEasy",
+        "skillNormal",
+        "skillHard"
+      ]
+    },
+    {
+      "Id": 179,
+      "X": 1782.9081,
+      "Y": -272.0112,
+      "Angle": 180,
+      "Type": 83,
+      "Flags": [
+        "skillEasy",
+        "skillNormal",
+        "skillHard"
+      ]
+    },
+    {
+      "Id": 193,
+      "X": 1203.2213,
+      "Y": 667.4234,
+      "Angle": 45,
       "Type": 3004,
       "Flags": [
         "skillEasy",
@@ -4961,21 +1980,9 @@
       ]
     },
     {
-      "Id": 448,
-      "X": 1090.5192,
-      "Y": 852.3125,
-      "Angle": 90,
-      "Type": 3004,
-      "Flags": [
-        "skillEasy",
-        "skillNormal",
-        "skillHard"
-      ]
-    },
-    {
-      "Id": 449,
-      "X": 1105.791,
-      "Y": 722.79376,
+      "Id": 194,
+      "X": 1158.5621,
+      "Y": 952.9929,
       "Angle": 135,
       "Type": 3004,
       "Flags": [
@@ -4985,10 +1992,34 @@
       ]
     },
     {
-      "Id": 486,
-      "X": 1300.3774,
-      "Y": 638.4519,
-      "Angle": 180,
+      "Id": 195,
+      "X": 1307.4316,
+      "Y": 611.2013,
+      "Angle": 135,
+      "Type": 3004,
+      "Flags": [
+        "skillEasy",
+        "skillNormal",
+        "skillHard"
+      ]
+    },
+    {
+      "Id": 196,
+      "X": 982.39343,
+      "Y": 884.9182,
+      "Angle": 0,
+      "Type": 3004,
+      "Flags": [
+        "skillEasy",
+        "skillNormal",
+        "skillHard"
+      ]
+    },
+    {
+      "Id": 210,
+      "X": 757.9091,
+      "Y": 200.17961,
+      "Angle": 135,
       "Type": 3002,
       "Flags": [
         "skillEasy",
@@ -4997,21 +2028,9 @@
       ]
     },
     {
-      "Id": 487,
-      "X": 1435.7133,
-      "Y": 764.1582,
-      "Angle": 0,
-      "Type": 3006,
-      "Flags": [
-        "skillEasy",
-        "skillNormal",
-        "skillHard"
-      ]
-    },
-    {
-      "Id": 488,
-      "X": 1398.409,
-      "Y": 616.4341,
+      "Id": 211,
+      "X": 825.4303,
+      "Y": 46.070618,
       "Angle": 45,
       "Type": 3006,
       "Flags": [
@@ -5021,9 +2040,9 @@
       ]
     },
     {
-      "Id": 489,
-      "X": 1247.871,
-      "Y": 563.8781,
+      "Id": 212,
+      "X": 695.07117,
+      "Y": 92.16606,
       "Angle": 225,
       "Type": 3006,
       "Flags": [
@@ -5033,10 +2052,22 @@
       ]
     },
     {
-      "Id": 526,
-      "X": 1281.147,
-      "Y": 517.8576,
-      "Angle": 0,
+      "Id": 213,
+      "X": 767.8364,
+      "Y": 157.9491,
+      "Angle": 315,
+      "Type": 3006,
+      "Flags": [
+        "skillEasy",
+        "skillNormal",
+        "skillHard"
+      ]
+    },
+    {
+      "Id": 227,
+      "X": -246.84467,
+      "Y": 8.69339,
+      "Angle": 315,
       "Type": 2025,
       "Flags": [
         "skillEasy",
@@ -5045,10 +2076,10 @@
       ]
     },
     {
-      "Id": 527,
-      "X": 1323.135,
-      "Y": 764.2853,
-      "Angle": 270,
+      "Id": 228,
+      "X": -432.7146,
+      "Y": -204.5821,
+      "Angle": 135,
       "Type": 3003,
       "Flags": [
         "skillEasy",

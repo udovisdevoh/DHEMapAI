@@ -1,5 +1,4 @@
-﻿// Program.cs
-using System;
+﻿using System;
 using System.IO;
 using System.Text.Json;
 using DGraphBuilder.Models.DGraph;
@@ -30,8 +29,8 @@ public class Program
 
         try
         {
-            var options = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
-            var dgraph = JsonSerializer.Deserialize<DGraphFile>(dgraphJson, options);
+            var dgraphOptions = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
+            var dgraph = JsonSerializer.Deserialize<DGraphFile>(dgraphJson, dgraphOptions);
 
             Console.WriteLine($"Génération de la carte '{dgraph.MapInfo.Name}' pour le jeu '{dgraph.MapInfo.Game}'...");
             if (seed.HasValue)
@@ -41,7 +40,16 @@ public class Program
             var dhemap = generator.Generate();
 
             Console.WriteLine("Sérialisation vers le format DHEMap...");
-            var dhemapOptions = new JsonSerializerOptions { WriteIndented = true, DefaultIgnoreCondition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull };
+
+            // ### CORRECTION ICI ###
+            // On ajoute l'option 'PropertyNamingPolicy = JsonNamingPolicy.CamelCase'
+            // pour forcer la sortie JSON à utiliser des clés en minuscules (camelCase).
+            var dhemapOptions = new JsonSerializerOptions
+            {
+                PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
+                WriteIndented = true,
+                DefaultIgnoreCondition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull
+            };
             string dhemapJson = JsonSerializer.Serialize(dhemap, dhemapOptions);
 
             File.WriteAllText(outputFile, dhemapJson);
