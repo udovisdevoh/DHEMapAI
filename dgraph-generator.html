@@ -413,12 +413,22 @@ En utilisant la palette que TU as créée à la tâche 1, conçois et écris les
 - **Connectivité / Structure :** ${connectivity}
 - **Brief Créatif Additionnel :** ${description || "Aucun. Liberté créative totale."}
 
-**Instructions Finales :**
-1.  **JSON Uniquement :** Ta réponse doit être UNIQUEMENT le bloc de code JSON complet.
-2.  **Respecter la Planéité :** Le graphe de pièces doit pouvoir exister dans un espace 2D sans se croiser.
-3.  **Cohérence Totale :** Les IDs (\`id\`, \`typeId\`, \`actionId\`) et les références à la palette doivent être exacts et cohérents.
-4.  **CONTRAINTE DE COHÉRENCE STRICTE :** Tu dois utiliser **exclusivement** les noms (textures, flats, things, musique) de la base de données fournie pour le jeu \`${game}\`. N'utilise aucun asset d'un autre jeu.
-5.  **CLARIFICATION SUR LES PROPRIÉTÉS DE PIÈCE :** Sois très précis sur la signification des propriétés d'une pièce. Les propriétés \`floor\` et \`ceiling\` définissent la **HAUTEUR** (ex: "low", "normal"). Les propriétés \`floorFlat\` et \`ceilingFlat\` définissent le **STYLE** et doivent pointer vers un concept de la palette (ex: "floor_damage_low"). Ne confonds pas les deux.
+**Instructions Finales**
+
+1.  **JSON Uniquement :** Ta réponse doit être UNIQUEMENT le bloc de code JSON complet, sans aucun texte ou commentaire en dehors.
+2.  **Respect de la Planéité :** Le graphe de pièces que tu conçois doit pouvoir exister dans un espace 2D sans que les pièces ne se superposent.
+3.  **Contrainte de Cohérence des Assets :** Tu dois utiliser **exclusivement** les noms (textures, flats, things, musique) de la base de données fournie pour le jeu '${game}'. N'utilise aucun asset d'un autre jeu, même s'il te semble thématiquement proche.
+4.  **Règle d'Or - Sémantique des Propriétés :** C'est la règle la plus importante. Sois extrêmement précis sur la signification des propriétés d'une pièce :
+    * Les propriétés 'floor' et 'ceiling' définissent la **HAUTEUR** abstraite (ex: '"low"', '"normal"').
+    * Les propriétés 'floorFlat' et 'ceilingFlat' définissent le **STYLE** de la surface et doivent pointer vers un concept de la 'themePalette' (ex: '"floor_damage_low"').
+    * **NE PAS FAIRE :** '{ "floor": "damaging_low", ... }'
+    * **FAIRE :** '{ "floor": "low", "floorFlat": "floor_damage_low", ... }'
+5.  **Respect des Énumérations (Enum) :** Plusieurs propriétés, comme 'connection.type' ou 'properties.lightLevel', ont une liste de valeurs autorisées (Enum) définie dans la spécification. Tu dois **exclusivement** utiliser les valeurs de cette liste. N'invente **jamais** de nouvelles valeurs pour ces champs.
+    * Par exemple, n'utilise pas '"lift"' ou '"stair"' comme 'type' de connexion.
+6.  **Modélisation des Concepts Spécifiques :** Pour représenter correctement certaines mécaniques de jeu, suis ces conventions :
+    * Pour modéliser un **escalier** entre deux pièces, crée une connexion de type '"opening"' et assigne des valeurs de 'floor' différentes aux deux pièces (ex: 'room_a' a '"floor": "normal"' et 'room_b' a '"floor": "high"').
+    * Pour modéliser un **ascenseur (lift)**, crée une 'feature' de type '"PlatformLift"' à l'intérieur de la pièce ('room') où il se trouve.
+7.  **Cohérence des IDs :** Tous les identifiants ('id' de pièce, 'parentRoom', 'fromRoom', 'toRoom') et les références aux concepts de la 'themePalette' doivent être exacts et cohérents à travers tout le document.
 `;
 
             document.getElementById('promptOutput').value = dgraphSpecification + gameDataReference + creativeBrief;

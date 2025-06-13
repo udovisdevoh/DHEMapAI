@@ -1,0 +1,255 @@
+{
+  "format": "D-Graph",
+  "version": "1.4",
+  "mapInfo": {
+    "game": "doom2",
+    "map": 7,
+    "name": "Complexe Industriel Delta",
+    "music": "D_RUNNIN"
+  },
+  "themePalette": {
+    "wall_primary": [
+      { "name": "TEKWALL1", "weight": 60 },
+      { "name": "TEKWALL4", "weight": 30 },
+      { "name": "METAL1", "weight": 10 }
+    ],
+    "wall_accent": [
+      { "name": "SHAWN2", "weight": 70 },
+      { "name": "BRICK7", "weight": 30 }
+    ],
+    "wall_support": [
+      { "name": "SUPPORT2", "weight": 50 },
+      { "name": "SUPPORT3", "weight": 50 }
+    ],
+    "wall_secret_indicator": [
+      { "name": "BROWNGRN", "weight": 80 },
+      { "name": "BRICK5", "weight": 20 }
+    ],
+    "wall_panel": [
+      { "name": "COMPTALL", "weight": 75 },
+      { "name": "COMPUTER", "weight": 25 }
+    ],
+    "floor_primary": [
+      { "name": "TECH01", "weight": 80 },
+      { "name": "FLAT5", "weight": 20 }
+    ],
+    "floor_accent": [
+      { "name": "MFLR8_1", "weight": 50 },
+      { "name": "FLAT23", "weight": 50 }
+    ],
+    "floor_damage_low": [
+      { "name": "NUKAGE1", "weight": 60 },
+      { "name": "SLIME05", "weight": 40 }
+    ],
+    "floor_damage_high": [
+      { "name": "LAVA1", "weight": 100 }
+    ],
+    "ceiling_primary": [
+      { "name": "CEIL1_1", "weight": 70 },
+      { "name": "CEIL3_2", "weight": 30 }
+    ],
+    "ceiling_light_source": [
+      { "name": "TLITE6_1", "weight": 50 },
+      { "name": "TLITE6_5", "weight": 50 }
+    ],
+    "ceiling_crusher": [
+      { "name": "CEIL2_1", "weight": 80 },
+      { "name": "FLAT10", "weight": 20 }
+    ],
+    "platform_surface": [
+      { "name": "TECH02", "weight": 60 },
+      { "name": "FLAT5_1", "weight": 40 }
+    ],
+    "door_regular": [
+      { "name": "BIGDOOR2", "weight": 50 },
+      { "name": "BIGDOOR4", "weight": 50 }
+    ],
+    "door_locked": [
+      { "name": "DOORBLU", "weight": 50 },
+      { "name": "DOORRED", "weight": 50 }
+    ],
+    "door_exit": [
+      { "name": "BIGDOOR7", "weight": 100 }
+    ],
+    "door_frame": [
+      { "name": "DOORTRAK", "weight": 80 },
+      { "name": "METAL3", "weight": 20 }
+    ],
+    "stair_riser": [
+      { "name": "STEP1", "weight": 50 },
+      { "name": "STEP4", "weight": 50 }
+    ],
+    "window_grate": [
+      { "name": "MIDGRATE", "weight": 100 }
+    ],
+    "switch_utility": [
+      { "name": "SW1COMM", "weight": 50 },
+      { "name": "SW1METAL", "weight": 50 }
+    ],
+    "switch_exit": [
+      { "name": "SW1EXIT", "weight": 100 }
+    ],
+    "switch_panel_wall": [
+      { "name": "SWTCHPNL", "weight": 100 }
+    ],
+    "teleporter_pad": [
+      { "name": "GATE1", "weight": 70 },
+      { "name": "FLAT14", "weight": 30 }
+    ]
+  },
+  "rooms": [
+    {
+      "id": "start_area",
+      "parentRoom": null,
+      "shapeHint": { "vertices": 4, "description": "Petite pièce de départ rectangulaire, faiblement éclairée." },
+      "properties": { "floor": "normal", "ceiling": "normal", "lightLevel": "dim", "wallTexture": "wall_primary", "floorFlat": "floor_primary", "ceilingFlat": "ceiling_primary" },
+      "contents": { "items": [{ "name": "Player 1 Start", "typeId": 1, "count": 1 }, { "name": "Shotgun", "typeId": 2007, "count": 1 }], "monsters": [], "decorations": [] },
+      "features": []
+    },
+    {
+      "id": "main_hub",
+      "parentRoom": null,
+      "shapeHint": { "vertices": 8, "description": "Grand hub octogonal avec un pilier central, servant de carrefour principal." },
+      "properties": { "floor": "normal", "ceiling": "high", "lightLevel": "bright", "wallTexture": "wall_primary", "floorFlat": "floor_primary", "ceilingFlat": "ceiling_light_source" },
+      "contents": { "items": [], "monsters": [{ "name": "Imp", "typeId": 3001, "count": 4 }, { "name": "Heavy Weapon Dude", "typeId": 64, "count": 1 }], "decorations": [] },
+      "features": []
+    },
+    {
+      "id": "central_pillar",
+      "parentRoom": "main_hub",
+      "shapeHint": { "vertices": 4, "description": "Pilier de support structurel carré au centre du hub." },
+      "properties": { "floor": "normal", "ceiling": "high", "lightLevel": "bright", "wallTexture": "wall_support", "floorFlat": "floor_primary", "ceilingFlat": "ceiling_light_source" },
+      "contents": { "items": [], "monsters": [], "decorations": [] },
+      "features": []
+    },
+    {
+      "id": "corridor_west",
+      "parentRoom": null,
+      "shapeHint": { "vertices": 4, "description": "Couloir en L menant à la zone de traitement des déchets." },
+      "properties": { "floor": "normal", "ceiling": "normal", "lightLevel": "normal", "wallTexture": "wall_accent", "floorFlat": "floor_accent", "ceilingFlat": "ceiling_primary" },
+      "contents": { "items": [{ "name": "Ammo Clip", "typeId": 2010, "count": 4 }], "monsters": [{ "name": "Zombieman", "typeId": 3004, "count": 3 }], "decorations": [] },
+      "features": []
+    },
+    {
+      "id": "waste_processing",
+      "parentRoom": null,
+      "shapeHint": { "vertices": 12, "description": "Grande salle irrégulière remplie de liquide toxique, avec des passerelles étroites." },
+      "properties": { "floor": "low", "ceiling": "high", "lightLevel": "dim", "wallTexture": "wall_primary", "floorFlat": "floor_damage_low", "ceilingFlat": "ceiling_primary" },
+      "contents": { "items": [], "monsters": [{ "name": "Spectre", "typeId": 58, "count": 2 }], "decorations": [{ "name": "Exploding Barrel", "typeId": 2035, "count": 5 }] },
+      "features": []
+    },
+    {
+      "id": "pump_control",
+      "parentRoom": null,
+      "shapeHint": { "vertices": 4, "description": "Petite salle de contrôle surplombant le traitement des déchets." },
+      "properties": { "floor": "high", "ceiling": "normal", "lightLevel": "bright", "wallTexture": "wall_panel", "floorFlat": "floor_primary", "ceilingFlat": "ceiling_primary" },
+      "contents": { "items": [{ "name": "Blue Keycard", "typeId": 5, "count": 1 }], "monsters": [{ "name": "Shotgun Guy", "typeId": 9, "count": 2 }], "decorations": [] },
+      "features": []
+    },
+    {
+      "id": "security_checkpoint",
+      "parentRoom": null,
+      "shapeHint": { "vertices": 6, "description": "Poste de sécurité bloquant l'accès à l'aile nord." },
+      "properties": { "floor": "normal", "ceiling": "normal", "lightLevel": "normal", "wallTexture": "wall_support", "floorFlat": "floor_accent", "ceilingFlat": "ceiling_primary" },
+      "contents": { "items": [], "monsters": [{ "name": "Heavy Weapon Dude", "typeId": 64, "count": 2 }], "decorations": [] },
+      "features": []
+    },
+    {
+      "id": "data_hub",
+      "parentRoom": null,
+      "shapeHint": { "vertices": 6, "description": "Centre de données avec des rangées de serveurs et un téléporteur." },
+      "properties": { "floor": "normal", "ceiling": "normal", "lightLevel": "flickering", "wallTexture": "wall_panel", "floorFlat": "floor_primary", "ceilingFlat": "ceiling_primary" },
+      "contents": { "items": [{ "name": "Red Keycard", "typeId": 6, "count": 1 }], "monsters": [{ "name": "Lost Soul", "typeId": 3006, "count": 6 }], "decorations": [] },
+      "features": []
+    },
+    {
+      "id": "armory",
+      "parentRoom": null,
+      "shapeHint": { "vertices": 4, "description": "Armurerie bien gardée." },
+      "properties": { "floor": "normal", "ceiling": "normal", "lightLevel": "bright", "wallTexture": "wall_support", "floorFlat": "floor_accent", "ceilingFlat": "ceiling_primary" },
+      "contents": { "items": [{ "name": "Super Shotgun", "typeId": 82, "count": 1 }, { "name": "Box of Shotgun Shells", "typeId": 2049, "count": 1 }, { "name": "Green Armor", "typeId": 2018, "count": 1 }], "monsters": [{ "name": "Hell Knight", "typeId": 69, "count": 1 }], "decorations": [] },
+      "features": []
+    },
+    {
+      "id": "secret_storage",
+      "parentRoom": null,
+      "shapeHint": { "vertices": 4, "description": "Petit placard de rangement secret." },
+      "properties": { "floor": "normal", "ceiling": "normal", "lightLevel": "dark", "wallTexture": "wall_primary", "floorFlat": "floor_primary", "ceilingFlat": "ceiling_primary" },
+      "contents": { "items": [{ "name": "Megasphere", "typeId": 83, "count": 1 }], "monsters": [], "decorations": [] },
+      "features": []
+    },
+    {
+      "id": "maintenance_tunnel",
+      "parentRoom": null,
+      "shapeHint": { "vertices": 4, "description": "Tunnel de maintenance étroit, sombre et sinueux." },
+      "properties": { "floor": "normal", "ceiling": "low", "lightLevel": "dark", "wallTexture": "wall_accent", "floorFlat": "floor_primary", "ceilingFlat": "ceiling_primary" },
+      "contents": { "items": [], "monsters": [{ "name": "Demon", "typeId": 3002, "count": 3 }], "decorations": [] },
+      "features": []
+    },
+    {
+      "id": "power_generator_chamber",
+      "parentRoom": null,
+      "shapeHint": { "vertices": 10, "description": "Vaste chambre abritant les générateurs principaux, avec une plateforme élévatrice." },
+      "properties": { "floor": "normal", "ceiling": "very_high", "lightLevel": "bright", "wallTexture": "wall_primary", "floorFlat": "floor_primary", "ceilingFlat": "ceiling_primary" },
+      "contents": { "items": [], "monsters": [{ "name": "Cacodemon", "typeId": 3005, "count": 2 }, { "name": "Pain Elemental", "typeId": 71, "count": 1 }], "decorations": [] },
+      "features": [{ "name": "MainLift", "actionId": 21, "count": 1, "properties": { "platform_texture_concept": "platform_surface" } }]
+    },
+    {
+      "id": "generator_catwalk",
+      "parentRoom": null,
+      "shapeHint": { "vertices": 6, "description": "Passerelle métallique surplombant la chambre des générateurs." },
+      "properties": { "floor": "high", "ceiling": "very_high", "lightLevel": "bright", "wallTexture": "wall_primary", "floorFlat": "floor_accent", "ceilingFlat": "ceiling_primary" },
+      "contents": { "items": [{ "name": "Plasma Gun", "typeId": 2003, "count": 1 }], "monsters": [{ "name": "Revenant", "typeId": 66, "count": 1 }], "decorations": [] },
+      "features": []
+    },
+    {
+      "id": "monitoring_post",
+      "parentRoom": null,
+      "shapeHint": { "vertices": 4, "description": "Petit poste de surveillance isolé, accessible uniquement par téléporteur." },
+      "properties": { "floor": "normal", "ceiling": "normal", "lightLevel": "bright", "wallTexture": "wall_panel", "floorFlat": "floor_primary", "ceilingFlat": "ceiling_primary" },
+      "contents": { "items": [{ "name": "Soulsphere", "typeId": 83, "count": 1 }], "monsters": [], "decorations": [] },
+      "features": []
+    },
+    {
+      "id": "command_anteroom",
+      "parentRoom": null,
+      "shapeHint": { "vertices": 4, "description": "Antichambre avant le pont final." },
+      "properties": { "floor": "normal", "ceiling": "high", "lightLevel": "normal", "wallTexture": "wall_support", "floorFlat": "floor_primary", "ceilingFlat": "ceiling_primary" },
+      "contents": { "items": [], "monsters": [{ "name": "Baron of Hell", "typeId": 3003, "count": 2 }], "decorations": [] },
+      "features": []
+    },
+    {
+      "id": "final_bridge",
+      "parentRoom": null,
+      "shapeHint": { "vertices": 4, "description": "Pont étroit suspendu au-dessus d'un gouffre menant à la sortie." },
+      "properties": { "floor": "high", "ceiling": "sky", "lightLevel": "bright", "wallTexture": "wall_support", "floorFlat": "floor_accent", "ceilingFlat": "F_SKY1" },
+      "contents": { "items": [], "monsters": [], "decorations": [] },
+      "features": []
+    },
+    {
+      "id": "exit_chamber",
+      "parentRoom": null,
+      "shapeHint": { "vertices": 4, "description": "Chambre finale contenant l'interrupteur de sortie." },
+      "properties": { "floor": "high", "ceiling": "normal", "lightLevel": "bright", "wallTexture": "wall_accent", "floorFlat": "floor_primary", "ceilingFlat": "ceiling_primary" },
+      "contents": { "items": [], "monsters": [{ "name": "Arch-Vile", "typeId": 65, "count": 1 }], "decorations": [] },
+      "features": [{ "name": "ExitSwitch", "actionId": 11, "count": 1, "properties": { "texture_concept": "switch_exit" } }]
+    }
+  ],
+  "connections": [
+    { "fromRoom": "start_area", "toRoom": "main_hub", "type": "opening", "properties": { "description": "Une porte s'ouvre sur le hub principal." } },
+    { "fromRoom": "main_hub", "toRoom": "corridor_west", "type": "opening", "properties": { "description": "Un passage vers l'ouest." } },
+    { "fromRoom": "corridor_west", "toRoom": "waste_processing", "type": "door", "properties": { "texture_concept": "door_regular" } },
+    { "fromRoom": "waste_processing", "toRoom": "pump_control", "type": "window", "properties": { "texture_concept": "window_grate" } },
+    { "fromRoom": "main_hub", "toRoom": "security_checkpoint", "type": "locked_door", "properties": { "texture_concept": "door_locked", "key": "blue" } },
+    { "fromRoom": "security_checkpoint", "toRoom": "armory", "type": "door", "properties": { "texture_concept": "door_regular" } },
+    { "fromRoom": "security_checkpoint", "toRoom": "data_hub", "type": "opening", "properties": { "description": "Une large entrée vers le centre de données." } },
+    { "fromRoom": "data_hub", "toRoom": "secret_storage", "type": "secret_door", "properties": { "texture_concept": "wall_secret_indicator", "actionId": 31 } },
+    { "fromRoom": "data_hub", "toRoom": "monitoring_post", "type": "teleporter", "properties": { "texture_concept": "teleporter_pad" } },
+    { "fromRoom": "main_hub", "toRoom": "maintenance_tunnel", "type": "door", "properties": { "texture_concept": "door_regular" } },
+    { "fromRoom": "maintenance_tunnel", "toRoom": "power_generator_chamber", "type": "opening", "properties": { "description": "Le tunnel débouche sur la salle des machines." } },
+    { "fromRoom": "power_generator_chamber", "toRoom": "generator_catwalk", "type": "opening", "properties": { "description": "La plateforme mène à la passerelle." } },
+    { "fromRoom": "main_hub", "toRoom": "command_anteroom", "type": "locked_door", "properties": { "texture_concept": "door_locked", "key": "red" } },
+    { "fromRoom": "command_anteroom", "toRoom": "final_bridge", "type": "opening", "properties": { "description": "Un passage ouvert vers le pont final." } },
+    { "fromRoom": "final_bridge", "toRoom": "exit_chamber", "type": "door", "properties": { "texture_concept": "door_exit" } }
+  ]
+}
