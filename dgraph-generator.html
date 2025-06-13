@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Générateur de Prompt D-Graph (Textures Complètes)</title>
+    <title>Générateur de Prompt D-Graph (Final)</title>
     <style>
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
@@ -209,11 +209,15 @@
             heretic: {
                 themes: ["Château Médiéval", "Donjon Volcanique", "Donjons Inondés", "Temple de la Forêt"],
                 things: [{ type: 66, name: "Golem" }, { type: 10, name: "Undead Warrior" }],
-                // ### LISTE COMPLÈTE POUR HERETIC ###
                 textures: ["BIGDOOR1", "BIGDOOR2", "BIGDOOR3", "BIGDOOR4", "BIGDOOR5", "BIGDOOR6", "BIGDOOR7", "BRASS1", "BRICK01", "BRICK02", "BRICK03", "BRICK04", "BRICK05", "BRICK06", "BRICK07", "BRICK08", "BRICK09", "BRICK10", "CASTLE1", "CASTLE2", "CASTLE3", "CASTLE4", "CASTLE5", "CASTLE6", "CASTLE7", "CEMENT01", "CEMENT02", "CEMENT03", "CEMENT04", "CEMENT05", "DOOR01", "DOOR02", "DOOR03", "DOOR04", "DOOR05", "DOOR06", "DOOR07", "DOOR08", "DOOR09", "DOOR10", "DOOR11", "DOOR12", "DOOR13", "DOOR14", "DOOR15", "DOOR16", "DOOR17", "DOOR18", "DOOR19", "DOOR20", "DOOR21", "DOOR22", "DOOR23", "DOOR24", "EXIT01", "EXIT02", "GLASS01", "GLASS02", "GLASS03", "GLASS04", "GLASS05", "GLASS06", "LAVA01", "LAVA02", "LAVA03", "LAVA04", "LITE01", "LITE02", "LITE03", "LITE04", "LITE05", "MARB01", "MARB02", "MARB03", "MARB04", "MET01", "MET02", "MET03", "MET04", "MET05", "MET06", "MOSS01", "MOSS02", "MOSS03", "MOSS04", "ROCK01", "ROCK02", "ROCK03", "ROCK04", "ROCK05", "SAND01", "SAND02", "SKY01", "SKY02", "SKY03", "SLIME01", "SLIME02", "SNAKE01", "SNAKE02", "SNAKE03", "SNAKE04", "SNAKE05", "STAR01", "STAR02", "STONE01", "STONE02", "STONE03", "STONE04", "STONE05", "STONE06", "STONE07", "STONE08", "STONE09", "STONE10", "STONE11", "STONE12", "STONE13", "STONE14", "SW01", "SW02", "SW03", "SW04", "SW05", "SW06", "SW07", "SW08", "SW09", "SW10", "SW11", "SW12", "SW13", "SW14", "SW15", "SW16", "SW17", "SW18", "SW19", "SW20", "SW21", "SW22", "SW23", "SW24", "VINE01", "VINE02", "VINE03", "WALL01", "WALL02", "WALL03", "WALL04", "WALL05", "WALL06", "WALL07", "WALL08", "WALL09", "WALL10", "WALL11", "WALL12", "WALL13", "WALL14", "WALL15", "WALL16", "WATER01", "WATER02", "WATER03", "WIND01", "WIND02", "WIND03", "WIND04", "WOOD01", "WOOD02", "WOOD03", "WOOD04", "WOOD05", "WOOD06", "WOOD07", "WOOD08", "WOOD09", "WOOD10", "WOOD11", "WOOD12", "WIZWALL1", "WIZWALL2", "WIZWALL3", "WIZWALL4"],
                 flats: ["FLOOR01", "FLOOR29", "LAVA01", "WATER01", "CEIL01"],
             },
-            hexen: { themes: ["Forteresse Sombre", "Monastère de Glace", "Marais des Morts", "Tour du Mage"], things: [{ type: 3, name: "Ettin" }, { type: 6, name: "Centaur" }], textures: ["CASTLE5", "WOOD1", "DOOR12", "SWITCH2", "ICE01", "WALL60"], flats: ["FLAT01", "LAVA01", "ICE01", "SWAMP01"] }
+            hexen: {
+                themes: ["Forteresse Sombre", "Monastère de Glace", "Marais des Morts", "Tour du Mage"],
+                things: [{ type: 3, name: "Ettin" }, { type: 6, name: "Centaur" }],
+                textures: ["BIGDOOR1", "BOLDER01", "BRASS01", "BRASS_A1", "BRICK01", "CASTLE01", "CAVE01", "CRYSTAL1", "DEMON_A1", "DOOR01", "DOOR14", "FIREBAK1", "FLAME_A1", "GATE01", "GLASS01", "ICE01", "LAVA1", "MARBLE01", "METAL01", "MOSS01", "ROCK01", "RUST01", "SKY_1", "STAINED1", "STONE01", "SUPPORT1", "SWITCH01", "TAP01", "TELEPORT", "WALL01", "WATER01", "WOOD01", "WOOD04", "WOODMET1", "WOODGARG"],
+                flats: ["FLAT01", "LAVA01", "ICE01", "SWAMP01", "CEILING3", "CEILING6"],
+            }
         };
 
         const dgraphSpecification = `Tu es un level designer senior et un artiste d'environnement spécialisé dans les jeux de tir à la première personne classiques.
@@ -227,18 +231,19 @@ La carte de Doom est un graphe planaire. Cela signifie que les pièces (secteurs
 ---
 
 **1. OBJET RACINE**
-- \`format\`: "D-Graph", REQUIS.
-- \`version\`: "1.3", REQUIS.
-- \`mapInfo\`: Object, REQUIS.
-- \`themePalette\`: Object, REQUIS.
-- \`rooms\`: Array<Object>, REQUIS.
-- \`connections\`: Array<Object>, REQUIS.
+L'objet principal du fichier JSON.
+- \`format\`: String, REQUIS. Doit être "D-Graph".
+- \`version\`: String, REQUIS. Doit être "1.3".
+- \`mapInfo\`: Object, REQUIS. Voir section 1.1.
+- \`themePalette\`: Object, REQUIS. Voir section 1.2.
+- \`rooms\`: Array<Object>, REQUIS. Voir section 1.3.
+- \`connections\`: Array<Object>, REQUIS. Voir section 1.4.
 
 **1.1. Spécification de \`mapInfo\`**
-- \`game\`: "doom" | "doom2" | "heretic" | "hexen", REQUIS.
-- \`map\`: Integer, REQUIS.
-- \`name\`: String, REQUIS.
-- \`music\`: String, REQUIS.
+- \`game\`: String, REQUIS. Enum: "doom", "doom2", "heretic", "hexen".
+- \`map\`: Integer, REQUIS. Numéro de la carte.
+- \`name\`: String, REQUIS. Nom de la carte.
+- \`music\`: String, REQUIS. Nom du lump de musique (ex: "D_RUNNIN").
 
 **1.2. Spécification de \`themePalette\`**
 Définit le vocabulaire visuel. Chaque clé est un concept fonctionnel, et la valeur est un tableau de textures pondérées \`{ "name": String, "weight": Integer }\`.
@@ -250,17 +255,24 @@ Définit le vocabulaire visuel. Chaque clé est un concept fonctionnel, et la va
 - Mécaniques : \`teleporter_pad\`.
 
 **1.3. Spécification de \`room\`**
-- \`id\`: String, REQUIS.
-- \`parentRoom\`: String | null, REQUIS.
-- \`shapeHint\`: Object, REQUIS. (\`{ "vertices": Integer, "description": String }\`)
-- \`properties\`: Object, REQUIS. (\`{ "floor": String, "ceiling": String, "lightLevel": String, "wallTexture": String, "floorFlat": String, "ceilingFlat": String }\`)
-- \`contents\`: Object, REQUIS. (\`{ "monsters": Array, "items": Array, "decorations": Array }\`)
-- \`features\`: Array<Object>, REQUIS.
+Décrit une zone ou un secteur de la carte.
+- \`id\`: String, REQUIS. Identifiant unique (ex: "salle_de_controle").
+- \`parentRoom\`: String | null, REQUIS. ID de la pièce parente si imbriquée, sinon \`null\`.
+- \`shapeHint\`: Object, REQUIS. Contient :
+          - \`vertices\`: Integer, REQUIS. Nombre de sommets (ex: 4).
+          - \`description\`: String, REQUIS. Description textuelle (ex: "Carré et symétrique").
+- \`properties\`: Object, REQUIS. Contient :
+          - \`floor\`, \`ceiling\`: String, REQUIS. Enum: "very_low", "low", "normal", "high", "very_high", "sky".
+          - \`lightLevel\`: String, REQUIS. Enum: "very_dark", "dark", "normal", "bright", "flickering", "strobe".
+          - \`wallTexture\`, \`floorFlat\`, \`ceilingFlat\`: String, REQUIS. Doivent correspondre à une clé de la \`themePalette\`.
+- \`contents\`: Object, REQUIS. Contient les tableaux \`monsters\`, \`items\`, \`decorations\`. Chaque élément est un objet \`{ "type": String, "count": Integer }\`.
+- \`features\`: Array<Object>, REQUIS. Décrit les actions sur les murs. Chaque élément est un objet \`{ "type": String, "count": Integer, "properties": Object }\`.
 
 **1.4. Spécification de \`connection\`**
-- \`fromRoom\`, \`toRoom\`: String, REQUIS.
+Décrit un lien entre deux pièces.
+- \`fromRoom\`, \`toRoom\`: String, REQUIS. IDs des pièces connectées.
 - \`type\`: String, REQUIS. Enum: "opening", "door", "locked_door", "window", "teleporter".
-- \`properties\`: Object, REQUIS.
+- \`properties\`: Object, REQUIS. Détails de la connexion (ex: \`{ "texture": "DOORBLU", "key": "blue" }\`).
 
 **1.5. Exemple Complet de Structure**
 \`\`\`json
@@ -284,6 +296,9 @@ Définit le vocabulaire visuel. Chaque clé est un concept fonctionnel, et la va
             const themes = GAME_DATA[selectedGame].themes;
             const customOption = document.createElement('option');
             customOption.value = 'custom'; customOption.textContent = '-- Autre (spécifier) --';
+            const randomOption = document.createElement('option');
+            randomOption.value = 'random'; randomOption.textContent = '-- Aléatoire --';
+            themeSelect.appendChild(randomOption);
             themes.forEach(themeName => { const option = document.createElement('option'); option.value = themeName; option.textContent = themeName; themeSelect.appendChild(option); });
             themeSelect.appendChild(customOption);
         }
@@ -295,7 +310,15 @@ Définit le vocabulaire visuel. Chaque clé est un concept fonctionnel, et la va
 
         function generatePrompt() {
             const game = gameSelect.value;
-            let themeName = themeSelect.value === 'custom' ? (customThemeInput.value || "Thème personnalisé non défini") : themeSelect.value;
+            let themeName = themeSelect.value;
+            if (themeName === 'custom') {
+                themeName = customThemeInput.value || "Thème personnalisé non défini";
+            } else if (themeName === 'random') {
+                const themes = GAME_DATA[game].themes;
+                const randomIndex = Math.floor(Math.random() * themes.length);
+                themeName = themes[randomIndex];
+            }
+
             const size = document.getElementById('sizeSelect').value;
             const connectivity = document.getElementById('connectivitySelect').value;
             const description = document.getElementById('descriptionText').value;
@@ -304,7 +327,7 @@ Définit le vocabulaire visuel. Chaque clé est un concept fonctionnel, et la va
             let textureListText = `**Exemples de Textures de Murs Valides (\`textures\`):**
 ${data.textures.join(', ')} ...et des centaines d'autres.`;
 
-            if (game === 'doom' || game === 'doom2' || game === 'heretic') {
+            if (game === 'doom' || game === 'doom2' || game === 'heretic' || game === 'hexen') {
                 textureListText = `**Textures de Murs Valides (\`textures\`):**
 La liste complète suivante doit être utilisée.
 ${data.textures.join(', ')}`;
