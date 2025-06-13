@@ -1,0 +1,1741 @@
+{
+  "Format": "DHEMap",
+  "Version": "1.0",
+  "MapInfo": {
+    "Game": "doom",
+    "Episode": 0,
+    "Map": 2,
+    "Name": "Le Pr\u00E9cipice de Soufre",
+    "SkyTexture": "SKY1",
+    "Music": "D_E2M6"
+  },
+  "Vertices": [],
+  "Linedefs": [
+    {
+      "Id": 0,
+      "StartVertex": 0,
+      "EndVertex": 1,
+      "Flags": [
+        "impassable"
+      ],
+      "FrontSidedef": 0
+    },
+    {
+      "Id": 1,
+      "StartVertex": 1,
+      "EndVertex": 2,
+      "Flags": [
+        "impassable"
+      ],
+      "FrontSidedef": 1
+    },
+    {
+      "Id": 2,
+      "StartVertex": 2,
+      "EndVertex": 3,
+      "Flags": [
+        "impassable"
+      ],
+      "FrontSidedef": 2
+    },
+    {
+      "Id": 3,
+      "StartVertex": 3,
+      "EndVertex": 0,
+      "Flags": [
+        "impassable"
+      ],
+      "FrontSidedef": 3
+    },
+    {
+      "Id": 4,
+      "StartVertex": 4,
+      "EndVertex": 5,
+      "Flags": [
+        "impassable"
+      ],
+      "FrontSidedef": 4
+    },
+    {
+      "Id": 5,
+      "StartVertex": 5,
+      "EndVertex": 6,
+      "Flags": [
+        "impassable"
+      ],
+      "FrontSidedef": 5
+    },
+    {
+      "Id": 6,
+      "StartVertex": 6,
+      "EndVertex": 7,
+      "Flags": [
+        "impassable"
+      ],
+      "FrontSidedef": 6
+    },
+    {
+      "Id": 7,
+      "StartVertex": 7,
+      "EndVertex": 4,
+      "Flags": [
+        "impassable"
+      ],
+      "FrontSidedef": 7
+    },
+    {
+      "Id": 8,
+      "StartVertex": 8,
+      "EndVertex": 9,
+      "Flags": [
+        "impassable"
+      ],
+      "FrontSidedef": 8
+    },
+    {
+      "Id": 9,
+      "StartVertex": 9,
+      "EndVertex": 10,
+      "Flags": [
+        "impassable"
+      ],
+      "FrontSidedef": 9
+    },
+    {
+      "Id": 10,
+      "StartVertex": 10,
+      "EndVertex": 11,
+      "Flags": [
+        "impassable"
+      ],
+      "FrontSidedef": 10
+    },
+    {
+      "Id": 11,
+      "StartVertex": 11,
+      "EndVertex": 8,
+      "Flags": [
+        "impassable"
+      ],
+      "FrontSidedef": 11
+    },
+    {
+      "Id": 12,
+      "StartVertex": 12,
+      "EndVertex": 13,
+      "Flags": [
+        "impassable"
+      ],
+      "FrontSidedef": 12
+    },
+    {
+      "Id": 13,
+      "StartVertex": 13,
+      "EndVertex": 14,
+      "Flags": [
+        "impassable"
+      ],
+      "FrontSidedef": 13
+    },
+    {
+      "Id": 14,
+      "StartVertex": 14,
+      "EndVertex": 15,
+      "Flags": [
+        "impassable"
+      ],
+      "FrontSidedef": 14
+    },
+    {
+      "Id": 15,
+      "StartVertex": 15,
+      "EndVertex": 12,
+      "Flags": [
+        "impassable"
+      ],
+      "FrontSidedef": 15
+    },
+    {
+      "Id": 16,
+      "StartVertex": 16,
+      "EndVertex": 17,
+      "Flags": [
+        "impassable"
+      ],
+      "FrontSidedef": 16
+    },
+    {
+      "Id": 17,
+      "StartVertex": 17,
+      "EndVertex": 18,
+      "Flags": [
+        "impassable"
+      ],
+      "FrontSidedef": 17
+    },
+    {
+      "Id": 18,
+      "StartVertex": 18,
+      "EndVertex": 19,
+      "Flags": [
+        "impassable"
+      ],
+      "FrontSidedef": 18
+    },
+    {
+      "Id": 19,
+      "StartVertex": 19,
+      "EndVertex": 16,
+      "Flags": [
+        "impassable"
+      ],
+      "FrontSidedef": 19
+    },
+    {
+      "Id": 20,
+      "StartVertex": 20,
+      "EndVertex": 21,
+      "Flags": [
+        "impassable"
+      ],
+      "FrontSidedef": 20
+    },
+    {
+      "Id": 21,
+      "StartVertex": 21,
+      "EndVertex": 22,
+      "Flags": [
+        "impassable"
+      ],
+      "FrontSidedef": 21
+    },
+    {
+      "Id": 22,
+      "StartVertex": 22,
+      "EndVertex": 23,
+      "Flags": [
+        "impassable"
+      ],
+      "FrontSidedef": 22
+    },
+    {
+      "Id": 23,
+      "StartVertex": 23,
+      "EndVertex": 20,
+      "Flags": [
+        "impassable"
+      ],
+      "FrontSidedef": 23
+    },
+    {
+      "Id": 24,
+      "StartVertex": 24,
+      "EndVertex": 25,
+      "Flags": [
+        "impassable"
+      ],
+      "FrontSidedef": 24
+    },
+    {
+      "Id": 25,
+      "StartVertex": 25,
+      "EndVertex": 26,
+      "Flags": [
+        "impassable"
+      ],
+      "FrontSidedef": 25
+    },
+    {
+      "Id": 26,
+      "StartVertex": 26,
+      "EndVertex": 27,
+      "Flags": [
+        "impassable"
+      ],
+      "FrontSidedef": 26
+    },
+    {
+      "Id": 27,
+      "StartVertex": 27,
+      "EndVertex": 24,
+      "Flags": [
+        "impassable"
+      ],
+      "FrontSidedef": 27
+    },
+    {
+      "Id": 28,
+      "StartVertex": 28,
+      "EndVertex": 29,
+      "Flags": [
+        "impassable"
+      ],
+      "FrontSidedef": 28
+    },
+    {
+      "Id": 29,
+      "StartVertex": 29,
+      "EndVertex": 30,
+      "Flags": [
+        "impassable"
+      ],
+      "FrontSidedef": 29
+    },
+    {
+      "Id": 30,
+      "StartVertex": 30,
+      "EndVertex": 31,
+      "Flags": [
+        "impassable"
+      ],
+      "FrontSidedef": 30
+    },
+    {
+      "Id": 31,
+      "StartVertex": 31,
+      "EndVertex": 28,
+      "Flags": [
+        "impassable"
+      ],
+      "FrontSidedef": 31
+    },
+    {
+      "Id": 32,
+      "StartVertex": 32,
+      "EndVertex": 33,
+      "Flags": [
+        "impassable"
+      ],
+      "FrontSidedef": 32
+    },
+    {
+      "Id": 33,
+      "StartVertex": 33,
+      "EndVertex": 34,
+      "Flags": [
+        "impassable"
+      ],
+      "FrontSidedef": 33
+    },
+    {
+      "Id": 34,
+      "StartVertex": 34,
+      "EndVertex": 35,
+      "Flags": [
+        "impassable"
+      ],
+      "FrontSidedef": 34
+    },
+    {
+      "Id": 35,
+      "StartVertex": 35,
+      "EndVertex": 32,
+      "Flags": [
+        "impassable"
+      ],
+      "FrontSidedef": 35
+    },
+    {
+      "Id": 36,
+      "StartVertex": 36,
+      "EndVertex": 37,
+      "Flags": [
+        "impassable"
+      ],
+      "FrontSidedef": 36
+    },
+    {
+      "Id": 37,
+      "StartVertex": 37,
+      "EndVertex": 38,
+      "Flags": [
+        "impassable"
+      ],
+      "FrontSidedef": 37
+    },
+    {
+      "Id": 38,
+      "StartVertex": 38,
+      "EndVertex": 39,
+      "Flags": [
+        "impassable"
+      ],
+      "FrontSidedef": 38
+    },
+    {
+      "Id": 39,
+      "StartVertex": 39,
+      "EndVertex": 36,
+      "Flags": [
+        "impassable"
+      ],
+      "FrontSidedef": 39
+    },
+    {
+      "Id": 40,
+      "StartVertex": 40,
+      "EndVertex": 41,
+      "Flags": [
+        "impassable"
+      ],
+      "FrontSidedef": 40
+    },
+    {
+      "Id": 41,
+      "StartVertex": 41,
+      "EndVertex": 42,
+      "Flags": [
+        "impassable"
+      ],
+      "FrontSidedef": 41
+    },
+    {
+      "Id": 42,
+      "StartVertex": 42,
+      "EndVertex": 43,
+      "Flags": [
+        "impassable"
+      ],
+      "FrontSidedef": 42
+    },
+    {
+      "Id": 43,
+      "StartVertex": 43,
+      "EndVertex": 40,
+      "Flags": [
+        "impassable"
+      ],
+      "FrontSidedef": 43
+    },
+    {
+      "Id": 44,
+      "StartVertex": 44,
+      "EndVertex": 45,
+      "Flags": [
+        "impassable"
+      ],
+      "FrontSidedef": 44
+    },
+    {
+      "Id": 45,
+      "StartVertex": 45,
+      "EndVertex": 46,
+      "Flags": [
+        "impassable"
+      ],
+      "FrontSidedef": 45
+    },
+    {
+      "Id": 46,
+      "StartVertex": 46,
+      "EndVertex": 47,
+      "Flags": [
+        "impassable"
+      ],
+      "FrontSidedef": 46
+    },
+    {
+      "Id": 47,
+      "StartVertex": 47,
+      "EndVertex": 44,
+      "Flags": [
+        "impassable"
+      ],
+      "FrontSidedef": 47
+    },
+    {
+      "Id": 48,
+      "StartVertex": 48,
+      "EndVertex": 49,
+      "Flags": [
+        "impassable"
+      ],
+      "FrontSidedef": 48
+    },
+    {
+      "Id": 49,
+      "StartVertex": 49,
+      "EndVertex": 50,
+      "Flags": [
+        "impassable"
+      ],
+      "FrontSidedef": 49
+    },
+    {
+      "Id": 50,
+      "StartVertex": 50,
+      "EndVertex": 51,
+      "Flags": [
+        "impassable"
+      ],
+      "FrontSidedef": 50
+    },
+    {
+      "Id": 51,
+      "StartVertex": 51,
+      "EndVertex": 48,
+      "Flags": [
+        "impassable"
+      ],
+      "FrontSidedef": 51
+    },
+    {
+      "Id": 52,
+      "StartVertex": 52,
+      "EndVertex": 53,
+      "Flags": [
+        "impassable"
+      ],
+      "FrontSidedef": 52
+    },
+    {
+      "Id": 53,
+      "StartVertex": 53,
+      "EndVertex": 54,
+      "Flags": [
+        "impassable"
+      ],
+      "FrontSidedef": 53
+    },
+    {
+      "Id": 54,
+      "StartVertex": 54,
+      "EndVertex": 55,
+      "Flags": [
+        "impassable"
+      ],
+      "FrontSidedef": 54
+    },
+    {
+      "Id": 55,
+      "StartVertex": 55,
+      "EndVertex": 52,
+      "Flags": [
+        "impassable"
+      ],
+      "FrontSidedef": 55
+    },
+    {
+      "Id": 56,
+      "StartVertex": 56,
+      "EndVertex": 57,
+      "Flags": [
+        "impassable"
+      ],
+      "FrontSidedef": 56
+    },
+    {
+      "Id": 57,
+      "StartVertex": 57,
+      "EndVertex": 58,
+      "Flags": [
+        "impassable"
+      ],
+      "FrontSidedef": 57
+    },
+    {
+      "Id": 58,
+      "StartVertex": 58,
+      "EndVertex": 59,
+      "Flags": [
+        "impassable"
+      ],
+      "FrontSidedef": 58
+    },
+    {
+      "Id": 59,
+      "StartVertex": 59,
+      "EndVertex": 56,
+      "Flags": [
+        "impassable"
+      ],
+      "FrontSidedef": 59
+    },
+    {
+      "Id": 60,
+      "StartVertex": 60,
+      "EndVertex": 61,
+      "Flags": [
+        "impassable"
+      ],
+      "FrontSidedef": 60
+    },
+    {
+      "Id": 61,
+      "StartVertex": 61,
+      "EndVertex": 62,
+      "Flags": [
+        "impassable"
+      ],
+      "FrontSidedef": 61
+    },
+    {
+      "Id": 62,
+      "StartVertex": 62,
+      "EndVertex": 63,
+      "Flags": [
+        "impassable"
+      ],
+      "FrontSidedef": 62
+    },
+    {
+      "Id": 63,
+      "StartVertex": 63,
+      "EndVertex": 60,
+      "Flags": [
+        "impassable"
+      ],
+      "FrontSidedef": 63
+    }
+  ],
+  "Sidedefs": [
+    {
+      "Id": 0,
+      "OffsetX": 0,
+      "OffsetY": 0,
+      "TextureTop": "-",
+      "TextureMiddle": "MARBLE1",
+      "TextureBottom": "-",
+      "Sector": 0
+    },
+    {
+      "Id": 1,
+      "OffsetX": 0,
+      "OffsetY": 0,
+      "TextureTop": "-",
+      "TextureMiddle": "MARBLE1",
+      "TextureBottom": "-",
+      "Sector": 0
+    },
+    {
+      "Id": 2,
+      "OffsetX": 0,
+      "OffsetY": 0,
+      "TextureTop": "-",
+      "TextureMiddle": "MARBLE1",
+      "TextureBottom": "-",
+      "Sector": 0
+    },
+    {
+      "Id": 3,
+      "OffsetX": 0,
+      "OffsetY": 0,
+      "TextureTop": "-",
+      "TextureMiddle": "MARBLE1",
+      "TextureBottom": "-",
+      "Sector": 0
+    },
+    {
+      "Id": 4,
+      "OffsetX": 0,
+      "OffsetY": 0,
+      "TextureTop": "-",
+      "TextureMiddle": "MARBLE1",
+      "TextureBottom": "-",
+      "Sector": 1
+    },
+    {
+      "Id": 5,
+      "OffsetX": 0,
+      "OffsetY": 0,
+      "TextureTop": "-",
+      "TextureMiddle": "MARBLE1",
+      "TextureBottom": "-",
+      "Sector": 1
+    },
+    {
+      "Id": 6,
+      "OffsetX": 0,
+      "OffsetY": 0,
+      "TextureTop": "-",
+      "TextureMiddle": "MARBLE1",
+      "TextureBottom": "-",
+      "Sector": 1
+    },
+    {
+      "Id": 7,
+      "OffsetX": 0,
+      "OffsetY": 0,
+      "TextureTop": "-",
+      "TextureMiddle": "MARBLE1",
+      "TextureBottom": "-",
+      "Sector": 1
+    },
+    {
+      "Id": 8,
+      "OffsetX": 0,
+      "OffsetY": 0,
+      "TextureTop": "-",
+      "TextureMiddle": "MARBLE1",
+      "TextureBottom": "-",
+      "Sector": 2
+    },
+    {
+      "Id": 9,
+      "OffsetX": 0,
+      "OffsetY": 0,
+      "TextureTop": "-",
+      "TextureMiddle": "MARBLE1",
+      "TextureBottom": "-",
+      "Sector": 2
+    },
+    {
+      "Id": 10,
+      "OffsetX": 0,
+      "OffsetY": 0,
+      "TextureTop": "-",
+      "TextureMiddle": "MARBLE1",
+      "TextureBottom": "-",
+      "Sector": 2
+    },
+    {
+      "Id": 11,
+      "OffsetX": 0,
+      "OffsetY": 0,
+      "TextureTop": "-",
+      "TextureMiddle": "MARBLE1",
+      "TextureBottom": "-",
+      "Sector": 2
+    },
+    {
+      "Id": 12,
+      "OffsetX": 0,
+      "OffsetY": 0,
+      "TextureTop": "-",
+      "TextureMiddle": "MARBLE1",
+      "TextureBottom": "-",
+      "Sector": 3
+    },
+    {
+      "Id": 13,
+      "OffsetX": 0,
+      "OffsetY": 0,
+      "TextureTop": "-",
+      "TextureMiddle": "MARBLE1",
+      "TextureBottom": "-",
+      "Sector": 3
+    },
+    {
+      "Id": 14,
+      "OffsetX": 0,
+      "OffsetY": 0,
+      "TextureTop": "-",
+      "TextureMiddle": "MARBLE1",
+      "TextureBottom": "-",
+      "Sector": 3
+    },
+    {
+      "Id": 15,
+      "OffsetX": 0,
+      "OffsetY": 0,
+      "TextureTop": "-",
+      "TextureMiddle": "MARBLE1",
+      "TextureBottom": "-",
+      "Sector": 3
+    },
+    {
+      "Id": 16,
+      "OffsetX": 0,
+      "OffsetY": 0,
+      "TextureTop": "-",
+      "TextureMiddle": "MARBLE1",
+      "TextureBottom": "-",
+      "Sector": 4
+    },
+    {
+      "Id": 17,
+      "OffsetX": 0,
+      "OffsetY": 0,
+      "TextureTop": "-",
+      "TextureMiddle": "MARBLE1",
+      "TextureBottom": "-",
+      "Sector": 4
+    },
+    {
+      "Id": 18,
+      "OffsetX": 0,
+      "OffsetY": 0,
+      "TextureTop": "-",
+      "TextureMiddle": "MARBLE1",
+      "TextureBottom": "-",
+      "Sector": 4
+    },
+    {
+      "Id": 19,
+      "OffsetX": 0,
+      "OffsetY": 0,
+      "TextureTop": "-",
+      "TextureMiddle": "MARBLE1",
+      "TextureBottom": "-",
+      "Sector": 4
+    },
+    {
+      "Id": 20,
+      "OffsetX": 0,
+      "OffsetY": 0,
+      "TextureTop": "-",
+      "TextureMiddle": "MARBLE1",
+      "TextureBottom": "-",
+      "Sector": 5
+    },
+    {
+      "Id": 21,
+      "OffsetX": 0,
+      "OffsetY": 0,
+      "TextureTop": "-",
+      "TextureMiddle": "MARBLE1",
+      "TextureBottom": "-",
+      "Sector": 5
+    },
+    {
+      "Id": 22,
+      "OffsetX": 0,
+      "OffsetY": 0,
+      "TextureTop": "-",
+      "TextureMiddle": "MARBLE1",
+      "TextureBottom": "-",
+      "Sector": 5
+    },
+    {
+      "Id": 23,
+      "OffsetX": 0,
+      "OffsetY": 0,
+      "TextureTop": "-",
+      "TextureMiddle": "MARBLE1",
+      "TextureBottom": "-",
+      "Sector": 5
+    },
+    {
+      "Id": 24,
+      "OffsetX": 0,
+      "OffsetY": 0,
+      "TextureTop": "-",
+      "TextureMiddle": "MARBLE1",
+      "TextureBottom": "-",
+      "Sector": 6
+    },
+    {
+      "Id": 25,
+      "OffsetX": 0,
+      "OffsetY": 0,
+      "TextureTop": "-",
+      "TextureMiddle": "MARBLE1",
+      "TextureBottom": "-",
+      "Sector": 6
+    },
+    {
+      "Id": 26,
+      "OffsetX": 0,
+      "OffsetY": 0,
+      "TextureTop": "-",
+      "TextureMiddle": "MARBLE1",
+      "TextureBottom": "-",
+      "Sector": 6
+    },
+    {
+      "Id": 27,
+      "OffsetX": 0,
+      "OffsetY": 0,
+      "TextureTop": "-",
+      "TextureMiddle": "MARBLE1",
+      "TextureBottom": "-",
+      "Sector": 6
+    },
+    {
+      "Id": 28,
+      "OffsetX": 0,
+      "OffsetY": 0,
+      "TextureTop": "-",
+      "TextureMiddle": "MARBLE1",
+      "TextureBottom": "-",
+      "Sector": 7
+    },
+    {
+      "Id": 29,
+      "OffsetX": 0,
+      "OffsetY": 0,
+      "TextureTop": "-",
+      "TextureMiddle": "MARBLE1",
+      "TextureBottom": "-",
+      "Sector": 7
+    },
+    {
+      "Id": 30,
+      "OffsetX": 0,
+      "OffsetY": 0,
+      "TextureTop": "-",
+      "TextureMiddle": "MARBLE1",
+      "TextureBottom": "-",
+      "Sector": 7
+    },
+    {
+      "Id": 31,
+      "OffsetX": 0,
+      "OffsetY": 0,
+      "TextureTop": "-",
+      "TextureMiddle": "MARBLE1",
+      "TextureBottom": "-",
+      "Sector": 7
+    },
+    {
+      "Id": 32,
+      "OffsetX": 0,
+      "OffsetY": 0,
+      "TextureTop": "-",
+      "TextureMiddle": "MARBLE1",
+      "TextureBottom": "-",
+      "Sector": 8
+    },
+    {
+      "Id": 33,
+      "OffsetX": 0,
+      "OffsetY": 0,
+      "TextureTop": "-",
+      "TextureMiddle": "MARBLE1",
+      "TextureBottom": "-",
+      "Sector": 8
+    },
+    {
+      "Id": 34,
+      "OffsetX": 0,
+      "OffsetY": 0,
+      "TextureTop": "-",
+      "TextureMiddle": "MARBLE1",
+      "TextureBottom": "-",
+      "Sector": 8
+    },
+    {
+      "Id": 35,
+      "OffsetX": 0,
+      "OffsetY": 0,
+      "TextureTop": "-",
+      "TextureMiddle": "MARBLE1",
+      "TextureBottom": "-",
+      "Sector": 8
+    },
+    {
+      "Id": 36,
+      "OffsetX": 0,
+      "OffsetY": 0,
+      "TextureTop": "-",
+      "TextureMiddle": "MARBLE1",
+      "TextureBottom": "-",
+      "Sector": 9
+    },
+    {
+      "Id": 37,
+      "OffsetX": 0,
+      "OffsetY": 0,
+      "TextureTop": "-",
+      "TextureMiddle": "MARBLE1",
+      "TextureBottom": "-",
+      "Sector": 9
+    },
+    {
+      "Id": 38,
+      "OffsetX": 0,
+      "OffsetY": 0,
+      "TextureTop": "-",
+      "TextureMiddle": "MARBLE1",
+      "TextureBottom": "-",
+      "Sector": 9
+    },
+    {
+      "Id": 39,
+      "OffsetX": 0,
+      "OffsetY": 0,
+      "TextureTop": "-",
+      "TextureMiddle": "MARBLE1",
+      "TextureBottom": "-",
+      "Sector": 9
+    },
+    {
+      "Id": 40,
+      "OffsetX": 0,
+      "OffsetY": 0,
+      "TextureTop": "-",
+      "TextureMiddle": "MARBLE1",
+      "TextureBottom": "-",
+      "Sector": 10
+    },
+    {
+      "Id": 41,
+      "OffsetX": 0,
+      "OffsetY": 0,
+      "TextureTop": "-",
+      "TextureMiddle": "MARBLE1",
+      "TextureBottom": "-",
+      "Sector": 10
+    },
+    {
+      "Id": 42,
+      "OffsetX": 0,
+      "OffsetY": 0,
+      "TextureTop": "-",
+      "TextureMiddle": "MARBLE1",
+      "TextureBottom": "-",
+      "Sector": 10
+    },
+    {
+      "Id": 43,
+      "OffsetX": 0,
+      "OffsetY": 0,
+      "TextureTop": "-",
+      "TextureMiddle": "MARBLE1",
+      "TextureBottom": "-",
+      "Sector": 10
+    },
+    {
+      "Id": 44,
+      "OffsetX": 0,
+      "OffsetY": 0,
+      "TextureTop": "-",
+      "TextureMiddle": "MARBLE1",
+      "TextureBottom": "-",
+      "Sector": 11
+    },
+    {
+      "Id": 45,
+      "OffsetX": 0,
+      "OffsetY": 0,
+      "TextureTop": "-",
+      "TextureMiddle": "MARBLE1",
+      "TextureBottom": "-",
+      "Sector": 11
+    },
+    {
+      "Id": 46,
+      "OffsetX": 0,
+      "OffsetY": 0,
+      "TextureTop": "-",
+      "TextureMiddle": "MARBLE1",
+      "TextureBottom": "-",
+      "Sector": 11
+    },
+    {
+      "Id": 47,
+      "OffsetX": 0,
+      "OffsetY": 0,
+      "TextureTop": "-",
+      "TextureMiddle": "MARBLE1",
+      "TextureBottom": "-",
+      "Sector": 11
+    },
+    {
+      "Id": 48,
+      "OffsetX": 0,
+      "OffsetY": 0,
+      "TextureTop": "-",
+      "TextureMiddle": "MARBLE1",
+      "TextureBottom": "-",
+      "Sector": 12
+    },
+    {
+      "Id": 49,
+      "OffsetX": 0,
+      "OffsetY": 0,
+      "TextureTop": "-",
+      "TextureMiddle": "MARBLE1",
+      "TextureBottom": "-",
+      "Sector": 12
+    },
+    {
+      "Id": 50,
+      "OffsetX": 0,
+      "OffsetY": 0,
+      "TextureTop": "-",
+      "TextureMiddle": "MARBLE1",
+      "TextureBottom": "-",
+      "Sector": 12
+    },
+    {
+      "Id": 51,
+      "OffsetX": 0,
+      "OffsetY": 0,
+      "TextureTop": "-",
+      "TextureMiddle": "MARBLE1",
+      "TextureBottom": "-",
+      "Sector": 12
+    },
+    {
+      "Id": 52,
+      "OffsetX": 0,
+      "OffsetY": 0,
+      "TextureTop": "-",
+      "TextureMiddle": "MARBLE1",
+      "TextureBottom": "-",
+      "Sector": 13
+    },
+    {
+      "Id": 53,
+      "OffsetX": 0,
+      "OffsetY": 0,
+      "TextureTop": "-",
+      "TextureMiddle": "MARBLE1",
+      "TextureBottom": "-",
+      "Sector": 13
+    },
+    {
+      "Id": 54,
+      "OffsetX": 0,
+      "OffsetY": 0,
+      "TextureTop": "-",
+      "TextureMiddle": "MARBLE1",
+      "TextureBottom": "-",
+      "Sector": 13
+    },
+    {
+      "Id": 55,
+      "OffsetX": 0,
+      "OffsetY": 0,
+      "TextureTop": "-",
+      "TextureMiddle": "MARBLE1",
+      "TextureBottom": "-",
+      "Sector": 13
+    },
+    {
+      "Id": 56,
+      "OffsetX": 0,
+      "OffsetY": 0,
+      "TextureTop": "-",
+      "TextureMiddle": "MARBLE1",
+      "TextureBottom": "-",
+      "Sector": 14
+    },
+    {
+      "Id": 57,
+      "OffsetX": 0,
+      "OffsetY": 0,
+      "TextureTop": "-",
+      "TextureMiddle": "MARBLE1",
+      "TextureBottom": "-",
+      "Sector": 14
+    },
+    {
+      "Id": 58,
+      "OffsetX": 0,
+      "OffsetY": 0,
+      "TextureTop": "-",
+      "TextureMiddle": "MARBLE1",
+      "TextureBottom": "-",
+      "Sector": 14
+    },
+    {
+      "Id": 59,
+      "OffsetX": 0,
+      "OffsetY": 0,
+      "TextureTop": "-",
+      "TextureMiddle": "MARBLE1",
+      "TextureBottom": "-",
+      "Sector": 14
+    },
+    {
+      "Id": 60,
+      "OffsetX": 0,
+      "OffsetY": 0,
+      "TextureTop": "-",
+      "TextureMiddle": "MARBLE1",
+      "TextureBottom": "-",
+      "Sector": 15
+    },
+    {
+      "Id": 61,
+      "OffsetX": 0,
+      "OffsetY": 0,
+      "TextureTop": "-",
+      "TextureMiddle": "MARBLE1",
+      "TextureBottom": "-",
+      "Sector": 15
+    },
+    {
+      "Id": 62,
+      "OffsetX": 0,
+      "OffsetY": 0,
+      "TextureTop": "-",
+      "TextureMiddle": "MARBLE1",
+      "TextureBottom": "-",
+      "Sector": 15
+    },
+    {
+      "Id": 63,
+      "OffsetX": 0,
+      "OffsetY": 0,
+      "TextureTop": "-",
+      "TextureMiddle": "MARBLE1",
+      "TextureBottom": "-",
+      "Sector": 15
+    }
+  ],
+  "Sectors": [
+    {
+      "Id": 0,
+      "FloorHeight": 128,
+      "CeilingHeight": 128,
+      "FloorTexture": "FLAT14",
+      "CeilingTexture": "RROCK04",
+      "LightLevel": 160,
+      "Special": 0,
+      "Tag": 0
+    },
+    {
+      "Id": 1,
+      "FloorHeight": 128,
+      "CeilingHeight": 128,
+      "FloorTexture": "FLAT14",
+      "CeilingTexture": "F_SKY1",
+      "LightLevel": 220,
+      "Special": 0,
+      "Tag": 0
+    },
+    {
+      "Id": 2,
+      "FloorHeight": 0,
+      "CeilingHeight": 128,
+      "FloorTexture": "FLAT14",
+      "CeilingTexture": "F_SKY1",
+      "LightLevel": 220,
+      "Special": 0,
+      "Tag": 0
+    },
+    {
+      "Id": 3,
+      "FloorHeight": 0,
+      "CeilingHeight": 128,
+      "FloorTexture": "FLAT14",
+      "CeilingTexture": "F_SKY1",
+      "LightLevel": 220,
+      "Special": 0,
+      "Tag": 0
+    },
+    {
+      "Id": 4,
+      "FloorHeight": 0,
+      "CeilingHeight": 128,
+      "FloorTexture": "MFLR8_1",
+      "CeilingTexture": "RROCK04",
+      "LightLevel": 160,
+      "Special": 0,
+      "Tag": 0
+    },
+    {
+      "Id": 5,
+      "FloorHeight": 0,
+      "CeilingHeight": 128,
+      "FloorTexture": "MFLR8_1",
+      "CeilingTexture": "RROCK04",
+      "LightLevel": 80,
+      "Special": 0,
+      "Tag": 0
+    },
+    {
+      "Id": 6,
+      "FloorHeight": 0,
+      "CeilingHeight": 128,
+      "FloorTexture": "MFLR8_1",
+      "CeilingTexture": "TLITE6_1",
+      "LightLevel": 220,
+      "Special": 0,
+      "Tag": 0
+    },
+    {
+      "Id": 7,
+      "FloorHeight": 128,
+      "CeilingHeight": 128,
+      "FloorTexture": "PLAT1",
+      "CeilingTexture": "TLITE6_1",
+      "LightLevel": 160,
+      "Special": 0,
+      "Tag": 0
+    },
+    {
+      "Id": 8,
+      "FloorHeight": -32,
+      "CeilingHeight": 128,
+      "FloorTexture": "PLAT1",
+      "CeilingTexture": "F_SKY1",
+      "LightLevel": 220,
+      "Special": 0,
+      "Tag": 101
+    },
+    {
+      "Id": 9,
+      "FloorHeight": 0,
+      "CeilingHeight": 128,
+      "FloorTexture": "FLAT14",
+      "CeilingTexture": "F_SKY1",
+      "LightLevel": 220,
+      "Special": 0,
+      "Tag": 0
+    },
+    {
+      "Id": 10,
+      "FloorHeight": 0,
+      "CeilingHeight": 128,
+      "FloorTexture": "FLAT14",
+      "CeilingTexture": "RROCK04",
+      "LightLevel": 80,
+      "Special": 0,
+      "Tag": 0
+    },
+    {
+      "Id": 11,
+      "FloorHeight": 0,
+      "CeilingHeight": 0,
+      "FloorTexture": "FLAT14",
+      "CeilingTexture": "RROCK04",
+      "LightLevel": 160,
+      "Special": 0,
+      "Tag": 0
+    },
+    {
+      "Id": 12,
+      "FloorHeight": 0,
+      "CeilingHeight": 128,
+      "FloorTexture": "PLAT1",
+      "CeilingTexture": "RROCK04",
+      "LightLevel": 160,
+      "Special": 0,
+      "Tag": 0
+    },
+    {
+      "Id": 13,
+      "FloorHeight": 0,
+      "CeilingHeight": 128,
+      "FloorTexture": "FLAT14",
+      "CeilingTexture": "RROCK04",
+      "LightLevel": 160,
+      "Special": 0,
+      "Tag": 0
+    },
+    {
+      "Id": 14,
+      "FloorHeight": 0,
+      "CeilingHeight": 128,
+      "FloorTexture": "MFLR8_1",
+      "CeilingTexture": "RROCK04",
+      "LightLevel": 220,
+      "Special": 0,
+      "Tag": 0
+    },
+    {
+      "Id": 15,
+      "FloorHeight": 0,
+      "CeilingHeight": 128,
+      "FloorTexture": "FLAT14",
+      "CeilingTexture": "TLITE6_1",
+      "LightLevel": 220,
+      "Special": 0,
+      "Tag": 0
+    }
+  ],
+  "Things": [
+    {
+      "Id": 0,
+      "X": 102.748344,
+      "Y": 348.68118,
+      "Angle": 0,
+      "Type": 1,
+      "Flags": [
+        "skillEasy",
+        "skillNormal",
+        "skillHard"
+      ]
+    },
+    {
+      "Id": 1,
+      "X": 104.98527,
+      "Y": 274.8266,
+      "Angle": 0,
+      "Type": 2007,
+      "Flags": [
+        "skillEasy",
+        "skillNormal",
+        "skillHard"
+      ]
+    },
+    {
+      "Id": 2,
+      "X": 64.80445,
+      "Y": 264.90747,
+      "Angle": 270,
+      "Type": 2046,
+      "Flags": [
+        "skillEasy",
+        "skillNormal",
+        "skillHard"
+      ]
+    },
+    {
+      "Id": 3,
+      "X": 150.02629,
+      "Y": 46.32454,
+      "Angle": 45,
+      "Type": 2046,
+      "Flags": [
+        "skillEasy",
+        "skillNormal",
+        "skillHard"
+      ]
+    },
+    {
+      "Id": 4,
+      "X": 551.0036,
+      "Y": 6.749449,
+      "Angle": 90,
+      "Type": 3001,
+      "Flags": [
+        "skillEasy",
+        "skillNormal",
+        "skillHard"
+      ]
+    },
+    {
+      "Id": 5,
+      "X": 517.7518,
+      "Y": 302.12238,
+      "Angle": 45,
+      "Type": 3001,
+      "Flags": [
+        "skillEasy",
+        "skillNormal",
+        "skillHard"
+      ]
+    },
+    {
+      "Id": 6,
+      "X": 1281.056,
+      "Y": 57.104797,
+      "Angle": 225,
+      "Type": 9,
+      "Flags": [
+        "skillEasy",
+        "skillNormal",
+        "skillHard"
+      ]
+    },
+    {
+      "Id": 7,
+      "X": 1227.1752,
+      "Y": 9.895117,
+      "Angle": 270,
+      "Type": 9,
+      "Flags": [
+        "skillEasy",
+        "skillNormal",
+        "skillHard"
+      ]
+    },
+    {
+      "Id": 8,
+      "X": 1178.9602,
+      "Y": 132.44727,
+      "Angle": 0,
+      "Type": 3001,
+      "Flags": [
+        "skillEasy",
+        "skillNormal",
+        "skillHard"
+      ]
+    },
+    {
+      "Id": 9,
+      "X": 1559.067,
+      "Y": 333.95563,
+      "Angle": 135,
+      "Type": 2002,
+      "Flags": [
+        "skillEasy",
+        "skillNormal",
+        "skillHard"
+      ]
+    },
+    {
+      "Id": 10,
+      "X": 1601.7178,
+      "Y": 170.3292,
+      "Angle": 315,
+      "Type": 3005,
+      "Flags": [
+        "skillEasy",
+        "skillNormal",
+        "skillHard"
+      ]
+    },
+    {
+      "Id": 11,
+      "X": 2080.5525,
+      "Y": 196.25043,
+      "Angle": 90,
+      "Type": 3002,
+      "Flags": [
+        "skillEasy",
+        "skillNormal",
+        "skillHard"
+      ]
+    },
+    {
+      "Id": 12,
+      "X": 2266.5154,
+      "Y": 250.45552,
+      "Angle": 45,
+      "Type": 3002,
+      "Flags": [
+        "skillEasy",
+        "skillNormal",
+        "skillHard"
+      ]
+    },
+    {
+      "Id": 13,
+      "X": 2660.4443,
+      "Y": 242.69165,
+      "Angle": 315,
+      "Type": 2013,
+      "Flags": [
+        "skillEasy",
+        "skillNormal",
+        "skillHard"
+      ]
+    },
+    {
+      "Id": 14,
+      "X": 2528.4412,
+      "Y": 162.28088,
+      "Angle": 270,
+      "Type": 58,
+      "Flags": [
+        "skillEasy",
+        "skillNormal",
+        "skillHard"
+      ]
+    },
+    {
+      "Id": 15,
+      "X": 3372.008,
+      "Y": 33.001976,
+      "Angle": 135,
+      "Type": 5,
+      "Flags": [
+        "skillEasy",
+        "skillNormal",
+        "skillHard"
+      ]
+    },
+    {
+      "Id": 16,
+      "X": 2929.4888,
+      "Y": 213.02959,
+      "Angle": 180,
+      "Type": 2018,
+      "Flags": [
+        "skillEasy",
+        "skillNormal",
+        "skillHard"
+      ]
+    },
+    {
+      "Id": 17,
+      "X": 3920.3088,
+      "Y": 302.83533,
+      "Angle": 180,
+      "Type": 9,
+      "Flags": [
+        "skillEasy",
+        "skillNormal",
+        "skillHard"
+      ]
+    },
+    {
+      "Id": 18,
+      "X": 4023.7656,
+      "Y": 92.81747,
+      "Angle": 45,
+      "Type": 9,
+      "Flags": [
+        "skillEasy",
+        "skillNormal",
+        "skillHard"
+      ]
+    },
+    {
+      "Id": 19,
+      "X": 5006.9814,
+      "Y": 228.14777,
+      "Angle": 270,
+      "Type": 2010,
+      "Flags": [
+        "skillEasy",
+        "skillNormal",
+        "skillHard"
+      ]
+    },
+    {
+      "Id": 20,
+      "X": 5011.5156,
+      "Y": 154.68141,
+      "Angle": 270,
+      "Type": 3001,
+      "Flags": [
+        "skillEasy",
+        "skillNormal",
+        "skillHard"
+      ]
+    },
+    {
+      "Id": 21,
+      "X": 4960.0054,
+      "Y": 144.81267,
+      "Angle": 45,
+      "Type": 3001,
+      "Flags": [
+        "skillEasy",
+        "skillNormal",
+        "skillHard"
+      ]
+    },
+    {
+      "Id": 22,
+      "X": 4943.926,
+      "Y": 274.8417,
+      "Angle": 270,
+      "Type": 3001,
+      "Flags": [
+        "skillEasy",
+        "skillNormal",
+        "skillHard"
+      ]
+    },
+    {
+      "Id": 23,
+      "X": 5919.3184,
+      "Y": 218.12729,
+      "Angle": 0,
+      "Type": 83,
+      "Flags": [
+        "skillEasy",
+        "skillNormal",
+        "skillHard"
+      ]
+    },
+    {
+      "Id": 24,
+      "X": 6327.799,
+      "Y": 139.36647,
+      "Angle": 45,
+      "Type": 3004,
+      "Flags": [
+        "skillEasy",
+        "skillNormal",
+        "skillHard"
+      ]
+    },
+    {
+      "Id": 25,
+      "X": 6337.113,
+      "Y": 111.74663,
+      "Angle": 45,
+      "Type": 3004,
+      "Flags": [
+        "skillEasy",
+        "skillNormal",
+        "skillHard"
+      ]
+    },
+    {
+      "Id": 26,
+      "X": 6411.0317,
+      "Y": 76.56787,
+      "Angle": 270,
+      "Type": 3004,
+      "Flags": [
+        "skillEasy",
+        "skillNormal",
+        "skillHard"
+      ]
+    },
+    {
+      "Id": 27,
+      "X": 6324.435,
+      "Y": 46.13613,
+      "Angle": 225,
+      "Type": 3004,
+      "Flags": [
+        "skillEasy",
+        "skillNormal",
+        "skillHard"
+      ]
+    },
+    {
+      "Id": 28,
+      "X": 6627.127,
+      "Y": 23.20027,
+      "Angle": 45,
+      "Type": 3002,
+      "Flags": [
+        "skillEasy",
+        "skillNormal",
+        "skillHard"
+      ]
+    },
+    {
+      "Id": 29,
+      "X": 7052.212,
+      "Y": 86.15039,
+      "Angle": 270,
+      "Type": 3006,
+      "Flags": [
+        "skillEasy",
+        "skillNormal",
+        "skillHard"
+      ]
+    },
+    {
+      "Id": 30,
+      "X": 6654.3706,
+      "Y": 219.88637,
+      "Angle": 270,
+      "Type": 3006,
+      "Flags": [
+        "skillEasy",
+        "skillNormal",
+        "skillHard"
+      ]
+    },
+    {
+      "Id": 31,
+      "X": 6950.7915,
+      "Y": 270.00488,
+      "Angle": 90,
+      "Type": 3006,
+      "Flags": [
+        "skillEasy",
+        "skillNormal",
+        "skillHard"
+      ]
+    },
+    {
+      "Id": 32,
+      "X": 7265.4966,
+      "Y": 231.5705,
+      "Angle": 0,
+      "Type": 2025,
+      "Flags": [
+        "skillEasy",
+        "skillNormal",
+        "skillHard"
+      ]
+    },
+    {
+      "Id": 33,
+      "X": 7228.957,
+      "Y": 34.272102,
+      "Angle": 45,
+      "Type": 3003,
+      "Flags": [
+        "skillEasy",
+        "skillNormal",
+        "skillHard"
+      ]
+    }
+  ]
+}
