@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Générateur de Prompt D-Graph (Spécification Rigide)</title>
+    <title>Générateur de Prompt D-Graph (Final)</title>
     <style>
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
@@ -197,25 +197,15 @@
             doom: {
                 themes: ["Base Technologique (E1)", "Rivages de l'Enfer (E2)", "Base Gothique/Corrompue (E3)", "Laboratoire de Slime"],
                 things: [{ type: 3001, name: "Imp" }, { type: 3004, name: "Zombieman" }],
-                textures: [
-                    "AASHIT1", "AASHIT2", "BARREL", "BIGDOOR1", "BIGDOOR2", "BIGDOOR3", "BIGDOOR4", "BIGDOOR5", "BIGDOOR6", "BIGDOOR7",
-                    "BRICK1", "BRICK2", "BRICK3", "BRICK4", "BRICK5", "BRICK6", "BRICK7", "BRICK8", "BRICK9", "BRICK10", "BRICK11", "BRICK12",
-                    "BRNPOIS", "BROWN1", "BROWN96", "BROWNGRN", "CEIL3_1", "CEIL3_2", "CEIL4_1", "CEIL4_2", "CEIL4_3", "CEIL5_1", "CEIL5_2",
-                    "COMPTALL", "CRAT1", "CRAT2", "CRAT3", "DOOR1", "DOOR3", "DOORBLU", "DOORRED", "DOORYEL", "DOORTRAK", "EXITDOOR", "EXITSIGN",
-                    "GRAY1", "GRAY4", "GRAY7", "GRAYTALL", "GSTANCE", "LITE1", "LITE2", "LITE3", "LITE4", "LITE5", "LITEBLU", "LITEGRN", "LITERED",
-                    "MARBLE1", "MARBLE2", "MARBLE3", "MARBLE4", "METAL", "METAL1", "METAL2", "METAL3", "METAL4", "METAL5", "METAL6", "METAL7",
-                    "NUKAGE1", "NUKAGE2", "NUKAGE3", "PLAT1", "PLAT2", "PLAT3", "ROCK01", "ROCK02", "ROCK03", "ROCK04", "ROCK05",
-                    "SHAWN1", "SHAWN2", "SKIN1", "SKIN2", "SKIN3", "SKINBORD", "SKY1", "SKY2", "SKY3", "SLADWALL",
-                    "SP_HOT1", "SP_HOT2", "SP_HOT3", "SP_HOT4", "STARG1", "STARG2", "STARGR1", "STEP1", "STEP2", "STEP3", "STEP4", "STEP5", "STEP6",
-                    "SUPPORT1", "SUPPORT2", "SUPPORT3", "SW1BRN1", "SW1BRN2", "SW1COMM", "SW1COMP", "SW1EXIT", "SW1GRAY", "SW1GREN",
-                    "SW1HOT", "SW1LIT", "SW1MARB", "SW1METAL", "SW1PIPE", "SW1ROCK", "SW1SKIN", "SW1STAR", "SW1STON", "SW1WOOD",
-                    "SW2BRN1", "SW2BRN2", "SW2COMM", "SW2COMP", "SW2EXIT", "SW2GRAY", "SW2GREN", "SW2HOT", "SW2LIT", "SW2MARB",
-                    "SW2METAL", "SW2PIPE", "SW2ROCK", "SW2SKIN", "SW2STAR", "SW2STON", "SW2WOOD", "TEKWALL1", "TEKWALL2", "TEKWALL3", "TEKWALL4",
-                    "WOOD1", "WOOD2", "WOOD3", "WOOD4", "WOOD5", "WOOD6", "WOOD7", "WOOD8", "WOOD9"
-                ],
+                textures: ["AASHIT1", "AASHIT2", "BARREL", "BIGDOOR1", "BIGDOOR2", "BIGDOOR3", "BIGDOOR4", "BIGDOOR5", "BIGDOOR6", "BIGDOOR7", "BRICK1", "BRICK2", "BRICK3", "BRICK4", "BRICK5", "BRICK6", "BRICK7", "BRICK8", "BRICK9", "BRICK10", "BRICK11", "BRICK12", "BRNPOIS", "BROWN1", "BROWN96", "BROWNGRN", "CEIL3_1", "CEIL3_2", "CEIL4_1", "CEIL4_2", "CEIL4_3", "CEIL5_1", "CEIL5_2", "COMPTALL", "CRAT1", "CRAT2", "CRAT3", "DOOR1", "DOOR3", "DOORBLU", "DOORRED", "DOORYEL", "DOORTRAK", "EXITDOOR", "EXITSIGN", "GRAY1", "GRAY4", "GRAY7", "GRAYTALL", "GSTANCE", "LITE1", "LITE2", "LITE3", "LITE4", "LITE5", "LITEBLU", "LITEGRN", "LITERED", "MARBLE1", "MARBLE2", "MARBLE3", "MARBLE4", "METAL", "METAL1", "METAL2", "METAL3", "METAL4", "METAL5", "METAL6", "METAL7", "NUKAGE1", "NUKAGE2", "NUKAGE3", "PLAT1", "PLAT2", "PLAT3", "ROCK01", "ROCK02", "ROCK03", "ROCK04", "ROCK05", "SHAWN1", "SHAWN2", "SKIN1", "SKIN2", "SKIN3", "SKINBORD", "SKY1", "SKY2", "SKY3", "SLADWALL", "SP_HOT1", "SP_HOT2", "SP_HOT3", "SP_HOT4", "STARG1", "STARG2", "STARGR1", "STEP1", "STEP2", "STEP3", "STEP4", "STEP5", "STEP6", "SUPPORT1", "SUPPORT2", "SUPPORT3", "SW1BRN1", "SW1BRN2", "SW1COMM", "SW1COMP", "SW1EXIT", "SW1GRAY", "SW1GREN", "SW1HOT", "SW1LIT", "SW1MARB", "SW1METAL", "SW1PIPE", "SW1ROCK", "SW1SKIN", "SW1STAR", "SW1STON", "SW1WOOD", "SW2BRN1", "SW2BRN2", "SW2COMM", "SW2COMP", "SW2EXIT", "SW2GRAY", "SW2GREN", "SW2HOT", "SW2LIT", "SW2MARB", "SW2METAL", "SW2PIPE", "SW2ROCK", "SW2SKIN", "SW2STAR", "SW2STON", "SW2WOOD", "TEKWALL1", "TEKWALL2", "TEKWALL3", "TEKWALL4", "WOOD1", "WOOD2", "WOOD3", "WOOD4", "WOOD5", "WOOD6", "WOOD7", "WOOD8", "WOOD9"],
                 flats: ["FLOOR4_8", "CEIL3_1", "FLAT5_1", "NUKAGE1", "F_SKY1", "F_SKY2"],
             },
-            doom2: { themes: ["Complexe Industriel UAC", "Enfer sur Terre", "Ville en Ruines", "Forteresse Gothique", "Usine de Traitement", "Niveau Abstrait"], things: [{ type: 72, name: "Arachnotron" }, { type: 65, name: "Hell Knight" }], textures: ["AASHIT1", "BIGDOOR2", "BRONZE1", "EXITDOOR", "DOORBLU", "TEKWALL1", "BRICK5"], flats: ["SLIME14", "RROCK05", "FLAT5_4", "TECH01", "GRASS1", "LAVA1"] },
+            doom2: {
+                themes: ["Complexe Industriel UAC", "Enfer sur Terre", "Ville en Ruines", "Forteresse Gothique", "Usine de Traitement", "Niveau Abstrait"],
+                things: [{ type: 72, name: "Arachnotron" }, { type: 65, name: "Hell Knight" }],
+                textures: ["AASHIT1", "AASHIT2", "ASHWALL", "BARNS", "BARREL", "BIGDOOR1", "BIGDOOR2", "BIGDOOR3", "BIGDOOR4", "BIGDOOR5", "BIGDOOR6", "BIGDOOR7", "BRICK1", "BRICK2", "BRICK3", "BRICK4", "BRICK5", "BRICK6", "BRICK7", "BRICK8", "BRICK9", "BRICK10", "BRICK11", "BRICK12", "BRNPOIS", "BRONZE1", "BRONZE2", "BRONZE3", "BRONZE4", "BROWN1", "BROWN96", "BROWNGRN", "CEMENT1", "CEMENT2", "CEMENT3", "CEMENT4", "CEMENT5", "CEMENT6", "CEMENT7", "CEMENT8", "CEMENT9", "COMP1", "COMP2", "COMPTALL", "COMPUTER", "CRATE1", "CRATE2", "CRATE3", "CRATETOP", "CRATIN", "DOOR1", "DOOR3", "DOORBLU", "DOORRED", "DOORYEL", "DOORTRAK", "EXITDOOR", "EXITSIGN", "GRAY1", "GRAY4", "GRAY7", "GRAYTALL", "GSTANCE", "GSTONE1", "GSTONE2", "GSTONPOP", "ICWALL1", "ICWALL2", "ICWALL3", "ICWALL4", "ICWALL5", "LITE1", "LITE2", "LITE3", "LITE4", "LITE5", "LITEBLU", "LITEGRN", "LITERED", "MARB1", "MARB2", "MARB3", "MARBFAC1", "MARBFAC2", "MARBFAC3", "MARBFAC4", "MARBLE1", "MARBLE2", "MARBLE3", "MARBLE4", "METAL", "METAL1", "METAL2", "METAL3", "METAL4", "METAL5", "METAL6", "METAL7", "MIDGRATE", "MOSS1", "MOSS2", "MOSS3", "NUKAGE1", "NUKAGE2", "NUKAGE3", "PIPE1", "PIPE2", "PIPE3", "PIPE4", "PIPE5", "PIPE6", "PLAT1", "PLAT2", "PLAT3", "ROCK01", "ROCK02", "ROCK03", "ROCK04", "ROCK05", "ROCK06", "ROCK07", "ROCK08", "SHAWN1", "SHAWN2", "SKIN1", "SKIN2", "SKIN3", "SKINBORD", "SKY1", "SKY2", "SKY3", "SLADWALL", "SP_FACE1", "SP_FACE2", "SP_HOT1", "SP_HOT2", "SP_HOT3", "SP_HOT4", "STARG1", "STARG2", "STARGR1", "STEP1", "STEP2", "STEP3", "STEP4", "STEP5", "STEP6", "STONE1", "STONE2", "STONE3", "STONE4", "STONPOIS", "SUPPORT1", "SUPPORT2", "SUPPORT3", "SW1BRN1", "SW1BRN2", "SW1COMM", "SW1COMP", "SW1EXIT", "SW1GRAY", "SW1GREN", "SW1HOT", "SW1LIT", "SW1MARB", "SW1METAL", "SW1PIPE", "SW1ROCK", "SW1SKIN", "SW1STAR", "SW1STON", "SW1WOOD", "SW2BRN1", "SW2BRN2", "SW2COMM", "SW2COMP", "SW2EXIT", "SW2GRAY", "SW2GREN", "SW2HOT", "SW2LIT", "SW2MARB", "SW2METAL", "SW2PIPE", "SW2ROCK", "SW2SKIN", "SW2STAR", "SW2STON", "SW2WOOD", "SWITCH1", "SWITCH2", "SWTCHPNL", "TEKBRON", "TEKGREN", "TEKWALL1", "TEKWALL2", "TEKWALL3", "TEKWALL4", "TEKWALL5", "WOOD1", "WOOD2", "WOOD3", "WOOD4", "WOOD5", "WOOD6", "WOOD7", "WOOD8", "WOOD9", "ZZWOLF1", "ZZWOLF2", "ZZWOLF3", "ZZWOLF4", "ZZWOLF5", "ZZWOLF6", "ZZWOLF7", "ZZWOLF8"],
+                flats: ["SLIME14", "RROCK05", "FLAT5_4", "TECH01", "GRASS1", "LAVA1"],
+            },
             heretic: { themes: ["Château Médiéval", "Donjon Volcanique", "Donjons Inondés", "Temple de la Forêt"], things: [{ type: 66, name: "Golem" }, { type: 10, name: "Undead Warrior" }], textures: ["CASTLE1", "ROCK01", "DOOR01", "WOOD01", "WIND04"], flats: ["FLOOR01", "FLOOR29", "LAVA01", "WATER01", "CEIL01"] },
             hexen: { themes: ["Forteresse Sombre", "Monastère de Glace", "Marais des Morts", "Tour du Mage"], things: [{ type: 3, name: "Ettin" }, { type: 6, name: "Centaur" }], textures: ["CASTLE5", "WOOD1", "DOOR12", "SWITCH2", "ICE01", "WALL60"], flats: ["FLAT01", "LAVA01", "ICE01", "SWAMP01"] }
         };
@@ -247,7 +237,7 @@ L'objet principal du fichier JSON.
 
 **1.2. Spécification de \`themePalette\`**
 Définit le vocabulaire visuel. Chaque clé est un concept fonctionnel, et la valeur est un tableau de textures pondérées \`{ "name": String, "weight": Integer }\`.
-**Concepts de Palette (clés requises en anglais) :**
+**Concepts de Palette (clés requises en anglais, liste exhaustive) :**
 - Murs : \`wall_primary\`, \`wall_accent\`, \`wall_support\`, \`wall_secret_indicator\`, \`wall_panel\`.
 - Sols/Plafonds : \`floor_primary\`, \`floor_accent\`, \`floor_damage_low\`, \`floor_damage_high\`, \`ceiling_primary\`, \`ceiling_light_source\`, \`ceiling_crusher\`, \`platform_surface\`.
 - Portes/Passages : \`door_regular\`, \`door_locked\`, \`door_exit\`, \`door_frame\`, \`stair_riser\`, \`window_grate\`.
@@ -332,13 +322,11 @@ Décrit un lien entre deux pièces.
             let textureListText = `**Exemples de Textures de Murs Valides (\`textures\`):**
 ${data.textures.join(', ')} ...et des centaines d'autres.`;
 
-            // Remplacer par la liste complète si le jeu est Doom 1
-            if (game === 'doom') {
+            if (game === 'doom' || game === 'doom2') {
                 textureListText = `**Textures de Murs Valides (\`textures\`):**
 La liste complète suivante doit être utilisée.
 ${data.textures.join(', ')}`;
             }
-
 
             let gameDataReference = `---
 **PARTIE 2 : VOCABULAIRE VISUEL ET D'ENTITÉS POUR ${game.toUpperCase()}**
