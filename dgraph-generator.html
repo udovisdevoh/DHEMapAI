@@ -229,18 +229,18 @@
         };
 
         const dgraphSpecification = `Tu es un level designer senior et un artiste d'environnement spécialisé dans les jeux de tir à la première personne classiques.
-Ta mission est de générer un **objet JSON complet et valide** qui décrit la structure et le thème d'une carte de jeu, en respectant scrupuleusement le format abstrait "D-Graph" version 1.4.
+Ta mission est de générer un **objet JSON complet et valide** qui décrit la structure et le thème d'une carte de jeu, en respectant scrupuleusement le format abstrait "D-Graph" version 1.5.
 
 **CONTRAINTE FONDAMENTALE : GRAPHE PLANAIRE**
 La carte de Doom est un graphe planaire. Cela signifie que les pièces (secteurs) ne peuvent pas se superposer ou se croiser. Tu dois respecter cette contrainte dans la manière dont tu connectes les pièces.
 
 ---
-**PARTIE 1 : SPÉCIFICATION TECHNIQUE DU FORMAT D-GRAPH v1.4**
+**PARTIE 1 : SPÉCIFICATION TECHNIQUE DU FORMAT D-GRAPH v1.5**
 ---
 
 **1. OBJET RACINE**
 - \`format\`: String, REQUIS. Doit être "D-Graph".
-- \`version\`: String, REQUIS. Doit être "1.4".
+- \`version\`: String, REQUIS. Doit être "1.5".
 - \`mapInfo\`: Object, REQUIS. Voir section 1.1.
 - \`themePalette\`: Object, REQUIS. Voir section 1.2.
 - \`rooms\`: Array<Object>, REQUIS. Voir section 1.3.
@@ -265,72 +265,168 @@ Définit le vocabulaire visuel. Chaque clé est un concept fonctionnel, et la va
 - \`id\`: String, REQUIS. Identifiant unique (ex: "salle_de_controle").
 - \`parentRoom\`: String | null, REQUIS. ID de la pièce parente si imbriquée, sinon \`null\`.
 - \`shapeHint\`: Object, REQUIS. Contient : \`{ "vertices": Integer, "description": String }\`.
-- \`properties\`: Object, REQUIS. Contient : \`{ "floor": String, "ceiling": String, "lightLevel": String, "wallTexture": String, "floorFlat": String, "ceilingFlat": String }\`. Les valeurs de texture/flat sont des **références** aux clés de la \`themePalette\`.
-- \`contents\`: Object, REQUIS. Contient les tableaux \`monsters\`, \`items\`, \`decorations\`. Chaque élément est un objet \`{ "name": String, "typeId": Integer, "count": Integer }\`. Le \`typeId\` est le numéro de "thing" du jeu.
-- \`features\`: Array<Object>, REQUIS. Décrit les actions sur les murs. Chaque élément est un objet \`{ "name": String, "actionId": Integer, "count": Integer, "properties": Object }\`. L'\`actionId\` est le numéro de "spécial" du linedef.
+- \`properties\`: Object, REQUIS. Contient :
+          - \`floor\`, \`ceiling\`: String, REQUIS. Enum: "very_low", "low", "normal", "high", "very_high", "sky".
+          - \`lightLevel\`: String, REQUIS. Enum: "very_dark", "dark", "normal", "bright", "flickering", "strobe".
+          - \`wallTexture\`, \`floorFlat\`, \`ceilingFlat\`: String, REQUIS. Doivent correspondre à une clé de la \`themePalette\`.
+          - \`tag\`: Integer | null, OPTIONNEL. Identifiant numérique unique pour que cette pièce soit ciblée par une action.
+- \`contents\`: Object, REQUIS. Contient les tableaux \`monsters\`, \`items\`, \`decorations\`. Chaque élément est un objet \`{ "name": String, "typeId": Integer, "count": Integer }\`.
+- \`features\`: Array<Object>, REQUIS. Décrit les actions sur les murs. Chaque élément est un objet \`{ "name": String, "actionId": Integer, "count": Integer, "properties": Object }\`.
+        - Les \`properties\` d'une feature peuvent contenir un \`targetTag\`: Integer, OPTIONNEL.
 
 **1.4. Spécification de \`connection\`**
 - \`fromRoom\`, \`toRoom\`: String, REQUIS. IDs des pièces connectées.
 - \`type\`: String, REQUIS. Enum: "opening", "door", "locked_door", "secret_door", "window", "teleporter".
 - \`properties\`: Object, REQUIS. Détails (ex: \`{ "texture": "DOORBLU", "key": "blue" }\`).
 
-**1.5. Exemple Canonique de Structure**
+**1.5. Exemple Canonique de Structure v1.5**
+Cet exemple montre une \`salle_de_controle\` avec un interrupteur (\`feature\`) qui cible le \`tag: 1\`. La pièce \`plateforme_mobile\` possède ce \`tag: 1\` et sera donc affectée par l'interrupteur.
 \`\`\`json
 {
-          "format": "D-Graph",
-          "version": "1.4",
-          "mapInfo": { "game": "doom2", "map": 1, "name": "Le Hub Canonique", "music": "D_STLKS2" },
-          "themePalette": {
-            "wall_primary": [{ "name": "TEKWALL1", "weight": 80 }, { "name": "TEKWALL4", "weight": 20 }],
-            "wall_support": [{ "name": "SUPPORT2", "weight": 100 }],
-            "floor_primary": [{ "name": "TECH01", "weight": 100 }],
-            "ceiling_primary": [{ "name": "CEIL1_1", "weight": 100 }],
-            "door_regular": [{ "name": "BIGDOOR2", "weight": 100 }],
-            "wall_secret_indicator": [{ "name": "BRICK5", "weight": 100 }],
-            "switch_exit": [{ "name": "SW1EXIT", "weight": 100 }]
-          },
-          "rooms": [
-            {
-              "id": "start_chamber", "parentRoom": null,
-              "shapeHint": { "vertices": 4, "description": "Petite pièce de départ rectangulaire" },
-              "properties": { "floor": "normal", "ceiling": "low", "lightLevel": "normal", "wallTexture": "wall_primary", "floorFlat": "floor_primary", "ceilingFlat": "ceiling_primary" },
-              "contents": { "items": [{ "name": "Player1Start", "typeId": 1, "count": 1 }, { "name": "Shotgun", "typeId": 2007, "count": 1 }] },
-              "features": []
-            },
-            {
-              "id": "main_hub", "parentRoom": null,
-              "shapeHint": { "vertices": 8, "description": "Grand hub octogonal avec un pilier central" },
-              "properties": { "floor": "normal", "ceiling": "high", "lightLevel": "bright", "wallTexture": "wall_primary", "floorFlat": "floor_primary", "ceilingFlat": "ceiling_primary" },
-              "contents": { "monsters": [{ "name": "Imp", "typeId": 3001, "count": 4 }] },
-              "features": []
-            },
-            {
-              "id": "central_pillar", "parentRoom": "main_hub",
-              "shapeHint": { "vertices": 4, "description": "Pilier de support carré" },
-              "properties": { "floor": "normal", "ceiling": "high", "lightLevel": "bright", "wallTexture": "wall_support", "floorFlat": "floor_primary", "ceilingFlat": "ceiling_primary" },
-              "contents": {},
-              "features": []
-            },
-            {
-              "id": "secret_alcove", "parentRoom": null,
-              "shapeHint": { "vertices": 4, "description": "Petite alcôve secrète" },
-              "properties": { "floor": "normal", "ceiling": "normal", "lightLevel": "dark", "wallTexture": "wall_primary", "floorFlat": "floor_primary", "ceilingFlat": "ceiling_primary" },
-              "contents": { "items": [{ "name": "Soulsphere", "typeId": 83, "count": 1 }] },
-              "features": []
-            },
-            {
-              "id": "exit_room", "parentRoom": null,
-              "shapeHint": { "vertices": 4, "description": "Salle de sortie finale" },
-              "properties": { "floor": "high", "ceiling": "normal", "lightLevel": "bright", "wallTexture": "wall_accent", "floorFlat": "floor_primary", "ceilingFlat": "ceiling_primary" },
-              "contents": {},
-              "features": [{ "name": "ExitSwitch", "actionId": 11, "count": 1, "properties": { "texture": "SW1EXIT" } }]
-            }
-          ],
-          "connections": [
-            { "fromRoom": "start_chamber", "toRoom": "main_hub", "type": "opening", "properties": { "description": "Un large passage." } },
-            { "fromRoom": "main_hub", "toRoom": "exit_room", "type": "door", "properties": { "texture_concept": "door_regular" } },
-            { "fromRoom": "main_hub", "toRoom": "secret_alcove", "type": "secret_door", "properties": { "texture_concept": "wall_secret_indicator" } }
-          ]
+  "format": "D-Graph",
+  "version": "1.5",
+  "mapInfo": {
+    "game": "doom2",
+    "map": 1,
+    "name": "Le Complexe Alpha",
+    "music": "D_SHAWN"
+  },
+  "themePalette": {
+    "wall_primary": [
+      { "name": "TEKWALL1", "weight": 70 },
+      { "name": "TEKWALL4", "weight": 30 }
+    ],
+    "wall_accent": [
+      { "name": "METAL5", "weight": 100 }
+    ],
+    "wall_support": [
+      { "name": "SUPPORT3", "weight": 100 }
+    ],
+    "wall_secret_indicator": [
+      { "name": "BRICK11", "weight": 100 }
+    ],
+    "wall_panel": [
+      { "name": "COMPTALL", "weight": 100 }
+    ],
+    "floor_primary": [
+      { "name": "TECH01", "weight": 80 },
+      { "name": "FLAT5_4", "weight": 20 }
+    ],
+    "floor_accent": [
+      { "name": "FLAT23", "weight": 100 }
+    ],
+    "floor_damage_low": [
+      { "name": "NUKAGE1", "weight": 100 }
+    ],
+    "floor_damage_high": [],
+    "ceiling_primary": [
+      { "name": "CEIL1_1", "weight": 90 },
+      { "name": "CEIL1_2", "weight": 10 }
+    ],
+    "ceiling_light_source": [
+      { "name": "TLITE6_1", "weight": 100 }
+    ],
+    "ceiling_crusher": [],
+    "platform_surface": [
+      { "name": "PLAT1", "weight": 100 }
+    ],
+    "door_regular": [
+      { "name": "BIGDOOR2", "weight": 100 }
+    ],
+    "door_locked": [
+      { "name": "DOORBLU", "weight": 100 }
+    ],
+    "door_exit": [
+      { "name": "EXITDOOR", "weight": 100 }
+    ],
+    "door_frame": [
+      { "name": "DOORTRAK", "weight": 100 }
+    ],
+    "stair_riser": [
+      { "name": "STEP4", "weight": 100 }
+    ],
+    "window_grate": [
+      { "name": "MIDGRATE", "weight": 100 }
+    ],
+    "switch_utility": [
+      { "name": "SW1STAR", "weight": 100 }
+    ],
+    "switch_exit": [
+      { "name": "SW1EXIT", "weight": 100 }
+    ],
+    "switch_panel_wall": [
+      { "name": "SWTCHPNL", "weight": 100 }
+    ],
+    "teleporter_pad": [
+      { "name": "GATE1", "weight": 100 }
+    ]
+  },
+  "rooms": [
+    {
+      "id": "start_chamber", "parentRoom": null,
+      "shapeHint": { "vertices": 4, "description": "Petite pièce de départ rectangulaire." },
+      "properties": { "floor": "normal", "ceiling": "normal", "lightLevel": "normal", "wallTexture": "wall_primary", "floorFlat": "floor_primary", "ceilingFlat": "ceiling_primary", "tag": null },
+      "contents": { "items": [{ "name": "Player1Start", "typeId": 1, "count": 1 }, { "name": "Shotgun", "typeId": 2007, "count": 1 }] },
+      "features": []
+    },
+    {
+      "id": "main_hub", "parentRoom": null,
+      "shapeHint": { "vertices": 8, "description": "Grand hub octogonal avec un pilier central et plusieurs sorties." },
+      "properties": { "floor": "normal", "ceiling": "high", "lightLevel": "bright", "wallTexture": "wall_primary", "floorFlat": "floor_accent", "ceilingFlat": "ceiling_primary", "tag": null },
+      "contents": { "monsters": [{ "name": "Imp", "typeId": 3001, "count": 3 }] },
+      "features": []
+    },
+    {
+      "id": "central_pillar", "parentRoom": "main_hub",
+      "shapeHint": { "vertices": 4, "description": "Pilier de support structurel." },
+      "properties": { "floor": "normal", "ceiling": "high", "lightLevel": "bright", "wallTexture": "wall_support", "floorFlat": "floor_accent", "ceilingFlat": "ceiling_primary", "tag": null },
+      "contents": {}, "features": []
+    },
+    {
+      "id": "control_room", "parentRoom": null,
+      "shapeHint": { "vertices": 4, "description": "Salle de contrôle surélevée." },
+      "properties": { "floor": "high", "ceiling": "normal", "lightLevel": "normal", "wallTexture": "wall_panel", "floorFlat": "floor_primary", "ceilingFlat": "ceiling_light_source", "tag": null },
+      "contents": { "monsters": [{ "name": "Shotgun Guy", "typeId": 9, "count": 1 }] },
+      "features": [
+        { "name": "LiftSwitch", "actionId": 18, "count": 1, "properties": { "texture": "SW1STAR", "targetTag": 1 } }
+      ]
+    },
+    {
+      "id": "lift_platform", "parentRoom": "main_hub",
+      "shapeHint": { "vertices": 4, "description": "Plateforme d'ascenseur." },
+      "properties": { "floor": "low", "ceiling": "high", "lightLevel": "normal", "wallTexture": "wall_support", "floorFlat": "platform_surface", "ceilingFlat": "ceiling_primary", "tag": 1 },
+      "contents": {}, "features": []
+    },
+    {
+      "id": "blue_key_ledge", "parentRoom": null,
+      "shapeHint": { "vertices": 4, "description": "Corniche élevée accessible par l'ascenseur." },
+      "properties": { "floor": "high", "ceiling": "high", "lightLevel": "normal", "wallTexture": "wall_primary", "floorFlat": "floor_primary", "ceilingFlat": "ceiling_primary", "tag": null },
+      "contents": { "items": [{ "name": "Blue Keycard", "typeId": 5, "count": 1 }] },
+      "features": []
+    },
+    {
+      "id": "secret_passage", "parentRoom": null,
+      "shapeHint": { "vertices": 4, "description": "Couloir secret." },
+      "properties": { "floor": "normal", "ceiling": "normal", "lightLevel": "dark", "wallTexture": "wall_primary", "floorFlat": "floor_primary", "ceilingFlat": "ceiling_primary", "tag": null },
+      "contents": { "items": [{ "name": "Soulsphere", "typeId": 83, "count": 1 }] },
+      "features": []
+    },
+    {
+      "id": "exit_teleporter_room", "parentRoom": null,
+      "shapeHint": { "vertices": 4, "description": "Pièce finale avec un téléporteur." },
+      "properties": { "floor": "normal", "ceiling": "normal", "lightLevel": "bright", "wallTexture": "wall_accent", "floorFlat": "teleporter_pad", "ceilingFlat": "ceiling_light_source", "tag": null },
+      "contents": { "monsters": [{ "name": "Hell Knight", "typeId": 69, "count": 1 }] },
+      "features": []
+    }
+  ],
+  "connections": [
+    { "fromRoom": "start_chamber", "toRoom": "main_hub", "type": "opening", "properties": {} },
+    { "fromRoom": "main_hub", "toRoom": "control_room", "type": "opening", "properties": {"description": "Un escalier monte à la salle de contrôle."} },
+    { "fromRoom": "control_room", "toRoom": "lift_platform", "type": "window", "properties": {"texture_concept": "window_grate", "description": "Fenêtre de surveillance."} },
+    { "fromRoom": "lift_platform", "toRoom": "blue_key_ledge", "type": "opening", "properties": {"description": "L'ascenseur monte jusqu'à cette corniche."} },
+    { "fromRoom": "main_hub", "toRoom": "secret_passage", "type": "secret_door", "properties": {"texture_concept": "wall_secret_indicator"} },
+    { "fromRoom": "main_hub", "toRoom": "exit_teleporter_room", "type": "locked_door", "properties": {"texture_concept": "door_locked", "key": "blue"} }
+  ]
 }
 \`\`\`
 `;
