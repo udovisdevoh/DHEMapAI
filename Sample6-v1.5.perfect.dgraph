@@ -1,0 +1,314 @@
+{
+  "format": "D-Graph",
+  "version": "1.5",
+  "mapInfo": {
+    "game": "doom",
+    "map": 2,
+    "name": "Le Précipice de Soufre",
+    "music": "D_E2M6"
+  },
+  "themePalette": {
+    "wall_primary": [
+      { "name": "ROCK05", "weight": 60 },
+      { "name": "MARBLE1", "weight": 40 }
+    ],
+    "wall_accent": [
+      { "name": "SKIN3", "weight": 70 },
+      { "name": "SHAWN2", "weight": 30 }
+    ],
+    "wall_support": [
+      { "name": "SUPPORT2", "weight": 50 },
+      { "name": "SUPPORT3", "weight": 50 }
+    ],
+    "wall_secret_indicator": [
+      { "name": "BRICK9", "weight": 100 }
+    ],
+    "wall_panel": [
+      { "name": "TEKWALL2", "weight": 60 },
+      { "name": "SP_HOT1", "weight": 40 }
+    ],
+    "floor_primary": [
+      { "name": "RROCK02", "weight": 50 },
+      { "name": "FLAT14", "weight": 50 }
+    ],
+    "floor_accent": [
+      { "name": "MFLR8_1", "weight": 100 }
+    ],
+    "floor_damage_low": [
+      { "name": "LAVA1", "weight": 100 }
+    ],
+    "floor_damage_high": [
+      { "name": "LAVA4", "weight": 100 }
+    ],
+    "ceiling_primary": [
+      { "name": "RROCK04", "weight": 75 },
+      { "name": "CEIL1_1", "weight": 25 }
+    ],
+    "ceiling_light_source": [
+      { "name": "TLITE6_1", "weight": 100 }
+    ],
+    "ceiling_crusher": [
+      { "name": "METAL", "weight": 100 }
+    ],
+    "platform_surface": [
+      { "name": "PLAT1", "weight": 100 }
+    ],
+    "door_regular": [
+      { "name": "BIGDOOR2", "weight": 100 }
+    ],
+    "door_locked": [
+      { "name": "DOORBLU", "weight": 100 }
+    ],
+    "door_exit": [
+      { "name": "BIGDOOR7", "weight": 100 }
+    ],
+    "door_frame": [
+      { "name": "DOORTRAK", "weight": 100 }
+    ],
+    "stair_riser": [
+      { "name": "STEP4", "weight": 100 }
+    ],
+    "window_grate": [
+      { "name": "BRICK10", "weight": 100 }
+    ],
+    "switch_utility": [
+      { "name": "SW1STAR", "weight": 100 }
+    ],
+    "switch_exit": [
+      { "name": "SW1EXIT", "weight": 100 }
+    ],
+    "switch_panel_wall": [
+      { "name": "SW1HOT", "weight": 100 }
+    ],
+    "teleporter_pad": [
+      { "name": "FLAT18", "weight": 100 }
+    ]
+  },
+  "rooms": [
+    {
+      "id": "start_outpost",
+      "parentRoom": null,
+      "shapeHint": { "vertices": 4, "description": "Avant-poste rocheux de départ, petit et carré." },
+      "properties": { "floor": "high", "ceiling": "normal", "lightLevel": "normal", "wallTexture": "wall_primary", "floorFlat": "floor_primary", "ceilingFlat": "ceiling_primary", "tag": null },
+      "contents": {
+        "monsters": [],
+        "items": [{ "name": "Player 1 Start", "typeId": 1, "count": 1 }, { "name": "Shotgun", "typeId": 2007, "count": 1 }, { "name": "4 Shotgun Shells", "typeId": 2046, "count": 2 }],
+        "decorations": [{ "name": "Floor Lamp", "typeId": 2028, "count": 1 }]
+      },
+      "features": []
+    },
+    {
+      "id": "canyon_ledge_a",
+      "parentRoom": null,
+      "shapeHint": { "vertices": 5, "description": "Corniche extérieure surplombant un large canyon de lave." },
+      "properties": { "floor": "high", "ceiling": "sky", "lightLevel": "bright", "wallTexture": "wall_primary", "floorFlat": "floor_primary", "ceilingFlat": "ceiling_primary", "tag": null },
+      "contents": {
+        "monsters": [{ "name": "Imp", "typeId": 3001, "count": 2 }],
+        "items": [],
+        "decorations": []
+      },
+      "features": []
+    },
+    {
+      "id": "descending_path",
+      "parentRoom": null,
+      "shapeHint": { "vertices": 6, "description": "Chemin étroit et sinueux descendant vers le fond du canyon." },
+      "properties": { "floor": "normal", "ceiling": "sky", "lightLevel": "bright", "wallTexture": "wall_primary", "floorFlat": "floor_primary", "ceilingFlat": "ceiling_primary", "tag": null },
+      "contents": {
+        "monsters": [{ "name": "Shotgun Guy", "typeId": 9, "count": 2 }, { "name": "Imp", "typeId": 3001, "count": 1 }],
+        "items": [],
+        "decorations": [{ "name": "Stalagmite", "typeId": 48, "count": 3 }]
+      },
+      "features": []
+    },
+    {
+      "id": "canyon_floor",
+      "parentRoom": null,
+      "shapeHint": { "vertices": 12, "description": "Vaste zone ouverte au fond du canyon, entourée de lave." },
+      "properties": { "floor": "low", "ceiling": "sky", "lightLevel": "bright", "wallTexture": "wall_primary", "floorFlat": "floor_primary", "ceilingFlat": "ceiling_primary", "tag": null },
+      "contents": {
+        "monsters": [{ "name": "Cacodemon", "typeId": 3005, "count": 1 }],
+        "items": [{ "name": "Rocket Launcher", "typeId": 2002, "count": 1 }],
+        "decorations": []
+      },
+      "features": []
+    },
+    {
+      "id": "lava_sea",
+      "parentRoom": "canyon_floor",
+      "shapeHint": { "vertices": 16, "description": "Le lac de lave qui entoure le plancher du canyon." },
+      "properties": { "floor": "very_low", "ceiling": "sky", "lightLevel": "bright", "wallTexture": "wall_primary", "floorFlat": "floor_damage_low", "ceilingFlat": "ceiling_primary", "tag": null },
+      "contents": {
+        "monsters": [],
+        "items": [],
+        "decorations": []
+      },
+      "features": []
+    },
+    {
+      "id": "marble_shrine_entrance",
+      "parentRoom": null,
+      "shapeHint": { "vertices": 4, "description": "Entrée d'un sanctuaire de marbre incrusté dans la roche." },
+      "properties": { "floor": "low", "ceiling": "high", "lightLevel": "normal", "wallTexture": "wall_primary", "floorFlat": "floor_accent", "ceilingFlat": "ceiling_primary", "tag": null },
+      "contents": {
+        "monsters": [{ "name": "Demon", "typeId": 3002, "count": 2 }],
+        "items": [],
+        "decorations": [{ "name": "Tall Red Pillar with Skull", "typeId": 32, "count": 2 }]
+      },
+      "features": []
+    },
+    {
+      "id": "shrine_hallway",
+      "parentRoom": null,
+      "shapeHint": { "vertices": 4, "description": "Couloir menant au coeur du sanctuaire." },
+      "properties": { "floor": "low", "ceiling": "normal", "lightLevel": "dark", "wallTexture": "wall_primary", "floorFlat": "floor_accent", "ceilingFlat": "ceiling_primary", "tag": null },
+      "contents": {
+        "monsters": [{ "name": "Spectre", "typeId": 58, "count": 1 }],
+        "items": [{ "name": "Medikit", "typeId": 2013, "count": 1 }],
+        "decorations": [{ "name": "Candelabra", "typeId": 34, "count": 1 }]
+      },
+      "features": []
+    },
+    {
+      "id": "blue_key_altar",
+      "parentRoom": null,
+      "shapeHint": { "vertices": 5, "description": "Petite chambre avec un autel où repose la clé bleue." },
+      "properties": { "floor": "low", "ceiling": "normal", "lightLevel": "bright", "wallTexture": "wall_accent", "floorFlat": "floor_accent", "ceilingFlat": "ceiling_light_source", "tag": null },
+      "contents": {
+        "monsters": [],
+        "items": [{ "name": "Blue Keycard", "typeId": 5, "count": 1 }, { "name": "Green Armor", "typeId": 2018, "count": 1 }],
+        "decorations": []
+      },
+      "features": []
+    },
+    {
+      "id": "bridge_control_outpost",
+      "parentRoom": null,
+      "shapeHint": { "vertices": 4, "description": "Petite structure de contrôle pour le pont, située en hauteur." },
+      "properties": { "floor": "high", "ceiling": "normal", "lightLevel": "normal", "wallTexture": "wall_panel", "floorFlat": "platform_surface", "ceilingFlat": "ceiling_light_source", "tag": null },
+      "contents": {
+        "monsters": [{ "name": "Shotgun Guy", "typeId": 9, "count": 2 }],
+        "items": [],
+        "decorations": []
+      },
+      "features": [
+        { "name": "RaiseBridgeSwitch", "actionId": 21, "count": 1, "properties": { "texture": "SW1STAR", "targetTag": 101 } }
+      ]
+    },
+    {
+      "id": "bridge_platform",
+      "parentRoom": null,
+      "shapeHint": { "vertices": 4, "description": "Le pont mobile qui traverse la lave." },
+      "properties": { "floor": "very_low", "ceiling": "sky", "lightLevel": "bright", "wallTexture": "wall_support", "floorFlat": "platform_surface", "ceilingFlat": "ceiling_primary", "tag": 101 },
+      "contents": {
+        "monsters": [],
+        "items": [],
+        "decorations": []
+      },
+      "features": []
+    },
+    {
+      "id": "far_canyon_ledge",
+      "parentRoom": null,
+      "shapeHint": { "vertices": 4, "description": "La corniche de l'autre côté du canyon." },
+      "properties": { "floor": "low", "ceiling": "sky", "lightLevel": "bright", "wallTexture": "wall_primary", "floorFlat": "floor_primary", "ceilingFlat": "ceiling_primary", "tag": null },
+      "contents": {
+        "monsters": [{ "name": "Imp", "typeId": 3001, "count": 3 }],
+        "items": [{ "name": "Box of Rockets", "typeId": 2010, "count": 1 }],
+        "decorations": []
+      },
+      "features": []
+    },
+    {
+      "id": "secret_cave_entrance",
+      "parentRoom": null,
+      "shapeHint": { "vertices": 4, "description": "Entrée dissimulée d'une petite grotte." },
+      "properties": { "floor": "low", "ceiling": "normal", "lightLevel": "dark", "wallTexture": "wall_secret_indicator", "floorFlat": "floor_primary", "ceilingFlat": "ceiling_primary", "tag": null },
+      "contents": {
+        "monsters": [],
+        "items": [],
+        "decorations": []
+      },
+      "features": []
+    },
+    {
+      "id": "secret_cave_chamber",
+      "parentRoom": null,
+      "shapeHint": { "vertices": 6, "description": "Grotte secrète contenant un bonus." },
+      "properties": { "floor": "low", "ceiling": "low", "lightLevel": "very_dark", "wallTexture": "wall_primary", "floorFlat": "floor_primary", "ceilingFlat": "ceiling_primary", "tag": null },
+      "contents": {
+        "monsters": [],
+        "items": [{ "name": "Soulsphere", "typeId": 83, "count": 1 }],
+        "decorations": [{ "name": "Pool of Blood", "typeId": 51, "count": 1 }]
+      },
+      "features": []
+    },
+    {
+      "id": "final_base_entry",
+      "parentRoom": null,
+      "shapeHint": { "vertices": 4, "description": "Sas d'entrée de la base finale." },
+      "properties": { "floor": "low", "ceiling": "normal", "lightLevel": "normal", "wallTexture": "wall_panel", "floorFlat": "platform_surface", "ceilingFlat": "ceiling_primary", "tag": null },
+      "contents": {
+        "monsters": [{ "name": "Zombieman", "typeId": 3004, "count": 4 }],
+        "items": [],
+        "decorations": []
+      },
+      "features": []
+    },
+    {
+      "id": "corrupted_hall",
+      "parentRoom": null,
+      "shapeHint": { "vertices": 6, "description": "Long couloir corrompu par l'Enfer." },
+      "properties": { "floor": "low", "ceiling": "normal", "lightLevel": "flickering", "wallTexture": "wall_accent", "floorFlat": "floor_primary", "ceilingFlat": "ceiling_primary", "tag": null },
+      "contents": {
+        "monsters": [{ "name": "Demon", "typeId": 3002, "count": 1 }, { "name": "Lost Soul", "typeId": 3006, "count": 3 }],
+        "items": [],
+        "decorations": [{ "name": "Hanging Victim (Twitching) 1", "typeId": 25, "count": 2 }]
+      },
+      "features": []
+    },
+    {
+      "id": "final_arena",
+      "parentRoom": null,
+      "shapeHint": { "vertices": 8, "description": "Arène finale octogonale avant la sortie." },
+      "properties": { "floor": "low", "ceiling": "high", "lightLevel": "bright", "wallTexture": "wall_accent", "floorFlat": "floor_accent", "ceilingFlat": "ceiling_primary", "tag": null },
+      "contents": {
+        "monsters": [{ "name": "Baron of Hell", "typeId": 3003, "count": 1 }],
+        "items": [{ "name": "Megasphere", "typeId": 2025, "count": 1 }],
+        "decorations": [{ "name": "Five Skulls Shish Kebab", "typeId": 29, "count": 4 }]
+      },
+      "features": []
+    },
+    {
+      "id": "exit_chamber",
+      "parentRoom": null,
+      "shapeHint": { "vertices": 4, "description": "Petite chambre contenant l'interrupteur de sortie." },
+      "properties": { "floor": "low", "ceiling": "normal", "lightLevel": "bright", "wallTexture": "wall_panel", "floorFlat": "floor_primary", "ceilingFlat": "ceiling_light_source", "tag": null },
+      "contents": {
+        "monsters": [],
+        "items": [],
+        "decorations": []
+      },
+      "features": [
+        { "name": "ExitSwitch", "actionId": 11, "count": 1, "properties": { "texture": "SW1EXIT", "targetTag": null } }
+      ]
+    }
+  ],
+  "connections": [
+    { "fromRoom": "start_outpost", "toRoom": "canyon_ledge_a", "type": "door", "properties": { "texture_concept": "door_regular" } },
+    { "fromRoom": "canyon_ledge_a", "toRoom": "descending_path", "type": "opening", "properties": {} },
+    { "fromRoom": "descending_path", "toRoom": "canyon_floor", "type": "opening", "properties": {} },
+    { "fromRoom": "canyon_floor", "toRoom": "marble_shrine_entrance", "type": "opening", "properties": {} },
+    { "fromRoom": "marble_shrine_entrance", "toRoom": "shrine_hallway", "type": "opening", "properties": {} },
+    { "fromRoom": "shrine_hallway", "toRoom": "blue_key_altar", "type": "opening", "properties": {} },
+    { "fromRoom": "canyon_ledge_a", "toRoom": "bridge_control_outpost", "type": "window", "properties": { "texture_concept": "window_grate" } },
+    { "fromRoom": "canyon_floor", "toRoom": "bridge_platform", "type": "opening", "properties": { "description": "The bridge, when raised, connects here." } },
+    { "fromRoom": "bridge_platform", "toRoom": "far_canyon_ledge", "type": "opening", "properties": { "description": "The other side of the bridge connection." } },
+    { "fromRoom": "far_canyon_ledge", "toRoom": "final_base_entry", "type": "locked_door", "properties": { "texture_concept": "door_locked", "key": "blue" } },
+    { "fromRoom": "canyon_floor", "toRoom": "secret_cave_entrance", "type": "secret_door", "properties": { "texture_concept": "wall_secret_indicator" } },
+    { "fromRoom": "secret_cave_entrance", "toRoom": "secret_cave_chamber", "type": "opening", "properties": {} },
+    { "fromRoom": "final_base_entry", "toRoom": "corrupted_hall", "type": "door", "properties": { "texture_concept": "door_regular" } },
+    { "fromRoom": "corrupted_hall", "toRoom": "final_arena", "type": "opening", "properties": {} },
+    { "fromRoom": "final_arena", "toRoom": "exit_chamber", "type": "door", "properties": { "texture_concept": "door_exit" } }
+  ]
+}
