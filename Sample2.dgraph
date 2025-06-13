@@ -1,0 +1,371 @@
+{
+  "format": "D-Graph",
+  "version": "1.4",
+  "mapInfo": {
+    "game": "doom",
+    "map": 1,
+    "name": "Unité de Traitement 734",
+    "music": "D_RUNNIN"
+  },
+  "themePalette": {
+    "wall_primary": [
+      { "name": "STARGR1", "weight": 70 },
+      { "name": "TEKWALL1", "weight": 30 }
+    ],
+    "wall_accent": [
+      { "name": "COMPTALL", "weight": 60 },
+      { "name": "TEKWALL4", "weight": 40 }
+    ],
+    "wall_support": [
+      { "name": "SUPPORT2", "weight": 50 },
+      { "name": "SUPPORT3", "weight": 50 }
+    ],
+    "wall_secret_indicator": [
+      { "name": "BRICK5", "weight": 100 }
+    ],
+    "wall_panel": [
+      { "name": "METAL1", "weight": 75 },
+      { "name": "LITE3", "weight": 25 }
+    ],
+    "floor_primary": [
+      { "name": "FLAT19", "weight": 60 },
+      { "name": "FLOOR4_8", "weight": 40 }
+    ],
+    "floor_accent": [
+      { "name": "FLAT23", "weight": 100 }
+    ],
+    "floor_damage_low": [
+      { "name": "NUKAGE1", "weight": 100 }
+    ],
+    "floor_damage_high": [
+      { "name": "NUKAGE3", "weight": 100 }
+    ],
+    "ceiling_primary": [
+      { "name": "CEIL1_1", "weight": 80 },
+      { "name": "CEIL1_2", "weight": 20 }
+    ],
+    "ceiling_light_source": [
+      { "name": "TLITE6_5", "weight": 100 }
+    ],
+    "ceiling_crusher": [
+      { "name": "FLAT5", "weight": 100 }
+    ],
+    "platform_surface": [
+      { "name": "FLAT23", "weight": 100 }
+    ],
+    "door_regular": [
+      { "name": "BIGDOOR2", "weight": 100 }
+    ],
+    "door_locked": [
+      { "name": "DOORBLU", "weight": 50 },
+      { "name": "DOORRED", "weight": 50 }
+    ],
+    "door_exit": [
+      { "name": "EXITDOOR", "weight": 100 }
+    ],
+    "door_frame": [
+      { "name": "METAL", "weight": 100 }
+    ],
+    "stair_riser": [
+      { "name": "STEP1", "weight": 100 }
+    ],
+    "window_grate": [
+      { "name": "METAL7", "weight": 100 }
+    ],
+    "switch_utility": [
+      { "name": "SW1STAR", "weight": 50 },
+      { "name": "SW1COMM", "weight": 50 }
+    ],
+    "switch_exit": [
+      { "name": "SW1EXIT", "weight": 100 }
+    ],
+    "switch_panel_wall": [
+      { "name": "SW1COMP", "weight": 100 }
+    ],
+    "teleporter_pad": [
+      { "name": "STARG2", "weight": 100 }
+    ]
+  },
+  "rooms": [
+    {
+      "id": "salle_depart",
+      "parentRoom": null,
+      "shapeHint": { "vertices": 4, "description": "Petite salle de départ rectangulaire et faiblement éclairée." },
+      "properties": { "floor": "normal", "ceiling": "low", "lightLevel": "dim", "wallTexture": "wall_primary", "floorFlat": "floor_primary", "ceilingFlat": "ceiling_primary" },
+      "contents": {
+        "items": [
+          { "name": "Player1Start", "typeId": 1, "count": 1 },
+          { "name": "Shotgun", "typeId": 2007, "count": 1 },
+          { "name": "4 Shotgun Shells", "typeId": 2046, "count": 2 }
+        ],
+        "monsters": [],
+        "decorations": []
+      },
+      "features": []
+    },
+    {
+      "id": "couloir_acces",
+      "parentRoom": null,
+      "shapeHint": { "vertices": 4, "description": "Couloir en L menant au hub principal." },
+      "properties": { "floor": "normal", "ceiling": "normal", "lightLevel": "normal", "wallTexture": "wall_primary", "floorFlat": "floor_primary", "ceilingFlat": "ceiling_primary" },
+      "contents": {
+        "items": [],
+        "monsters": [
+          { "name": "Zombieman", "typeId": 3004, "count": 3 }
+        ],
+        "decorations": [
+          { "name": "Floor Lamp", "typeId": 2028, "count": 2 }
+        ]
+      },
+      "features": []
+    },
+    {
+      "id": "hub_central",
+      "parentRoom": null,
+      "shapeHint": { "vertices": 8, "description": "Grand hub octogonal avec des connexions dans plusieurs directions." },
+      "properties": { "floor": "normal", "ceiling": "high", "lightLevel": "bright", "wallTexture": "wall_accent", "floorFlat": "floor_accent", "ceilingFlat": "ceiling_light_source" },
+      "contents": {
+        "items": [
+          { "name": "Stimpack", "typeId": 2012, "count": 2 }
+        ],
+        "monsters": [
+          { "name": "Imp", "typeId": 3001, "count": 4 },
+          { "name": "Shotgun Guy", "typeId": 9, "count": 2 }
+        ],
+        "decorations": []
+      },
+      "features": []
+    },
+    {
+      "id": "pilier_hub",
+      "parentRoom": "hub_central",
+      "shapeHint": { "vertices": 4, "description": "Pilier de soutien central non accessible." },
+      "properties": { "floor": "normal", "ceiling": "high", "lightLevel": "bright", "wallTexture": "wall_support", "floorFlat": "floor_accent", "ceilingFlat": "ceiling_light_source" },
+      "contents": {},
+      "features": []
+    },
+    {
+      "id": "salle_dechets",
+      "parentRoom": null,
+      "shapeHint": { "vertices": 6, "description": "Salle en forme de C remplie de déchets nucléaires." },
+      "properties": { "floor": "damaging_low", "ceiling": "normal", "lightLevel": "normal", "wallTexture": "wall_primary", "floorFlat": "floor_damage_low", "ceilingFlat": "ceiling_primary" },
+      "contents": {
+        "items": [
+          { "name": "Radiation Suit", "typeId": 2045, "count": 1 },
+          { "name": "Blue Keycard", "typeId": 5, "count": 1 }
+        ],
+        "monsters": [
+          { "name": "Imp", "typeId": 3001, "count": 3 }
+        ],
+        "decorations": []
+      },
+      "features": []
+    },
+    {
+      "id": "passerelle_dechets",
+      "parentRoom": null,
+      "shapeHint": { "vertices": 4, "description": "Passerelle métallique au-dessus de la salle des déchets." },
+      "properties": { "floor": "normal", "ceiling": "normal", "lightLevel": "normal", "wallTexture": "wall_support", "floorFlat": "platform_surface", "ceilingFlat": "ceiling_primary" },
+      "contents": {
+        "items": [],
+        "monsters": [
+          { "name": "Shotgun Guy", "typeId": 9, "count": 2 }
+        ],
+        "decorations": []
+      },
+      "features": []
+    },
+    {
+      "id": "salle_maintenance",
+      "parentRoom": null,
+      "shapeHint": { "vertices": 5, "description": "Petite salle de maintenance avec un interrupteur." },
+      "properties": { "floor": "normal", "ceiling": "low", "lightLevel": "dim", "wallTexture": "wall_panel", "floorFlat": "floor_primary", "ceilingFlat": "ceiling_primary" },
+      "contents": {
+        "items": [
+          { "name": "Ammo Clip", "typeId": 2010, "count": 4 }
+        ],
+        "monsters": [],
+        "decorations": []
+      },
+      "features": [
+        { "name": "RaiseBridgeSwitch", "actionId": 21, "count": 1, "properties": { "texture": "SW1COMM" } }
+      ]
+    },
+    {
+      "id": "couloir_caserne",
+      "parentRoom": null,
+      "shapeHint": { "vertices": 4, "description": "Long couloir menant à la caserne." },
+      "properties": { "floor": "normal", "ceiling": "normal", "lightLevel": "flickering", "wallTexture": "wall_primary", "floorFlat": "floor_primary", "ceilingFlat": "ceiling_primary" },
+      "contents": {
+        "items": [],
+        "monsters": [],
+        "decorations": [
+          { "name": "Hanging Victim (Twitching) 1", "typeId": 25, "count": 2 }
+        ]
+      },
+      "features": []
+    },
+    {
+      "id": "caserne",
+      "parentRoom": null,
+      "shapeHint": { "vertices": 6, "description": "Zone de repos des gardes avec plusieurs lits de camp." },
+      "properties": { "floor": "normal", "ceiling": "normal", "lightLevel": "normal", "wallTexture": "wall_primary", "floorFlat": "floor_primary", "ceilingFlat": "ceiling_primary" },
+      "contents": {
+        "items": [
+          { "name": "Stimpack", "typeId": 2012, "count": 4 }
+        ],
+        "monsters": [
+          { "name": "Zombieman", "typeId": 3004, "count": 6 },
+          { "name": "Shotgun Guy", "typeId": 9, "count": 2 }
+        ],
+        "decorations": []
+      },
+      "features": []
+    },
+    {
+      "id": "armurerie",
+      "parentRoom": null,
+      "shapeHint": { "vertices": 4, "description": "Petite armurerie contenant des munitions et une arme." },
+      "properties": { "floor": "normal", "ceiling": "low", "lightLevel": "bright", "wallTexture": "wall_panel", "floorFlat": "floor_accent", "ceilingFlat": "ceiling_primary" },
+      "contents": {
+        "items": [
+          { "name": "Chaingun", "typeId": 2008, "count": 1 },
+          { "name": "Box of Bullets", "typeId": 2048, "count": 1 },
+          { "name": "Red Keycard", "typeId": 6, "count": 1 }
+        ],
+        "monsters": [
+          { "name": "Demon", "typeId": 3002, "count": 1 }
+        ],
+        "decorations": []
+      },
+      "features": []
+    },
+    {
+      "id": "salle_secrete_caserne",
+      "parentRoom": null,
+      "shapeHint": { "vertices": 4, "description": "Zone secrète accessible depuis la caserne." },
+      "properties": { "floor": "normal", "ceiling": "normal", "lightLevel": "dark", "wallTexture": "wall_secret_indicator", "floorFlat": "floor_primary", "ceilingFlat": "ceiling_primary" },
+      "contents": {
+        "items": [
+          { "name": "Soulsphere", "typeId": 83, "count": 1 },
+          { "name": "Backpack", "typeId": 2011, "count": 1 }
+        ],
+        "monsters": [],
+        "decorations": []
+      },
+      "features": []
+    },
+    {
+      "id": "passage_cle_bleue",
+      "parentRoom": null,
+      "shapeHint": { "vertices": 4, "description": "Couloir nécessitant la clé bleue." },
+      "properties": { "floor": "normal", "ceiling": "normal", "lightLevel": "normal", "wallTexture": "wall_primary", "floorFlat": "floor_primary", "ceilingFlat": "ceiling_light_source" },
+      "contents": {
+        "items": [],
+        "monsters": [
+          { "name": "Spectre", "typeId": 58, "count": 2 }
+        ],
+        "decorations": []
+      },
+      "features": []
+    },
+    {
+      "id": "passage_cle_rouge",
+      "parentRoom": null,
+      "shapeHint": { "vertices": 4, "description": "Couloir nécessitant la clé rouge." },
+      "properties": { "floor": "normal", "ceiling": "normal", "lightLevel": "normal", "wallTexture": "wall_primary", "floorFlat": "floor_primary", "ceilingFlat": "ceiling_light_source" },
+      "contents": {
+        "items": [],
+        "monsters": [
+          { "name": "Demon", "typeId": 3002, "count": 2 }
+        ],
+        "decorations": []
+      },
+      "features": []
+    },
+    {
+      "id": "chambre_jonction",
+      "parentRoom": null,
+      "shapeHint": { "vertices": 5, "description": "Salle où les deux chemins de clés se rejoignent." },
+      "properties": { "floor": "normal", "ceiling": "high", "lightLevel": "bright", "wallTexture": "wall_accent", "floorFlat": "floor_accent", "ceilingFlat": "ceiling_primary" },
+      "contents": {
+        "items": [
+          { "name": "Medikit", "typeId": 2013, "count": 1 }
+        ],
+        "monsters": [
+          { "name": "Cacodemon", "typeId": 3005, "count": 1 }
+        ],
+        "decorations": [
+          { "name": "Tall Green Pillar", "typeId": 43, "count": 2 }
+        ]
+      },
+      "features": []
+    },
+    {
+      "id": "salle_teleporteur",
+      "parentRoom": null,
+      "shapeHint": { "vertices": 4, "description": "Salle finale contenant le téléporteur de sortie." },
+      "properties": { "floor": "normal", "ceiling": "low", "lightLevel": "dark", "wallTexture": "wall_support", "floorFlat": "teleporter_pad", "ceilingFlat": "ceiling_primary" },
+      "contents": {
+        "items": [],
+        "monsters": [],
+        "decorations": [
+          { "name": "Tall Technicolor Pillar", "typeId": 47, "count": 1 }
+        ]
+      },
+      "features": [
+        { "name": "ExitTeleporter", "actionId": 39, "count": 1, "properties": {} }
+      ]
+    },
+    {
+      "id": "zone_embuscade",
+      "parentRoom": null,
+      "shapeHint": { "vertices": 6, "description": "Une arène ouverte après le téléporteur, conçue pour une embuscade." },
+      "properties": { "floor": "normal", "ceiling": "high", "lightLevel": "bright", "wallTexture": "wall_primary", "floorFlat": "floor_primary", "ceilingFlat": "F_SKY1" },
+      "contents": {
+        "items": [],
+        "monsters": [
+          { "name": "Baron of Hell", "typeId": 3003, "count": 1 }
+        ],
+        "decorations": [
+          { "name": "Exploding Barrel", "typeId": 2035, "count": 8 }
+        ]
+      },
+      "features": []
+    },
+    {
+      "id": "salle_sortie",
+      "parentRoom": null,
+      "shapeHint": { "vertices": 4, "description": "La toute dernière salle avec l'interrupteur de fin de niveau." },
+      "properties": { "floor": "normal", "ceiling": "normal", "lightLevel": "bright", "wallTexture": "wall_accent", "floorFlat": "floor_accent", "ceilingFlat": "ceiling_primary" },
+      "contents": {
+        "items": [],
+        "monsters": [],
+        "decorations": []
+      },
+      "features": [
+        { "name": "ExitSwitch", "actionId": 11, "count": 1, "properties": { "texture": "SW1EXIT" } }
+      ]
+    }
+  ],
+  "connections": [
+    { "fromRoom": "salle_depart", "toRoom": "couloir_acces", "type": "door", "properties": { "texture_concept": "door_regular" } },
+    { "fromRoom": "couloir_acces", "toRoom": "hub_central", "type": "opening", "properties": { "description": "Large ouverture vers le hub." } },
+    { "fromRoom": "hub_central", "toRoom": "passerelle_dechets", "type": "opening", "properties": { "description": "Passage vers la zone des déchets." } },
+    { "fromRoom": "hub_central", "toRoom": "couloir_caserne", "type": "opening", "properties": { "description": "Passage vers l'aile de la caserne." } },
+    { "fromRoom": "passerelle_dechets", "toRoom": "salle_dechets", "type": "opening", "properties": { "description": "On peut sauter de la passerelle dans les déchets." } },
+    { "fromRoom": "passerelle_dechets", "toRoom": "salle_maintenance", "type": "door", "properties": { "texture_concept": "door_regular" } },
+    { "fromRoom": "salle_dechets", "toRoom": "passage_cle_bleue", "type": "opening", "properties": { "description": "Pont relevable une fois activé." } },
+    { "fromRoom": "couloir_caserne", "toRoom": "caserne", "type": "opening", "properties": {} },
+    { "fromRoom": "caserne", "toRoom": "armurerie", "type": "door", "properties": { "texture_concept": "door_regular" } },
+    { "fromRoom": "caserne", "toRoom": "salle_secrete_caserne", "type": "secret_door", "properties": { "texture_concept": "wall_secret_indicator" } },
+    { "fromRoom": "armurerie", "toRoom": "passage_cle_rouge", "type": "opening", "properties": {} },
+    { "fromRoom": "hub_central", "toRoom": "passage_cle_bleue", "type": "locked_door", "properties": { "texture": "DOORBLU", "key": "blue" } },
+    { "fromRoom": "hub_central", "toRoom": "passage_cle_rouge", "type": "locked_door", "properties": { "texture": "DOORRED", "key": "red" } },
+    { "fromRoom": "passage_cle_bleue", "toRoom": "chambre_jonction", "type": "opening", "properties": {} },
+    { "fromRoom": "passage_cle_rouge", "toRoom": "chambre_jonction", "type": "opening", "properties": {} },
+    { "fromRoom": "chambre_jonction", "toRoom": "salle_teleporteur", "type": "opening", "properties": { "description": "Un escalier monte vers le téléporteur." } },
+    { "fromRoom": "salle_teleporteur", "toRoom": "zone_embuscade", "type": "teleporter", "properties": {} },
+    { "fromRoom": "zone_embuscade", "toRoom": "salle_sortie", "type": "door", "properties": { "texture_concept": "door_exit" } }
+  ]
+}

@@ -1,81 +1,50 @@
 {
     "format": "D-Graph",
-    "version": "1.3",
+    "version": "1.4",
     "mapInfo": {
-        "game": "doom",
-        "episode": 1,
+        "game": "doom2",
         "map": 1,
-        "name": "La Base Thématique",
-        "music": "D_E1M1"
+        "name": "Le Hub Canonique",
+        "music": "D_STLKS2"
     },
     "themePalette": {
         "wall_primary": [
             {
-                "name": "STARG1",
-                "weight": 70
+                "name": "TEKWALL1",
+                "weight": 80
             },
             {
-                "name": "STARG2",
+                "name": "TEKWALL4",
                 "weight": 20
-            },
-            {
-                "name": "STARGR1",
-                "weight": 10
             }
         ],
-        "wall_panel": [
+        "wall_support": [
             {
-                "name": "COMPTALL",
-                "weight": 100
-            }
-        ],
-        "wall_secret_indicator": [
-            {
-                "name": "SUPPORT3",
+                "name": "SUPPORT2",
                 "weight": 100
             }
         ],
         "floor_primary": [
             {
-                "name": "FLOOR4_8",
-                "weight": 90
-            },
-            {
-                "name": "FLAT19",
-                "weight": 10
-            }
-        ],
-        "floor_damage_low": [
-            {
-                "name": "NUKAGE1",
-                "weight": 75
-            },
-            {
-                "name": "NUKAGE2",
-                "weight": 25
+                "name": "TECH01",
+                "weight": 100
             }
         ],
         "ceiling_primary": [
             {
-                "name": "CEIL3_1",
-                "weight": 100
-            }
-        ],
-        "ceiling_light_source": [
-            {
-                "name": "LIGHT3",
+                "name": "CEIL1_1",
                 "weight": 100
             }
         ],
         "door_regular": [
             {
-                "name": "DOOR3",
+                "name": "BIGDOOR2",
                 "weight": 100
             }
         ],
-        "door_frame": [
+        "wall_secret_indicator": [
             {
-                "name": "DOORTRAK",
+                "name": "BRICK5",
                 "weight": 100
             }
         ],
@@ -84,21 +53,15 @@
                 "name": "SW1EXIT",
                 "weight": 100
             }
-        ],
-        "switch_utility": [
-            {
-                "name": "SW1STAR",
-                "weight": 100
-            }
         ]
     },
     "rooms": [
         {
-            "id": "start_room",
+            "id": "start_chamber",
             "parentRoom": null,
             "shapeHint": {
                 "vertices": 4,
-                "description": "Une petite pièce rectangulaire."
+                "description": "Petite pièce de départ rectangulaire"
             },
             "properties": {
                 "floor": "normal",
@@ -111,7 +74,13 @@
             "contents": {
                 "items": [
                     {
-                        "type": "Player1Start",
+                        "name": "Player1Start",
+                        "typeId": 1,
+                        "count": 1
+                    },
+                    {
+                        "name": "Shotgun",
+                        "typeId": 2007,
                         "count": 1
                     }
                 ]
@@ -119,43 +88,127 @@
             "features": []
         },
         {
-            "id": "sky_chamber",
+            "id": "main_hub",
             "parentRoom": null,
             "shapeHint": {
                 "vertices": 8,
-                "description": "Une grande cour octogonale."
+                "description": "Grand hub octogonal avec un pilier central"
             },
             "properties": {
                 "floor": "normal",
-                "ceiling": "sky",
+                "ceiling": "high",
                 "lightLevel": "bright",
                 "wallTexture": "wall_primary",
                 "floorFlat": "floor_primary",
-                "ceilingFlat": "sky"
+                "ceilingFlat": "ceiling_primary"
             },
             "contents": {
                 "monsters": [
                     {
-                        "type": "Imp",
-                        "count": 3
+                        "name": "Imp",
+                        "typeId": 3001,
+                        "count": 4
                     }
                 ]
             },
+            "features": []
+        },
+        {
+            "id": "central_pillar",
+            "parentRoom": "main_hub",
+            "shapeHint": {
+                "vertices": 4,
+                "description": "Pilier de support carré"
+            },
+            "properties": {
+                "floor": "normal",
+                "ceiling": "high",
+                "lightLevel": "bright",
+                "wallTexture": "wall_support",
+                "floorFlat": "floor_primary",
+                "ceilingFlat": "ceiling_primary"
+            },
+            "contents": {},
+            "features": []
+        },
+        {
+            "id": "secret_alcove",
+            "parentRoom": null,
+            "shapeHint": {
+                "vertices": 4,
+                "description": "Petite alcôve secrète"
+            },
+            "properties": {
+                "floor": "normal",
+                "ceiling": "normal",
+                "lightLevel": "dark",
+                "wallTexture": "wall_primary",
+                "floorFlat": "floor_primary",
+                "ceilingFlat": "ceiling_primary"
+            },
+            "contents": {
+                "items": [
+                    {
+                        "name": "Soulsphere",
+                        "typeId": 83,
+                        "count": 1
+                    }
+                ]
+            },
+            "features": []
+        },
+        {
+            "id": "exit_room",
+            "parentRoom": null,
+            "shapeHint": {
+                "vertices": 4,
+                "description": "Salle de sortie finale"
+            },
+            "properties": {
+                "floor": "high",
+                "ceiling": "normal",
+                "lightLevel": "bright",
+                "wallTexture": "wall_accent",
+                "floorFlat": "floor_primary",
+                "ceilingFlat": "ceiling_primary"
+            },
+            "contents": {},
             "features": [
                 {
-                    "type": "ExitSwitch",
+                    "name": "ExitSwitch",
+                    "actionId": 11,
                     "count": 1,
-                    "properties": { "texture": "SW1EXIT" }
+                    "properties": {
+                        "texture": "SW1EXIT"
+                    }
                 }
             ]
         }
     ],
     "connections": [
         {
-            "fromRoom": "start_room",
-            "toRoom": "sky_chamber",
+            "fromRoom": "start_chamber",
+            "toRoom": "main_hub",
+            "type": "opening",
+            "properties": {
+                "description": "Un large passage."
+            }
+        },
+        {
+            "fromRoom": "main_hub",
+            "toRoom": "exit_room",
             "type": "door",
-            "properties": { "texture": "DOOR3" }
+            "properties": {
+                "texture_concept": "door_regular"
+            }
+        },
+        {
+            "fromRoom": "main_hub",
+            "toRoom": "secret_alcove",
+            "type": "secret_door",
+            "properties": {
+                "texture_concept": "wall_secret_indicator"
+            }
         }
     ]
 }
