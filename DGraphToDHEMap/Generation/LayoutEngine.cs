@@ -1,23 +1,16 @@
-﻿using System;
+﻿// Generation/LayoutEngine.cs
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
-using System.Numerics;
 using DGraphBuilder.Models.DGraph;
 
 namespace DGraphBuilder.Generation
 {
-    public class GridCell
-    {
-        public string RoomId { get; set; } = null;
-        public bool IsCorridor => RoomId != null && RoomId.StartsWith("corridor_");
-    }
-
     public class LayoutEngine
     {
         private readonly DGraphFile _dgraph;
         private readonly Random _random;
-        private const int GridSize = 100;
 
         public LayoutEngine(DGraphFile dgraph, Random random)
         {
@@ -27,8 +20,8 @@ namespace DGraphBuilder.Generation
 
         public GridCell[,] GenerateLayout()
         {
-            var grid = new GridCell[GridSize, GridSize];
-            for (int i = 0; i < GridSize; i++) for (int j = 0; j < GridSize; j++) grid[i, j] = new GridCell();
+            var grid = new GridCell[GenerationConfig.GridSize, GenerationConfig.GridSize];
+            for (int i = 0; i < GenerationConfig.GridSize; i++) for (int j = 0; j < GenerationConfig.GridSize; j++) grid[i, j] = new GridCell();
 
             var roomsToPlace = _dgraph.Rooms.Where(r => r.ParentRoom == null).ToList();
             if (!roomsToPlace.Any()) return grid;
@@ -37,7 +30,7 @@ namespace DGraphBuilder.Generation
             var queue = new Queue<Room>();
 
             var startRoom = roomsToPlace.First();
-            var startRect = new Rectangle(GridSize / 2, GridSize / 2, _random.Next(3, 6), _random.Next(3, 6));
+            var startRect = new Rectangle(GenerationConfig.GridSize / 2, GenerationConfig.GridSize / 2, _random.Next(3, 6), _random.Next(3, 6));
             PlaceOnGrid(grid, startRoom.Id, startRect);
             roomGridRects[startRoom.Id] = startRect;
             queue.Enqueue(startRoom);
@@ -71,7 +64,7 @@ namespace DGraphBuilder.Generation
 
         private bool TryPlaceNeighbor(GridCell[,] grid, Rectangle parentRect, out Rectangle roomRect, out List<Point> corridorPath)
         {
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < 30; i++)
             {
                 var dir = (Direction)_random.Next(4);
                 var startPoint = GetRandomPointOnEdge(parentRect, dir);
@@ -114,7 +107,7 @@ namespace DGraphBuilder.Generation
                 foreach (var dir in new[] { new Point(0, 1), new Point(0, -1), new Point(1, 0), new Point(-1, 0) })
                 {
                     var neighborPos = new Point(current.Position.X + dir.X, current.Position.Y + dir.Y);
-                    if (!IsInBounds(neighborPos.X, neighborPos.Y) || closedSet.Contains(neighborPos) || grid[neighborPos.X, neighborPos.Y].RoomId != null) continue;
+                    if (!IsInBounds(neighborPos) || closedSet.Contains(neighborPos) || grid[neighborPos.X, neighborPos.Y].RoomId != null) continue;
 
                     var tentativeGScore = current.GScore + 1;
                     var existingNode = openSet.FirstOrDefault(n => n.Position == neighborPos);
@@ -131,12 +124,10 @@ namespace DGraphBuilder.Generation
         private List<Point> ReconstructPath(Node current) { var path = new List<Point>(); while (current != null) { path.Add(current.Position); current = current.Parent; } path.Reverse(); return path; }
         private class Node { public Point Position; public Node Parent; public float GScore; public float HScore; public float FScore => GScore + HScore; public Node(Point p, Node pa, float g, float h) { Position = p; Parent = pa; GScore = g; HScore = h; } }
         private float GetHeuristic(Point a, Point b) => Math.Abs(a.X - b.X) + Math.Abs(a.Y - b.Y);
-        private void PlaceOnGrid(GridCell[,] grid, string roomId, Rectangle rect) { for (int x = rect.Left; x < rect.Right; x++) for (int y = rect.Top; y < rect.Bottom; y++) if (IsInBounds(x, y)) grid[x, y].RoomId = roomId; }
-        private void PlaceOnGrid(GridCell[,] grid, string roomId, List<Point> path) { foreach (var p in path) if (IsInBounds(p.X, p.Y) && grid[p.X, p.Y].RoomId == null) grid[p.X, p.Y].RoomId = $"corridor_{roomId}"; }
-        private bool IsRegionFree(GridCell[,] grid, Rectangle rect, List<Point> excludePath) { for (int x = rect.Left; x < rect.Right; x++) for (int y = rect.Top; y < rect.Bottom; y++) if (!IsInBounds(x, y) || (grid[x, y].RoomId != null && !(excludePath?.Contains(new Point(x, y)) ?? false))) return false; return true; }
-
-        // CORRECTION: La signature de la fonction accepte maintenant deux entiers.
-        private bool IsInBounds(int x, int y) => x >= 0 && x < GridSize && y >= 0 && y < GridSize;
+        private void PlaceOnGrid(GridCell[,] grid, string roomId, Rectangle rect) { for (int x = rect.Left; x < rect.Right; x++) for (int y = rect.Top; y < rect.Bottom; y++) if (IsInBounds(new Point(x, y))) grid[x, y].RoomId = roomId; }
+        private void PlaceOnGrid(GridCell[,] grid, string roomId, List<Point> path) { foreach (var p in path) if (IsInBounds(p) && grid[p.X, p.Y].RoomId == null) grid[p.X, p.Y].RoomId = $"corridor_{roomId}"; }
+        private bool IsRegionFree(GridCell[,] grid, Rectangle rect, List<Point> excludePath) { for (int x = rect.Left; x < rect.Right; x++) for (int y = rect.Top; y < rect.Bottom; y++) if (!IsInBounds(new Point(x, y)) || (grid[x, y].RoomId != null && !(excludePath?.Contains(new Point(x, y)) ?? false))) return false; return true; }
+        private bool IsInBounds(Point p) => p.X >= 0 && p.X < GenerationConfig.GridSize && p.Y >= 0 && p.Y < GenerationConfig.GridSize;
         private Point GetRandomPointOnEdge(Rectangle rect, Direction dir) { switch (dir) { case Direction.North: return new Point(_random.Next(rect.Left, rect.Right), rect.Top); case Direction.South: return new Point(_random.Next(rect.Left, rect.Right), rect.Bottom - 1); case Direction.West: return new Point(rect.Left, _random.Next(rect.Top, rect.Bottom)); default: return new Point(rect.Right - 1, _random.Next(rect.Top, rect.Bottom)); } }
         private Point GetDelta(Direction d) { switch (d) { case Direction.North: return new Point(0, -1); case Direction.South: return new Point(0, 1); case Direction.West: return new Point(-1, 0); default: return new Point(1, 0); } }
         private Point GetPointInDirection(Point p, Direction d, int dist) { var delta = GetDelta(d); return new Point(p.X + delta.X * dist, p.Y + delta.Y * dist); }
