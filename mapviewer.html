@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Visualiseur de Carte DHEMap (Multi-Jeux)</title>
+    <title>Visualiseur de Carte DHEMap (Emojis Uniques)</title>
     <style>
         :root {
             --bg-color: #1a1a1a;
@@ -63,6 +63,12 @@
 
         #legend p {
             margin: 4px 0;
+        }
+
+        #legend .legend-intro {
+            font-size: 0.9em;
+            opacity: 0.8;
+            margin-bottom: 10px;
         }
 
         #viewer {
@@ -139,11 +145,11 @@
                 <label for="viewCeilings">Plafonds</label>
             </div>
             <div id="legend" class="control-group">
-                <label>Légende Universelle</label>
-                <p>😀 Joueur &nbsp; 👿 Monstre &nbsp; 🔫 Arme</p>
-                <p>📦 Munition &nbsp; 💊 Soin &nbsp; 🛡️ Armure</p>
-                <p>🗝️ Clé &nbsp; ✨ Bonus &nbsp; 🏺 Artefact</p>
-                <p>⚙️ Décor &nbsp; ❓ Inconnu</p>
+                <label>Légende</label>
+                <p class="legend-intro">Chaque monstre et arme a un emoji unique. Survolez un objet pour voir les détails.</p>
+                <p>😀 Joueur &nbsp; 📦 Munition &nbsp; 💊 Soin</p>
+                <p>🛡️ Armure &nbsp; 🗝️ Clé &nbsp; ✨ Bonus</p>
+                <p>🏺 Artefact &nbsp; ⚙️ Décor &nbsp; ❓ Inconnu</p>
             </div>
         </aside>
 
@@ -160,19 +166,19 @@
             'default': { emoji: '❓', name: 'Inconnu (Doom)' },
             1: { emoji: '😀', name: 'Player 1 Start' }, 2: { emoji: '😀', name: 'Player 2 Start' }, 3: { emoji: '😀', name: 'Player 3 Start' }, 4: { emoji: '😀', name: 'Player 4 Start' }, 11: { emoji: '😀', name: 'Deathmatch Start' },
             5: { emoji: '🗝️', name: 'Blue Keycard' }, 6: { emoji: '🗝️', name: 'Red Keycard' }, 13: { emoji: '🗝️', name: 'Yellow Keycard' }, 38: { emoji: '🗝️', name: 'Red Skull Key' }, 39: { emoji: '🗝️', name: 'Yellow Skull Key' }, 40: { emoji: '🗝️', name: 'Blue Skull Key' },
-            7: { emoji: '👿', name: 'Spider Mastermind' }, 9: { emoji: '👿', name: 'Shotgun Guy' }, 16: { emoji: '👿', name: 'Cyberdemon' }, 58: { emoji: '👿', name: 'Spectre' }, 64: { emoji: '👿', name: 'Arch-Vile' }, 65: { emoji: '👿', name: 'Heavy Weapon Dude' }, 66: { emoji: '👿', name: 'Arachnotron' }, 67: { emoji: '👿', name: 'Revenant' }, 69: { emoji: '👿', name: 'Hell Knight' }, 71: { emoji: '👿', name: 'Pain Elemental' }, 72: { emoji: '👿', name: 'Mancubus' }, 3001: { emoji: '👿', name: 'Imp' }, 3002: { emoji: '👿', name: 'Demon' }, 3003: { emoji: '👿', name: 'Baron of Hell' }, 3004: { emoji: '👿', name: 'Zombieman' }, 3005: { emoji: '👿', name: 'Cacodemon' }, 3006: { emoji: '👿', name: 'Lost Soul' }, 84: { emoji: '👿', name: 'Wolfenstein SS' },
-            2001: { emoji: '🔫', name: 'Chaingun' }, 2002: { emoji: '🔫', name: 'Rocket Launcher' }, 2003: { emoji: '🔫', name: 'Plasma Rifle' }, 2004: { emoji: '🔫', name: 'BFG9000' }, 2005: { emoji: '🔫', name: 'Chainsaw' }, 2006: { emoji: '🔫', name: 'Super Shotgun' }, 2007: { emoji: '🔫', name: 'Shotgun' },
+            3004: { emoji: '🧟', name: 'Zombieman' }, 9: { emoji: '👮', name: 'Shotgun Guy' }, 65: { emoji: '🪖', name: 'Heavy Weapon Dude' }, 3001: { emoji: '👹', name: 'Imp' }, 3002: { emoji: '🐖', name: 'Demon' }, 58: { emoji: '👻', name: 'Spectre' }, 3006: { emoji: '💀', name: 'Lost Soul' }, 3005: { emoji: '👺', name: 'Cacodemon' }, 69: { emoji: '😈', name: 'Hell Knight' }, 3003: { emoji: '🐐', name: 'Baron of Hell' }, 66: { emoji: '🕷️', name: 'Arachnotron' }, 71: { emoji: '😵', name: 'Pain Elemental' }, 67: { emoji: '🦴', name: 'Revenant' }, 72: { emoji: '🤖', name: 'Mancubus' }, 64: { emoji: '🧙', name: 'Arch-Vile' }, 7: { emoji: '🧠', name: 'Spider Mastermind' }, 16: { emoji: '🦾', name: 'Cyberdemon' }, 84: { emoji: '👨‍✈️', name: 'Wolfenstein SS' },
+            2005: { emoji: '🪚', name: 'Chainsaw' }, 2007: { emoji: '🔫', name: 'Shotgun' }, 2006: { emoji: '‼️', name: 'Super Shotgun' }, 2001: { emoji: '🌀', name: 'Chaingun' }, 2002: { emoji: '🚀', name: 'Rocket Launcher' }, 2003: { emoji: '🌐', name: 'Plasma Rifle' }, 2004: { emoji: '☢️', name: 'BFG9000' },
             17: { emoji: '📦', name: 'Energy Cell Pack' }, 2008: { emoji: '📦', name: 'Clip' }, 2010: { emoji: '📦', name: 'Box of Rockets' }, 2045: { emoji: '📦', name: 'Energy Cell' }, 2046: { emoji: '📦', name: '4 Shotgun Shells' }, 2047: { emoji: '📦', name: 'Rocket' }, 2048: { emoji: '📦', name: 'Box of Bullets' }, 2049: { emoji: '📦', name: 'Box of Shells' },
             2011: { emoji: '💊', name: 'Health Potion' }, 2012: { emoji: '💊', name: 'Stimpack' }, 2013: { emoji: '💊', name: 'Medikit' }, 2014: { emoji: '🛡️', name: 'Spiritual Armor' }, 2015: { emoji: '🛡️', name: 'Armor Bonus' }, 2018: { emoji: '🛡️', name: 'Green Armor' }, 2019: { emoji: '🛡️', name: 'Megaarmor (Blue)' },
             83: { emoji: '✨', name: 'Soulsphere' }, 2022: { emoji: '✨', name: 'Invulnerability' }, 2023: { emoji: '✨', name: 'Berserk' }, 2024: { emoji: '✨', name: 'Partial Invisibility' }, 2025: { emoji: '✨', name: 'Megasphere' }, 2026: { emoji: '✨', name: 'Radiation Suit' }, 2027: { emoji: '✨', name: 'Computer Area Map' }, 2044: { emoji: '✨', name: 'Light Amplification Visor' },
-            10: { emoji: '⚙️', name: 'Hanging Victim 1' }, 12: { emoji: '⚙️', name: 'Hanging Victim 2' }, 14: { emoji: '⚙️', name: 'Player 5 Start (unused)' }, 25: { emoji: '⚙️', name: 'Hanging Victim (Twitching) 1' }, 26: { emoji: '⚙️', name: 'Hanging Victim (Twitching) 2' }, 27: { emoji: '⚙️', name: 'Hanging Victim (Twitching) 3' }, 28: { emoji: '⚙️', name: 'Hanging Victim (Twitching) 4' }, 29: { emoji: '⚙️', name: 'Five Skulls Shish Kebab' }, 30: { emoji: '⚙️', name: 'Tall Green Pillar' }, 31: { emoji: '⚙️', name: 'Tall Blue Pillar' }, 32: { emoji: '⚙️', name: 'Tall Red Pillar with Skull' }, 33: { emoji: '⚙️', name: 'Short Green Pillar' }, 34: { emoji: '⚙️', name: 'Candelabra' }, 35: { emoji: '⚙️', name: 'Short Red Pillar' }, 48: { emoji: '⚙️', name: 'Stalagmite' }, 51: { emoji: '⚙️', name: 'Pool of Blood' }, 70: { emoji: '⚙️', name: 'Dead Player' }, 89: { emoji: '⚙️', name: 'Commander Keen' }, 2028: { emoji: '⚙️', name: 'Floor Lamp' }
+            30: { emoji: '⚙️', name: 'Tall Green Pillar' }, 31: { emoji: '⚙️', name: 'Tall Blue Pillar' }, 34: { emoji: '⚙️', name: 'Candelabra' }, 89: { emoji: '⚙️', name: 'Commander Keen' }
         };
 
         const HERETIC_THINGS = {
             'default': { emoji: '❓', name: 'Inconnu (Heretic)' },
             14: { emoji: '😀', name: 'Player 1 Start' }, 15: { emoji: '😀', name: 'Player 2 Start' }, 16: { emoji: '😀', name: 'Player 3 Start' }, 17: { emoji: '😀', name: 'Player 4 Start' }, 11: { emoji: '😀', name: 'Deathmatch Start' },
-            7: { emoji: '👿', name: 'Golem' }, 8: { emoji: '👿', name: 'Ghost Golem' }, 9: { emoji: '👿', name: 'Nitrogolem' }, 10: { emoji: '👿', name: 'Ghost Nitrogolem' }, 45: { emoji: '👿', name: 'Sabreclaw' }, 46: { emoji: '👿', name: 'Weredragon' }, 6: { emoji: '👿', name: 'Ophidian' }, 64: { emoji: '👿', name: 'Iron Lich' }, 67: { emoji: '👿', name: 'Disciple of D\'Sparil' }, 68: { emoji: '👿', name: 'Gargoyle' }, 69: { emoji: '👿', name: 'Fire Gargoyle' }, 71: { emoji: '👿', name: 'Maulotaur' },
-            23: { emoji: '🔫', name: 'Staff' }, 24: { emoji: '🔫', name: 'Gauntlets' }, 25: { emoji: '🔫', name: 'Ethereal Crossbow' }, 26: { emoji: '🔫', name: 'Dragon\'s Claw' }, 27: { emoji: '🔫', name: 'Hellstaff' }, 28: { emoji: '🔫', name: 'Phoenix Rod' }, 29: { emoji: '🔫', name: 'Mace' },
+            68: { emoji: '🦇', name: 'Gargoyle' }, 69: { emoji: '🥵', name: 'Fire Gargoyle' }, 7: { emoji: '🗿', name: 'Golem' }, 8: { emoji: '🌫️', name: 'Ghost Golem' }, 9: { emoji: '💣', name: 'Nitrogolem' }, 67: { emoji: '🙏', name: 'Disciple of D\'Sparil' }, 46: { emoji: '🐉', name: 'Weredragon' }, 6: { emoji: '🐍', name: 'Ophidian' }, 45: { emoji: '🦂', name: 'Sabreclaw' }, 64: { emoji: '🧊', name: 'Iron Lich' }, 71: { emoji: '🐂', name: 'Maulotaur' },
+            23: { emoji: '⚕️', name: 'Staff' }, 24: { emoji: '🧤', name: 'Gauntlets' }, 25: { emoji: '🏹', name: 'Ethereal Crossbow' }, 26: { emoji: '🐲', name: 'Dragon\'s Claw' }, 27: { emoji: '🔱', name: 'Hellstaff' }, 28: { emoji: '🕊️', name: 'Phoenix Rod' }, 29: { emoji: '🔨', name: 'Mace' },
             81: { emoji: '💊', name: 'Crystal Vial' }, 82: { emoji: '✨', name: 'Ring of Invincibility' }, 83: { emoji: '📦', name: 'Wand Crystal' }, 84: { emoji: '📦', name: 'Ethereal Arrow' }, 85: { emoji: '📦', name: 'Claw Orb' }, 86: { emoji: '📦', name: 'Hellstaff Energy' }, 87: { emoji: '📦', name: 'Phoenix Rod Flame' }, 88: { emoji: '📦', name: 'Mace Sphere' },
             5: { emoji: '🗝️', name: 'Green Key' }, 6: { emoji: '🗝️', name: 'Blue Key' }, 13: { emoji: '🗝️', name: 'Yellow Key' },
             20: { emoji: '🏺', name: 'Quartz Flask' }, 21: { emoji: '🏺', name: 'Mystic Urn' }, 22: { emoji: '🏺', name: 'Tome of Power' }, 31: { emoji: '🏺', name: 'Torch' }, 32: { emoji: '🏺', name: 'Timebomb of the Ancients' }, 33: { emoji: '🏺', name: 'Morph Ovum' }, 34: { emoji: '🏺', name: 'Wings of Wrath' }, 35: { emoji: '🏺', name: 'Chaos Device' },
@@ -181,16 +187,16 @@
 
         const HEXEN_THINGS = {
             'default': { emoji: '❓', name: 'Inconnu (Hexen)' },
-            100: { emoji: '😀', name: 'Player 1 Start (Fighter)' }, 101: { emoji: '😀', name: 'Player 2 Start (Cleric)' }, 102: { emoji: '😀', name: 'Player 3 Start (Mage)' }, 103: { emoji: '😀', name: 'Player 4 Start (Pig)' }, 11: { emoji: '😀', name: 'Deathmatch Start' },
-            7: { emoji: '👿', name: 'Ettin' }, 10: { emoji: '👿', name: 'Centaur' }, 11: { emoji: '👿', name: 'Slaughtaur' }, 16: { emoji: '👿', name: 'Afrit' }, 17: { emoji: '👿', name: 'Green Chaos Serpent' }, 18: { emoji: '👿', name: 'Brown Chaos Serpent' }, 30: { emoji: '👿', name: 'Wendigo' }, 45: { emoji: '👿', name: 'Heresiarch' }, 46: { emoji: '👿', name: 'Death Wyvern' }, 64: { emoji: '👿', name: 'Bishop' }, 66: { emoji: '👿', name: 'Reiver' },
-            80: { emoji: '🔫', name: 'Spiked Gauntlets' }, 81: { emoji: '🔫', name: 'Timon\'s Axe' }, 82: { emoji: '🔫', name: 'Hammer of Retribution' }, 83: { emoji: '🔫', name: 'Quietus' },
-            90: { emoji: '🔫', name: 'Mace of Contrition' }, 91: { emoji: '🔫', name: 'Serpent Staff' }, 92: { emoji: '🔫', name: 'Firestorm' }, 93: { emoji: '🔫', name: 'Wraithverge' },
-            110: { emoji: '🔫', name: 'Sapphire Wand' }, 111: { emoji: '🔫', name: 'Frost Shards' }, 112: { emoji: '🔫', name: 'Arc of Death' }, 113: { emoji: '🔫', name: 'Bloodscourge' },
+            100: { emoji: '😀', name: 'Player 1 Start (Fighter)' }, 101: { emoji: '😀', name: 'Player 2 Start (Cleric)' }, 102: { emoji: '😀', name: 'Player 3 Start (Mage)' }, 11: { emoji: '😀', name: 'Deathmatch Start' },
+            7: { emoji: '🧑‍🤝‍🧑', name: 'Ettin' }, 10: { emoji: '🐎', name: 'Centaur' }, 11: { emoji: '🐗', name: 'Slaughtaur' }, 16: { emoji: '🔥', name: 'Afrit' }, 17: { emoji: '🐛', name: 'Green Chaos Serpent' }, 18: { emoji: '🐌', name: 'Brown Chaos Serpent' }, 30: { emoji: '🦍', name: 'Wendigo' }, 45: { emoji: '✝️', name: 'Heresiarch' }, 46: { emoji: '🦖', name: 'Death Wyvern' }, 64: { emoji: '♟️', name: 'Bishop' }, 66: { emoji: '☠️', name: 'Reiver' },
+            80: { emoji: '🥊', name: 'Fighter - Spiked Gauntlets' }, 81: { emoji: '🪓', name: 'Fighter - Timon\'s Axe' }, 82: { emoji: '⚖️', name: 'Fighter - Hammer of Retribution' }, 83: { emoji: '🗡️', name: 'Fighter - Quietus' },
+            90: { emoji: '🪵', name: 'Cleric - Mace of Contrition' }, 91: { emoji: '🦯', name: 'Cleric - Serpent Staff' }, 92: { emoji: '☄️', name: 'Cleric - Firestorm' }, 93: { emoji: '💫', name: 'Cleric - Wraithverge' },
+            110: { emoji: '💧', name: 'Mage - Sapphire Wand' }, 111: { emoji: '❄️', name: 'Mage - Frost Shards' }, 112: { emoji: '⚡', name: 'Mage - Arc of Death' }, 113: { emoji: '🩸', name: 'Mage - Bloodscourge' },
             8: { emoji: '📦', name: 'Blue Mana' }, 9: { emoji: '📦', name: 'Green Mana' }, 19: { emoji: '📦', name: 'Combined Mana' },
             130: { emoji: '🛡️', name: 'Amulet of Warding' }, 131: { emoji: '🛡️', name: 'Mesh Armor' }, 132: { emoji: '🛡️', name: 'Falcon Shield' }, 133: { emoji: '🛡️', name: 'Platinum Helmet' },
             120: { emoji: '💊', name: 'Crystal Vial' },
-            20: { emoji: '🗝️', name: 'Steel Key' }, 21: { emoji: '🗝️', name: 'Cave Key' }, 22: { emoji: '🗝️', name: 'Axe Key' }, 23: { emoji: '🗝️', name: 'Fire Key' }, 24: { emoji: '🗝️', name: 'Emerald Key' }, 25: { emoji: '🗝️', name: 'Dungeon Key' }, 26: { emoji: '🗝️', name: 'Silver Key' }, 27: { emoji: '🗝️', name: 'Rusted Key' }, 28: { emoji: '🗝️', name: 'Horn Key' }, 29: { emoji: '🗝️', name: 'Swamp Key' },
-            140: { emoji: '🏺', name: 'Boots of Speed' }, 141: { emoji: '🏺', name: 'Disc of Repulsion' }, 142: { emoji: '🏺', name: 'Mystic Ambit Incant' }, 143: { emoji: '🏺', name: 'Torch' }, 144: { emoji: '🏺', name: 'Wings of Wrath' }, 145: { emoji: '🏺', name: 'Porkalator' }, 146: { emoji: '🏺', name: 'Dark Servant' }, 147: { emoji: '🏺', name: 'Icon of the Defender' },
+            20: { emoji: '🗝️', name: 'Steel Key' }, 21: { emoji: '🗝️', name: 'Cave Key' }, 22: { emoji: '🗝️', name: 'Axe Key' }, 23: { emoji: '🗝️', name: 'Fire Key' }, 24: { emoji: '🗝️', name: 'Emerald Key' }, 25: { emoji: '🗝️', name: 'Dungeon Key' },
+            140: { emoji: '🏺', name: 'Boots of Speed' }, 141: { emoji: '🏺', name: 'Disc of Repulsion' }, 142: { emoji: '🏺', name: 'Mystic Ambit Incant' }, 143: { emoji: '🏺', name: 'Torch' }, 144: { emoji: '🏺', name: 'Wings of Wrath' }, 145: { emoji: '🏺', name: 'Porkalator' },
         };
 
         const GAME_THINGS = {
