@@ -35,7 +35,6 @@ namespace DGraphBuilder.Generation
 
             GenerateLinedefsFromGrid(sectorGrid);
 
-            // CORRECTION: L'appel de fonction est corrigé pour ne prendre qu'un seul argument.
             PlaceAllThings(grid);
 
             return _dhemap;
@@ -108,38 +107,59 @@ namespace DGraphBuilder.Generation
             int width = sectorGrid.GetLength(0);
             int height = sectorGrid.GetLength(1);
 
+            // Création des Linedefs VERTICAUX
             for (int y = 0; y < height; y++)
             {
-                for (int x = 0; x < width; x++)
+                for (int x = 0; x <= width; x++)
                 {
-                    int currentId = sectorGrid[x, y];
+                    int leftSector = (x > 0) ? sectorGrid[x - 1, y] : -1;
+                    int rightSector = (x < width) ? sectorGrid[x, y] : -1;
 
-                    int southId = (y > 0) ? sectorGrid[x, y - 1] : -1;
-                    if (currentId != southId)
-                        AddEdge(new Point(x, y), new Point(x + 1, y), currentId, southId);
+                    if (leftSector != rightSector)
+                    {
+                        // Le vecteur de la ligne pointe vers le HAUT (y+1 -> y).
+                        // Le côté droit du vecteur est `rightSector`, qui devient la face avant.
+                        AddEdge(new Point(x, y + 1), new Point(x, y), rightSector, leftSector);
+                    }
+                }
+            }
 
-                    int westId = (x > 0) ? sectorGrid[x - 1, y] : -1;
-                    if (currentId != westId)
-                        AddEdge(new Point(x, y + 1), new Point(x, y), currentId, westId);
+            // Création des Linedefs HORIZONTAUX
+            for (int x = 0; x < width; x++)
+            {
+                for (int y = 0; y <= height; y++)
+                {
+                    int topSector = (y > 0) ? sectorGrid[x, y - 1] : -1;
+                    int bottomSector = (y < height) ? sectorGrid[x, y] : -1;
+
+                    if (topSector != bottomSector)
+                    {
+                        // Le vecteur de la ligne pointe vers la DROITE (x -> x+1).
+                        // Le côté droit du vecteur est `bottomSector`, qui devient la face avant.
+                        AddEdge(new Point(x, y), new Point(x + 1, y), bottomSector, topSector);
+                    }
                 }
             }
         }
 
-        private void AddEdge(Point p1, Point p2, int s1, int s2)
+        private void AddEdge(Point p1, Point p2, int frontSectorId, int backSectorId)
         {
-            if (s1 == -1 && s2 == -1) return;
-
-            if (p1.X > p2.X || (p1.X == p2.X && p1.Y > p2.Y)) { var temp = p1; p1 = p2; p2 = temp; }
+            // Convention Doom : la face "front" est à droite du vecteur p1 -> p2.
+            if (frontSectorId == -1 && backSectorId == -1) return;
 
             var v1 = GetOrCreateVertex(p1);
             var v2 = GetOrCreateVertex(p2);
 
-            int frontSectorId = Math.Max(s1, s2);
-            int backSectorId = Math.Min(s1, s2);
-
-            if (frontSectorId == -1) { frontSectorId = backSectorId; backSectorId = -1; }
-
-            AddLinedef(v2, v1, frontSectorId, backSectorId, GetTexture("wall_primary"));
+            // Si la face avant est le vide (-1), on doit inverser la ligne
+            // pour que la face valide (le secteur existant) soit toujours la face avant.
+            if (frontSectorId == -1)
+            {
+                AddLinedef(v2, v1, backSectorId, -1, GetTexture("wall_primary"));
+            }
+            else
+            {
+                AddLinedef(v1, v2, frontSectorId, backSectorId, GetTexture("wall_primary"));
+            }
         }
 
         private Vertex GetOrCreateVertex(Point gridPoint)
