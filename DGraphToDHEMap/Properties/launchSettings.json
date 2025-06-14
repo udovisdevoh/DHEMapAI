@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "DGraphToDHEMap": {
+      "commandName": "Project",
+      "commandLineArgs": "\"D:\\users\\Anonymous\\Documents\\C Sharp\\DHEMapAi\\Sample6-v1.5.dgraph\" \"D:\\users\\Anonymous\\Documents\\C Sharp\\DHEMapAi\\Sample6-v1.5.perfect\""
+    }
+  }
+}
