@@ -15,6 +15,12 @@ namespace DGraphBuilder.Generation
         private Dictionary<Point, Vertex> _vertexNodeMap;
         private int _nextId;
 
+        private class BuiltSectorInfo
+        {
+            public Sector DhemapSector { get; set; }
+            public Rectangle GridRect { get; set; }
+        }
+
         public MapBuilder(DGraphFile dgraph, Random random)
         {
             _dgraph = dgraph;
@@ -24,13 +30,31 @@ namespace DGraphBuilder.Generation
         public DhemapFile Build(GridCell[,] grid)
         {
             InitializeDhemap();
+
             var sectorGrid = CreateSectorsFromGrid(grid);
+
             GenerateLinedefsFromGrid(sectorGrid);
+
+            // CORRECTION: L'appel de fonction est corrigé pour ne prendre qu'un seul argument.
             PlaceAllThings(grid);
+
             return _dhemap;
         }
 
-        private void InitializeDhemap() { _dhemap = new DhemapFile { MapInfo = new Models.Dhemap.MapInfo { Game = _dgraph.MapInfo.Game, Map = _dgraph.MapInfo.Map, Name = _dgraph.MapInfo.Name, Music = _dgraph.MapInfo.Music, SkyTexture = "SKY1" }, Vertices = new List<Vertex>(), Linedefs = new List<Linedef>(), Sidedefs = new List<Sidedef>(), Sectors = new List<Sector>(), Things = new List<Thing>() }; _vertexNodeMap = new Dictionary<Point, Vertex>(); _nextId = 0; }
+        private void InitializeDhemap()
+        {
+            _dhemap = new DhemapFile
+            {
+                MapInfo = new Models.Dhemap.MapInfo { Game = _dgraph.MapInfo.Game, Map = _dgraph.MapInfo.Map, Name = _dgraph.MapInfo.Name, Music = _dgraph.MapInfo.Music, SkyTexture = "SKY1" },
+                Vertices = new List<Vertex>(),
+                Linedefs = new List<Linedef>(),
+                Sidedefs = new List<Sidedef>(),
+                Sectors = new List<Sector>(),
+                Things = new List<Thing>()
+            };
+            _vertexNodeMap = new Dictionary<Point, Vertex>();
+            _nextId = 0;
+        }
 
         private int[,] CreateSectorsFromGrid(GridCell[,] grid)
         {
@@ -57,7 +81,26 @@ namespace DGraphBuilder.Generation
             return sectorGrid;
         }
 
-        private void FloodFill(GridCell[,] grid, int[,] sectorMap, Point start, int fillId, string targetRoomId) { var q = new Queue<Point>(); q.Enqueue(start); while (q.Count > 0) { var p = q.Dequeue(); if (p.X < 0 || p.X >= grid.GetLength(0) || p.Y < 0 || p.Y >= grid.GetLength(1) || sectorMap[p.X, p.Y] != -1 || grid[p.X, p.Y].RoomId != targetRoomId) continue; sectorMap[p.X, p.Y] = fillId; q.Enqueue(new Point(p.X + 1, p.Y)); q.Enqueue(new Point(p.X - 1, p.Y)); q.Enqueue(new Point(p.X, p.Y + 1)); q.Enqueue(new Point(p.X, p.Y - 1)); } }
+        private void FloodFill(GridCell[,] grid, int[,] sectorMap, Point start, int fillId, string targetRoomId)
+        {
+            int width = grid.GetLength(0);
+            int height = grid.GetLength(1);
+            var q = new Queue<Point>();
+            q.Enqueue(start);
+
+            while (q.Count > 0)
+            {
+                var p = q.Dequeue();
+                if (p.X < 0 || p.X >= width || p.Y < 0 || p.Y >= height || sectorMap[p.X, p.Y] != -1 || grid[p.X, p.Y]?.RoomId != targetRoomId)
+                    continue;
+
+                sectorMap[p.X, p.Y] = fillId;
+                q.Enqueue(new Point(p.X + 1, p.Y));
+                q.Enqueue(new Point(p.X - 1, p.Y));
+                q.Enqueue(new Point(p.X, p.Y + 1));
+                q.Enqueue(new Point(p.X, p.Y - 1));
+            }
+        }
 
         private void GenerateLinedefsFromGrid(int[,] sectorGrid)
         {
@@ -82,15 +125,62 @@ namespace DGraphBuilder.Generation
             }
         }
 
-        private void AddEdge(Point p1, Point p2, int s1, int s2) { if (s1 == -1 && s2 == -1) return; if (p1.X > p2.X || (p1.X == p2.X && p1.Y > p2.Y)) { var temp = p1; p1 = p2; p2 = temp; } var v1 = GetOrCreateVertex(p1); var v2 = GetOrCreateVertex(p2); int frontSectorId = Math.Max(s1, s2); int backSectorId = Math.Min(s1, s2); if (frontSectorId == -1) { frontSectorId = backSectorId; backSectorId = -1; } AddLinedef(v2, v1, frontSectorId, backSectorId, GetTexture("wall_primary")); }
-        private Vertex GetOrCreateVertex(Point gridPoint) { if (_vertexNodeMap.TryGetValue(gridPoint, out var vertex)) return vertex; var newVertex = AddVertex(gridPoint.X * GenerationConfig.CellSize, gridPoint.Y * GenerationConfig.CellSize); _vertexNodeMap[gridPoint] = newVertex; return newVertex; }
-        private void PlaceAllThings(GridCell[,] grid) { var roomBounds = new Dictionary<string, List<RectangleF>>(); for (int y = 0; y < grid.GetLength(1); y++) { for (int x = 0; x < grid.GetLength(0); x++) { if (grid[x, y].RoomId != null && !grid[x, y].IsCorridor) { if (!roomBounds.ContainsKey(grid[x, y].RoomId)) roomBounds[grid[x, y].RoomId] = new List<RectangleF>(); roomBounds[grid[x, y].RoomId].Add(new RectangleF(x * GenerationConfig.CellSize, y * GenerationConfig.CellSize, GenerationConfig.CellSize, GenerationConfig.CellSize)); } } } foreach (var roomData in _dgraph.Rooms) { if (roomBounds.TryGetValue(roomData.Id, out var cells)) { var randomRect = cells[_random.Next(cells.Count)]; PlaceThings(roomData, randomRect); } } }
+        private void AddEdge(Point p1, Point p2, int s1, int s2)
+        {
+            if (s1 == -1 && s2 == -1) return;
+
+            if (p1.X > p2.X || (p1.X == p2.X && p1.Y > p2.Y)) { var temp = p1; p1 = p2; p2 = temp; }
+
+            var v1 = GetOrCreateVertex(p1);
+            var v2 = GetOrCreateVertex(p2);
+
+            int frontSectorId = Math.Max(s1, s2);
+            int backSectorId = Math.Min(s1, s2);
+
+            if (frontSectorId == -1) { frontSectorId = backSectorId; backSectorId = -1; }
+
+            AddLinedef(v2, v1, frontSectorId, backSectorId, GetTexture("wall_primary"));
+        }
+
+        private Vertex GetOrCreateVertex(Point gridPoint)
+        {
+            if (_vertexNodeMap.TryGetValue(gridPoint, out var vertex)) return vertex;
+            var newVertex = AddVertex(gridPoint.X * GenerationConfig.CellSize, gridPoint.Y * GenerationConfig.CellSize);
+            _vertexNodeMap[gridPoint] = newVertex;
+            return newVertex;
+        }
+
+        private void PlaceAllThings(GridCell[,] grid)
+        {
+            var roomCellGroups = new Dictionary<string, List<Point>>();
+            for (int y = 0; y < grid.GetLength(1); y++)
+            {
+                for (int x = 0; x < grid.GetLength(0); x++)
+                {
+                    if (grid[x, y].RoomId != null && !grid[x, y].IsCorridor)
+                    {
+                        if (!roomCellGroups.ContainsKey(grid[x, y].RoomId)) roomCellGroups[grid[x, y].RoomId] = new List<Point>();
+                        roomCellGroups[grid[x, y].RoomId].Add(new Point(x, y));
+                    }
+                }
+            }
+            foreach (var roomData in _dgraph.Rooms)
+            {
+                if (roomCellGroups.TryGetValue(roomData.Id, out var cells))
+                {
+                    var randomCell = cells[_random.Next(cells.Count)];
+                    var bounds = new RectangleF(randomCell.X * GenerationConfig.CellSize, randomCell.Y * GenerationConfig.CellSize, GenerationConfig.CellSize, GenerationConfig.CellSize);
+                    PlaceThings(roomData, bounds);
+                }
+            }
+        }
+
         private Vertex AddVertex(float x, float y) { var v = new Vertex { Id = _nextId++, X = x, Y = y }; _dhemap.Vertices.Add(v); return v; }
         private void AddLinedef(Vertex v1, Vertex v2, int frontSectorId, int backSectorId, string texture) { var frontSideId = AddSidedef(frontSectorId, texture); var line = new Linedef { Id = _nextId++, StartVertex = v1.Id, EndVertex = v2.Id, FrontSidedef = frontSideId }; if (backSectorId != -1) { line.BackSidedef = AddSidedef(backSectorId, texture); line.Flags.Add("twoSided"); } else { line.Flags.Add("impassable"); } _dhemap.Linedefs.Add(line); }
         private int AddSidedef(int sectorId, string texture) { var side = new Sidedef { Id = _nextId++, Sector = sectorId, TextureMiddle = texture, TextureTop = "-", TextureBottom = "-" }; _dhemap.Sidedefs.Add(side); return side.Id; }
-        private Sector CreateSectorFromRoom(RoomProperties props) { return new Sector { Id = _nextId++, Tag = props.Tag ?? 0, FloorTexture = GetTexture(props.FloorFlat), CeilingTexture = (props.Ceiling == "sky" ? "F_SKY1" : GetTexture(props.CeilingFlat)), LightLevel = GetLight(props.LightLevel), FloorHeight = GetHeight(props.Floor), CeilingHeight = GetHeight(props.Ceiling, 128) }; }
+        private Sector CreateSectorFromRoom(RoomProperties props) { return new Sector { Id = _nextId++, Tag = props.Tag ?? 0, FloorTexture = GetTexture(props.FloorFlat, "FLAT5_4"), CeilingTexture = (props.Ceiling == "sky" ? "F_SKY1" : GetTexture(props.CeilingFlat, "CEIL1_1")), LightLevel = GetLight(props.LightLevel), FloorHeight = GetHeight(props.Floor), CeilingHeight = GetHeight(props.Ceiling, 128) }; }
         private void PlaceThings(Room roomData, RectangleF bounds) { var items = roomData.Contents?.Items ?? new List<ContentItem>(); var monsters = roomData.Contents?.Monsters ?? new List<ContentItem>(); foreach (var item in items.Concat(monsters)) for (int i = 0; i < item.Count; i++) _dhemap.Things.Add(new Thing { Id = _nextId++, X = bounds.X + (float)(_random.NextDouble() * bounds.Width), Y = bounds.Y + (float)(_random.NextDouble() * bounds.Height), Angle = _random.Next(8) * 45, Type = item.TypeId, Flags = new List<string> { "skillEasy", "skillNormal", "skillHard" } }); }
-        private string GetTexture(string concept) { if (string.IsNullOrEmpty(concept)) return "STARG1"; if (_dgraph.ThemePalette.TryGetValue(concept, out var textures) && textures.Any()) { int totalWeight = textures.Sum(t => t.Weight); int r = _random.Next(0, totalWeight); foreach (var texture in textures) { if (r < texture.Weight) return texture.Name; r -= texture.Weight; } } return "STARG1"; }
+        private string GetTexture(string concept, string defaultTexture = "STARG1") { if (string.IsNullOrEmpty(concept)) return defaultTexture; if (_dgraph.ThemePalette.TryGetValue(concept, out var textures) && textures.Any()) { int totalWeight = textures.Sum(t => t.Weight); int r = _random.Next(0, totalWeight); foreach (var texture in textures) { if (r < texture.Weight) return texture.Name; r -= texture.Weight; } } return defaultTexture; }
         private int GetHeight(string height, int defaultHeight = 0) => height switch { "very_low" => -32, "low" => 0, "normal" => defaultHeight, "high" => 128, "very_high" => 256, _ => defaultHeight };
         private int GetLight(string light) => light switch { "dark" => 80, "dim" => 120, "normal" => 160, "bright" => 220, "flickering" => 160, _ => 160 };
     }
