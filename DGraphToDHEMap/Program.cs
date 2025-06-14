@@ -1,64 +1,60 @@
 ﻿using System;
 using System.IO;
 using System.Text.Json;
+using System.Text.Json.Serialization;
 using DGraphBuilder.Models.DGraph;
 using DGraphBuilder.Generation;
 
-public class Program
+namespace DGraphBuilder
 {
-    public static void Main(string[] args)
+    public class Program
     {
-        if (args.Length < 2)
+        public static void Main(string[] args)
         {
-            Console.WriteLine("Usage: dotnet run <inputFile.dgraph> <outputFile.dhemap> [seed]");
-            return;
-        }
-
-        string inputFile = args[0];
-        string outputFile = args[1];
-        int? seed = args.Length > 2 && int.TryParse(args[2], out int parsedSeed) ? parsedSeed : null;
-
-        if (!File.Exists(inputFile))
-        {
-            Console.WriteLine($"Erreur : Fichier d'entrée introuvable : {inputFile}");
-            return;
-        }
-
-        Console.WriteLine($"Lecture du fichier D-Graph : {inputFile}");
-        string dgraphJson = File.ReadAllText(inputFile);
-
-        try
-        {
-            var dgraphOptions = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
-            var dgraph = JsonSerializer.Deserialize<DGraphFile>(dgraphJson, dgraphOptions);
-
-            Console.WriteLine($"Génération de la carte '{dgraph.MapInfo.Name}' pour le jeu '{dgraph.MapInfo.Game}'...");
-            if (seed.HasValue)
-                Console.WriteLine($"Utilisation de la seed : {seed.Value}");
-
-            var generator = new MapGenerator(dgraph, seed);
-            var dhemap = generator.Generate();
-
-            Console.WriteLine("Sérialisation vers le format DHEMap...");
-
-            // ### CORRECTION ICI ###
-            // On ajoute l'option 'PropertyNamingPolicy = JsonNamingPolicy.CamelCase'
-            // pour forcer la sortie JSON à utiliser des clés en minuscules (camelCase).
-            var dhemapOptions = new JsonSerializerOptions
+            if (args.Length < 2)
             {
-                PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
-                WriteIndented = true,
-                DefaultIgnoreCondition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull
-            };
-            string dhemapJson = JsonSerializer.Serialize(dhemap, dhemapOptions);
+                Console.WriteLine("Usage: dotnet run <inputFile.dgraph> <outputFile.dhemap> [seed]");
+                return;
+            }
 
-            File.WriteAllText(outputFile, dhemapJson);
-            Console.WriteLine($"Succès ! Fichier DHEMap généré : {outputFile}");
-        }
-        catch (Exception ex)
-        {
-            Console.WriteLine($"Une erreur est survenue : {ex.Message}");
-            Console.WriteLine(ex.StackTrace);
+            string inputFile = args[0];
+            string outputFile = args[1];
+            int? seed = args.Length > 2 && int.TryParse(args[2], out int parsedSeed) ? parsedSeed : null;
+
+            if (!File.Exists(inputFile))
+            {
+                Console.WriteLine($"Erreur : Fichier d'entrée introuvable : {inputFile}");
+                return;
+            }
+
+            try
+            {
+                Console.WriteLine($"Lecture du fichier D-Graph : {inputFile}");
+                var dgraphOptions = new JsonSerializerOptions { PropertyNameCaseInsensitive = true, AllowTrailingCommas = true };
+                var dgraph = JsonSerializer.Deserialize<DGraphFile>(File.ReadAllText(inputFile), dgraphOptions);
+
+                Console.WriteLine($"Génération de la carte '{dgraph.MapInfo.Name}'...");
+                if (seed.HasValue) Console.WriteLine($"Utilisation de la seed : {seed.Value}");
+
+                var generator = new MapGenerator(dgraph, seed);
+                var dhemap = generator.Generate();
+
+                Console.WriteLine("Sérialisation vers le format DHEMap...");
+                var dhemapOptions = new JsonSerializerOptions
+                {
+                    PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
+                    WriteIndented = true,
+                    DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
+                };
+                string dhemapJson = JsonSerializer.Serialize(dhemap, dhemapOptions);
+
+                File.WriteAllText(outputFile, dhemapJson);
+                Console.WriteLine($"Succès ! Fichier DHEMap généré : {outputFile}");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Une erreur est survenue : {ex.Message}\n{ex.StackTrace}");
+            }
         }
     }
 }

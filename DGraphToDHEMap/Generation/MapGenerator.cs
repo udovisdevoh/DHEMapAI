@@ -21,13 +21,13 @@ namespace DGraphBuilder.Generation
             if (!_dgraph.Rooms.Any(r => r.ParentRoom == null))
                 return new DhemapFile();
 
-            Console.WriteLine("Étape 1: Calcul de la disposition des pièces sur une grille...");
+            Console.WriteLine("Étape 1: Calcul de la disposition des pièces...");
             var layoutEngine = new LayoutEngine(_dgraph, _random);
-            var gridLayout = layoutEngine.CalculateGridLayout();
+            var physicalLayout = layoutEngine.CalculateLayout();
 
-            Console.WriteLine("\nÉtape 2: Construction de la géométrie DHEMap à partir de la grille...");
+            Console.WriteLine("\nÉtape 2: Construction de la géométrie DHEMap...");
             var mapBuilder = new MapBuilder(_dgraph, _random);
-            var dhemap = mapBuilder.Build(gridLayout);
+            var dhemap = mapBuilder.Build(physicalLayout);
 
             return dhemap;
         }
