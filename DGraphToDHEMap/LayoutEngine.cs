@@ -7,25 +7,18 @@ using DGraphBuilder.Models.DGraph;
 
 namespace DGraphBuilder.Generation
 {
-    /// <summary>
-    /// Représente une pièce avec ses propriétés physiques pour la simulation.
-    /// </summary>
-    public class PhysicalRoom
+    public class GridCell
     {
-        public Room DGraphRoom { get; set; }
-        public Vector2 Position { get; set; }
-        public Vector2 Size { get; set; }
-        public Vector2 Velocity { get; set; }
-        public RectangleF GetBoundingBox() => new RectangleF(Position.X - Size.X / 2, Position.Y - Size.Y / 2, Size.X, Size.Y);
+        public string RoomId { get; set; } = null;
+        public bool IsCorridor { get; set; } = false;
     }
 
-    /// <summary>
-    /// Calcule la disposition 2D des pièces sans superposition.
-    /// </summary>
     public class LayoutEngine
     {
         private readonly DGraphFile _dgraph;
         private readonly Random _random;
+        private const int GridSize = 50;
+        private const int CellSize = 1024;
 
         public LayoutEngine(DGraphFile dgraph, Random random)
         {
@@ -33,96 +26,95 @@ namespace DGraphBuilder.Generation
             _random = random;
         }
 
-        public List<PhysicalRoom> CalculateLayout()
+        public GridCell[,] CalculateGridLayout()
         {
-            var physicalRooms = InitializePhysicalRooms();
-            int iterations = 1500; // Augmenter pour des graphes plus complexes
+            var grid = new GridCell[GridSize, GridSize];
+            for (int i = 0; i < GridSize; i++) for (int j = 0; j < GridSize; j++) grid[i, j] = new GridCell();
 
-            for (int i = 0; i < iterations; i++)
+            var rooms = _dgraph.Rooms.Where(r => r.ParentRoom == null).ToList();
+            if (!rooms.Any()) return grid;
+
+            var roomPositions = new Dictionary<string, Point>();
+
+            // Placer la première pièce au centre
+            var startRoom = rooms.First();
+            var startPos = new Point(GridSize / 2, GridSize / 2);
+            PlaceRoomOnGrid(grid, startRoom, startPos);
+            roomPositions[startRoom.Id] = startPos;
+            rooms.Remove(startRoom);
+
+            var placedIds = new HashSet<string> { startRoom.Id };
+
+            // Placer les autres pièces
+            while (rooms.Any())
             {
-                ApplyRepulsionForces(physicalRooms);
-                ApplyAttractionForces(physicalRooms);
-                UpdatePositions(physicalRooms);
-            }
-
-            Console.WriteLine("  -> Simulation de placement terminée.");
-            return physicalRooms;
-        }
-
-        private List<PhysicalRoom> InitializePhysicalRooms()
-        {
-            var rooms = new List<PhysicalRoom>();
-            foreach (var roomData in _dgraph.Rooms.Where(r => r.ParentRoom == null))
-            {
-                rooms.Add(new PhysicalRoom
+                bool placed = false;
+                foreach (var roomToPlace in rooms.ToList())
                 {
-                    DGraphRoom = roomData,
-                    Position = new Vector2((float)(_random.NextDouble() - 0.5) * 1000, (float)(_random.NextDouble() - 0.5) * 1000),
-                    Size = new Vector2(_random.Next(384, 641), _random.Next(384, 641)),
-                    Velocity = Vector2.Zero
-                });
-            }
-            return rooms;
-        }
-
-        private void ApplyRepulsionForces(List<PhysicalRoom> rooms)
-        {
-            float repulsionStrength = 20.0f;
-
-            for (int i = 0; i < rooms.Count; i++)
-            {
-                for (int j = i + 1; j < rooms.Count; j++)
-                {
-                    var roomA = rooms[i];
-                    var roomB = rooms[j];
-
-                    var rectA = roomA.GetBoundingBox();
-                    var rectB = roomB.GetBoundingBox();
-                    rectB.Inflate(64, 64); // Marge de sécurité
-
-                    if (rectA.IntersectsWith(rectB))
+                    var connections = _dgraph.Connections.Where(c => (c.FromRoom == roomToPlace.Id && placedIds.Contains(c.ToRoom)) ||
+                                                                    (c.ToRoom == roomToPlace.Id && placedIds.Contains(c.FromRoom))).ToList();
+                    if (connections.Any())
                     {
-                        var pushVector = roomA.Position - roomB.Position;
-                        if (pushVector.LengthSquared() == 0) pushVector = new Vector2(1, 0);
+                        var anchorRoomId = connections[0].FromRoom == roomToPlace.Id ? connections[0].ToRoom : connections[0].FromRoom;
+                        var anchorPos = roomPositions[anchorRoomId];
 
-                        var force = Vector2.Normalize(pushVector) * repulsionStrength;
-                        roomA.Velocity += force;
-                        roomB.Velocity -= force;
+                        for (int i = 0; i < 20; i++) // 20 tentatives de placement
+                        {
+                            int dir = _random.Next(4);
+                            int dist = _random.Next(2, 5);
+                            Point targetPos = dir switch
+                            {
+                                0 => new Point(anchorPos.X + dist, anchorPos.Y), // Est
+                                1 => new Point(anchorPos.X - dist, anchorPos.Y), // Ouest
+                                2 => new Point(anchorPos.X, anchorPos.Y + dist), // Sud
+                                _ => new Point(anchorPos.X, anchorPos.Y - dist), // Nord
+                            };
+
+                            if (CanPlace(grid, targetPos))
+                            {
+                                PlaceRoomOnGrid(grid, roomToPlace, targetPos);
+                                roomPositions[roomToPlace.Id] = targetPos;
+                                placedIds.Add(roomToPlace.Id);
+                                rooms.Remove(roomToPlace);
+                                placed = true;
+                                break;
+                            }
+                        }
                     }
                 }
+                if (!placed && rooms.Any())
+                {
+                    // Si une pièce est isolée, la placer de force
+                    var orphan = rooms.First();
+                    PlaceRoomOnGrid(grid, orphan, new Point(_random.Next(GridSize), _random.Next(GridSize)));
+                    roomPositions[orphan.Id] = new Point();
+                    rooms.Remove(orphan);
+                }
             }
+
+            // Créer les couloirs
+            CreateCorridors(grid, roomPositions);
+            return grid;
         }
 
-        private void ApplyAttractionForces(List<PhysicalRoom> rooms)
-        {
-            float attractionStrength = 0.005f;
-            var roomDict = rooms.ToDictionary(r => r.DGraphRoom.Id);
+        private void PlaceRoomOnGrid(GridCell[,] grid, Room room, Point pos) => grid[pos.X, pos.Y].RoomId = room.Id;
+        private bool CanPlace(GridCell[,] grid, Point pos) => pos.X >= 0 && pos.X < GridSize && pos.Y >= 0 && pos.Y < GridSize && grid[pos.X, pos.Y].RoomId == null;
 
+        private void CreateCorridors(GridCell[,] grid, Dictionary<string, Point> roomPositions)
+        {
+            // Implémentation simplifiée : ne trace pas de chemin, suppose une connexion directe si possible.
+            // Une version complète utiliserait A* ici.
             foreach (var connection in _dgraph.Connections)
             {
-                if (roomDict.TryGetValue(connection.FromRoom, out var roomA) && roomDict.TryGetValue(connection.ToRoom, out var roomB))
+                if (roomPositions.TryGetValue(connection.FromRoom, out var p1) &&
+                    roomPositions.TryGetValue(connection.ToRoom, out var p2))
                 {
-                    var pullVector = roomB.Position - roomA.Position;
-                    var distance = pullVector.Length();
-                    var idealDistance = (roomA.Size.Length() + roomB.Size.Length()) / 3;
-
-                    if (distance > idealDistance)
-                    {
-                        var force = pullVector * attractionStrength;
-                        roomA.Velocity += force;
-                        roomB.Velocity -= force;
-                    }
+                    // Tracer un couloir en L
+                    for (int x = Math.Min(p1.X, p2.X); x <= Math.Max(p1.X, p2.X); x++)
+                        if (grid[x, p1.Y].RoomId == null) grid[x, p1.Y].IsCorridor = true;
+                    for (int y = Math.Min(p1.Y, p2.Y); y <= Math.Max(p1.Y, p2.Y); y++)
+                        if (grid[p2.X, y].RoomId == null) grid[p2.X, y].IsCorridor = true;
                 }
-            }
-        }
-
-        private void UpdatePositions(List<PhysicalRoom> rooms)
-        {
-            float damping = 0.80f; // Friction pour que le système se stabilise
-            foreach (var room in rooms)
-            {
-                room.Position += room.Velocity;
-                room.Velocity *= damping;
             }
         }
     }
