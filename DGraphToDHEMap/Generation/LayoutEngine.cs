@@ -2,24 +2,21 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
-using System.Numerics;
 using DGraphBuilder.Models.DGraph;
 
 namespace DGraphBuilder.Generation
 {
-    public class PhysicalRoom
+    public class GridCell
     {
-        public Room DGraphRoom { get; set; }
-        public Vector2 Position { get; set; }
-        public Vector2 Size { get; set; }
-        public Vector2 Velocity { get; set; }
-        public RectangleF GetBoundingBox() => new RectangleF(Position.X - Size.X / 2, Position.Y - Size.Y / 2, Size.X, Size.Y);
+        public string RoomId { get; set; } = null;
+        public bool IsCorridor => RoomId != null && RoomId.StartsWith("corridor_");
     }
 
     public class LayoutEngine
     {
         private readonly DGraphFile _dgraph;
         private readonly Random _random;
+        private const int GridSize = 64;
 
         public LayoutEngine(DGraphFile dgraph, Random random)
         {
@@ -27,99 +24,87 @@ namespace DGraphBuilder.Generation
             _random = random;
         }
 
-        public List<PhysicalRoom> CalculateLayout()
+        public GridCell[,] CalculateGridLayout()
         {
-            var physicalRooms = InitializePhysicalRooms();
-            int iterations = 2000;
+            var grid = new GridCell[GridSize, GridSize];
+            for (int i = 0; i < GridSize; i++) for (int j = 0; j < GridSize; j++) grid[i, j] = new GridCell();
 
-            Console.WriteLine($"  -> Début de la simulation de placement pour {iterations} itérations...");
-            for (int i = 0; i < iterations; i++)
+            var roomsToPlace = _dgraph.Rooms.Where(r => r.ParentRoom == null).ToList();
+            if (!roomsToPlace.Any()) return grid;
+
+            var roomPositions = new Dictionary<string, Rectangle>();
+            var queue = new Queue<Room>();
+
+            var startRoom = roomsToPlace.First();
+            var startRect = new Rectangle(GridSize / 2, GridSize / 2, _random.Next(2, 5), _random.Next(2, 5));
+            PlaceRoomOnGrid(grid, startRoom.Id, startRect);
+            roomPositions[startRoom.Id] = startRect;
+            queue.Enqueue(startRoom);
+            roomsToPlace.Remove(startRoom);
+
+            while (queue.Count > 0 && roomsToPlace.Any())
             {
-                ApplyRepulsionForces(physicalRooms);
-                ApplyAttractionForces(physicalRooms);
-                UpdatePositions(physicalRooms);
-            }
+                var currentRoomData = queue.Dequeue();
+                var connections = _dgraph.Connections.Where(c => (c.FromRoom == currentRoomData.Id && !roomPositions.ContainsKey(c.ToRoom)) || (c.ToRoom == currentRoomData.Id && !roomPositions.ContainsKey(c.FromRoom)));
 
-            Console.WriteLine("  -> Simulation de placement terminée.");
-            NormalizeLayoutPositions(physicalRooms);
-            return physicalRooms;
-        }
-
-        private List<PhysicalRoom> InitializePhysicalRooms()
-        {
-            var rooms = new List<PhysicalRoom>();
-            foreach (var roomData in _dgraph.Rooms.Where(r => r.ParentRoom == null))
-            {
-                rooms.Add(new PhysicalRoom
+                foreach (var conn in connections)
                 {
-                    DGraphRoom = roomData,
-                    Position = new Vector2((float)(_random.NextDouble() - 0.5) * 500, (float)(_random.NextDouble() - 0.5) * 500),
-                    Size = new Vector2(_random.Next(384, 769), _random.Next(384, 769)),
-                    Velocity = Vector2.Zero
-                });
-            }
-            return rooms;
-        }
+                    string neighborId = conn.FromRoom == currentRoomData.Id ? conn.ToRoom : conn.FromRoom;
+                    if (roomPositions.ContainsKey(neighborId)) continue;
 
-        private void ApplyRepulsionForces(List<PhysicalRoom> rooms)
-        {
-            float repulsionStrength = 25.0f;
-            for (int i = 0; i < rooms.Count; i++)
-            {
-                for (int j = i + 1; j < rooms.Count; j++)
-                {
-                    var roomA = rooms[i];
-                    var roomB = rooms[j];
+                    var neighborData = _dgraph.Rooms.FirstOrDefault(r => r.Id == neighborId);
+                    if (neighborData == null) continue;
 
-                    var rectA = roomA.GetBoundingBox();
-                    var rectB = roomB.GetBoundingBox();
-                    rectA.Inflate(64, 64);
-
-                    if (rectA.IntersectsWith(rectB))
+                    if (TryPlaceNeighbor(grid, roomPositions[currentRoomData.Id], neighborData, out var newRoomRect, out var corridorPath))
                     {
-                        var pushVector = roomA.Position - roomB.Position;
-                        if (pushVector.LengthSquared() == 0) pushVector = new Vector2((float)_random.NextDouble(), (float)_random.NextDouble());
-                        var force = Vector2.Normalize(pushVector) * repulsionStrength;
-                        roomA.Velocity += force;
-                        roomB.Velocity -= force;
+                        PlaceRoomOnGrid(grid, neighborData.Id, newRoomRect);
+                        PlaceCorridorOnGrid(grid, corridorPath, $"{conn.FromRoom}<->{conn.ToRoom}");
+                        roomPositions.Add(neighborData.Id, newRoomRect);
+                        queue.Enqueue(neighborData);
+                        roomsToPlace.Remove(neighborData);
+                    }
+                    else
+                    {
+                        Console.WriteLine($"Avertissement: Impossible de placer '{neighborData.Id}' près de '{currentRoomData.Id}'.");
                     }
                 }
             }
+
+            return grid;
         }
 
-        private void ApplyAttractionForces(List<PhysicalRoom> rooms)
+        private bool TryPlaceNeighbor(GridCell[,] grid, Rectangle parentRect, Room neighbor, out Rectangle roomRect, out List<Point> corridorPath)
         {
-            float attractionStrength = 0.008f;
-            var roomDict = rooms.ToDictionary(r => r.DGraphRoom.Id);
-            foreach (var connection in _dgraph.Connections)
+            var directions = new List<int> { 0, 1, 2, 3 }.OrderBy(d => _random.Next()).ToList();
+            foreach (var dir in directions)
             {
-                if (roomDict.TryGetValue(connection.FromRoom, out var roomA) && roomDict.TryGetValue(connection.ToRoom, out var roomB))
+                int corridorLength = _random.Next(2, 6);
+                var startPoint = GetRandomPointOnEdge(parentRect, (Direction)dir);
+                var endPoint = GetPointInDirection(startPoint, (Direction)dir, corridorLength);
+
+                int roomWidth = _random.Next(2, 5);
+                int roomHeight = _random.Next(2, 5);
+                roomRect = new Rectangle(endPoint.X - roomWidth / 2, endPoint.Y - roomHeight / 2, roomWidth, roomHeight);
+
+                var path = FindPath(grid, startPoint, endPoint);
+                if (path != null && IsRegionFree(grid, roomRect, path))
                 {
-                    var pullVector = roomB.Position - roomA.Position;
-                    var distance = pullVector.Length();
-                    if (distance > 1) { var force = pullVector * attractionStrength; roomA.Velocity += force; roomB.Velocity -= force; }
+                    corridorPath = path;
+                    return true;
                 }
             }
+            roomRect = Rectangle.Empty;
+            corridorPath = null;
+            return false;
         }
 
-        private void UpdatePositions(List<PhysicalRoom> rooms)
-        {
-            float damping = 0.85f;
-            foreach (var room in rooms)
-            {
-                room.Position += room.Velocity;
-                room.Velocity *= damping;
-            }
-        }
-
-        private void NormalizeLayoutPositions(List<PhysicalRoom> layout)
-        {
-            if (!layout.Any()) return;
-            float minX = float.MaxValue, minY = float.MaxValue;
-            foreach (var room in layout) { var box = room.GetBoundingBox(); if (box.Left < minX) minX = box.Left; if (box.Top < minY) minY = box.Top; }
-            var offsetX = -minX + 256;
-            var offsetY = -minY + 256;
-            foreach (var room in layout) { room.Position = new Vector2(room.Position.X + offsetX, room.Position.Y + offsetY); }
-        }
+        private List<Point> FindPath(GridCell[,] grid, Point start, Point end) { /* ... A* Pathfinding Logic ... */ return new List<Point> { start, end }; } // Placeholder
+        private void PlaceRoomOnGrid(GridCell[,] grid, string roomId, Rectangle rect) { for (int x = rect.Left; x < rect.Right; x++) for (int y = rect.Top; y < rect.Bottom; y++) if (IsInBounds(x, y)) grid[x, y].RoomId = roomId; }
+        private void PlaceCorridorOnGrid(GridCell[,] grid, List<Point> path, string id) { foreach (var p in path) if (IsInBounds(p.X, p.Y) && grid[p.X, p.Y].RoomId == null) grid[p.X, p.Y].RoomId = $"corridor_{id}"; }
+        private bool IsRegionFree(GridCell[,] grid, Rectangle rect, List<Point> excludePath) { for (int x = rect.Left; x < rect.Right; x++) for (int y = rect.Top; y < rect.Bottom; y++) if (!IsInBounds(x, y) || (grid[x, y].RoomId != null && !excludePath.Contains(new Point(x, y)))) return false; return true; }
+        private bool IsInBounds(int x, int y) => x >= 0 && x < GridSize && y >= 0 && y < GridSize;
+        private Point GetRandomPointOnEdge(Rectangle rect, Direction dir) { switch (dir) { case Direction.North: return new Point(_random.Next(rect.Left, rect.Right), rect.Top); case Direction.South: return new Point(_random.Next(rect.Left, rect.Right), rect.Bottom - 1); case Direction.West: return new Point(rect.Left, _random.Next(rect.Top, rect.Bottom)); default: return new Point(rect.Right - 1, _random.Next(rect.Top, rect.Bottom)); } }
+        private Point GetPointInDirection(Point p, Direction d, int dist) { switch (d) { case Direction.North: return new Point(p.X, p.Y - dist); case Direction.South: return new Point(p.X, p.Y + dist); case Direction.West: return new Point(p.X - dist, p.Y); default: return new Point(p.X + dist, p.Y); } }
+        private enum Direction { North, East, South, West }
     }
 }
