@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Visualiseur de Carte DHEMap (Final V3)</title>
+    <title>Visualiseur de Carte DHEMap (Multi-Jeux)</title>
     <style>
         :root {
             --bg-color: #1a1a1a;
@@ -40,13 +40,14 @@
         }
 
         #controls {
-            width: 280px;
+            width: 300px;
             padding: 15px;
             background-color: var(--control-bg);
             border-right: 2px solid var(--border-color);
             display: flex;
             flex-direction: column;
             gap: 20px;
+            overflow-y: auto;
         }
 
         .control-group {
@@ -59,6 +60,10 @@
                 margin-bottom: 10px;
                 font-weight: bold;
             }
+
+        #legend p {
+            margin: 4px 0;
+        }
 
         #viewer {
             flex-grow: 1;
@@ -133,11 +138,12 @@
                 <input type="radio" id="viewCeilings" name="viewToggle" value="ceiling">
                 <label for="viewCeilings">Plafonds</label>
             </div>
-            <div class="control-group">
-                <label>Légende (Things)</label>
+            <div id="legend" class="control-group">
+                <label>Légende Universelle</label>
                 <p>😀 Joueur &nbsp; 👿 Monstre &nbsp; 🔫 Arme</p>
-                <p>💊 Soin &nbsp;🛡️ Armure &nbsp;🗝️ Clé</p>
-                <p>⚙️ Décor &nbsp;❓ Autre</p>
+                <p>📦 Munition &nbsp; 💊 Soin &nbsp; 🛡️ Armure</p>
+                <p>🗝️ Clé &nbsp; ✨ Bonus &nbsp; 🏺 Artefact</p>
+                <p>⚙️ Décor &nbsp; ❓ Inconnu</p>
             </div>
         </aside>
 
@@ -147,11 +153,59 @@
     <div id="tooltip"></div>
 
     <script>
-        const FLAT_COLORS = { 'default': '#555', 'F_SKY1': '#87CEEB', 'FLOOR4_8': '#6B4423', 'FLAT14': '#708090', 'CEIL3_1': '#4682B4', 'SLIME14': '#7CFC00', 'MFLR8_1': '#8B0000' };
-        const TEXTURE_COLORS = { 'default': '#FFF', 'STARTAN2': '#8B4513', 'METAL': '#A9A9A9', 'DOORTRAK': '#696969', 'SW1EXIT': '#FF0', 'EXITDOOR': '#FFD700', 'DOOR1': '#CD853F' };
-        const THING_INFO = { 'default': { emoji: '❓', name: 'Inconnu' }, 1: { emoji: '😀', name: 'Joueur 1 Départ' }, 2: { emoji: '😀', name: 'Joueur 2 Départ' }, 3: { emoji: '😀', name: 'Joueur 3 Départ' }, 4: { emoji: '😀', name: 'Joueur 4 Départ' }, 11: { emoji: '😀', name: 'Point Départ Deathmatch' }, 3001: { emoji: '👿', name: 'Imp' }, 3004: { emoji: '👿', name: 'Zombieman' }, 3002: { emoji: '👿', name: 'Demon' }, 68: { emoji: '👿', name: 'Spectre' }, 2007: { emoji: '🔫', name: 'Fusil à Pompe' }, 2001: { emoji: '🔫', name: 'Fusil d\'Assaut' }, 2005: { emoji: '💊', name: 'Medikit' }, 2012: { emoji: '💊', name: 'Stimpack' }, 2018: { emoji: '🛡️', name: 'Armure Verte' }, 2019: { emoji: '🛡️', name: 'Armure Bleue' }, 5: { emoji: '🗝️', name: 'Clé Bleue' }, 13: { emoji: '🗝️', name: 'Clé Jaune' }, 30: { emoji: '⚙️', name: 'Pilier Vert' } };
+        const FLAT_COLORS = { 'default': '#555', 'F_SKY1': '#87CEEB', 'FLOOR4_8': '#6B4423', 'FLAT14': '#708090', 'CEIL3_1': '#4682B4', 'SLIME14': '#7CFC00', 'MFLR8_1': '#8B0000', 'LAVA': '#FF4500', 'RROCK': '#8B4513', 'PLAT': '#C0C0C0' };
+        const TEXTURE_COLORS = { 'default': '#FFF', 'STARTAN2': '#8B4513', 'METAL': '#A9A9A9', 'DOORTRAK': '#696969', 'SW1EXIT': '#FF0', 'EXITDOOR': '#FFD700', 'DOOR1': '#CD853F', 'ROCK': '#A0522D', 'MARBLE': '#D2B48C', 'SKIN': '#800000', 'SHAWN': '#2F4F4F', 'SUPPORT': '#B8860B', 'BRICK': '#B22222', 'TEK': '#483D8B', 'BIGDOOR': '#8B4513', 'SW1': '#FFFF00' };
+
+        const DOOM_THINGS = {
+            'default': { emoji: '❓', name: 'Inconnu (Doom)' },
+            1: { emoji: '😀', name: 'Player 1 Start' }, 2: { emoji: '😀', name: 'Player 2 Start' }, 3: { emoji: '😀', name: 'Player 3 Start' }, 4: { emoji: '😀', name: 'Player 4 Start' }, 11: { emoji: '😀', name: 'Deathmatch Start' },
+            5: { emoji: '🗝️', name: 'Blue Keycard' }, 6: { emoji: '🗝️', name: 'Red Keycard' }, 13: { emoji: '🗝️', name: 'Yellow Keycard' }, 38: { emoji: '🗝️', name: 'Red Skull Key' }, 39: { emoji: '🗝️', name: 'Yellow Skull Key' }, 40: { emoji: '🗝️', name: 'Blue Skull Key' },
+            7: { emoji: '👿', name: 'Spider Mastermind' }, 9: { emoji: '👿', name: 'Shotgun Guy' }, 16: { emoji: '👿', name: 'Cyberdemon' }, 58: { emoji: '👿', name: 'Spectre' }, 64: { emoji: '👿', name: 'Arch-Vile' }, 65: { emoji: '👿', name: 'Heavy Weapon Dude' }, 66: { emoji: '👿', name: 'Arachnotron' }, 67: { emoji: '👿', name: 'Revenant' }, 69: { emoji: '👿', name: 'Hell Knight' }, 71: { emoji: '👿', name: 'Pain Elemental' }, 72: { emoji: '👿', name: 'Mancubus' }, 3001: { emoji: '👿', name: 'Imp' }, 3002: { emoji: '👿', name: 'Demon' }, 3003: { emoji: '👿', name: 'Baron of Hell' }, 3004: { emoji: '👿', name: 'Zombieman' }, 3005: { emoji: '👿', name: 'Cacodemon' }, 3006: { emoji: '👿', name: 'Lost Soul' }, 84: { emoji: '👿', name: 'Wolfenstein SS' },
+            2001: { emoji: '🔫', name: 'Chaingun' }, 2002: { emoji: '🔫', name: 'Rocket Launcher' }, 2003: { emoji: '🔫', name: 'Plasma Rifle' }, 2004: { emoji: '🔫', name: 'BFG9000' }, 2005: { emoji: '🔫', name: 'Chainsaw' }, 2006: { emoji: '🔫', name: 'Super Shotgun' }, 2007: { emoji: '🔫', name: 'Shotgun' },
+            17: { emoji: '📦', name: 'Energy Cell Pack' }, 2008: { emoji: '📦', name: 'Clip' }, 2010: { emoji: '📦', name: 'Box of Rockets' }, 2045: { emoji: '📦', name: 'Energy Cell' }, 2046: { emoji: '📦', name: '4 Shotgun Shells' }, 2047: { emoji: '📦', name: 'Rocket' }, 2048: { emoji: '📦', name: 'Box of Bullets' }, 2049: { emoji: '📦', name: 'Box of Shells' },
+            2011: { emoji: '💊', name: 'Health Potion' }, 2012: { emoji: '💊', name: 'Stimpack' }, 2013: { emoji: '💊', name: 'Medikit' }, 2014: { emoji: '🛡️', name: 'Spiritual Armor' }, 2015: { emoji: '🛡️', name: 'Armor Bonus' }, 2018: { emoji: '🛡️', name: 'Green Armor' }, 2019: { emoji: '🛡️', name: 'Megaarmor (Blue)' },
+            83: { emoji: '✨', name: 'Soulsphere' }, 2022: { emoji: '✨', name: 'Invulnerability' }, 2023: { emoji: '✨', name: 'Berserk' }, 2024: { emoji: '✨', name: 'Partial Invisibility' }, 2025: { emoji: '✨', name: 'Megasphere' }, 2026: { emoji: '✨', name: 'Radiation Suit' }, 2027: { emoji: '✨', name: 'Computer Area Map' }, 2044: { emoji: '✨', name: 'Light Amplification Visor' },
+            10: { emoji: '⚙️', name: 'Hanging Victim 1' }, 12: { emoji: '⚙️', name: 'Hanging Victim 2' }, 14: { emoji: '⚙️', name: 'Player 5 Start (unused)' }, 25: { emoji: '⚙️', name: 'Hanging Victim (Twitching) 1' }, 26: { emoji: '⚙️', name: 'Hanging Victim (Twitching) 2' }, 27: { emoji: '⚙️', name: 'Hanging Victim (Twitching) 3' }, 28: { emoji: '⚙️', name: 'Hanging Victim (Twitching) 4' }, 29: { emoji: '⚙️', name: 'Five Skulls Shish Kebab' }, 30: { emoji: '⚙️', name: 'Tall Green Pillar' }, 31: { emoji: '⚙️', name: 'Tall Blue Pillar' }, 32: { emoji: '⚙️', name: 'Tall Red Pillar with Skull' }, 33: { emoji: '⚙️', name: 'Short Green Pillar' }, 34: { emoji: '⚙️', name: 'Candelabra' }, 35: { emoji: '⚙️', name: 'Short Red Pillar' }, 48: { emoji: '⚙️', name: 'Stalagmite' }, 51: { emoji: '⚙️', name: 'Pool of Blood' }, 70: { emoji: '⚙️', name: 'Dead Player' }, 89: { emoji: '⚙️', name: 'Commander Keen' }, 2028: { emoji: '⚙️', name: 'Floor Lamp' }
+        };
+
+        const HERETIC_THINGS = {
+            'default': { emoji: '❓', name: 'Inconnu (Heretic)' },
+            14: { emoji: '😀', name: 'Player 1 Start' }, 15: { emoji: '😀', name: 'Player 2 Start' }, 16: { emoji: '😀', name: 'Player 3 Start' }, 17: { emoji: '😀', name: 'Player 4 Start' }, 11: { emoji: '😀', name: 'Deathmatch Start' },
+            7: { emoji: '👿', name: 'Golem' }, 8: { emoji: '👿', name: 'Ghost Golem' }, 9: { emoji: '👿', name: 'Nitrogolem' }, 10: { emoji: '👿', name: 'Ghost Nitrogolem' }, 45: { emoji: '👿', name: 'Sabreclaw' }, 46: { emoji: '👿', name: 'Weredragon' }, 6: { emoji: '👿', name: 'Ophidian' }, 64: { emoji: '👿', name: 'Iron Lich' }, 67: { emoji: '👿', name: 'Disciple of D\'Sparil' }, 68: { emoji: '👿', name: 'Gargoyle' }, 69: { emoji: '👿', name: 'Fire Gargoyle' }, 71: { emoji: '👿', name: 'Maulotaur' },
+            23: { emoji: '🔫', name: 'Staff' }, 24: { emoji: '🔫', name: 'Gauntlets' }, 25: { emoji: '🔫', name: 'Ethereal Crossbow' }, 26: { emoji: '🔫', name: 'Dragon\'s Claw' }, 27: { emoji: '🔫', name: 'Hellstaff' }, 28: { emoji: '🔫', name: 'Phoenix Rod' }, 29: { emoji: '🔫', name: 'Mace' },
+            81: { emoji: '💊', name: 'Crystal Vial' }, 82: { emoji: '✨', name: 'Ring of Invincibility' }, 83: { emoji: '📦', name: 'Wand Crystal' }, 84: { emoji: '📦', name: 'Ethereal Arrow' }, 85: { emoji: '📦', name: 'Claw Orb' }, 86: { emoji: '📦', name: 'Hellstaff Energy' }, 87: { emoji: '📦', name: 'Phoenix Rod Flame' }, 88: { emoji: '📦', name: 'Mace Sphere' },
+            5: { emoji: '🗝️', name: 'Green Key' }, 6: { emoji: '🗝️', name: 'Blue Key' }, 13: { emoji: '🗝️', name: 'Yellow Key' },
+            20: { emoji: '🏺', name: 'Quartz Flask' }, 21: { emoji: '🏺', name: 'Mystic Urn' }, 22: { emoji: '🏺', name: 'Tome of Power' }, 31: { emoji: '🏺', name: 'Torch' }, 32: { emoji: '🏺', name: 'Timebomb of the Ancients' }, 33: { emoji: '🏺', name: 'Morph Ovum' }, 34: { emoji: '🏺', name: 'Wings of Wrath' }, 35: { emoji: '🏺', name: 'Chaos Device' },
+            1001: { emoji: '🛡️', name: 'Silver Shield' }, 1002: { emoji: '🛡️', name: 'Enchanted Shield' }, 1003: { emoji: '🛡️', name: 'Spirit Armor' },
+        };
+
+        const HEXEN_THINGS = {
+            'default': { emoji: '❓', name: 'Inconnu (Hexen)' },
+            100: { emoji: '😀', name: 'Player 1 Start (Fighter)' }, 101: { emoji: '😀', name: 'Player 2 Start (Cleric)' }, 102: { emoji: '😀', name: 'Player 3 Start (Mage)' }, 103: { emoji: '😀', name: 'Player 4 Start (Pig)' }, 11: { emoji: '😀', name: 'Deathmatch Start' },
+            7: { emoji: '👿', name: 'Ettin' }, 10: { emoji: '👿', name: 'Centaur' }, 11: { emoji: '👿', name: 'Slaughtaur' }, 16: { emoji: '👿', name: 'Afrit' }, 17: { emoji: '👿', name: 'Green Chaos Serpent' }, 18: { emoji: '👿', name: 'Brown Chaos Serpent' }, 30: { emoji: '👿', name: 'Wendigo' }, 45: { emoji: '👿', name: 'Heresiarch' }, 46: { emoji: '👿', name: 'Death Wyvern' }, 64: { emoji: '👿', name: 'Bishop' }, 66: { emoji: '👿', name: 'Reiver' },
+            80: { emoji: '🔫', name: 'Spiked Gauntlets' }, 81: { emoji: '🔫', name: 'Timon\'s Axe' }, 82: { emoji: '🔫', name: 'Hammer of Retribution' }, 83: { emoji: '🔫', name: 'Quietus' },
+            90: { emoji: '🔫', name: 'Mace of Contrition' }, 91: { emoji: '🔫', name: 'Serpent Staff' }, 92: { emoji: '🔫', name: 'Firestorm' }, 93: { emoji: '🔫', name: 'Wraithverge' },
+            110: { emoji: '🔫', name: 'Sapphire Wand' }, 111: { emoji: '🔫', name: 'Frost Shards' }, 112: { emoji: '🔫', name: 'Arc of Death' }, 113: { emoji: '🔫', name: 'Bloodscourge' },
+            8: { emoji: '📦', name: 'Blue Mana' }, 9: { emoji: '📦', name: 'Green Mana' }, 19: { emoji: '📦', name: 'Combined Mana' },
+            130: { emoji: '🛡️', name: 'Amulet of Warding' }, 131: { emoji: '🛡️', name: 'Mesh Armor' }, 132: { emoji: '🛡️', name: 'Falcon Shield' }, 133: { emoji: '🛡️', name: 'Platinum Helmet' },
+            120: { emoji: '💊', name: 'Crystal Vial' },
+            20: { emoji: '🗝️', name: 'Steel Key' }, 21: { emoji: '🗝️', name: 'Cave Key' }, 22: { emoji: '🗝️', name: 'Axe Key' }, 23: { emoji: '🗝️', name: 'Fire Key' }, 24: { emoji: '🗝️', name: 'Emerald Key' }, 25: { emoji: '🗝️', name: 'Dungeon Key' }, 26: { emoji: '🗝️', name: 'Silver Key' }, 27: { emoji: '🗝️', name: 'Rusted Key' }, 28: { emoji: '🗝️', name: 'Horn Key' }, 29: { emoji: '🗝️', name: 'Swamp Key' },
+            140: { emoji: '🏺', name: 'Boots of Speed' }, 141: { emoji: '🏺', name: 'Disc of Repulsion' }, 142: { emoji: '🏺', name: 'Mystic Ambit Incant' }, 143: { emoji: '🏺', name: 'Torch' }, 144: { emoji: '🏺', name: 'Wings of Wrath' }, 145: { emoji: '🏺', name: 'Porkalator' }, 146: { emoji: '🏺', name: 'Dark Servant' }, 147: { emoji: '🏺', name: 'Icon of the Defender' },
+        };
+
+        const GAME_THINGS = {
+            'doom': DOOM_THINGS,
+            'doom2': DOOM_THINGS,
+            'heretic': HERETIC_THINGS,
+            'hexen': HEXEN_THINGS,
+        };
+
         function getColor(type, name) { const dict = type === 'flat' ? FLAT_COLORS : TEXTURE_COLORS; name = (name || '-').toUpperCase(); for (const key in dict) { if (name.startsWith(key)) return dict[key]; } return dict.default; }
-        function getThingInfo(type) { return THING_INFO[type] || THING_INFO.default; }
+
+        function getThingInfo(game, type) {
+            const thingSet = GAME_THINGS[game.toLowerCase()] || GAME_THINGS['doom'];
+            return thingSet[type] || thingSet.default;
+        }
 
         const svg = document.getElementById('svg-container');
         const viewer = document.getElementById('viewer');
@@ -174,6 +228,10 @@
             svg.innerHTML = '';
             g = document.createElementNS('http://www.w3.org/2000/svg', 'g');
             svg.appendChild(g);
+
+            if (!dhemap.vertices || dhemap.vertices.length === 0) return;
+
+            const gameName = dhemap.mapInfo?.game || 'doom';
 
             const allX = dhemap.vertices.map(v => v.x), allY = dhemap.vertices.map(v => v.y);
             const minX = Math.min(...allX), maxX = Math.max(...allX), minY = Math.min(...allY), maxY = Math.max(...allY);
@@ -230,6 +288,7 @@
 
             dhemap.linedefs.forEach(line => {
                 const v1 = vertexDict.get(line.startVertex), v2 = vertexDict.get(line.endVertex);
+                if (!v1 || !v2) return;
                 const svgLine = document.createElementNS('http://www.w3.org/2000/svg', 'line');
                 svgLine.setAttribute('x1', v1.x); svgLine.setAttribute('y1', v1.y);
                 svgLine.setAttribute('x2', v2.x); svgLine.setAttribute('y2', v2.y);
@@ -238,7 +297,7 @@
                 if (frontSidedef) { lineInfo += `\nFront: ${frontSidedef.textureMiddle}`; color = getColor('texture', frontSidedef.textureMiddle); }
                 if (line.backSidedef != null) { const backSidedef = sidedefDict.get(line.backSidedef); if (backSidedef) lineInfo += `\nBack: ${backSidedef.textureMiddle}`; }
                 let className = 'linedef-line';
-                if (line.action?.special === 1 || line.action?.special === 26) { className += ' linedef-door'; lineInfo += `\nACTION: Porte (Tag ${line.action.tag})`; }
+                if (line.action?.special === 1 || line.action?.special === 26 || line.action?.special === 27 || line.action?.special === 28) { className += ' linedef-door'; lineInfo += `\nACTION: Porte (Tag ${line.action.tag})`; }
                 if (line.action?.special === 11) { className += ' linedef-exit'; lineInfo += `\nACTION: Sortie du niveau`; }
                 svgLine.setAttribute('class', className);
                 svgLine.style.stroke = color;
@@ -246,19 +305,14 @@
                 g.appendChild(svgLine);
             });
 
-            // ### CORRECTION FINALE DU RENDU DES THINGS ###
             dhemap.things.forEach(thing => {
-                const info = getThingInfo(thing.type);
+                const info = getThingInfo(gameName, thing.type);
                 const text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
-                // La position est maintenant gérée EXCLUSIVEMENT par la transformation
                 text.setAttribute('x', 0);
                 text.setAttribute('y', 0);
                 text.setAttribute('class', 'thing-emoji');
-
-                // Ordre correct: 1. Placer (translate), 2. Tourner (rotate), 3. Remettre à l'endroit (scale)
                 const transform = `translate(${thing.x}, ${thing.y}) rotate(${-thing.angle}) scale(1, -1)`;
                 text.setAttribute('transform', transform);
-
                 text.textContent = info.emoji;
                 text.dataset.info = `THING ${thing.id}\n${info.name}\nType: ${thing.type}\nAngle: ${thing.angle}`;
                 g.appendChild(text);
@@ -273,7 +327,6 @@
         viewer.addEventListener('mousemove', e => {
             if (!isPanning) return; const endPoint = { x: e.x, y: e.y }; const dx = (endPoint.x - startPoint.x) * (viewBox.w / viewer.clientWidth); const dy = (endPoint.y - startPoint.y) * (viewBox.h / viewer.clientHeight);
             viewBox.x -= dx;
-            // ### CORRECTION DU PANNING INVERSÉ ###
             viewBox.y -= dy;
             updateViewBox(); startPoint = endPoint;
         });
