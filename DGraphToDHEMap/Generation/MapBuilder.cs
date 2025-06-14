@@ -1,4 +1,5 @@
-﻿using System;
+﻿// Generation/MapBuilder.cs
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;

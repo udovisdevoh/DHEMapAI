@@ -1,4 +1,5 @@
-﻿using System;
+﻿// Generation/MapGenerator.cs
+using System;
 using System.Linq;
 using DGraphBuilder.Models.DGraph;
 using DGraphBuilder.Models.Dhemap;

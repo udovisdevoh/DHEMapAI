@@ -1,4 +1,5 @@
-﻿namespace DGraphBuilder.Generation
+﻿// Generation/GenerationConfig.cs
+namespace DGraphBuilder.Generation
 {
     /// <summary>
     /// Contient les constantes de configuration partagées pour la génération de la carte.
