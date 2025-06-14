@@ -16,38 +16,25 @@ namespace DGraphBuilder
                 Console.WriteLine("Usage: dotnet run <inputFile.dgraph> <outputFile.dhemap> [seed]");
                 return;
             }
-
             string inputFile = args[0];
             string outputFile = args[1];
             int? seed = args.Length > 2 && int.TryParse(args[2], out int parsedSeed) ? parsedSeed : null;
-
             if (!File.Exists(inputFile))
             {
                 Console.WriteLine($"Erreur : Fichier d'entrée introuvable : {inputFile}");
                 return;
             }
-
             try
             {
-                Console.WriteLine($"Lecture du fichier D-Graph : {inputFile}");
                 var dgraphOptions = new JsonSerializerOptions { PropertyNameCaseInsensitive = true, AllowTrailingCommas = true };
                 var dgraph = JsonSerializer.Deserialize<DGraphFile>(File.ReadAllText(inputFile), dgraphOptions);
-
                 Console.WriteLine($"Génération de la carte '{dgraph.MapInfo.Name}'...");
                 if (seed.HasValue) Console.WriteLine($"Utilisation de la seed : {seed.Value}");
-
                 var generator = new MapGenerator(dgraph, seed);
                 var dhemap = generator.Generate();
-
                 Console.WriteLine("Sérialisation vers le format DHEMap...");
-                var dhemapOptions = new JsonSerializerOptions
-                {
-                    PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
-                    WriteIndented = true,
-                    DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
-                };
+                var dhemapOptions = new JsonSerializerOptions { PropertyNamingPolicy = JsonNamingPolicy.CamelCase, WriteIndented = true, DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull };
                 string dhemapJson = JsonSerializer.Serialize(dhemap, dhemapOptions);
-
                 File.WriteAllText(outputFile, dhemapJson);
                 Console.WriteLine($"Succès ! Fichier DHEMap généré : {outputFile}");
             }
