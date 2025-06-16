@@ -41,4 +41,32 @@ namespace DGenesis.Services
         public List<string> GetFlatsForGame(string game) => Flats.GetValueOrDefault(game.ToLower(), new List<string>());
         public List<GameAsset> GetThingsForGame(string game) => Things.GetValueOrDefault(game.ToLower(), new List<GameAsset>());
     }
+
+    public class GameAssetDatabase
+    {
+        public GameData Doom { get; set; }
+        public GameData Doom2 { get; set; }
+        public GameData Heretic { get; set; }
+        public GameData Hexen { get; set; }
+    }
+
+    public class GameData
+    {
+        public List<string> Textures { get; set; }
+        public List<string> Flats { get; set; }
+        public List<GameAssetThing> Things { get; set; }
+        public List<GameAssetMusic> Music { get; set; }
+    }
+
+    public class GameAssetThing
+    {
+        public int Type { get; set; }
+        public string Name { get; set; }
+    }
+
+    public class GameAssetMusic
+    {
+        public string Name { get; set; }
+        public string Value { get; set; }
+    }
 }
