@@ -2,6 +2,8 @@
 using DGenesis.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using System;
+using System.IO;
 using System.Linq;
 using System.Text;
 
@@ -17,7 +19,7 @@ namespace DGenesis.Pages
         }
 
         [BindProperty]
-        public GenesisPromptRequest Request { get; set; } = new GenesisPromptRequest();
+        public new GenesisPromptRequest Request { get; set; } = new GenesisPromptRequest();
 
         public string GeneratedPrompt { get; private set; }
 
@@ -86,7 +88,24 @@ namespace DGenesis.Pages
 
         private string GetDGenesisSpecification()
         {
-            return @"todo: retourner contenu du ficher du readme.md de dgenesis"; // todo: retourner contenu du ficher du readme
+            try
+            {
+                string basePath = AppContext.BaseDirectory;
+                string filePath = Path.Combine(basePath, "readme.md");
+
+                if (System.IO.File.Exists(filePath))
+                {
+                    return System.IO.File.ReadAllText(filePath);
+                }
+                else
+                {
+                    return "ERREUR: Le fichier readme.md est introuvable. Assurez-vous que le fichier est à la racine du projet et que sa propriété 'Copier dans le répertoire de sortie' est définie sur 'Copier si plus récent' ou 'Toujours copier'.";
+                }
+            }
+            catch (Exception ex)
+            {
+                return $"ERREUR lors de la lecture du fichier de spécification: {ex.Message}";
+            }
         }
 
         private DefaultMapDetails GetDefaultMapDetailsForGame(string game)
