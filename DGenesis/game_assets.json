@@ -1056,256 +1056,316 @@
         "flats": [ "CEIL01", "CEIL02", "CEIL03", "CEIL04", "CEIL05", "CEIL06", "CEIL07", "CEIL08", "CEIL09", "CEIL10", "CEIL11", "FLAT01", "FLAT02", "FLAT03", "FLAT04", "FLAT05", "FLAT06", "FLAT07", "FLAT08", "FLAT09", "FLAT10", "FLAT11", "FLAT12", "FLAT13", "FLAT14", "FLAT15", "FLAT16", "FLAT17", "FLAT18", "FLAT19", "FLAT20", "FLAT21", "FLAT22", "FLAT23", "FLOOR01", "FLOOR02", "FLOOR03", "FLOOR04", "FLOOR05", "FLOOR06", "FLOOR07", "FLOOR08", "FLOOR09", "FLOOR10", "FLOOR11", "FLOOR12", "FLOOR13", "FLOOR14", "FLOOR15", "FLOOR16", "FLOOR17", "FLOOR18", "FLOOR19", "FLOOR20", "FLOOR21", "FLOOR22", "FLOOR23", "FLOOR24", "FLOOR25", "FLOOR26", "FLOOR27", "FLOOR28", "FLOOR29", "FLOOR30", "FLOOR31", "GRASS01", "GRASS02", "LAVA01", "LAVA02", "LAVA03", "LAVA04", "MARB01", "MARB02", "MFLR01", "MFLR02", "MFLR03", "MFLR04", "MFLR05", "MFLR06", "MFLR07", "MFLR08", "SKY01", "SKY02", "SKY03", "SLIME01", "SLIME02", "SLIME03", "SLIME04", "WATER01", "WATER02", "WATER03", "WATER04" ],
         "things": [
             {
-                "type": 1,
-                "name": "Player 1 Start"
-            },
-            {
-                "type": 2,
-                "name": "Player 2 Start"
-            },
-            {
-                "type": 3,
-                "name": "Player 3 Start"
-            },
-            {
-                "type": 4,
-                "name": "Player 4 Start"
-            },
-            {
-                "type": 11,
-                "name": "Deathmatch Start"
-            },
-            {
-                "type": 14,
-                "name": "Teleport Landing"
-            },
-            {
-                "type": 66,
-                "name": "Golem"
-            },
-            {
-                "type": 67,
-                "name": "Ghost Golem"
-            },
-            {
-                "type": 70,
-                "name": "Nitrogolem"
-            },
-            {
-                "type": 71,
-                "name": "Ghost Nitrogolem"
-            },
-            {
-                "type": 10,
-                "name": "Undead Warrior"
-            },
-            {
-                "type": 11,
-                "name": "Ghost Undead Warrior"
-            },
-            {
-                "type": 68,
-                "name": "Gargoyle"
-            },
-            {
-                "type": 69,
-                "name": "Fire Gargoyle"
-            },
-            {
-                "type": 9,
-                "name": "Disciple of D'Sparil"
-            },
-            {
-                "type": 65,
-                "name": "Sabreclaw"
-            },
-            {
-                "type": 8,
-                "name": "Weredragon"
-            },
-            {
-                "type": 35,
-                "name": "Ophidian"
-            },
-            {
-                "type": 36,
-                "name": "Iron Lich"
-            },
-            {
                 "type": 7,
-                "name": "Maulotaur"
-            },
-            {
-                "type": 6,
                 "name": "D'Sparil"
             },
             {
-                "type": 2005,
-                "name": "Ethereal Crossbow"
+                "type": 15,
+                "name": "Disciple of D'Sparil"
             },
             {
-                "type": 2003,
-                "name": "Dragon's Claw"
+                "type": 5,
+                "name": "Fire gargoyle"
+            },
+            {
+                "type": 66,
+                "name": "Gargoyle"
+            },
+            {
+                "type": 68,
+                "name": "Golem"
+            },
+            {
+                "type": 69,
+                "name": "Golem ghost"
+            },
+            {
+                "type": 6,
+                "name": "Iron lich"
+            },
+            {
+                "type": 9,
+                "name": "Maulotaur"
+            },
+            {
+                "type": 45,
+                "name": "Nitrogolem"
+            },
+            {
+                "type": 46,
+                "name": "Nitrogolem ghost"
+            },
+            {
+                "type": 92,
+                "name": "Ophidian"
+            },
+            {
+                "type": 90,
+                "name": "Sabreclaw"
+            },
+            {
+                "type": 64,
+                "name": "Undead warrior"
+            },
+            {
+                "type": 65,
+                "name": "Undead warrior ghost"
+            },
+            {
+                "type": 70,
+                "name": "Weredragon"
+            },
+            {
+                "type": 53,
+                "name": "Dragon claw"
+            },
+            {
+                "type": 2001,
+                "name": "Ethereal crossbow"
+            },
+            {
+                "type": 2002,
+                "name": "Firemace"
+            },
+            {
+                "type": 2005,
+                "name": "Gauntlets of the Necromancer"
             },
             {
                 "type": 2004,
                 "name": "Hellstaff"
             },
             {
-                "type": 2002,
-                "name": "Phoenix Rod"
-            },
-            {
-                "type": 2006,
-                "name": "Mace"
-            },
-            {
-                "type": 82,
-                "name": "Gold Wand"
-            },
-            {
-                "type": 83,
-                "name": "Crossbow"
-            },
-            {
-                "type": 17,
-                "name": "Wand Crystal (ammo)"
-            },
-            {
-                "type": 8,
-                "name": "Ethereal Arrows (ammo)"
-            },
-            {
-                "type": 29,
-                "name": "Claw Orb (ammo)"
-            },
-            {
-                "type": 30,
-                "name": "Hellstaff Rune (ammo)"
-            },
-            {
-                "type": 31,
-                "name": "Phoenix Rod Flame (ammo)"
-            },
-            {
-                "type": 32,
-                "name": "Mace Spheres (ammo)"
-            },
-            {
-                "type": 2011,
-                "name": "Bag of Holding"
-            },
-            {
-                "type": 2012,
-                "name": "Crystal Vial"
-            },
-            {
-                "type": 2013,
-                "name": "Quartz Flask"
-            },
-            {
-                "type": 2018,
-                "name": "Silver Shield"
-            },
-            {
-                "type": 2019,
-                "name": "Enchanted Shield"
-            },
-            {
-                "type": 2025,
-                "name": "Mystic Urn"
-            },
-            {
-                "type": 83,
-                "name": "Spiritual Health"
-            },
-            {
-                "type": 2026,
-                "name": "Tome of Power"
-            },
-            {
-                "type": 2022,
-                "name": "Shadowsphere"
-            },
-            {
-                "type": 2024,
-                "name": "Wings of Wrath"
-            },
-            {
-                "type": 2045,
-                "name": "Torch"
-            },
-            {
-                "type": 2023,
-                "name": "Timebomb of the Ancients"
-            },
-            {
-                "type": 28,
-                "name": "Morph Ovum"
-            },
-            {
-                "type": 2044,
-                "name": "Chaos Device"
-            },
-            {
-                "type": 5,
-                "name": "Green Key"
-            },
-            {
-                "type": 13,
-                "name": "Blue Key"
-            },
-            {
-                "type": 6,
-                "name": "Yellow Key"
-            },
-            {
-                "type": 1000,
-                "name": "Volcano"
-            },
-            {
-                "type": 1001,
-                "name": "Pod"
-            },
-            {
-                "type": 1004,
-                "name": "Serpent Torch"
-            },
-            {
-                "type": 2035,
-                "name": "Barrel"
-            },
-            {
-                "type": 40,
-                "name": "Chandelier"
-            },
-            {
-                "type": 47,
-                "name": "Pillar"
-            },
-            {
-                "type": 48,
-                "name": "Stalactite"
-            },
-            {
-                "type": 50,
-                "name": "Stalagmite"
-            },
-            {
-                "type": 52,
-                "name": "Mossy Hanging Skull"
-            },
-            {
-                "type": 53,
-                "name": "Metal Hanging Skull"
+                "type": 2003,
+                "name": "Phoenix rod"
             },
             {
                 "type": 54,
-                "name": "Grey Hanging Skull"
+                "name": "Claw orb"
+            },
+            {
+                "type": 12,
+                "name": "Crystal geode"
+            },
+            {
+                "type": 55,
+                "name": "Energy orb"
+            },
+            {
+                "type": 18,
+                "name": "Ethereal arrows"
+            },
+            {
+                "type": 22,
+                "name": "Flame orb"
+            },
+            {
+                "type": 21,
+                "name": "Greater runes"
+            },
+            {
+                "type": 23,
+                "name": "Inferno orb"
+            },
+            {
+                "type": 20,
+                "name": "Lesser runes"
+            },
+            {
+                "type": 13,
+                "name": "Mace spheres"
+            },
+            {
+                "type": 16,
+                "name": "Pile of mace spheres"
+            },
+            {
+                "type": 19,
+                "name": "Quiver of ethereal arrows"
+            },
+            {
+                "type": 10,
+                "name": "Wand crystal"
+            },
+            {
+                "type": 8,
+                "name": "Bag of Holding"
+            },
+            {
+                "type": 36,
+                "name": "Chaos Device"
+            },
+            {
+                "type": 35,
+                "name": "Map scroll"
+            },
+            {
+                "type": 30,
+                "name": "Morph Ovum"
+            },
+            {
+                "type": 32,
+                "name": "Mystic urn"
+            },
+            {
+                "type": 82,
+                "name": "Quartz flask"
+            },
+            {
+                "type": 84,
+                "name": "Ring of Invincibility"
+            },
+            {
+                "type": 75,
+                "name": "Shadowsphere"
+            },
+            {
+                "type": 34,
+                "name": "Time Bomb of the Ancients"
+            },
+            {
+                "type": 86,
+                "name": "Tome of Power"
+            },
+            {
+                "type": 33,
+                "name": "Torch"
+            },
+            {
+                "type": 83,
+                "name": "Wings of Wrath"
+            },
+            {
+                "type": 81,
+                "name": "Crystal vial"
+            },
+            {
+                "type": 31,
+                "name": "Enchanted shield"
+            },
+            {
+                "type": 85,
+                "name": "Silver shield"
+            },
+            {
+                "type": 79,
+                "name": "Blue key"
+            },
+            {
+                "type": 73,
+                "name": "Green key"
+            },
+            {
+                "type": 80,
+                "name": "Yellow key"
+            },
+            {
+                "type": 44,
+                "name": "Barrel"
+            },
+            {
+                "type": 76,
+                "name": "Fire brazier"
+            },
+            {
+                "type": 51,
+                "name": "Hanging corpse"
+            },
+            {
+                "type": 40,
+                "name": "Large stalactite"
+            },
+            {
+                "type": 38,
+                "name": "Large stalagmite"
+            },
+            {
+                "type": 27,
+                "name": "Serpent torch"
+            },
+            {
+                "type": 29,
+                "name": "Short grey pillar"
+            },
+            {
+                "type": 39,
+                "name": "Small stalactite"
+            },
+            {
+                "type": 37,
+                "name": "Small stalagmite"
+            },
+            {
+                "type": 47,
+                "name": "Tall brown pillar"
+            },
+            {
+                "type": 28,
+                "name": "Chandelier"
+            },
+            {
+                "type": 17,
+                "name": "Hanging skull (long rope)"
+            },
+            {
+                "type": 24,
+                "name": "Hanging skull (medium rope)"
+            },
+            {
+                "type": 25,
+                "name": "Hanging skull (short rope)"
+            },
+            {
+                "type": 26,
+                "name": "Hanging skull (shortest rope)"
+            },
+            {
+                "type": 49,
+                "name": "Moss 1 string"
+            },
+            {
+                "type": 48,
+                "name": "Moss 2 strings"
+            },
+            {
+                "type": 50,
+                "name": "Wall torch"
+            },
+            {
+                "type": 11,
+                "name": "Deathmatch start"
+            },
+            {
+                "type": 1,
+                "name": "Player 1 start"
+            },
+            {
+                "type": 2,
+                "name": "Player 2 start"
+            },
+            {
+                "type": 3,
+                "name": "Player 3 start"
+            },
+            {
+                "type": 4,
+                "name": "Player 4 start"
+            },
+            {
+                "type": 2035,
+                "name": "Pod"
+            },
+            {
+                "type": 43,
+                "name": "Pod generator"
+            },
+            {
+                "type": 14,
+                "name": "Teleport landing"
             },
             {
                 "type": 87,
-                "name": "Brown Pillar"
+                "name": "Volcano"
             }
         ],
         "music": [
