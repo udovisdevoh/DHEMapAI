@@ -568,6 +568,10 @@
                 "name": "Cacodemon"
             },
             {
+                "type": 71,
+                "name": "Pain Elemental"
+            },
+            {
                 "type": 69,
                 "name": "Hell Knight"
             },
@@ -580,16 +584,16 @@
                 "name": "Arachnotron"
             },
             {
-                "type": 71,
-                "name": "Pain Elemental"
-            },
-            {
                 "type": 66,
                 "name": "Revenant"
             },
             {
                 "type": 67,
                 "name": "Mancubus"
+            },
+            {
+                "type": 65,
+                "name": "Arch-Vile"
             },
             {
                 "type": 7,
@@ -600,20 +604,16 @@
                 "name": "Cyberdemon"
             },
             {
-                "type": 65,
-                "name": "Arch-Vile"
-            },
-            {
                 "type": 88,
                 "name": "SS Wolfenstein"
             },
             {
-                "type": 84,
-                "name": "Boss Shooter (Icon of Sin)"
-            },
-            {
                 "type": 87,
                 "name": "Commander Keen"
+            },
+            {
+                "type": 84,
+                "name": "Icon of Sin Spawner"
             },
             {
                 "type": 2007,
@@ -624,7 +624,7 @@
                 "name": "Super Shotgun"
             },
             {
-                "type": 2008,
+                "type": 2005,
                 "name": "Chaingun"
             },
             {
@@ -644,7 +644,7 @@
                 "name": "Chainsaw"
             },
             {
-                "type": 2010,
+                "type": 2001,
                 "name": "Ammo Clip"
             },
             {
@@ -652,7 +652,7 @@
                 "name": "Box of Bullets"
             },
             {
-                "type": 2046,
+                "type": 2008,
                 "name": "4 Shotgun Shells"
             },
             {
@@ -660,11 +660,11 @@
                 "name": "Box of Shotgun Shells"
             },
             {
-                "type": 2047,
+                "type": 2003,
                 "name": "Rocket"
             },
             {
-                "type": 2010,
+                "type": 2046,
                 "name": "Box of Rockets"
             },
             {
@@ -689,11 +689,11 @@
             },
             {
                 "type": 2014,
-                "name": "Health Potion (+1)"
+                "name": "Health Potion"
             },
             {
                 "type": 2015,
-                "name": "Armor Bonus (+1)"
+                "name": "Armor Bonus"
             },
             {
                 "type": 2018,
@@ -701,7 +701,7 @@
             },
             {
                 "type": 2019,
-                "name": "Blue Armor"
+                "name": "Megaarmor (Blue)"
             },
             {
                 "type": 83,
@@ -720,7 +720,7 @@
                 "name": "Partial Invisibility"
             },
             {
-                "type": 2045,
+                "type": 2025,
                 "name": "Radiation Suit"
             },
             {
@@ -744,6 +744,10 @@
                 "name": "Red Keycard"
             },
             {
+                "type": 40,
+                "name": "Blue Skull Key"
+            },
+            {
                 "type": 39,
                 "name": "Yellow Skull Key"
             },
@@ -752,12 +756,180 @@
                 "name": "Red Skull Key"
             },
             {
-                "type": 40,
-                "name": "Blue Skull Key"
-            },
-            {
                 "type": 2035,
                 "name": "Exploding Barrel"
+            },
+            {
+                "type": 70,
+                "name": "Burning Barrel"
+            },
+            {
+                "type": 72,
+                "name": "Tall techno pillar"
+            },
+            {
+                "type": 85,
+                "name": "Tall techno floor lamp"
+            },
+            {
+                "type": 86,
+                "name": "Short techno floor lamp"
+            },
+            {
+                "type": 43,
+                "name": "Tall Green Pillar"
+            },
+            {
+                "type": 44,
+                "name": "Tall Red Pillar"
+            },
+            {
+                "type": 45,
+                "name": "Short Green Pillar"
+            },
+            {
+                "type": 46,
+                "name": "Short Red Pillar"
+            },
+            {
+                "type": 30,
+                "name": "Tall Green Pillar with Heart"
+            },
+            {
+                "type": 32,
+                "name": "Tall Red Pillar with Skull"
+            },
+            {
+                "type": 31,
+                "name": "Short Green Pillar with Skull"
+            },
+            {
+                "type": 33,
+                "name": "Short Red Pillar with Heart"
+            },
+            {
+                "type": 48,
+                "name": "Stalagmite"
+            },
+            {
+                "type": 2028,
+                "name": "Floor Lamp"
+            },
+            {
+                "type": 22,
+                "name": "Impaled Human 1"
+            },
+            {
+                "type": 23,
+                "name": "Impaled Human 2"
+            },
+            {
+                "type": 28,
+                "name": "Twitching Impaled Human"
+            },
+            {
+                "type": 27,
+                "name": "Skull on a Pole"
+            },
+            {
+                "type": 29,
+                "name": "Five Skulls Shish Kebab"
+            },
+            {
+                "type": 24,
+                "name": "Pile of Skulls and Candles"
+            },
+            {
+                "type": 47,
+                "name": "Tall Technicolor Pillar"
+            },
+            {
+                "type": 41,
+                "name": "Gray Tree"
+            },
+            {
+                "type": 42,
+                "name": "Brown Tree"
+            },
+            {
+                "type": 35,
+                "name": "Candle"
+            },
+            {
+                "type": 34,
+                "name": "Candelabra"
+            },
+            {
+                "type": 25,
+                "name": "Hanging Victim (Twitching) 1"
+            },
+            {
+                "type": 26,
+                "name": "Hanging Victim (Twitching) 2"
+            },
+            {
+                "type": 15,
+                "name": "Hanging Victim (Arms Out)"
+            },
+            {
+                "type": 10,
+                "name": "Hanging Victim (One Leg)"
+            },
+            {
+                "type": 12,
+                "name": "Hanging Victim (Legs Apart)"
+            },
+            {
+                "type": 53,
+                "name": "Hanging Pair of Legs"
+            },
+            {
+                "type": 49,
+                "name": "Pool of Blood and Guts 1"
+            },
+            {
+                "type": 50,
+                "name": "Pool of Blood and Guts 2"
+            },
+            {
+                "type": 51,
+                "name": "Pool of Blood"
+            },
+            {
+                "type": 52,
+                "name": "Pool of Brains"
+            },
+            {
+                "type": 59,
+                "name": "Dead Player"
+            },
+            {
+                "type": 19,
+                "name": "Dead Zombieman"
+            },
+            {
+                "type": 20,
+                "name": "Dead Shotgun Guy"
+            },
+            {
+                "type": 21,
+                "name": "Dead Imp"
+            },
+            {
+                "type": 18,
+                "name": "Dead Demon"
+            },
+            {
+                "type": 57,
+                "name": "Dead Cacodemon"
+            },
+            {
+                "type": 55,
+                "name": "Dead Lost Soul (invisible)"
+            },
+            {
+                "type": 56,
+                "name": "Dead Baron of Hell"
             }
         ],
         "music": [
