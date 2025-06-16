@@ -1,5 +1,4 @@
-## Documentation du format DGraph
-[DGenesis.md](DGenesis/dgenesis.md)
+## [Documentation du format DGraph](DGenesis/readme.md)
 
 ## Documentation du format DGraph
 [DGRAPH.md](DGRAPH.md)
