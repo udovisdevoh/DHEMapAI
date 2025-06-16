@@ -1,5 +1,5 @@
 ## Documentation du format DGraph
-[DGenesis.md](DGenesis.md)
+[DGenesis.md](DGenesis/dgenesis.md)
 
 ## Documentation du format DGraph
 [DGRAPH.md](DGRAPH.md)
