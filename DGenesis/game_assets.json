@@ -1584,6 +1584,714 @@
         "flats": [ "CEILING1", "CEILING2", "CEILING3", "CEILING4", "CEILING5", "CEILING6", "CEILING7", "FLAT01", "FLAT02", "FLAT03", "FLAT04", "FLAT05", "FLAT06", "FLAT07", "FLAT08", "FLAT09", "FLAT10", "FLAT11", "FLAT12", "FLAT13", "FLAT14", "FLAT15", "FLAT16", "FLAT17", "FLAT18", "FLAT19", "FLAT20", "FLAT21", "FLAT22", "FLAT23", "FLAT24", "FLAT25", "FLAT26", "FLAT27", "FLAT28", "FLAT29", "FLAT30", "FLAT31", "FLOOR01", "FLOOR02", "FLOOR03", "FLOOR04", "FLOOR05", "FLOOR06", "FLOOR07", "FLOOR08", "FLOOR09", "FLOOR10", "FLOOR11", "FLOOR12", "FLOOR13", "FLOOR14", "FLOOR15", "FLOOR16", "FLOOR17", "FLOOR18", "FLOOR19", "FLOOR20", "FLOOR21", "FLOOR22", "FLOOR23", "FLOOR24", "FLOOR25", "FLOOR26", "FLOOR27", "FLOOR28", "FLOOR29", "FLOOR30", "FLOOR31", "FLOOR32", "FLOOR33", "FLOOR34", "FLOOR35", "FLOOR36", "FLOOR37", "FLOOR38", "FLOOR39", "FLOOR40", "FLOOR41", "FLOOR42", "FLOOR43", "FLOOR44", "FLOOR45", "FLOOR46", "FLOOR47", "FLOOR48", "FLOOR49", "FLOOR50", "FLOOR51", "FLOOR52", "FLOOR53", "FLOOR54", "GRASS01", "GRASS02", "ICE01", "ICE02", "ICE03", "ICE04", "LAVA01", "MUD01", "SKY_1", "SKY_2", "SKY_3", "SKY_4", "SKY_5", "SKY_6", "SKY_7", "SKY_8", "SWAMP01", "SWAMP02", "SWAMP03", "SWAMP04", "WATER01", "WATER02", "WATER03", "WATER04", "WATER05", "WATER06" ],
         "things": [
             {
+                "type": 10060,
+                "name": "Afrit"
+            },
+            {
+                "type": 8080,
+                "name": "Brown chaos serpent"
+            },
+            {
+                "type": 107,
+                "name": "Centaur"
+            },
+            {
+                "type": 114,
+                "name": "Dark bishop"
+            },
+            {
+                "type": 254,
+                "name": "Death wyvern"
+            },
+            {
+                "type": 10030,
+                "name": "Ettin"
+            },
+            {
+                "type": 31,
+                "name": "Green chaos serpent"
+            },
+            {
+                "type": 10080,
+                "name": "Heresiarch"
+            },
+            {
+                "type": 10200,
+                "name": "Korax"
+            },
+            {
+                "type": 10102,
+                "name": "Menelkir"
+            },
+            {
+                "type": 34,
+                "name": "Reiver"
+            },
+            {
+                "type": 10011,
+                "name": "Reiver (buried)"
+            },
+            {
+                "type": 115,
+                "name": "Slaughtaur"
+            },
+            {
+                "type": 121,
+                "name": "Stalker"
+            },
+            {
+                "type": 120,
+                "name": "Stalker boss"
+            },
+            {
+                "type": 10101,
+                "name": "Traductus"
+            },
+            {
+                "type": 8020,
+                "name": "Wendigo"
+            },
+            {
+                "type": 10100,
+                "name": "Zedek"
+            },
+            {
+                "type": 8040,
+                "name": "Arc of Death"
+            },
+            {
+                "type": 21,
+                "name": "Bloodscourge (skull)"
+            },
+            {
+                "type": 23,
+                "name": "Bloodscourge (stick)"
+            },
+            {
+                "type": 22,
+                "name": "Bloodscourge (stub)"
+            },
+            {
+                "type": 8009,
+                "name": "Firestorm"
+            },
+            {
+                "type": 53,
+                "name": "Frost shards"
+            },
+            {
+                "type": 123,
+                "name": "Hammer of Retribution"
+            },
+            {
+                "type": 12,
+                "name": "Quietus (blade)"
+            },
+            {
+                "type": 13,
+                "name": "Quietus (cross)"
+            },
+            {
+                "type": 16,
+                "name": "Quietus (hilt)"
+            },
+            {
+                "type": 10,
+                "name": "Serpent staff"
+            },
+            {
+                "type": 8010,
+                "name": "Timon's Axe"
+            },
+            {
+                "type": 18,
+                "name": "Wraithverge (arc)"
+            },
+            {
+                "type": 19,
+                "name": "Wraithverge (cross)"
+            },
+            {
+                "type": 20,
+                "name": "Wraithverge (shaft)"
+            },
+            {
+                "type": 122,
+                "name": "Blue mana"
+            },
+            {
+                "type": 8004,
+                "name": "Combined mana"
+            },
+            {
+                "type": 124,
+                "name": "Green mana"
+            },
+            {
+                "type": 10040,
+                "name": "Banishment Device"
+            },
+            {
+                "type": 8002,
+                "name": "Boots of Speed"
+            },
+            {
+                "type": 36,
+                "name": "Chaos Device"
+            },
+            {
+                "type": 86,
+                "name": "Dark Servant"
+            },
+            {
+                "type": 10110,
+                "name": "Disc of Repulsion"
+            },
+            {
+                "type": 8041,
+                "name": "Dragonskin bracers"
+            },
+            {
+                "type": 8000,
+                "name": "Fléchette"
+            },
+            {
+                "type": 84,
+                "name": "Icon of the Defender"
+            },
+            {
+                "type": 8003,
+                "name": "Krater of Might"
+            },
+            {
+                "type": 10120,
+                "name": "Mystic Ambit Incant"
+            },
+            {
+                "type": 32,
+                "name": "Mystic urn"
+            },
+            {
+                "type": 30,
+                "name": "Porkalator"
+            },
+            {
+                "type": 82,
+                "name": "Quartz flask"
+            },
+            {
+                "type": 33,
+                "name": "Torch"
+            },
+            {
+                "type": 83,
+                "name": "Wings of Wrath"
+            },
+            {
+                "type": 8008,
+                "name": "Amulet of Warding"
+            },
+            {
+                "type": 81,
+                "name": "Crystal vial"
+            },
+            {
+                "type": 8006,
+                "name": "Falcon shield"
+            },
+            {
+                "type": 8005,
+                "name": "Mesh armor"
+            },
+            {
+                "type": 8007,
+                "name": "Platinum helm"
+            },
+            {
+                "type": 8032,
+                "name": "Axe key"
+            },
+            {
+                "type": 8200,
+                "name": "Castle key"
+            },
+            {
+                "type": 8031,
+                "name": "Cave key"
+            },
+            {
+                "type": 9021,
+                "name": "Clock gear (bronze in steel)"
+            },
+            {
+                "type": 9019,
+                "name": "Clock gear (bronze)"
+            },
+            {
+                "type": 9020,
+                "name": "Clock gear (steel in bronze)"
+            },
+            {
+                "type": 9018,
+                "name": "Clock gear (steel)"
+            },
+            {
+                "type": 9007,
+                "name": "Daemon Codex"
+            },
+            {
+                "type": 8035,
+                "name": "Dungeon key"
+            },
+            {
+                "type": 8034,
+                "name": "Emerald key"
+            },
+            {
+                "type": 9005,
+                "name": "Emerald planet 1"
+            },
+            {
+                "type": 9009,
+                "name": "Emerald planet 2"
+            },
+            {
+                "type": 8033,
+                "name": "Fire key"
+            },
+            {
+                "type": 9014,
+                "name": "Flame Mask"
+            },
+            {
+                "type": 9015,
+                "name": "Glaive Seal"
+            },
+            {
+                "type": 9003,
+                "name": "Heart of D'Sparil"
+            },
+            {
+                "type": 9016,
+                "name": "Holy Relic"
+            },
+            {
+                "type": 8038,
+                "name": "Horn key"
+            },
+            {
+                "type": 9008,
+                "name": "Liber Oscura"
+            },
+            {
+                "type": 9004,
+                "name": "Ruby planet"
+            },
+            {
+                "type": 8037,
+                "name": "Rusted key"
+            },
+            {
+                "type": 9006,
+                "name": "Sapphire planet 1"
+            },
+            {
+                "type": 9010,
+                "name": "Sapphire planet 2"
+            },
+            {
+                "type": 9017,
+                "name": "Sigil of the Magus"
+            },
+            {
+                "type": 8036,
+                "name": "Silver key"
+            },
+            {
+                "type": 8030,
+                "name": "Steel key"
+            },
+            {
+                "type": 8039,
+                "name": "Swamp key"
+            },
+            {
+                "type": 9002,
+                "name": "Yorick's Skull"
+            },
+            {
+                "type": 8100,
+                "name": "Barrel"
+            },
+            {
+                "type": 77,
+                "name": "Battle rag banner"
+            },
+            {
+                "type": 8065,
+                "name": "Bell"
+            },
+            {
+                "type": 99,
+                "name": "Black rock"
+            },
+            {
+                "type": 8061,
+                "name": "Brazier with flame"
+            },
+            {
+                "type": 8051,
+                "name": "Bronze gargoyle (short)"
+            },
+            {
+                "type": 8047,
+                "name": "Bronze gargoyle (tall)"
+            },
+            {
+                "type": 97,
+                "name": "Brown rock (large)"
+            },
+            {
+                "type": 98,
+                "name": "Brown rock (small)"
+            },
+            {
+                "type": 8069,
+                "name": "Cauldron (lit)"
+            },
+            {
+                "type": 8070,
+                "name": "Cauldron (unlit)"
+            },
+            {
+                "type": 8049,
+                "name": "Dark lava gargoyle (short)"
+            },
+            {
+                "type": 8045,
+                "name": "Dark lava gargoyle (tall)"
+            },
+            {
+                "type": 24,
+                "name": "Dead tree"
+            },
+            {
+                "type": 8062,
+                "name": "Destructible tree"
+            },
+            {
+                "type": 8068,
+                "name": "Evergreen tree"
+            },
+            {
+                "type": 80,
+                "name": "Gnarled tree 1"
+            },
+            {
+                "type": 87,
+                "name": "Gnarled tree 2"
+            },
+            {
+                "type": 8103,
+                "name": "Hanging bucket"
+            },
+            {
+                "type": 71,
+                "name": "Hanging corpse"
+            },
+            {
+                "type": 76,
+                "name": "Ice gargoyle (short)"
+            },
+            {
+                "type": 73,
+                "name": "Ice gargoyle (tall)"
+            },
+            {
+                "type": 93,
+                "name": "Ice spike (large)"
+            },
+            {
+                "type": 94,
+                "name": "Ice spike (medium)"
+            },
+            {
+                "type": 95,
+                "name": "Ice spike (small)"
+            },
+            {
+                "type": 96,
+                "name": "Ice spike (tiny)"
+            },
+            {
+                "type": 89,
+                "name": "Icicle (large)"
+            },
+            {
+                "type": 90,
+                "name": "Icicle (medium)"
+            },
+            {
+                "type": 91,
+                "name": "Icicle (small)"
+            },
+            {
+                "type": 92,
+                "name": "Icicle (tiny)"
+            },
+            {
+                "type": 61,
+                "name": "Impaled corpse"
+            },
+            {
+                "type": 8067,
+                "name": "Iron maiden"
+            },
+            {
+                "type": 25,
+                "name": "Leafless tree"
+            },
+            {
+                "type": 8050,
+                "name": "Light lava gargoyle (short)"
+            },
+            {
+                "type": 8046,
+                "name": "Light lava gargoyle (tall)"
+            },
+            {
+                "type": 108,
+                "name": "Lynched corpse"
+            },
+            {
+                "type": 109,
+                "name": "Lynched corpse (heartless)"
+            },
+            {
+                "type": 8042,
+                "name": "Minotaur statue (lit)"
+            },
+            {
+                "type": 8043,
+                "name": "Minotaur statue (unlit)"
+            },
+            {
+                "type": 60,
+                "name": "Mossy dead tree"
+            },
+            {
+                "type": 15,
+                "name": "Mossy rock (large)"
+            },
+            {
+                "type": 26,
+                "name": "Mossy tree 1"
+            },
+            {
+                "type": 27,
+                "name": "Mossy tree 2"
+            },
+            {
+                "type": 9012,
+                "name": "Pedestal of D'Sparil"
+            },
+            {
+                "type": 103,
+                "name": "Pillar with vase"
+            },
+            {
+                "type": 105,
+                "name": "Pot (medium)"
+            },
+            {
+                "type": 106,
+                "name": "Pot (short)"
+            },
+            {
+                "type": 104,
+                "name": "Pot (tall)"
+            },
+            {
+                "type": 8044,
+                "name": "Rusty gargoyle (tall)"
+            },
+            {
+                "type": 8102,
+                "name": "Shrub (large)"
+            },
+            {
+                "type": 8101,
+                "name": "Shrub (small)"
+            },
+            {
+                "type": 110,
+                "name": "Sitting corpse"
+            },
+            {
+                "type": 8060,
+                "name": "Skull with flame"
+            },
+            {
+                "type": 52,
+                "name": "Stalactite (large)"
+            },
+            {
+                "type": 56,
+                "name": "Stalactite (medium)"
+            },
+            {
+                "type": 57,
+                "name": "Stalactite (small)"
+            },
+            {
+                "type": 49,
+                "name": "Stalagmite (large)"
+            },
+            {
+                "type": 50,
+                "name": "Stalagmite (medium)"
+            },
+            {
+                "type": 51,
+                "name": "Stalagmite (small)"
+            },
+            {
+                "type": 48,
+                "name": "Stalagmite pillar"
+            },
+            {
+                "type": 8052,
+                "name": "Steel gargoyle (short)"
+            },
+            {
+                "type": 8048,
+                "name": "Steel gargoyle (tall)"
+            },
+            {
+                "type": 74,
+                "name": "Stone gargoyle (short)"
+            },
+            {
+                "type": 72,
+                "name": "Stone gargoyle (tall)"
+            },
+            {
+                "type": 8064,
+                "name": "Suit of armor"
+            },
+            {
+                "type": 78,
+                "name": "Tall tree 1"
+            },
+            {
+                "type": 79,
+                "name": "Tall tree 2"
+            },
+            {
+                "type": 69,
+                "name": "Tombstone (Brian P)"
+            },
+            {
+                "type": 66,
+                "name": "Tombstone (Brian R)"
+            },
+            {
+                "type": 63,
+                "name": "Tombstone (RIP)"
+            },
+            {
+                "type": 64,
+                "name": "Tombstone (Shane)"
+            },
+            {
+                "type": 67,
+                "name": "Tombstone (cross circle)"
+            },
+            {
+                "type": 65,
+                "name": "Tombstone (slimy)"
+            },
+            {
+                "type": 68,
+                "name": "Tombstone (small cross)"
+            },
+            {
+                "type": 88,
+                "name": "Tree log"
+            },
+            {
+                "type": 29,
+                "name": "Tree stump (bare)"
+            },
+            {
+                "type": 28,
+                "name": "Tree stump (burned)"
+            },
+            {
+                "type": 116,
+                "name": "Twined torch (lit)"
+            },
+            {
+                "type": 117,
+                "name": "Twined torch (unlit)"
+            },
+            {
+                "type": 5,
+                "name": "Winged statue"
+            },
+            {
+                "type": 9011,
+                "name": "Yorick's statue"
+            },
+            {
+                "type": 119,
+                "name": "3 Candles (lit)"
+            },
+            {
+                "type": 8066,
+                "name": "Blue candle (lit)"
+            },
+            {
+                "type": 100,
+                "name": "Brick rubble (large)"
+            },
+            {
+                "type": 102,
+                "name": "Brick rubble (medium)"
+            },
+            {
+                "type": 101,
+                "name": "Brick rubble (small)"
+            },
+            {
+                "type": 17,
+                "name": "Chandelier"
+            },
+            {
+                "type": 10225,
+                "name": "Bat spawner"
+            },
+            {
+                "type": 10000,
+                "name": "Fog spawner"
+            },
+            {
+                "type": 118,
+                "name": "Glitter bridge"
+            },
+            {
+                "type": 113,
+                "name": "Leaf spawner"
+            },
+            {
+                "type": 9001,
+                "name": "Map spot"
+            },
+            {
+                "type": 9013,
+                "name": "Map spot (gravity)"
+            },
+            {
                 "type": 100,
                 "name": "Fighter Player Start"
             },
@@ -1600,240 +2308,48 @@
                 "name": "Pig Player Start"
             },
             {
-                "type": 11,
-                "name": "Deathmatch Start"
+                "type": 9100,
+                "name": "Player 5 start"
             },
             {
-                "type": 3,
-                "name": "Ettin"
+                "type": 9101,
+                "name": "Player 6 start"
             },
             {
-                "type": 6,
-                "name": "Centaur"
+                "type": 9102,
+                "name": "Player 7 start"
             },
             {
-                "type": 5,
-                "name": "Centaur Leader"
+                "type": 9103,
+                "name": "Player 8 start"
             },
             {
-                "type": 1010,
-                "name": "Afrit"
+                "type": 8104,
+                "name": "Poisonous mushroom"
             },
             {
-                "type": 1011,
-                "name": "Green Chaos Serpent"
+                "type": 3000,
+                "name": "Polyobject anchor"
             },
             {
-                "type": 1012,
-                "name": "Brown Chaos Serpent"
+                "type": 3001,
+                "name": "Polyobject start spot"
             },
             {
-                "type": 1017,
-                "name": "Slaughtaur"
+                "type": 3002,
+                "name": "Polyobject start spot (crush)"
             },
             {
-                "type": 1018,
-                "name": "Slaughtaur Leader"
+                "type": 10090,
+                "name": "Spike down"
             },
             {
-                "type": 1019,
-                "name": "Dark Bishop"
+                "type": 10091,
+                "name": "Spike up"
             },
             {
-                "type": 1024,
-                "name": "Stalker"
-            },
-            {
-                "type": 1025,
-                "name": "Stalker Leader"
-            },
-            {
-                "type": 1028,
-                "name": "Heresiarch"
-            },
-            {
-                "type": 160,
-                "name": "Death Wyvern"
-            },
-            {
-                "type": 120,
-                "name": "Korax (Boss)"
-            },
-            {
-                "type": 8000,
-                "name": "Timon's Axe"
-            },
-            {
-                "type": 8001,
-                "name": "Hammer of Retribution"
-            },
-            {
-                "type": 8002,
-                "name": "Quietus"
-            },
-            {
-                "type": 8003,
-                "name": "Serpent Staff"
-            },
-            {
-                "type": 8004,
-                "name": "Firestorm"
-            },
-            {
-                "type": 8005,
-                "name": "Wraithverge"
-            },
-            {
-                "type": 8006,
-                "name": "Frost Shards"
-            },
-            {
-                "type": 8007,
-                "name": "Arc of Death"
-            },
-            {
-                "type": 8008,
-                "name": "Bloodscourge"
-            },
-            {
-                "type": 18,
-                "name": "Blue Mana"
-            },
-            {
-                "type": 19,
-                "name": "Green Mana"
-            },
-            {
-                "type": 20,
-                "name": "Combined Mana"
-            },
-            {
-                "type": 8011,
-                "name": "Krater of Might"
-            },
-            {
-                "type": 8012,
-                "name": "Dragonskin Bracers"
-            },
-            {
-                "type": 8013,
-                "name": "Mystic Ambit Incant"
-            },
-            {
-                "type": 8014,
-                "name": "Disc of Repulsion"
-            },
-            {
-                "type": 8015,
-                "name": "Boots of Speed"
-            },
-            {
-                "type": 8016,
-                "name": "Torch"
-            },
-            {
-                "type": 8017,
-                "name": "Quartz Flask"
-            },
-            {
-                "type": 8018,
-                "name": "Platinum Helmet"
-            },
-            {
-                "type": 8019,
-                "name": "Mesh Armor"
-            },
-            {
-                "type": 8020,
-                "name": "Falcon Shield"
-            },
-            {
-                "type": 8021,
-                "name": "Porkalator"
-            },
-            {
-                "type": 8022,
-                "name": "Dark Servant"
-            },
-            {
-                "type": 8023,
-                "name": "Icon of the Defender"
-            },
-            {
-                "type": 8024,
-                "name": "Banishment Device"
-            },
-            {
-                "type": 8025,
-                "name": "Flechette"
-            },
-            {
-                "type": 9001,
-                "name": "Fire Key"
-            },
-            {
-                "type": 9002,
-                "name": "Steel Key"
-            },
-            {
-                "type": 9003,
-                "name": "Cave Key"
-            },
-            {
-                "type": 9004,
-                "name": "Emerald Key"
-            },
-            {
-                "type": 9005,
-                "name": "Dungeon Key"
-            },
-            {
-                "type": 9006,
-                "name": "Silver Key"
-            },
-            {
-                "type": 9007,
-                "name": "Rusty Key"
-            },
-            {
-                "type": 9008,
-                "name": "Horn Key"
-            },
-            {
-                "type": 9009,
-                "name": "Swamp Key"
-            },
-            {
-                "type": 9010,
-                "name": "Castle Key"
-            },
-            {
-                "type": 10001,
-                "name": "Serpent Torch"
-            },
-            {
-                "type": 10002,
-                "name": "Chandelier"
-            },
-            {
-                "type": 10003,
-                "name": "Barrel"
-            },
-            {
-                "type": 10004,
-                "name": "Brown Pillar"
-            },
-            {
-                "type": 10005,
-                "name": "Stalactite"
-            },
-            {
-                "type": 10006,
-                "name": "Stalagmite"
-            },
-            {
-                "type": 10007,
-                "name": "Candle"
+                "type": 140,
+                "name": "Teleport smoke"
             }
         ],
         "music": [
