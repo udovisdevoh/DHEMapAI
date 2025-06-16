@@ -64,15 +64,11 @@
                 "name": "Cyberdemon"
             },
             {
-                "type": 84,
-                "name": "Boss Brain"
-            },
-            {
                 "type": 2007,
                 "name": "Shotgun"
             },
             {
-                "type": 2008,
+                "type": 2005,
                 "name": "Chaingun"
             },
             {
@@ -93,14 +89,6 @@
             },
             {
                 "type": 2001,
-                "name": "Fist (non-droppable)"
-            },
-            {
-                "type": 2001,
-                "name": "Pistol (non-droppable)"
-            },
-            {
-                "type": 2010,
                 "name": "Ammo Clip"
             },
             {
@@ -108,7 +96,7 @@
                 "name": "Box of Bullets"
             },
             {
-                "type": 2046,
+                "type": 2008,
                 "name": "4 Shotgun Shells"
             },
             {
@@ -116,11 +104,11 @@
                 "name": "Box of Shotgun Shells"
             },
             {
-                "type": 2047,
+                "type": 2003,
                 "name": "Rocket"
             },
             {
-                "type": 2010,
+                "type": 2046,
                 "name": "Box of Rockets"
             },
             {
@@ -145,11 +133,11 @@
             },
             {
                 "type": 2014,
-                "name": "Health Potion (+1)"
+                "name": "Health Potion"
             },
             {
                 "type": 2015,
-                "name": "Armor Bonus (+1)"
+                "name": "Armor Bonus"
             },
             {
                 "type": 2018,
@@ -157,11 +145,7 @@
             },
             {
                 "type": 2019,
-                "name": "Blue Armor"
-            },
-            {
-                "type": 2025,
-                "name": "Megasphere"
+                "name": "Megaarmor (Blue)"
             },
             {
                 "type": 83,
@@ -180,7 +164,7 @@
                 "name": "Partial Invisibility"
             },
             {
-                "type": 2045,
+                "type": 2025,
                 "name": "Radiation Suit"
             },
             {
@@ -188,7 +172,7 @@
                 "name": "Computer Area Map"
             },
             {
-                "type": 8,
+                "type": 2045,
                 "name": "Light Amplification Goggles"
             },
             {
@@ -204,16 +188,16 @@
                 "name": "Red Keycard"
             },
             {
+                "type": 40,
+                "name": "Blue Skull Key"
+            },
+            {
                 "type": 39,
                 "name": "Yellow Skull Key"
             },
             {
                 "type": 38,
                 "name": "Red Skull Key"
-            },
-            {
-                "type": 40,
-                "name": "Blue Skull Key"
             },
             {
                 "type": 2035,
