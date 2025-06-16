@@ -393,142 +393,30 @@
             }
         ],
         "music": [
-            {
-                "name": "D_E1M1",
-                "value": "D_E1M1"
-            },
-            {
-                "name": "D_E1M2",
-                "value": "D_E1M2"
-            },
-            {
-                "name": "D_E1M3",
-                "value": "D_E1M3"
-            },
-            {
-                "name": "D_E1M4",
-                "value": "D_E1M4"
-            },
-            {
-                "name": "D_E1M5",
-                "value": "D_E1M5"
-            },
-            {
-                "name": "D_E1M6",
-                "value": "D_E1M6"
-            },
-            {
-                "name": "D_E1M7",
-                "value": "D_E1M7"
-            },
-            {
-                "name": "D_E1M8",
-                "value": "D_E1M8"
-            },
-            {
-                "name": "D_E1M9",
-                "value": "D_E1M9"
-            },
-            {
-                "name": "D_E2M1",
-                "value": "D_E2M1"
-            },
-            {
-                "name": "D_E2M2",
-                "value": "D_E2M2"
-            },
-            {
-                "name": "D_E2M3",
-                "value": "D_E2M3"
-            },
-            {
-                "name": "D_E2M4",
-                "value": "D_E2M4"
-            },
-            {
-                "name": "D_E2M5",
-                "value": "D_E2M5"
-            },
-            {
-                "name": "D_E2M6",
-                "value": "D_E2M6"
-            },
-            {
-                "name": "D_E2M7",
-                "value": "D_E2M7"
-            },
-            {
-                "name": "D_E2M8",
-                "value": "D_E2M8"
-            },
-            {
-                "name": "D_E2M9",
-                "value": "D_E2M9"
-            },
-            {
-                "name": "D_E3M1",
-                "value": "D_E3M1"
-            },
-            {
-                "name": "D_E3M2",
-                "value": "D_E3M2"
-            },
-            {
-                "name": "D_E3M3",
-                "value": "D_E3M3"
-            },
-            {
-                "name": "D_E3M4",
-                "value": "D_E3M4"
-            },
-            {
-                "name": "D_E3M5",
-                "value": "D_E3M5"
-            },
-            {
-                "name": "D_E3M6",
-                "value": "D_E3M6"
-            },
-            {
-                "name": "D_E3M7",
-                "value": "D_E3M7"
-            },
-            {
-                "name": "D_E3M8",
-                "value": "D_E3M8"
-            },
-            {
-                "name": "D_E3M9",
-                "value": "D_E3M9"
-            },
-            {
-                "name": "D_INTER",
-                "value": "D_INTER"
-            },
-            {
-                "name": "D_INTRO",
-                "value": "D_INTRO"
-            },
-            {
-                "name": "D_BUNNY",
-                "value": "D_BUNNY"
-            },
-            {
-                "name": "D_VICTOR",
-                "value": "D_VICTOR"
-            },
-            {
-                "name": "D_INTROA",
-                "value": "D_INTROA"
-            },
-            {
-                "name": "D_EVIL",
-                "value": "D_EVIL"
-            },
-            {
-                "name": "D_ULTIMA",
-                "value": "D_ULTIMA"
-            }
+            "D_E1M1",
+            "D_E1M2",
+            "D_E1M3",
+            "D_E1M4",
+            "D_E1M5",
+            "D_E1M6",
+            "D_E1M7",
+            "D_E1M8",
+            "D_E1M9",
+            "D_E2M1",
+            "D_E2M2",
+            "D_E2M3",
+            "D_E2M4",
+            "D_E2M5",
+            "D_E2M6",
+            "D_E2M7",
+            "D_E2M8",
+            "D_E2M9",
+            "D_E3M1",
+            "D_E3M2",
+            "D_E3M3",
+            "D_E3M8",
+            "D_INTER",
+            "D_INTRO"
         ]
     },
     "doom2": {
@@ -937,122 +825,26 @@
             }
         ],
         "music": [
-            {
-                "name": "D_RUNNIN",
-                "value": "D_RUNNIN"
-            },
-            {
-                "name": "D_STALKS",
-                "value": "D_STALKS"
-            },
-            {
-                "name": "D_COUNTD",
-                "value": "D_COUNTD"
-            },
-            {
-                "name": "D_BETWEE",
-                "value": "D_BETWEE"
-            },
-            {
-                "name": "D_DOOM",
-                "value": "D_DOOM"
-            },
-            {
-                "name": "D_THE_D",
-                "value": "D_THE_D"
-            },
-            {
-                "name": "D_SHAWN",
-                "value": "D_SHAWN"
-            },
-            {
-                "name": "D_DDTBLU",
-                "value": "D_DDTBLU"
-            },
-            {
-                "name": "D_IN_CIT",
-                "value": "D_IN_CIT"
-            },
-            {
-                "name": "D_DEAD",
-                "value": "D_DEAD"
-            },
-            {
-                "name": "D_STLKS2",
-                "value": "D_STLKS2"
-            },
-            {
-                "name": "D_THE_DA",
-                "value": "D_THE_DA"
-            },
-            {
-                "name": "D_DOOM2",
-                "value": "D_DOOM2"
-            },
-            {
-                "name": "D_RUNNI2",
-                "value": "D_RUNNI2"
-            },
-            {
-                "name": "D_DEAD2",
-                "value": "D_DEAD2"
-            },
-            {
-                "name": "D_STLKS3",
-                "value": "D_STLKS3"
-            },
-            {
-                "name": "D_ROMERO",
-                "value": "D_ROMERO"
-            },
-            {
-                "name": "D_SHAWN2",
-                "value": "D_SHAWN2"
-            },
-            {
-                "name": "D_MESSAG",
-                "value": "D_AMPIE"
-            },
-            {
-                "name": "D_ADRIAN",
-                "value": "D_ADRIAN"
-            },
-            {
-                "name": "D_MESSG2",
-                "value": "D_MESSG2"
-            },
-            {
-                "name": "D_ROMER2",
-                "value": "D_ROMER2"
-            },
-            {
-                "name": "D_TENSE",
-                "value": "D_TENSE"
-            },
-            {
-                "name": "D_OPENIN",
-                "value": "D_OPENIN"
-            },
-            {
-                "name": "D_EVIL",
-                "value": "D_EVIL"
-            },
-            {
-                "name": "D_ULTIMA",
-                "value": "D_ULTIMA"
-            },
-            {
-                "name": "D_READ_M",
-                "value": "D_READ_M"
-            },
-            {
-                "name": "D_DM2TTL",
-                "value": "D_DM2TTL"
-            },
-            {
-                "name": "D_DM2INT",
-                "value": "D_DM2INT"
-            }
+            "D_RUNNIN",
+            "D_STALKS",
+            "D_COUNTD",
+            "D_BETWEE",
+            "D_DOOM",
+            "D_THE_DA",
+            "D_SHAWN",
+            "D_DDTBLU",
+            "D_IN_CIT",
+            "D_DEAD",
+            "D_ROMERO",
+            "D_MESSAG",
+            "D_AMPIE",
+            "D_ADRIAN",
+            "D_TENSE",
+            "D_OPENIN",
+            "D_EVIL",
+            "D_VICTOR",
+            "D_DM2INT",
+            "D_DM2TTL"
         ]
     },
     "heretic": {
@@ -1373,210 +1165,25 @@
             }
         ],
         "music": [
-            {
-                "name": "MUS_E1M1",
-                "value": "MUS_E1M1"
-            },
-            {
-                "name": "MUS_E1M2",
-                "value": "MUS_E1M2"
-            },
-            {
-                "name": "MUS_E1M3",
-                "value": "MUS_E1M3"
-            },
-            {
-                "name": "MUS_E1M4",
-                "value": "MUS_E1M4"
-            },
-            {
-                "name": "MUS_E1M5",
-                "value": "MUS_E1M5"
-            },
-            {
-                "name": "MUS_E1M6",
-                "value": "MUS_E1M6"
-            },
-            {
-                "name": "MUS_E1M7",
-                "value": "MUS_E1M7"
-            },
-            {
-                "name": "MUS_E1M8",
-                "value": "MUS_E1M8"
-            },
-            {
-                "name": "MUS_E1M9",
-                "value": "MUS_E1M9"
-            },
-            {
-                "name": "MUS_E2M1",
-                "value": "MUS_E2M1"
-            },
-            {
-                "name": "MUS_E2M2",
-                "value": "MUS_E2M2"
-            },
-            {
-                "name": "MUS_E2M3",
-                "value": "MUS_E2M3"
-            },
-            {
-                "name": "MUS_E2M4",
-                "value": "MUS_E2M4"
-            },
-            {
-                "name": "MUS_E2M5",
-                "value": "MUS_E2M5"
-            },
-            {
-                "name": "MUS_E2M6",
-                "value": "MUS_E2M6"
-            },
-            {
-                "name": "MUS_E2M7",
-                "value": "MUS_E2M7"
-            },
-            {
-                "name": "MUS_E2M8",
-                "value": "MUS_E2M8"
-            },
-            {
-                "name": "MUS_E2M9",
-                "value": "MUS_E2M9"
-            },
-            {
-                "name": "MUS_E3M1",
-                "value": "MUS_E3M1"
-            },
-            {
-                "name": "MUS_E3M2",
-                "value": "MUS_E3M2"
-            },
-            {
-                "name": "MUS_E3M3",
-                "value": "MUS_E3M3"
-            },
-            {
-                "name": "MUS_E3M4",
-                "value": "MUS_E3M4"
-            },
-            {
-                "name": "MUS_E3M5",
-                "value": "MUS_E3M5"
-            },
-            {
-                "name": "MUS_E3M6",
-                "value": "MUS_E3M6"
-            },
-            {
-                "name": "MUS_E3M7",
-                "value": "MUS_E3M7"
-            },
-            {
-                "name": "MUS_E3M8",
-                "value": "MUS_E3M8"
-            },
-            {
-                "name": "MUS_E3M9",
-                "value": "MUS_E3M9"
-            },
-            {
-                "name": "MUS_E4M1",
-                "value": "MUS_E4M1"
-            },
-            {
-                "name": "MUS_E4M2",
-                "value": "MUS_E4M2"
-            },
-            {
-                "name": "MUS_E4M3",
-                "value": "MUS_E4M3"
-            },
-            {
-                "name": "MUS_E4M4",
-                "value": "MUS_E4M4"
-            },
-            {
-                "name": "MUS_E4M5",
-                "value": "MUS_E4M5"
-            },
-            {
-                "name": "MUS_E4M6",
-                "value": "MUS_E4M6"
-            },
-            {
-                "name": "MUS_E4M7",
-                "value": "MUS_E4M7"
-            },
-            {
-                "name": "MUS_E4M8",
-                "value": "MUS_E4M8"
-            },
-            {
-                "name": "MUS_E4M9",
-                "value": "MUS_E4M9"
-            },
-            {
-                "name": "MUS_E5M1",
-                "value": "MUS_E5M1"
-            },
-            {
-                "name": "MUS_E5M2",
-                "value": "MUS_E5M2"
-            },
-            {
-                "name": "MUS_E5M3",
-                "value": "MUS_E5M3"
-            },
-            {
-                "name": "MUS_E5M4",
-                "value": "MUS_E5M4"
-            },
-            {
-                "name": "MUS_E5M5",
-                "value": "MUS_E5M5"
-            },
-            {
-                "name": "MUS_E5M6",
-                "value": "MUS_E5M6"
-            },
-            {
-                "name": "MUS_E5M7",
-                "value": "MUS_E5M7"
-            },
-            {
-                "name": "MUS_E5M8",
-                "value": "MUS_E5M8"
-            },
-            {
-                "name": "MUS_E5M9",
-                "value": "MUS_E5M9"
-            },
-            {
-                "name": "MUS_TITL",
-                "value": "MUS_TITL"
-            },
-            {
-                "name": "MUS_INTR",
-                "value": "MUS_INTR"
-            },
-            {
-                "name": "MUS_FINL",
-                "value": "MUS_FINL"
-            },
-            {
-                "name": "MUS_SHOP",
-                "value": "MUS_SHOP"
-            },
-            {
-                "name": "MUS_PF",
-                "value": "MUS_PF"
-            },
-            {
-                "name": "MUS_CHTL",
-                "value": "MUS_CHTL"
-            }
+            "MUS_E1M1",
+            "MUS_E1M2",
+            "MUS_E1M3",
+            "MUS_E1M4",
+            "MUS_E1M5",
+            "MUS_E1M6",
+            "MUS_E1M7",
+            "MUS_E1M8",
+            "MUS_E1M9",
+            "MUS_E2M1",
+            "MUS_E2M2",
+            "MUS_E2M3",
+            "MUS_E2M4",
+            "MUS_E2M6",
+            "MUS_E2M7",
+            "MUS_E2M8",
+            "MUS_E2M9",
+            "MUS_INTR",
+            "MUS_TITL"
         ]
     },
     "hexen": {
@@ -2353,98 +1960,26 @@
             }
         ],
         "music": [
-            {
-                "name": "MUS_CATH",
-                "value": "MUS_CATH"
-            },
-            {
-                "name": "MUS_CHURCH",
-                "value": "MUS_CHURCH"
-            },
-            {
-                "name": "MUS_CITADEL",
-                "value": "MUS_CITADEL"
-            },
-            {
-                "name": "MUS_FOG",
-                "value": "MUS_FOG"
-            },
-            {
-                "name": "MUS_FORT",
-                "value": "MUS_FORT"
-            },
-            {
-                "name": "MUS_GIBBET",
-                "value": "MUS_GIBBET"
-            },
-            {
-                "name": "MUS_HEDGE",
-                "value": "MUS_HEDGE"
-            },
-            {
-                "name": "MUS_ICE",
-                "value": "MUS_ICE"
-            },
-            {
-                "name": "MUS_LAVA",
-                "value": "MUS_LAVA"
-            },
-            {
-                "name": "MUS_NEC",
-                "value": "MUS_NEC"
-            },
-            {
-                "name": "MUS_ORB",
-                "value": "MUS_ORB"
-            },
-            {
-                "name": "MUS_SEM",
-                "value": "MUS_SEM"
-            },
-            {
-                "name": "MUS_SWMP",
-                "value": "MUS_SWMP"
-            },
-            {
-                "name": "MUS_VILL",
-                "value": "MUS_VILL"
-            },
-            {
-                "name": "MUS_WINTRO",
-                "value": "MUS_WINTRO"
-            },
-            {
-                "name": "MUS_CAST",
-                "value": "MUS_CAST"
-            },
-            {
-                "name": "MUS_CINTER",
-                "value": "MUS_CINTER"
-            },
-            {
-                "name": "MUS_CORR",
-                "value": "MUS_CORR"
-            },
-            {
-                "name": "MUS_DEATH",
-                "value": "MUS_DEATH"
-            },
-            {
-                "name": "MUS_DONE",
-                "value": "MUS_DONE"
-            },
-            {
-                "name": "MUS_END",
-                "value": "MUS_END"
-            },
-            {
-                "name": "MUS_FINALE",
-                "value": "MUS_FINALE"
-            },
-            {
-                "name": "MUS_CHAP",
-                "value": "MUS_CHAP"
-            }
+            "WINNOWR",
+            "JACHR",
+            "SIMONR",
+            "WUTZITR",
+            "FALCONR",
+            "LEVELR",
+            "CRYPTR",
+            "SWAMPR",
+            "DEEPR",
+            "FUBASR",
+            "GROVER",
+            "FORTR",
+            "VOIDR",
+            "CHAP_1R",
+            "SECRETR",
+            "CHAP_3R",
+            "CHAP_4R",
+            "CHIPPYR",
+            "PERCR",
+            "FOOJAR"
         ]
     }
 }

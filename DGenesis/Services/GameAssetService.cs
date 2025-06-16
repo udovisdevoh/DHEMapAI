@@ -21,7 +21,7 @@ namespace DGenesis.Services
         public List<string> Textures { get; set; }
         public List<string> Flats { get; set; }
         public List<GameAssetThing> Things { get; set; }
-        public List<GameAssetMusic> Music { get; set; }
+        public List<string> Music { get; set; }
     }
 
     public class GameAssetThing
@@ -101,10 +101,10 @@ namespace DGenesis.Services
             return gameData?.Things ?? new List<GameAssetThing>();
         }
 
-        public List<GameAssetMusic> GetMusicForGame(string game)
+        public List<string> GetMusicForGame(string game)
         {
             var gameData = GetGameData(game);
-            return gameData?.Music ?? new List<GameAssetMusic>();
+            return gameData?.Music ?? new List<string>();
         }
     }
 }
