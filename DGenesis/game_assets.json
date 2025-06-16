@@ -537,23 +537,23 @@
         "things": [
             {
                 "type": 1,
-                "name": "Player 1 Start"
+                "name": "Player 1 start"
             },
             {
                 "type": 2,
-                "name": "Player 2 Start"
+                "name": "Player 2 start"
             },
             {
                 "type": 3,
-                "name": "Player 3 Start"
+                "name": "Player 3 start"
             },
             {
                 "type": 4,
-                "name": "Player 4 Start"
+                "name": "Player 4 start"
             },
             {
                 "type": 11,
-                "name": "Deathmatch Start"
+                "name": "Deathmatch start"
             },
             {
                 "type": 3004,
@@ -561,11 +561,11 @@
             },
             {
                 "type": 9,
-                "name": "Shotgun Guy"
+                "name": "Shotgun guy"
             },
             {
-                "type": 64,
-                "name": "Heavy Weapon Dude"
+                "type": 65,
+                "name": "Heavy weapon dude"
             },
             {
                 "type": 3001,
@@ -581,7 +581,7 @@
             },
             {
                 "type": 3006,
-                "name": "Lost Soul"
+                "name": "Lost soul"
             },
             {
                 "type": 3005,
@@ -589,11 +589,11 @@
             },
             {
                 "type": 71,
-                "name": "Pain Elemental"
+                "name": "Pain elemental"
             },
             {
                 "type": 69,
-                "name": "Hell Knight"
+                "name": "Hell knight"
             },
             {
                 "type": 3003,
@@ -612,12 +612,12 @@
                 "name": "Mancubus"
             },
             {
-                "type": 65,
-                "name": "Arch-Vile"
+                "type": 64,
+                "name": "Arch-vile"
             },
             {
                 "type": 7,
-                "name": "Spider Mastermind"
+                "name": "Spiderdemon"
             },
             {
                 "type": 16,
@@ -625,7 +625,7 @@
             },
             {
                 "type": 88,
-                "name": "SS Wolfenstein"
+                "name": "Wolfenstein SS"
             },
             {
                 "type": 87,
@@ -636,96 +636,100 @@
                 "name": "Icon of Sin Spawner"
             },
             {
-                "type": 2007,
+                "type": 2001,
                 "name": "Shotgun"
             },
             {
                 "type": 82,
-                "name": "Super Shotgun"
-            },
-            {
-                "type": 2005,
-                "name": "Chaingun"
+                "name": "Super shotgun"
             },
             {
                 "type": 2002,
-                "name": "Rocket Launcher"
+                "name": "Chaingun"
             },
             {
                 "type": 2003,
-                "name": "Plasma Gun"
+                "name": "Rocket launcher"
             },
             {
                 "type": 2004,
-                "name": "BFG9000"
+                "name": "Plasma gun"
             },
             {
                 "type": 2006,
+                "name": "BFG9000"
+            },
+            {
+                "type": 2005,
                 "name": "Chainsaw"
             },
             {
-                "type": 2001,
-                "name": "Ammo Clip"
+                "type": 2007,
+                "name": "Clip"
             },
             {
                 "type": 2048,
-                "name": "Box of Bullets"
+                "name": "Box of bullets"
             },
             {
                 "type": 2008,
-                "name": "4 Shotgun Shells"
+                "name": "4 shotgun shells"
             },
             {
                 "type": 2049,
-                "name": "Box of Shotgun Shells"
+                "name": "Box of shotgun shells"
             },
             {
-                "type": 2003,
+                "type": 2010,
                 "name": "Rocket"
             },
             {
                 "type": 2046,
-                "name": "Box of Rockets"
+                "name": "Box of rockets"
             },
             {
                 "type": 2047,
-                "name": "Energy Cell"
+                "name": "Energy cell"
             },
             {
                 "type": 17,
-                "name": "Energy Cell Pack"
+                "name": "Energy cell pack"
             },
             {
-                "type": 2011,
+                "type": 8,
                 "name": "Backpack"
             },
             {
-                "type": 2012,
+                "type": 2011,
                 "name": "Stimpack"
             },
             {
-                "type": 2013,
+                "type": 2012,
                 "name": "Medikit"
             },
             {
                 "type": 2014,
-                "name": "Health Potion"
+                "name": "Health bonus"
             },
             {
                 "type": 2015,
-                "name": "Armor Bonus"
+                "name": "Armor bonus"
             },
             {
                 "type": 2018,
-                "name": "Green Armor"
+                "name": "Armor"
             },
             {
                 "type": 2019,
-                "name": "Megaarmor (Blue)"
+                "name": "Megaarmor"
             },
             {
                 "type": 83,
                 "name": "Megasphere"
+            },
+            {
+                "type": 2013,
+                "name": "Supercharge"
             },
             {
                 "type": 2022,
@@ -737,55 +741,91 @@
             },
             {
                 "type": 2024,
-                "name": "Partial Invisibility"
+                "name": "Partial invisibility"
             },
             {
                 "type": 2025,
-                "name": "Radiation Suit"
+                "name": "Radiation shielding suit"
             },
             {
                 "type": 2026,
-                "name": "Computer Area Map"
+                "name": "Computer area map"
             },
             {
-                "type": 8,
-                "name": "Light Amplification Goggles"
+                "type": 2045,
+                "name": "Light amplification visor"
             },
             {
                 "type": 5,
-                "name": "Blue Keycard"
+                "name": "Blue keycard"
             },
             {
                 "type": 13,
-                "name": "Yellow Keycard"
+                "name": "Red keycard"
             },
             {
                 "type": 6,
-                "name": "Red Keycard"
+                "name": "Yellow keycard"
             },
             {
                 "type": 40,
-                "name": "Blue Skull Key"
-            },
-            {
-                "type": 39,
-                "name": "Yellow Skull Key"
+                "name": "Blue skull key"
             },
             {
                 "type": 38,
-                "name": "Red Skull Key"
+                "name": "Red skull key"
+            },
+            {
+                "type": 39,
+                "name": "Yellow skull key"
             },
             {
                 "type": 2035,
-                "name": "Exploding Barrel"
+                "name": "Exploding barrel"
             },
             {
                 "type": 70,
-                "name": "Burning Barrel"
+                "name": "Burning barrel"
             },
             {
-                "type": 72,
-                "name": "Tall techno pillar"
+                "type": 43,
+                "name": "Tall Green Pillar"
+            },
+            {
+                "type": 30,
+                "name": "Tall green pillar"
+            },
+            {
+                "type": 32,
+                "name": "Tall red pillar"
+            },
+            {
+                "type": 45,
+                "name": "Short Green Pillar"
+            },
+            {
+                "type": 31,
+                "name": "Short green pillar with skull"
+            },
+            {
+                "type": 46,
+                "name": "Short Red Pillar"
+            },
+            {
+                "type": 33,
+                "name": "Short red pillar with heart"
+            },
+            {
+                "type": 36,
+                "name": "Short green pillar with beating heart"
+            },
+            {
+                "type": 37,
+                "name": "Short red pillar with skull"
+            },
+            {
+                "type": 2028,
+                "name": "Floor lamp"
             },
             {
                 "type": 85,
@@ -796,160 +836,104 @@
                 "name": "Short techno floor lamp"
             },
             {
-                "type": 43,
-                "name": "Tall Green Pillar"
+                "type": 72,
+                "name": "Tall techno pillar"
             },
             {
-                "type": 44,
-                "name": "Tall Red Pillar"
+                "type": 25,
+                "name": "Impaled human"
             },
             {
-                "type": 45,
-                "name": "Short Green Pillar"
+                "type": 26,
+                "name": "Twitching impaled human"
             },
             {
-                "type": 46,
-                "name": "Short Red Pillar"
+                "type": 73,
+                "name": "Hanging victim, guts removed"
             },
             {
-                "type": 30,
-                "name": "Tall Green Pillar with Heart"
+                "type": 74,
+                "name": "Hanging victim, guts and brain removed"
             },
             {
-                "type": 32,
-                "name": "Tall Red Pillar with Skull"
+                "type": 75,
+                "name": "Hanging torso, looking down"
             },
             {
-                "type": 31,
-                "name": "Short Green Pillar with Skull"
+                "type": 76,
+                "name": "Hanging torso, open skull"
             },
             {
-                "type": 33,
-                "name": "Short Red Pillar with Heart"
+                "type": 77,
+                "name": "Hanging torso, looking up"
             },
             {
-                "type": 48,
-                "name": "Stalagmite"
+                "type": 78,
+                "name": "Hanging torso, brain removed"
             },
             {
-                "type": 2028,
-                "name": "Floor Lamp"
+                "type": 49,
+                "name": "Hanging victim, twitching"
             },
             {
-                "type": 22,
-                "name": "Impaled Human 1"
+                "type": 50,
+                "name": "Hanging victim, arms out"
             },
             {
-                "type": 23,
-                "name": "Impaled Human 2"
+                "type": 51,
+                "name": "Hanging victim, one-legged"
             },
             {
-                "type": 28,
-                "name": "Twitching Impaled Human"
+                "type": 52,
+                "name": "Hanging pair of legs"
+            },
+            {
+                "type": 59,
+                "name": "Hanging victim, arms out"
+            },
+            {
+                "type": 60,
+                "name": "Hanging pair of legs"
+            },
+            {
+                "type": 61,
+                "name": "Hanging victim, one-legged"
+            },
+            {
+                "type": 62,
+                "name": "Hanging leg"
+            },
+            {
+                "type": 63,
+                "name": "Hanging victim, twitching"
             },
             {
                 "type": 27,
-                "name": "Skull on a Pole"
+                "name": "Skull on a pole"
+            },
+            {
+                "type": 28,
+                "name": "Five skulls \"shish kebab\""
             },
             {
                 "type": 29,
-                "name": "Five Skulls Shish Kebab"
-            },
-            {
-                "type": 24,
-                "name": "Pile of Skulls and Candles"
-            },
-            {
-                "type": 47,
-                "name": "Tall Technicolor Pillar"
-            },
-            {
-                "type": 41,
-                "name": "Gray Tree"
-            },
-            {
-                "type": 42,
-                "name": "Brown Tree"
-            },
-            {
-                "type": 35,
-                "name": "Candle"
+                "name": "Pile of skulls and candles"
             },
             {
                 "type": 34,
                 "name": "Candelabra"
             },
             {
-                "type": 25,
-                "name": "Hanging Victim (Twitching) 1"
+                "type": 89,
+                "name": "Monster spawner"
             },
             {
-                "type": 26,
-                "name": "Hanging Victim (Twitching) 2"
+                "type": 87,
+                "name": "Spawn spot"
             },
             {
-                "type": 15,
-                "name": "Hanging Victim (Arms Out)"
-            },
-            {
-                "type": 10,
-                "name": "Hanging Victim (One Leg)"
-            },
-            {
-                "type": 12,
-                "name": "Hanging Victim (Legs Apart)"
-            },
-            {
-                "type": 53,
-                "name": "Hanging Pair of Legs"
-            },
-            {
-                "type": 49,
-                "name": "Pool of Blood and Guts 1"
-            },
-            {
-                "type": 50,
-                "name": "Pool of Blood and Guts 2"
-            },
-            {
-                "type": 51,
-                "name": "Pool of Blood"
-            },
-            {
-                "type": 52,
-                "name": "Pool of Brains"
-            },
-            {
-                "type": 59,
-                "name": "Dead Player"
-            },
-            {
-                "type": 19,
-                "name": "Dead Zombieman"
-            },
-            {
-                "type": 20,
-                "name": "Dead Shotgun Guy"
-            },
-            {
-                "type": 21,
-                "name": "Dead Imp"
-            },
-            {
-                "type": 18,
-                "name": "Dead Demon"
-            },
-            {
-                "type": 57,
-                "name": "Dead Cacodemon"
-            },
-            {
-                "type": 55,
-                "name": "Dead Lost Soul (invisible)"
-            },
-            {
-                "type": 56,
-                "name": "Dead Baron of Hell"
+                "type": 14,
+                "name": "Teleport landing"
             }
         ],
         "music": [
