@@ -59,7 +59,7 @@ namespace DGenesis.Pages
             var thingsList = _assetService.GetThingsForGame(Request.Game)
                 .Select(t => $"- {t.Name} (typeId: {t.TypeId})");
             promptBuilder.AppendLine(string.Join("\n", thingsList));
-            promptBuilder.AppendLine("\n## MUSIC");
+            promptBuilder.AppendLine("\n## MUSIQUES DISPONIBLES");
             promptBuilder.AppendLine(string.Join(", ", _assetService.GetMusicForGame(Request.Game)));
 
             var defaultDetails = GetDefaultMapDetailsForGame(Request.Game);
