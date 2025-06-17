@@ -89,80 +89,325 @@ Voici un exemple complet et valide qui illustre comment ces concepts s'assemblen
 
 ```json
 {
-  "format": "D-Genesis",
-  "version": "1.0",
-  "mapInfo": {
-    "game": "doom2",
-    "mapLumpName": "MAP01",
-    "name": "The Iron Furnace",
-    "music": "D_RUNNIN"
-  },
-  "generationParams": {
-    "roomCount": 12,
-    "secretRoomPercentage": 0.15,
-    "avgConnectivity": 2.8,
-    "avgFloorHeightDelta": 48,
-    "avgHeadroom": 128,
-    "totalVerticalSpan": 1024,
-    "verticalTransitionProfile": [
-      { "type": "level", "weight": 40 },
-      { "type": "step", "weight": 35 },
-      { "type": "overlook", "weight": 20 },
-      { "type": "lift", "weight": 5 }
+    "format": "D-Genesis",
+    "version": "1.0",
+    "mapInfo": {
+        "game": "doom2",
+        "mapLumpName": "MAP01",
+        "name": "The Abstract Forge",
+        "music": "D_SHAWN"
+    },
+    "generationParams": {
+        "roomCount": 15,
+        "secretRoomPercentage": 0.20,
+        "avgConnectivity": 2.8,
+        "avgFloorHeightDelta": 48,
+        "avgHeadroom": 128,
+        "totalVerticalSpan": 1024,
+        "verticalTransitionProfile": [
+            {
+                "type": "level",
+                "weight": 40
+            },
+            {
+                "type": "step",
+                "weight": 35
+            },
+            {
+                "type": "overlook",
+                "weight": 20
+            },
+            {
+                "type": "lift",
+                "weight": 5
+            }
+        ]
+    },
+    "themePalette": {
+        "wall_primary": [
+            {
+                "name": "METAL1",
+                "weight": 70
+            },
+            {
+                "name": "STARG1",
+                "weight": 30
+            }
+        ],
+        "wall_accent": [
+            {
+                "name": "SKIN3",
+                "weight": 100
+            }
+        ],
+        "wall_support": [
+            {
+                "name": "SUPPORT3",
+                "weight": 100
+            }
+        ],
+        "wall_secret_indicator": [
+            {
+                "name": "BRICK11",
+                "weight": 100
+            }
+        ],
+        "wall_panel": [
+            {
+                "name": "COMPTALL",
+                "weight": 100
+            }
+        ],
+        "floor_primary": [
+            {
+                "name": "TECH01",
+                "weight": 80
+            },
+            {
+                "name": "FLAT5_4",
+                "weight": 20
+            }
+        ],
+        "floor_accent": [
+            {
+                "name": "FLAT23",
+                "weight": 100
+            }
+        ],
+        "floor_damage_low": [
+            {
+                "name": "NUKAGE1",
+                "weight": 100
+            }
+        ],
+        "floor_damage_high": [
+            {
+                "name": "LAVA1",
+                "weight": 100
+            }
+        ],
+        "ceiling_primary": [
+            {
+                "name": "CEIL1_1",
+                "weight": 100
+            }
+        ],
+        "ceiling_light_source": [
+            {
+                "name": "TLITE6_1",
+                "weight": 100
+            }
+        ],
+        "platform_surface": [
+            {
+                "name": "PLAT1",
+                "weight": 100
+            }
+        ],
+        "door_regular": [
+            {
+                "name": "BIGDOOR2",
+                "weight": 100
+            }
+        ],
+        "door_locked": [
+            {
+                "name": "DOORBLU",
+                "weight": 100
+            }
+        ],
+        "door_exit": [
+            {
+                "name": "EXITDOOR",
+                "weight": 100
+            }
+        ],
+        "door_frame": [
+            {
+                "name": "DOORTRAK",
+                "weight": 100
+            }
+        ],
+        "switch_utility": [
+            {
+                "name": "SW1STAR",
+                "weight": 100
+            }
+        ],
+        "switch_exit": [
+            {
+                "name": "SW1EXIT",
+                "weight": 100
+            }
+        ]
+    },
+    "thematicTokens": [
+        {
+            "name": "Main Wall",
+            "type": "wall",
+            "paletteConcept": "wall_primary",
+            "baseWeight": 100,
+            "adjacencyRules": []
+        },
+        {
+            "name": "Accent Wall",
+            "type": "wall",
+            "paletteConcept": "wall_accent",
+            "baseWeight": 15,
+            "adjacencyRules": []
+        },
+        {
+            "name": "Support Wall",
+            "type": "wall",
+            "paletteConcept": "wall_support",
+            "baseWeight": 25,
+            "adjacencyRules": [
+                {
+                    "adjacentTo": "Main Wall",
+                    "modifier": 2.0
+                }
+            ]
+        },
+        {
+            "name": "Secret Wall",
+            "type": "wall",
+            "paletteConcept": "wall_secret_indicator",
+            "baseWeight": 5,
+            "adjacencyRules": []
+        },
+        {
+            "name": "Panel Wall",
+            "type": "wall",
+            "paletteConcept": "wall_panel",
+            "baseWeight": 10,
+            "adjacencyRules": []
+        },
+        {
+            "name": "Door Frame",
+            "type": "wall",
+            "paletteConcept": "door_frame",
+            "baseWeight": 20,
+            "adjacencyRules": []
+        },
+        {
+            "name": "Utility Switch Wall",
+            "type": "wall",
+            "paletteConcept": "switch_utility",
+            "baseWeight": 5,
+            "adjacencyRules": [
+                {
+                    "adjacentTo": "Panel Wall",
+                    "modifier": 4.0
+                }
+            ]
+        },
+        {
+            "name": "Exit Switch Wall",
+            "type": "wall",
+            "paletteConcept": "switch_exit",
+            "baseWeight": 1,
+            "adjacencyRules": []
+        },
+        {
+            "name": "Main Floor",
+            "type": "flat",
+            "paletteConcept": "floor_primary",
+            "baseWeight": 100,
+            "adjacencyRules": []
+        },
+        {
+            "name": "Accent Floor",
+            "type": "flat",
+            "paletteConcept": "floor_accent",
+            "baseWeight": 20,
+            "adjacencyRules": []
+        },
+        {
+            "name": "Low Damage Floor",
+            "type": "flat",
+            "paletteConcept": "floor_damage_low",
+            "baseWeight": 15,
+            "adjacencyRules": []
+        },
+        {
+            "name": "High Damage Floor",
+            "type": "flat",
+            "paletteConcept": "floor_damage_high",
+            "baseWeight": 5,
+            "adjacencyRules": []
+        },
+        {
+            "name": "Main Ceiling",
+            "type": "flat",
+            "paletteConcept": "ceiling_primary",
+            "baseWeight": 100,
+            "adjacencyRules": []
+        },
+        {
+            "name": "Light Fixture Ceiling",
+            "type": "flat",
+            "paletteConcept": "ceiling_light_source",
+            "baseWeight": 25,
+            "adjacencyRules": []
+        },
+        {
+            "name": "Platform Top",
+            "type": "flat",
+            "paletteConcept": "platform_surface",
+            "baseWeight": 10,
+            "adjacencyRules": []
+        },
+        {
+            "name": "Standard Door",
+            "type": "connection_action",
+            "paletteConcept": "door_regular",
+            "actionInfo": {
+                "special": 1,
+                "properties": null
+            },
+            "baseWeight": 100,
+            "adjacencyRules": []
+        },
+        {
+            "name": "Locked Door",
+            "type": "connection_action",
+            "paletteConcept": "door_locked",
+            "actionInfo": {
+                "special": 26,
+                "properties": { "keyItemName": "Blue Keycard" }
+            },
+            "baseWeight": 10,
+            "adjacencyRules": []
+        },
+        {
+            "name": "Exit Door",
+            "type": "connection_action",
+            "paletteConcept": "door_exit",
+            "actionInfo": {
+                "special": 11,
+                "properties": null
+            },
+            "baseWeight": 1,
+            "adjacencyRules": []
+        },
+        {
+            "name": "Imp",
+            "type": "object",
+            "typeId": 3001,
+            "baseWeight": 100,
+            "adjacencyRules": []
+        },
+        {
+            "name": "Demon",
+            "type": "object",
+            "typeId": 3002,
+            "baseWeight": 50,
+            "adjacencyRules": [
+                {
+                    "adjacentToTypeId": 3001,
+                    "modifier": 2.0
+                }
+            ]
+        }
     ]
-  },
-  "thematicTokens": [
-    {
-      "name": "METAL5", "type": "flat", "typeId": null, "actionInfo": null,
-      "baseWeight": 100, "adjacencyRules": []
-    },
-    {
-      "name": "RROCK05", "type": "flat", "typeId": null, "actionInfo": null,
-      "baseWeight": 80,
-      "adjacencyRules": [ { "adjacentTo": "LAVA1", "modifier": 3 } ]
-    },
-    {
-      "name": "LAVA1", "type": "flat", "typeId": null, "actionInfo": null,
-      "baseWeight": 25,
-      "adjacencyRules": [
-        { "adjacentTo": "RROCK05", "modifier": 4 },
-        { "adjacentTo": "METAL5", "modifier": 0.5 }
-      ]
-    },
-    {
-      "name": "METAL1", "type": "wall", "typeId": null, "actionInfo": null,
-      "baseWeight": 200, "adjacencyRules": []
-    },
-    {
-      "name": "SUPPORT3", "type": "wall", "typeId": null, "actionInfo": null,
-      "baseWeight": 70,
-      "adjacencyRules": [ { "adjacentTo": "METAL1", "modifier": 2 } ]
-    },
-    {
-      "name": "Imp", "type": "object", "typeId": 3001, "actionInfo": null,
-      "baseWeight": 100, "adjacencyRules": []
-    },
-    {
-      "name": "Shotgun Guy", "type": "object", "typeId": 9, "actionInfo": null,
-      "baseWeight": 70, "adjacencyRules": []
-    },
-    {
-      "name": "Demon", "type": "object", "typeId": 3002, "actionInfo": null,
-      "baseWeight": 50,
-      "adjacencyRules": [ { "adjacentToTypeId": 3001, "modifier": 2 } ]
-    },
-    {
-      "name": "Exploding Barrel", "type": "object", "typeId": 2035, "actionInfo": null,
-      "baseWeight": 30,
-      "adjacencyRules": [
-        { "adjacentToTypeId": 3001, "modifier": 1.5 },
-        { "adjacentToTypeId": 9, "modifier": 2 }
-      ]
-    },
-    {
-      "name": "Standard Door", "type": "connection_action", "typeId": null,
-      "actionInfo": { "special": 1, "properties": null },
-      "baseWeight": 100, "adjacencyRules": []
-    }
-  ]
 }
