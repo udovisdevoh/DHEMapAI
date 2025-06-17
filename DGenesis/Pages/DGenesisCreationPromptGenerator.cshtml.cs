@@ -74,8 +74,7 @@ namespace DGenesis.Pages
             promptBuilder.AppendLine("## CONTRAINTES IMPÉRATIVES");
             promptBuilder.AppendLine("1. **VALIDITÉ STRICTE DES ASSETS :** Pour toutes les valeurs `name` dans `themePalette` et `typeId`/`special` dans `thematicTokens`, vous devez **OBLIGATOIREMENT** et **SANS EXCEPTION** utiliser une valeur provenant **EXCLUSIVEMENT** des listes de référence fournies dans la PARTIE 2 pour le jeu spécifié. N'inventez **JAMAIS** un nom ou un identifiant, même s'il semble logiquement correct (ex: n'utilisez pas `RROCK09` si la liste s'arrête à `RROCK08`).");
             promptBuilder.AppendLine("2. **RESPECT DE LA SPÉCIFICATION :** Vous devez respecter scrupuleusement la structure et les types de données décrits dans la SPÉCIFICATION (PARTIE 1) pour tous les champs du JSON.");
-            promptBuilder.AppendLine("3. **LOGIQUE DE GAMEPLAY COHÉRENTE :** Les `adjacencyRules` doivent être logiques. Par exemple, une règle qui augmente la probabilité de trouver des munitions près d'une arme du même type est une bonne règle. Une règle qui augmente la probabilité de trouver une clé près de la porte qu'elle déverrouille est une mauvaise règle et doit être évitée.");
-            promptBuilder.AppendLine("4. **FORMAT DE SORTIE :** Votre réponse finale doit contenir **UNIQUEMENT** le bloc de code JSON, sans aucun texte, explication ou commentaire additionnel.");
+            promptBuilder.AppendLine("3. **FORMAT DE SORTIE :** Votre réponse finale doit contenir **UNIQUEMENT** le bloc de code JSON, sans aucun texte, explication ou commentaire additionnel.");
 
             promptBuilder.AppendLine("\n## mapInfo");
             promptBuilder.AppendLine($"- game: \"{Request.Game}\"");
