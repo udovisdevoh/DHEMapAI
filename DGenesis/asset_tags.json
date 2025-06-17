@@ -416,5 +416,107 @@
                 "music": [ "MUS_E2M2" ]
             }
         }
+    },
+    "hexen": {
+        "tags": {
+            "fortress_decayed": {
+                "description": "Forteresses en ruine, pierre et métal rouillé, bois usé.",
+                "textures": [ "CASTLE01", "CASTLE02", "CASTLE03", "CASTLE04", "CASTLE05", "CASTLE06", "CASTLE07", "STONE01", "STONE02", "STONE03", "RUST01", "RUST02", "RUST03", "WOOD01", "WOOD02", "WOOD03", "SUPPORT1", "SUPPORT2", "SUPPORT3" ],
+                "flats": [ "FLOOR01", "FLOOR02", "FLOOR03", "FLOOR04", "FLOOR05", "FLOOR06", "FLAT01", "FLAT02" ],
+                "things": [ 10030, 107, 8100, 8064, 8067 ],
+                "music": [ "WINNOWR", "JACHR", "LEVELR" ]
+            },
+            "swamp": {
+                "description": "Thème du marais, boue, arbres morts, structures délabrées.",
+                "textures": [ "MOSS01", "MOSS02", "MOSS03", "MOSS04", "WOOD04", "WOOD05", "WOOD06" ],
+                "flats": [ "SWAMP01", "SWAMP02", "SWAMP03", "SWAMP04", "MUD01", "GRASS01", "GRASS02" ],
+                "things": [ 121, 120, 24, 25, 60, 88 ],
+                "music": [ "SWAMPR", "DEEPR" ]
+            },
+            "ice_frozen": {
+                "description": "Thème de glace et de givre, forteresses gelées.",
+                "textures": [ "ICE01", "ICE02", "ICE03", "ICE04", "ICE05", "CRYSTAL1" ],
+                "flats": [ "ICE01", "ICE02", "ICE03", "ICE04" ],
+                "things": [ 93, 94, 95, 96, 89, 90, 91, 92, 73, 76 ],
+                "music": [ "FALCONR", "WUTZITR" ]
+            },
+            "chapel_tapestry": {
+                "description": "Intérieurs de chapelles, avec vitraux et tapisseries.",
+                "textures": [ "STAINED1", "STAINED2", "STAINED3", "GLASS01", "GLASS02", "GLASS03", "TAP01", "TAP02", "TAP03", "TAP04", "TAP05", "TAP06", "TAP07", "MARBLE01", "MARBLE02", "MARBLE03" ],
+                "flats": [ "FLOOR20", "FLOOR21", "FLOOR22", "FLOOR23", "FLOOR24", "FLOOR25" ],
+                "things": [ 114, 8065, 8061, 119 ],
+                "music": [ "CHAP_1R", "SIMONR" ]
+            },
+            "demon_lava": {
+                "description": "Thème démoniaque et infernal, avec lave et symboles impies.",
+                "textures": [ "DEMON_A1", "DEMON_B1", "LAVA1", "FIREBAK1", "FLAME_A1", "FLAME_B1", "MARBLE05", "MARBLE06", "MARBLE07" ],
+                "flats": [ "LAVA01", "FLAT15", "FLAT16", "FLAT17", "FLAT18", "CEILING5", "CEILING6" ],
+                "things": [ 10060, 8080, 31, 10080, 10200 ],
+                "music": [ "VOIDR", "FOOJAR", "FUBASR" ]
+            },
+            "stone": {
+                "description": "Assets génériques en pierre.",
+                "textures": [ "STONE01", "STONE02", "STONE03", "STONE04", "STONE05", "STONE06", "STONE07", "STONE08", "STONE09", "STONE10", "STONE11", "STONE12", "BOLDER01", "CAVE01", "CAVE02", "CAVE03", "CAVE04", "CAVE05" ],
+                "flats": [ "FLOOR01", "FLOOR02", "FLOOR03", "FLOOR04", "FLOOR05", "FLOOR06" ],
+                "things": [ 48, 49, 50, 51, 52, 56, 57 ],
+                "music": [ "LEVELR" ]
+            },
+            "wood": {
+                "description": "Assets génériques en bois.",
+                "textures": [ "WOOD01", "WOOD02", "WOOD03", "WOOD04", "WOOD05", "WOOD06", "WOOD07", "WOOD08", "WOODGARG", "WOODMET1", "WOODMET2", "WOODMET3" ],
+                "flats": [ "FLAT03", "FLAT04" ],
+                "things": [ 8100, 24, 25, 28, 29, 60 ],
+                "music": [ "JACHR" ]
+            },
+            "metal": {
+                "description": "Assets génériques en métal.",
+                "textures": [ "METAL01", "METAL02", "METAL03", "METAL04", "METAL05", "METAL06", "RUST01", "RUST02", "RUST03", "BRASS01", "BRASS_A1" ],
+                "flats": [ "FLAT09", "FLAT10", "FLAT11", "FLAT12", "FLAT13", "FLAT14" ],
+                "things": [ 8064, 8067, 8065 ],
+                "music": [ "PERCR" ]
+            },
+            "door": {
+                "description": "Textures de portes pour Hexen.",
+                "textures": [ "BIGDOOR1", "DOOR01", "DOOR02", "DOOR03", "DOOR04", "DOOR05", "DOOR06", "DOOR07", "DOOR08", "DOOR09", "DOOR10", "DOOR11", "DOOR12", "DOOR13", "DOOR14", "GATE01", "GATE02", "GATE03", "GATE04" ],
+                "flats": [],
+                "things": [],
+                "music": []
+            },
+            "switch": {
+                "description": "Textures d'interrupteurs pour Hexen.",
+                "textures": [ "SWITCH01", "SWITCH02", "SWITCH03", "SWITCH04", "SWITCH05", "SWITCH06", "SWITCH07", "SWITCH08" ],
+                "flats": [],
+                "things": [],
+                "music": []
+            },
+            "liquid": {
+                "description": "Lave, eau et boue pour Hexen.",
+                "textures": [ "LAVA1", "FWATER01", "FWATER02", "FWATER03", "FWATER04", "WATER01", "WATER02", "WATER03", "WATER04", "WATER05", "WATER06" ],
+                "flats": [ "LAVA01", "MUD01", "SWAMP01", "SWAMP02", "SWAMP03", "SWAMP04", "WATER01", "WATER02", "WATER03", "WATER04", "WATER05", "WATER06" ],
+                "things": [],
+                "music": [ "SWAMPR" ]
+            },
+            "light_source": {
+                "description": "Sources de lumière pour Hexen.",
+                "textures": [ "FLAME_A1", "FLAME_B1" ],
+                "flats": [ "CEILING4" ],
+                "things": [ 8061, 8060, 116, 119 ],
+                "music": []
+            },
+            "puzzle_item": {
+                "description": "Objets de quête uniques à Hexen.",
+                "textures": [],
+                "flats": [],
+                "things": [ 8032, 8200, 8031, 9021, 9019, 9020, 9018, 9007, 8035, 8034, 9005, 9009, 8033, 9014, 9015, 9003, 9016, 8038, 9008, 9004, 8037, 9006, 9010, 9017, 8036, 8030, 8039, 9002 ],
+                "music": [ "SECRETR" ]
+            },
+            "class_specific": {
+                "description": "Points de départ pour les différentes classes de joueurs.",
+                "textures": [],
+                "flats": [],
+                "things": [ 100, 101, 102, 103 ],
+                "music": []
+            }
+        }
     }
 }
