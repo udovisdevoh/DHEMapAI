@@ -80,8 +80,7 @@ C'est le cœur du format. Il définit une liste d'assets spécifiques (textures,
 | `name`             | Chaîne               | Le nom de l'asset (texture, flat, ou nom de 'thing'). Doit être un nom valide pour le jeu cible.                                          |
 | `type`             | Chaîne               | Le type de token. **Enum**: `"wall"`, `"flat"`, `"object"`, `"connection_action"`.                                                        |
 | `typeId`           | Entier \| `null`     | Si le `type` est `"object"`, ceci est l'identifiant numérique canonique du 'thing'.                                                          |
-| `actionInfo`       | Objet \| `null`      | Si le `type` est `"connection_action"`, cet objet contient les détails de l'action : `special` (Entier) et `properties` (Objet).         |
-| `baseWeight`       | Entier               | La probabilité de base (non-contextuelle) de ce token d'être choisi.                                                                     |
+| `actionInfo`       | Objet \| `null`      | Si le `type` est `"connection_action"`, cet objet contient les détails de l'action : `special` (Entier) et `properties` (Objet).         |                                                    |
 | `adjacencyRules`   | Tableau d'objets     | Un tableau de règles qui modifient le poids du token en fonction de ses voisins.                                                         |
 
 #### 2.5.1. L'objet AdjacencyRule
@@ -89,7 +88,7 @@ Définit comment la probabilité d'un token est affectée par la présence d'un 
 
 | Clé                | Type   | Description                                                                                             |
 |--------------------|--------|---------------------------------------------------------------------------------------------------------|
-| `modifier`         | Nombre | Le multiplicateur à appliquer au `baseWeight`. > 1 augmente la probabilité, < 1 la diminue.             |
+| `modifier`         | Nombre | Le multiplicateur à appliquer à la probabilité de base. > 1 augmente la probabilité, < 1 la diminue.             |
 | `adjacentTo`       | Chaîne | Cible un autre token par son `name` (utile pour murs/sols).                                             |
 | `adjacentToTypeId` | Entier | Cible un token de type `object` par son `typeId` (utile pour 'things').                                  |
 
@@ -274,13 +273,11 @@ Voici un exemple complet et valide qui illustre comment ces concepts s'assemblen
         {
             "name": "METAL1",
             "type": "wall",
-            "baseWeight": 100,
             "adjacencyRules": []
         },
         {
             "name": "SUPPORT3",
             "type": "wall",
-            "baseWeight": 40,
             "adjacencyRules": [
                 {
                     "adjacentTo": "METAL1",
@@ -291,7 +288,6 @@ Voici un exemple complet et valide qui illustre comment ces concepts s'assemblen
         {
             "name": "SKIN3",
             "type": "wall",
-            "baseWeight": 20,
             "adjacencyRules": [
                 {
                     "adjacentTo": "LAVA1",
@@ -306,27 +302,23 @@ Voici un exemple complet et valide qui illustre comment ces concepts s'assemblen
         {
             "name": "TECH01",
             "type": "flat",
-            "baseWeight": 100,
             "adjacencyRules": []
         },
         {
             "name": "LAVA1",
             "type": "flat",
-            "baseWeight": 25,
             "adjacencyRules": []
         },
         {
             "name": "Imp",
             "type": "object",
             "typeId": 3001,
-            "baseWeight": 100,
             "adjacencyRules": []
         },
         {
             "name": "Demon",
             "type": "object",
             "typeId": 3002,
-            "baseWeight": 50,
             "adjacencyRules": [
                 {
                     "adjacentToTypeId": 3001,
@@ -338,7 +330,6 @@ Voici un exemple complet et valide qui illustre comment ces concepts s'assemblen
             "name": "Exploding Barrel",
             "type": "object",
             "typeId": 2035,
-            "baseWeight": 30,
             "adjacencyRules": [
                 {
                     "adjacentToTypeId": 9,
