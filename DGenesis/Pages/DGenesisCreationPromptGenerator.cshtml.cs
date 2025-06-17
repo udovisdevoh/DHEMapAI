@@ -45,7 +45,6 @@ namespace DGenesis.Pages
 
             promptBuilder.AppendLine("Votre mission est de générer un fichier JSON complet et valide qui respecte scrupuleusement le format 'D-Genesis'.");
             promptBuilder.AppendLine("Vous devez utiliser la spécification, les listes d'assets et les directives de conception ci-dessous pour accomplir cette tâche.");
-            promptBuilder.AppendLine("Ne produisez QUE le bloc de code JSON final, sans aucun texte ou commentaire additionnel.");
 
             promptBuilder.AppendLine("\n--- PARTIE 1 : SPÉCIFICATION DU FORMAT D-GENESIS ---\n");
             promptBuilder.AppendLine(GetDGenesisSpecification());
@@ -70,10 +69,13 @@ namespace DGenesis.Pages
             promptBuilder.AppendLine(string.Join("\n", musicList));
 
             var defaultDetails = GetDefaultMapDetailsForGame(Request.Game);
-            promptBuilder.AppendLine("\n--- PARTIE 3 : DIRECTIVES DE CONCEPTION ---\n");
+            promptBuilder.AppendLine("\n--- PARTIE 3 : DIRECTIVES DE CONCEPTION ET CONTRAINTES ---\n");
 
-            promptBuilder.AppendLine("## CONTRAINTE ABSOLUE : VALIDITÉ DES ASSETS");
-            promptBuilder.AppendLine($"Pour toutes les valeurs `name` dans `themePalette`, vous devez **OBLIGATOIREMENT** et **SANS EXCEPTION** utiliser un nom de texture ou de flat provenant **EXCLUSIVEMENT** des listes fournies dans la PARTIE 2 pour le jeu '{Request.Game}'. N'inventez **JAMAIS** un nom d'asset, même s'il semble logiquement correct (ex: n'utilisez pas `RROCK09` si la liste s'arrête à `RROCK08`). Toute déviation de cette règle rendra le fichier final inutilisable.");
+            promptBuilder.AppendLine("## CONTRAINTES IMPÉRATIVES");
+            promptBuilder.AppendLine("1. **VALIDITÉ STRICTE DES ASSETS :** Pour toutes les valeurs `name` dans `themePalette` et `typeId`/`special` dans `thematicTokens`, vous devez **OBLIGATOIREMENT** et **SANS EXCEPTION** utiliser une valeur provenant **EXCLUSIVEMENT** des listes de référence fournies dans la PARTIE 2 pour le jeu spécifié. N'inventez **JAMAIS** un nom ou un identifiant, même s'il semble logiquement correct (ex: n'utilisez pas `RROCK09` si la liste s'arrête à `RROCK08`).");
+            promptBuilder.AppendLine("2. **RESPECT DE LA SPÉCIFICATION :** Vous devez respecter scrupuleusement la structure et les types de données décrits dans la SPÉCIFICATION (PARTIE 1) pour tous les champs du JSON.");
+            promptBuilder.AppendLine("3. **LOGIQUE DE GAMEPLAY COHÉRENTE :** Les `adjacencyRules` doivent être logiques. Par exemple, une règle qui augmente la probabilité de trouver des munitions près d'une arme du même type est une bonne règle. Une règle qui augmente la probabilité de trouver une clé près de la porte qu'elle déverrouille est une mauvaise règle et doit être évitée.");
+            promptBuilder.AppendLine("4. **FORMAT DE SORTIE :** Votre réponse finale doit contenir **UNIQUEMENT** le bloc de code JSON, sans aucun texte, explication ou commentaire additionnel.");
 
             promptBuilder.AppendLine("\n## mapInfo");
             promptBuilder.AppendLine($"- game: \"{Request.Game}\"");
@@ -90,7 +92,7 @@ namespace DGenesis.Pages
             promptBuilder.AppendLine($"- totalVerticalSpan: {Request.TotalVerticalSpan}");
 
             promptBuilder.AppendLine("\n## Thème et Comportement (Instructions pour créer les thematicTokens)");
-            promptBuilder.AppendLine("À partir des descriptions ci-dessous, vous devez créer la liste `thematicTokens` en choisissant des assets pertinents dans les listes de la PARTIE 2. Définissez des `baseWeight` et des `adjacencyRules` logiques pour créer un thème cohérent.");
+            promptBuilder.AppendLine("À partir des descriptions ci-dessous, vous devez créer la liste `thematicTokens` en choisissant des assets pertinents dans les listes de la PARTIE 2. Définissez des `baseWeight` et des `adjacencyRules` logiques pour créer un thème cohérent, en respectant les CONTRAINTES IMPÉRATIVES ci-dessus.");
             promptBuilder.AppendLine("\n### Thème Architectural (murs, sols, plafonds, style des connexions):");
             promptBuilder.AppendLine(Request.ArchitecturalTheme);
             promptBuilder.AppendLine("\n### Thème de Gameplay (monstres, objets, ambiance, rythme):");
