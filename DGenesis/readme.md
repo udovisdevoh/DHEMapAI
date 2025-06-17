@@ -103,6 +103,29 @@ Chaque entrée dans la `sectorBehaviorPalette` est une clé représentant un nom
 | `sectorSpecial` | Entier | L'identifiant numérique du "special" de secteur, basé sur le jeu cible.     |
 | `weight`        | Entier | La probabilité relative de cet effet d'être choisi pour un secteur donné. |
 
+### 2.7. L'objet `featurePalette` (Optionnel)
+
+Cet objet définit un "budget" de probabilités pour les mécaniques de jeu et les structures complexes. Le générateur peut utiliser les poids (`weight`) relatifs de cette palette pour déterminer la fréquence et le type des "features" à implémenter sur la carte. Ce système remplace le paramètre `secretRoomPercentage`.
+
+Chaque entrée dans la `featurePalette` est une clé représentant le concept, et une valeur qui est un objet décrivant la feature :
+
+| Clé           | Type   | Description                                                           |
+|---------------|--------|-----------------------------------------------------------------------|
+| `description` | Chaîne | Une brève description lisible du concept pour clarifier son intention. |
+| `weight`      | Entier | La probabilité relative de cette feature d'apparaître sur la carte.    |
+
+#### Concepts de Features Reconnus
+La liste des clés reconnues pour la `featurePalette` est la suivante :
+- `door`
+- `key_door`
+- `switch_door`
+- `secret_door`
+- `secret_switch`
+- `secret_exit`
+- `crushing_ceiling`
+- `elevator`
+- `teleporter`
+
 ---
 
 ## 3. Fichier d'Exemple Canonique
