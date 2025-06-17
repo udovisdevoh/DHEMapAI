@@ -55,12 +55,12 @@ Définit les contraintes structurelles et de gameplay de haut niveau.
 | `totalVerticalSpan`         | Entier           | Différence de hauteur maximale autorisée pour toute la carte.                   | `1024`  |
 | `verticalTransitionProfile` | Tableau d'objets | Définit les probabilités des types de connexions verticales.                    | `[...]` |
 
-#### L'objet `verticalTransitionProfile`
+#### L'objet `verticalTransitionProfile` (Requis)
 Chaque objet du tableau `verticalTransitionProfile` contient :
 - `type` (Chaîne): Le type de transition. **Enum**: `"level"` (plain-pied), `"step"` (escaliers), `"overlook"` (fenêtre/balcon), `"lift"` (ascenseur).
 - `weight` (Entier): La probabilité relative de ce type de transition.
 
-### 2.4. L'objet `themePalette` (Obligatoire)
+### 2.4. L'objet `themePalette` (Requis)
 Cet objet définit une palette de concepts thématiques de haut niveau. Il sera utilisé par un générateur pour une sélection aléatoire pondérée d'assets de base, ou comme référence pour des algorithmes plus simples, fonctionnant indépendamment du système `thematicTokens`.
 
 Chaque clé de cet objet est un **concept** (ex: `"wall_primary"`), et sa valeur est un tableau d'objets de textures pondérées (`{ "name": String, "weight": Integer }`).
@@ -91,6 +91,18 @@ Définit comment la probabilité d'un token est affectée par la présence d'un 
 | `modifier`         | Nombre | Le multiplicateur à appliquer à la probabilité de base. > 1 augmente la probabilité, < 1 la diminue.             |
 | `adjacentTo`       | Chaîne | Cible un autre token par son `name` (utile pour murs/sols).                                             |
 | `adjacentToTypeId` | Entier | Cible un token de type `object` par son `typeId` (utile pour 'things').                                  |
+
+### 2.6. L'objet `sectorBehaviorPalette` (Requis)
+
+Cet objet définit un ensemble de comportements de secteur qui peuvent être appliqués sur la carte. Il permet de contrôler la probabilité relative des différents effets spéciaux (lumière, dégâts, etc.) en leur associant un poids. Ce système peut être utilisé par un générateur pour attribuer des comportements de manière globale.
+
+Chaque entrée dans la `sectorBehaviorPalette` est une clé représentant un nom de concept (ex: `"flickering_light"`) dont la valeur est un objet décrivant le comportement :
+
+| Clé             | Type   | Description                                                                 |
+|-----------------|--------|-----------------------------------------------------------------------------|
+| `description`   | Chaîne | Une brève description lisible de l'effet pour clarifier son intention.      |
+| `sectorSpecial` | Entier | L'identifiant numérique du "special" de secteur, basé sur le jeu cible.     |
+| `weight`        | Entier | La probabilité relative de cet effet d'être choisi pour un secteur donné. |
 
 ---
 
