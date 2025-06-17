@@ -1,0 +1,446 @@
+{
+    "format": "D-Genesis",
+    "version": "1.0",
+    "mapInfo": {
+        "game": "doom2",
+        "mapLumpName": "MAP01",
+        "name": "Laboratoire Terraforma",
+        "music": "D_TENSE"
+    },
+    "generationParams": {
+        "roomCount": 18,
+        "secretRoomPercentage": 0.10,
+        "avgConnectivity": 2.2,
+        "avgFloorHeightDelta": 64,
+        "avgHeadroom": 160,
+        "totalVerticalSpan": 1280,
+        "verticalTransitionProfile": [
+            {
+                "type": "level",
+                "weight": 20
+            },
+            {
+                "type": "step",
+                "weight": 30
+            },
+            {
+                "type": "overlook",
+                "weight": 40
+            },
+            {
+                "type": "lift",
+                "weight": 10
+            }
+        ]
+    },
+    "themePalette": {
+        "wall_primary": [
+            {
+                "name": "TEKWALL1",
+                "weight": 60
+            },
+            {
+                "name": "STARG1",
+                "weight": 40
+            }
+        ],
+        "wall_accent": [
+            {
+                "name": "GSTVINE2",
+                "weight": 50
+            },
+            {
+                "name": "BROVINE2",
+                "weight": 50
+            }
+        ],
+        "wall_support": [
+            {
+                "name": "SUPPORT3",
+                "weight": 70
+            },
+            {
+                "name": "METAL4",
+                "weight": 30
+            }
+        ],
+        "wall_secret_indicator": [
+            {
+                "name": "SLADPOIS",
+                "weight": 100
+            }
+        ],
+        "wall_panel": [
+            {
+                "name": "COMPTALL",
+                "weight": 80
+            },
+            {
+                "name": "TEKGREN1",
+                "weight": 20
+            }
+        ],
+        "door_frame": [
+            {
+                "name": "DOORTRAK",
+                "weight": 100
+            }
+        ],
+        "floor_primary": [
+            {
+                "name": "FLAT23",
+                "weight": 50
+            },
+            {
+                "name": "MFLR8_1",
+                "weight": 50
+            }
+        ],
+        "floor_accent": [
+            {
+                "name": "GRASS1",
+                "weight": 60
+            },
+            {
+                "name": "RROCK09",
+                "weight": 40
+            }
+        ],
+        "floor_damage_low": [
+            {
+                "name": "NUKAGE1",
+                "weight": 100
+            }
+        ],
+        "floor_damage_high": [
+            {
+                "name": "NUKAGE3",
+                "weight": 100
+            }
+        ],
+        "ceiling_primary": [
+            {
+                "name": "CEIL5_1",
+                "weight": 60
+            },
+            {
+                "name": "FLAT1",
+                "weight": 40
+            }
+        ],
+        "ceiling_light_source": [
+            {
+                "name": "TLITE6_1",
+                "weight": 50
+            },
+            {
+                "name": "GRNLITE1",
+                "weight": 50
+            }
+        ],
+        "platform_surface": [
+            {
+                "name": "PLAT1",
+                "weight": 100
+            }
+        ],
+        "door_regular": [
+            {
+                "name": "SPCDOOR1",
+                "weight": 100
+            }
+        ],
+        "door_locked": [
+            {
+                "name": "DOORBLU",
+                "weight": 100
+            }
+        ],
+        "door_exit": [
+            {
+                "name": "SPCDOOR4",
+                "weight": 100
+            }
+        ],
+        "switch_utility": [
+            {
+                "name": "SW1COMP",
+                "weight": 50
+            },
+            {
+                "name": "SW1TEK",
+                "weight": 50
+            }
+        ],
+        "switch_exit": [
+            {
+                "name": "SW1EXIT",
+                "weight": 100
+            }
+        ],
+        "door_indicator_blue": [
+            {
+                "name": "LITEBLU4",
+                "weight": 100
+            }
+        ],
+        "door_indicator_red": [
+            {
+                "name": "LITERED",
+                "weight": 100
+            }
+        ],
+        "door_indicator_yellow": [
+            {
+                "name": "LITE5",
+                "weight": 100
+            }
+        ]
+    },
+    "thematicTokens": [
+        {
+            "name": "Lab Wall Panel",
+            "type": "wall",
+            "paletteConcept": "wall_primary",
+            "baseWeight": 100,
+            "adjacencyRules": []
+        },
+        {
+            "name": "Vine Covered Wall",
+            "type": "wall",
+            "paletteConcept": "wall_accent",
+            "baseWeight": 40,
+            "adjacencyRules": [
+                {
+                    "adjacentTo": "Lab Wall Panel",
+                    "modifier": 2.0
+                }
+            ]
+        },
+        {
+            "name": "Support Strut",
+            "type": "wall",
+            "paletteConcept": "wall_support",
+            "baseWeight": 25,
+            "adjacencyRules": []
+        },
+        {
+            "name": "Slimy Secret Wall",
+            "type": "wall",
+            "paletteConcept": "wall_secret_indicator",
+            "baseWeight": 3,
+            "adjacencyRules": []
+        },
+        {
+            "name": "Computer Terminal",
+            "type": "wall",
+            "paletteConcept": "wall_panel",
+            "baseWeight": 20,
+            "adjacencyRules": []
+        },
+        {
+            "name": "Computer Switch",
+            "type": "wall",
+            "paletteConcept": "switch_utility",
+            "baseWeight": 5,
+            "adjacencyRules": [
+                {
+                    "adjacentTo": "Computer Terminal",
+                    "modifier": 10.0
+                }
+            ]
+        },
+        {
+            "name": "Metal Grating Floor",
+            "type": "flat",
+            "paletteConcept": "floor_primary",
+            "baseWeight": 100,
+            "adjacencyRules": []
+        },
+        {
+            "name": "Overgrown Dirt Floor",
+            "type": "flat",
+            "paletteConcept": "floor_accent",
+            "baseWeight": 50,
+            "adjacencyRules": [
+                {
+                    "adjacentTo": "Vine Covered Wall",
+                    "modifier": 3.0
+                }
+            ]
+        },
+        {
+            "name": "Coolant Spill",
+            "type": "flat",
+            "paletteConcept": "floor_damage_low",
+            "baseWeight": 15,
+            "adjacencyRules": []
+        },
+        {
+            "name": "Industrial Ceiling",
+            "type": "flat",
+            "paletteConcept": "ceiling_primary",
+            "baseWeight": 100,
+            "adjacencyRules": []
+        },
+        {
+            "name": "Flickering Green Light",
+            "type": "flat",
+            "paletteConcept": "ceiling_light_source",
+            "baseWeight": 40,
+            "adjacencyRules": []
+        },
+        {
+            "name": "Airlock Door",
+            "type": "connection_action",
+            "paletteConcept": "door_regular",
+            "actionInfo": {
+                "special": 1,
+                "properties": null
+            },
+            "baseWeight": 100,
+            "adjacencyRules": []
+        },
+        {
+            "name": "Blue Keycard Door",
+            "type": "connection_action",
+            "paletteConcept": "door_locked",
+            "actionInfo": {
+                "special": 26,
+                "properties": { "keyItemName": "Blue Keycard" }
+            },
+            "baseWeight": 10,
+            "adjacencyRules": []
+        },
+        {
+            "name": "Escape Pod Door",
+            "type": "connection_action",
+            "paletteConcept": "door_exit",
+            "actionInfo": {
+                "special": 11,
+                "properties": null
+            },
+            "baseWeight": 1,
+            "adjacencyRules": []
+        },
+        {
+            "name": "Zombieman",
+            "type": "object",
+            "typeId": 3004,
+            "paletteConcept": null,
+            "actionInfo": null,
+            "baseWeight": 100,
+            "adjacencyRules": []
+        },
+        {
+            "name": "Shotgun Guy",
+            "type": "object",
+            "typeId": 9,
+            "paletteConcept": null,
+            "actionInfo": null,
+            "baseWeight": 70,
+            "adjacencyRules": []
+        },
+        {
+            "name": "Revenant",
+            "type": "object",
+            "typeId": 66,
+            "paletteConcept": null,
+            "actionInfo": null,
+            "baseWeight": 20,
+            "adjacencyRules": [
+                {
+                    "adjacentTo": "Computer Terminal",
+                    "modifier": 2.0
+                }
+            ]
+        },
+        {
+            "name": "Arachnotron",
+            "type": "object",
+            "typeId": 68,
+            "paletteConcept": null,
+            "actionInfo": null,
+            "baseWeight": 15,
+            "adjacencyRules": []
+        },
+        {
+            "name": "Blue Keycard",
+            "type": "object",
+            "typeId": 5,
+            "paletteConcept": null,
+            "actionInfo": null,
+            "baseWeight": 1,
+            "adjacencyRules": []
+        },
+        {
+            "name": "Plasma Gun",
+            "type": "object",
+            "typeId": 2004,
+            "paletteConcept": null,
+            "actionInfo": null,
+            "baseWeight": 2,
+            "adjacencyRules": []
+        },
+        {
+            "name": "Energy Cell",
+            "type": "object",
+            "typeId": 2047,
+            "paletteConcept": null,
+            "actionInfo": null,
+            "baseWeight": 30,
+            "adjacencyRules": [
+                {
+                    "adjacentToTypeId": 2004,
+                    "modifier": 4.0
+                }
+            ]
+        },
+        {
+            "name": "Radiation Suit",
+            "type": "object",
+            "typeId": 2025,
+            "paletteConcept": null,
+            "actionInfo": null,
+            "baseWeight": 5,
+            "adjacencyRules": [
+                {
+                    "adjacentTo": "Coolant Spill",
+                    "modifier": 5.0
+                }
+            ]
+        },
+        {
+            "name": "Tall Techno Floor Lamp",
+            "type": "object",
+            "typeId": 85,
+            "paletteConcept": null,
+            "actionInfo": null,
+            "baseWeight": 40,
+            "adjacencyRules": []
+        },
+        {
+            "name": "Exploding Barrel",
+            "type": "object",
+            "typeId": 2035,
+            "paletteConcept": null,
+            "actionInfo": null,
+            "baseWeight": 30,
+            "adjacencyRules": []
+        },
+        {
+            "name": "Tall Green Pillar",
+            "type": "object",
+            "typeId": 30,
+            "paletteConcept": null,
+            "actionInfo": null,
+            "baseWeight": 10,
+            "adjacencyRules": [
+                {
+                    "adjacentTo": "Overgrown Dirt Floor",
+                    "modifier": 2.0
+                }
+            ]
+        }
+    ]
+}
