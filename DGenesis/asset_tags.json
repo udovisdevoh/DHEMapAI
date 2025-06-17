@@ -24,7 +24,7 @@
             },
             "metal": {
                 "description": "Thème industriel, bases métalliques, structures rouillées ou high-tech.",
-                "textures": [ "METAL", "METAL1", "SUPPORT2", "SUPPORT3", "BIGDOOR2", "STARG1", "DOORTRAK", "IRON1", "IRON2" ],
+                "textures": [ "METAL", "METAL1", "SUPPORT2", "SUPPORT3", "BIGDOOR2", "STARG1", "DOORTRAK" ],
                 "flats": [ "FLAT5_1", "FLAT5_2", "FLAT5_3", "FLAT5_4", "CEIL3_5", "CEIL3_6" ],
                 "things": [ 2035 ],
                 "music": [ "D_E1M1", "D_E1M7" ]
@@ -94,7 +94,7 @@
             },
             "secret": {
                 "description": "Murs ou mécanismes souvent utilisés pour les secrets.",
-                "textures": [ "SP_DUDE1", "SP_DUDE2", "SP_DUDE3", "BRICK11" ],
+                "textures": [ "SP_DUDE1", "SP_DUDE2", "SP_DUDE3" ],
                 "flats": [],
                 "things": [],
                 "music": []
@@ -105,7 +105,7 @@
         "tags": {
             "metal": {
                 "description": "Thème industriel, bases métalliques, structures rouillées ou high-tech.",
-                "textures": [ "METAL", "METAL1", "METAL2", "METAL3", "METAL4", "METAL5", "SUPPORT2", "SUPPORT3", "BIGDOOR2", "STARG1", "DOORTRAK", "SILVER1", "TEKBRON1", "TEKBRON2", "IRON1", "IRON2", "IRON3", "IRON4" ],
+                "textures": [ "METAL", "METAL1", "METAL2", "METAL3", "METAL4", "METAL5", "SUPPORT2", "SUPPORT3", "BIGDOOR2", "STARG1", "DOORTRAK", "SILVER1", "TEKBRON1", "TEKBRON2" ],
                 "flats": [ "MFLR8_1", "MFLR8_2", "MFLR8_3", "MFLR8_4", "CEIL3_5", "CEIL3_6", "SFLR7_1", "SFLR7_4", "PLAT1" ],
                 "things": [ 2035, 72, 85, 86, 68 ],
                 "music": [ "D_SHAWN", "D_DDTBLU", "D_IN_CIT" ]
@@ -134,7 +134,7 @@
             "wood": {
                 "description": "Thème boisé, structures en bois, lambris, bibliothèques.",
                 "textures": [ "WOOD1", "WOOD3", "WOOD4", "WOOD5", "WOOD6", "WOOD7", "WOOD8", "WOOD9", "WOOD10", "WOOD12", "WOODVERT", "WOODMET1", "PANBOOK", "BRONZE1", "BRONZE2" ],
-                "flats": [ "FLOOR0_1", "FLOOR0_2", "RROCK14", "RROCK15" ],
+                "flats": [ "FLOOR0_1", "FLOOR0_2" ],
                 "things": [],
                 "music": [ "D_DOOM" ]
             },
@@ -238,7 +238,7 @@
             },
             "border": {
                 "description": "Textures conçues pour être utilisées comme bordures ou transitions.",
-                "textures": [ "DOORTRAK", "IRON2", "IRON3", "PANBORD1", "PANBORD2", "SKINEDGE", "SILVER2" ],
+                "textures": [ "DOORTRAK", "PANBORD1", "PANBORD2", "SKINEDGE", "SILVER2" ],
                 "flats": [],
                 "things": [],
                 "music": []
