@@ -31,10 +31,10 @@ namespace DGenesis.Models
 
         [Display(Name = "Description du Thème Architectural")]
         [DataType(DataType.MultilineText)]
-        public string ArchitecturalTheme { get; set; }
+        public string ArchitecturalTheme { get; set; } = "(Soyez créatif)";
 
         [Display(Name = "Description du Gameplay (Monstres, Objets, Ambiance)")]
         [DataType(DataType.MultilineText)]
-        public string GameplayTheme { get; set; }
+        public string GameplayTheme { get; set; } = "(Soyez créatif)";
     }
 }
