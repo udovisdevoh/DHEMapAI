@@ -105,5 +105,28 @@ namespace DGenesis.Services
             var gameData = GetGameData(game);
             return gameData?.Music ?? new List<string>();
         }
+
+        public static Dictionary<int, string> GetAllSectorEffects()
+        {
+            return new Dictionary<int, string>
+            {
+                { 0, "Normal" },
+                { 1, "Light - Blink Random" },
+                { 2, "Light - Blink 0.5s" },
+                { 3, "Light - Blink 1.0s" },
+                { 4, "Damage 20% + Light Blink 0.5s" },
+                { 5, "Damage 10% per second" },
+                { 7, "Damage 5% per second" },
+                { 8, "Light - Oscillates" },
+                { 9, "Secret Area" },
+                { 10, "Door - Close after 30s" },
+                { 11, "End Level on Death + Damage 20%" },
+                { 12, "Light - Blink 0.5s Synchronized" },
+                { 13, "Light - Blink 1.0s Synchronized" },
+                { 14, "Door - Open after 300s" },
+                { 16, "Damage 20% per second" },
+                { 17, "Light - Flicker Randomly" }
+            };
+        }
     }
 }

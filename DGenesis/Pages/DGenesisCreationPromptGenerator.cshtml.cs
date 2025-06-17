@@ -68,6 +68,11 @@ namespace DGenesis.Pages
             var musicList = _assetService.GetMusicForGame(Request.Game).Select(m => $"- `{m}`");
             promptBuilder.AppendLine(string.Join("\n", musicList));
 
+            promptBuilder.AppendLine("\n## EFFETS DE SECTEUR POSSIBLES");
+            var sectorEffectsList = GameAssetService.GetAllSectorEffects()
+                .Select(kvp => $"- {kvp.Value} (special: {kvp.Key})");
+            promptBuilder.AppendLine(string.Join("\n", sectorEffectsList));
+
             var defaultDetails = GetDefaultMapDetailsForGame(Request.Game);
             promptBuilder.AppendLine("\n--- PARTIE 3 : DIRECTIVES DE CONCEPTION ET CONTRAINTES ---\n");
 
