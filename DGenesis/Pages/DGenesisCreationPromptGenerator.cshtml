@@ -1,0 +1,194 @@
+﻿@page
+@model DGenesis.Pages.DGenesisCreationPromptGeneratorModel
+@{
+    ViewData["Title"] = "Générateur de Prompt D-Genesis";
+}
+
+<style>
+    body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        line-height: 1.6;
+        background-color: #f8f9fa;
+    }
+
+    .container {
+        max-width: 1200px;
+        margin: 20px auto;
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .form-container, .prompt-container {
+        background: #fff;
+        padding: 25px;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    }
+
+    .form-group {
+        margin-bottom: 1.25rem;
+    }
+
+    label {
+        display: block;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+        color: #495057;
+    }
+
+    input, select, textarea {
+        width: 100%;
+        padding: 0.75rem;
+        font-size: 1rem;
+        border: 1px solid #ced4da;
+        border-radius: 4px;
+        box-sizing: border-box;
+        transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    }
+
+        input:focus, select:focus, textarea:focus {
+            border-color: #80bdff;
+            outline: 0;
+            box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
+        }
+
+    textarea {
+        min-height: 150px;
+        resize: vertical;
+        font-family: inherit;
+    }
+
+    .prompt-output {
+        min-height: 70vh;
+        background-color: #e9ecef;
+        color: #212529;
+        font-family: Consolas, 'Courier New', monospace;
+    }
+
+    .btn {
+        display: inline-block;
+        font-weight: 600;
+        color: #fff;
+        background-color: #007bff;
+        border: 1px solid #007bff;
+        padding: 0.75rem 1.25rem;
+        font-size: 1rem;
+        border-radius: .3rem;
+        cursor: pointer;
+        text-align: center;
+        transition: all .15s ease-in-out;
+    }
+
+        .btn:hover {
+            background-color: #0069d9;
+            border-color: #0062cc;
+        }
+
+    .btn-secondary {
+        background-color: #6c757d;
+        border-color: #6c757d;
+    }
+
+        .btn-secondary:hover {
+            background-color: #5a6268;
+            border-color: #545b62;
+        }
+
+    h1 {
+        margin-bottom: 0.5rem;
+    }
+
+    h2 {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    p.lead {
+        font-size: 1.1rem;
+        color: #6c757d;
+        margin-bottom: 2rem;
+    }
+</style>
+
+<h1>Générateur de Prompt D-Genesis</h1>
+<p class="lead">Cet outil construit une directive complète pour une IA afin de lui faire générer un fichier de conception de carte.</p>
+
+<div class="container">
+    <div class="form-container">
+        <h2>Paramètres de Conception</h2>
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group">
+                <label asp-for="Request.Game"></label>
+                <select asp-for="Request.Game" class="form-control">
+                    <option value="doom2">Doom 2</option>
+                    <option value="doom">Doom</option>
+                    <option value="heretic">Heretic</option>
+                    <option value="hexen">Hexen</option>
+                </select>
+            </div>
+
+            <div class="form-group"><label asp-for="Request.RoomCount"></label><input type="number" asp-for="Request.RoomCount" /></div>
+            <div class="form-group"><label asp-for="Request.SecretRoomPercentage"></label><input type="number" step="0.01" asp-for="Request.SecretRoomPercentage" /></div>
+            <div class="form-group"><label asp-for="Request.AvgConnectivity"></label><input type="number" step="0.1" asp-for="Request.AvgConnectivity" /></div>
+            <div class="form-group"><label asp-for="Request.AvgFloorHeightDelta"></label><input type="number" asp-for="Request.AvgFloorHeightDelta" /></div>
+            <div class="form-group"><label asp-for="Request.AvgHeadroom"></label><input type="number" asp-for="Request.AvgHeadroom" /></div>
+            <div class="form-group"><label asp-for="Request.TotalVerticalSpan"></label><input type="number" asp-for="Request.TotalVerticalSpan" /></div>
+
+            <hr />
+
+            <div class="form-group">
+                <label asp-for="Request.ArchitecturalTheme"></label>
+                <textarea asp-for="Request.ArchitecturalTheme" placeholder="Ex: Une base industrielle rouillée, envahie par de la chair démoniaque. Murs en métal et en brique, avec des piliers de support. Sols en béton et caillebotis, avec des flaques de lave."></textarea>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Request.GameplayTheme"></label>
+                <textarea asp-for="Request.GameplayTheme" placeholder="Ex: Des combats rapprochés dans des couloirs étroits. Peu de monstres puissants, mais beaucoup de petits démons. Les barils explosifs sont courants près des groupes d'ennemis. Les portes standards sont la norme, avec une porte bleue pour la zone finale."></textarea>
+            </div>
+
+            <div class="form-group">
+                <button type="submit" class="btn">Générer le Prompt</button>
+            </div>
+        </form>
+    </div>
+    <div class="prompt-container">
+        <h2>
+            <span>Prompt Généré</span>
+            <button type="button" id="copyButton" class="btn btn-secondary">Copier</button>
+        </h2>
+        <div class="form-group">
+            <textarea id="promptOutput" class="prompt-output" readonly>@Model.GeneratedPrompt</textarea>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const copyButton = document.getElementById('copyButton');
+            const promptOutput = document.getElementById('promptOutput');
+
+            if (copyButton && promptOutput) {
+                copyButton.addEventListener('click', function () {
+                    if (!promptOutput.value) {
+                        return;
+                    }
+
+                    navigator.clipboard.writeText(promptOutput.value).then(function () {
+                        const originalText = copyButton.textContent;
+                        copyButton.textContent = 'Copié !';
+                        setTimeout(function () {
+                            copyButton.textContent = originalText;
+                        }, 2000);
+                    }).catch(function (err) {
+                        console.error('Erreur lors de la copie: ', err);
+                    });
+                });
+            }
+        });
+    </script>
+}
