@@ -51,20 +51,31 @@ namespace DGenesis.Pages
             promptBuilder.AppendLine(GetDGenesisSpecification());
 
             promptBuilder.AppendLine("\n--- PARTIE 2 : ASSETS DE RÉFÉRENCE POUR LE JEU '" + Request.Game.ToUpper() + "' ---\n");
+
             promptBuilder.AppendLine("## TEXTURES (WALLS)");
-            promptBuilder.AppendLine(string.Join(", ", _assetService.GetTexturesForGame(Request.Game)));
+            var texturesList = _assetService.GetTexturesForGame(Request.Game).Select(t => $"- `{t}`");
+            promptBuilder.AppendLine(string.Join("\n", texturesList));
+
             promptBuilder.AppendLine("\n## FLATS (FLOORS/CEILINGS)");
-            promptBuilder.AppendLine(string.Join(", ", _assetService.GetFlatsForGame(Request.Game)));
+            var flatsList = _assetService.GetFlatsForGame(Request.Game).Select(f => $"- `{f}`");
+            promptBuilder.AppendLine(string.Join("\n", flatsList));
+
             promptBuilder.AppendLine("\n## THINGS (OBJECTS)");
             var thingsList = _assetService.GetThingsForGame(Request.Game)
                 .Select(t => $"- {t.Name} (typeId: {t.TypeId})");
             promptBuilder.AppendLine(string.Join("\n", thingsList));
+
             promptBuilder.AppendLine("\n## MUSIQUES DISPONIBLES");
-            promptBuilder.AppendLine(string.Join(", ", _assetService.GetMusicForGame(Request.Game)));
+            var musicList = _assetService.GetMusicForGame(Request.Game).Select(m => $"- `{m}`");
+            promptBuilder.AppendLine(string.Join("\n", musicList));
 
             var defaultDetails = GetDefaultMapDetailsForGame(Request.Game);
             promptBuilder.AppendLine("\n--- PARTIE 3 : DIRECTIVES DE CONCEPTION ---\n");
-            promptBuilder.AppendLine("## mapInfo");
+
+            promptBuilder.AppendLine("## CONTRAINTE ABSOLUE : VALIDITÉ DES ASSETS");
+            promptBuilder.AppendLine($"Pour toutes les valeurs `name` dans `themePalette`, vous devez **OBLIGATOIREMENT** et **SANS EXCEPTION** utiliser un nom de texture ou de flat provenant **EXCLUSIVEMENT** des listes fournies dans la PARTIE 2 pour le jeu '{Request.Game}'. N'inventez **JAMAIS** un nom d'asset, même s'il semble logiquement correct (ex: n'utilisez pas `RROCK09` si la liste s'arrête à `RROCK08`). Toute déviation de cette règle rendra le fichier final inutilisable.");
+
+            promptBuilder.AppendLine("\n## mapInfo");
             promptBuilder.AppendLine($"- game: \"{Request.Game}\"");
             promptBuilder.AppendLine($"- mapLumpName: \"{defaultDetails.MapLumpName}\"");
             promptBuilder.AppendLine($"- music: \"{defaultDetails.Music}\"");

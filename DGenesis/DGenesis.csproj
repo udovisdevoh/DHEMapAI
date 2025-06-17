@@ -14,9 +14,6 @@
     <Content Update="game_assets.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Update="Themes\Doom2\002_terraforma_lab.dgenesis.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
   </ItemGroup>
 
   <ItemGroup>
