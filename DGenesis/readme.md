@@ -106,7 +106,7 @@ Voici un exemple complet et valide qui illustre comment ces concepts s'assemblen
     "mapInfo": {
         "game": "doom2",
         "mapLumpName": "MAP01",
-        "name": "The Abstract Forge",
+        "name": "The Iron Furnace",
         "music": "D_SHAWN"
     },
     "generationParams": {
@@ -254,7 +254,7 @@ Voici un exemple complet et valide qui illustre comment ces concepts s'assemblen
         ],
         "door_indicator_blue": [
             {
-                "name": "LITEBLU1",
+                "name": "LITEBLU",
                 "weight": 100
             }
         ],
@@ -273,159 +273,53 @@ Voici un exemple complet et valide qui illustre comment ces concepts s'assemblen
     },
     "thematicTokens": [
         {
-            "name": "Main Wall",
+            "name": "METAL1",
             "type": "wall",
-            "paletteConcept": "wall_primary",
             "baseWeight": 100,
             "adjacencyRules": []
         },
         {
-            "name": "Accent Wall",
+            "name": "SUPPORT3",
             "type": "wall",
-            "paletteConcept": "wall_accent",
-            "baseWeight": 15,
-            "adjacencyRules": []
-        },
-        {
-            "name": "Support Wall",
-            "type": "wall",
-            "paletteConcept": "wall_support",
-            "baseWeight": 25,
+            "baseWeight": 40,
             "adjacencyRules": [
                 {
-                    "adjacentTo": "Main Wall",
-                    "modifier": 2.0
+                    "adjacentTo": "METAL1",
+                    "modifier": 3.0
                 }
             ]
         },
         {
-            "name": "Secret Wall",
+            "name": "SKIN3",
             "type": "wall",
-            "paletteConcept": "wall_secret_indicator",
-            "baseWeight": 5,
-            "adjacencyRules": []
-        },
-        {
-            "name": "Panel Wall",
-            "type": "wall",
-            "paletteConcept": "wall_panel",
-            "baseWeight": 10,
-            "adjacencyRules": []
-        },
-        {
-            "name": "Door Frame",
-            "type": "wall",
-            "paletteConcept": "door_frame",
             "baseWeight": 20,
-            "adjacencyRules": []
-        },
-        {
-            "name": "Utility Switch Wall",
-            "type": "wall",
-            "paletteConcept": "switch_utility",
-            "baseWeight": 5,
             "adjacencyRules": [
                 {
-                    "adjacentTo": "Panel Wall",
-                    "modifier": 4.0
+                    "adjacentTo": "LAVA1",
+                    "modifier": 5.0
+                },
+                {
+                    "adjacentTo": "METAL1",
+                    "modifier": 0.2
                 }
             ]
         },
         {
-            "name": "Exit Switch Wall",
-            "type": "wall",
-            "paletteConcept": "switch_exit",
-            "baseWeight": 1,
-            "adjacencyRules": []
-        },
-        {
-            "name": "Main Floor",
+            "name": "TECH01",
             "type": "flat",
-            "paletteConcept": "floor_primary",
             "baseWeight": 100,
             "adjacencyRules": []
         },
         {
-            "name": "Accent Floor",
+            "name": "LAVA1",
             "type": "flat",
-            "paletteConcept": "floor_accent",
-            "baseWeight": 20,
-            "adjacencyRules": []
-        },
-        {
-            "name": "Low Damage Floor",
-            "type": "flat",
-            "paletteConcept": "floor_damage_low",
-            "baseWeight": 15,
-            "adjacencyRules": []
-        },
-        {
-            "name": "High Damage Floor",
-            "type": "flat",
-            "paletteConcept": "floor_damage_high",
-            "baseWeight": 5,
-            "adjacencyRules": []
-        },
-        {
-            "name": "Main Ceiling",
-            "type": "flat",
-            "paletteConcept": "ceiling_primary",
-            "baseWeight": 100,
-            "adjacencyRules": []
-        },
-        {
-            "name": "Light Fixture Ceiling",
-            "type": "flat",
-            "paletteConcept": "ceiling_light_source",
             "baseWeight": 25,
-            "adjacencyRules": []
-        },
-        {
-            "name": "Platform Top",
-            "type": "flat",
-            "paletteConcept": "platform_surface",
-            "baseWeight": 10,
-            "adjacencyRules": []
-        },
-        {
-            "name": "Standard Door",
-            "type": "connection_action",
-            "paletteConcept": "door_regular",
-            "actionInfo": {
-                "special": 1,
-                "properties": null
-            },
-            "baseWeight": 100,
-            "adjacencyRules": []
-        },
-        {
-            "name": "Locked Door",
-            "type": "connection_action",
-            "paletteConcept": "door_locked",
-            "actionInfo": {
-                "special": 26,
-                "properties": { "keyItemName": "Blue Keycard" }
-            },
-            "baseWeight": 10,
-            "adjacencyRules": []
-        },
-        {
-            "name": "Exit Door",
-            "type": "connection_action",
-            "paletteConcept": "door_exit",
-            "actionInfo": {
-                "special": 11,
-                "properties": null
-            },
-            "baseWeight": 1,
             "adjacencyRules": []
         },
         {
             "name": "Imp",
             "type": "object",
             "typeId": 3001,
-            "paletteConcept": null,
-            "actionInfo": null,
             "baseWeight": 100,
             "adjacencyRules": []
         },
@@ -433,8 +327,6 @@ Voici un exemple complet et valide qui illustre comment ces concepts s'assemblen
             "name": "Demon",
             "type": "object",
             "typeId": 3002,
-            "paletteConcept": null,
-            "actionInfo": null,
             "baseWeight": 50,
             "adjacencyRules": [
                 {
@@ -442,6 +334,28 @@ Voici un exemple complet et valide qui illustre comment ces concepts s'assemblen
                     "modifier": 2.0
                 }
             ]
+        },
+        {
+            "name": "Exploding Barrel",
+            "type": "object",
+            "typeId": 2035,
+            "baseWeight": 30,
+            "adjacencyRules": [
+                {
+                    "adjacentToTypeId": 9,
+                    "modifier": 2.0
+                }
+            ]
+        },
+        {
+            "name": "Standard Door",
+            "type": "connection_action",
+            "actionInfo": {
+                "special": 1,
+                "properties": null
+            },
+            "baseWeight": 100,
+            "adjacencyRules": []
         }
     ]
 }
