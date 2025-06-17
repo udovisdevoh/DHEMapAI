@@ -1,122 +1,220 @@
 {
-  "doom2": {
-    "tags": {
-      "metal": {
-        "description": "Thème industriel, bases métalliques, structures rouillées ou high-tech.",
-        "textures": [ "METAL", "METAL1", "METAL2", "METAL3", "METAL4", "METAL5", "SUPPORT2", "SUPPORT3", "BIGDOOR2", "STARG1", "DOORTRAK", "SILVER1", "TEKBRON1", "TEKBRON2" ],
-        "flats": [ "MFLR8_1", "MFLR8_2", "MFLR8_3", "MFLR8_4", "CEIL3_5", "CEIL3_6", "SFLR7_1", "SFLR7_4" ],
-        "things": [ 2035, 72, 85, 86, 68 ],
-        "music": [ "D_SHAWN", "D_DDTBLU", "D_IN_CIT" ]
-      },
-      "stone": {
-        "description": "Thème de château, donjon, murs en pierre et en briques.",
-        "textures": [ "STONE", "STONE2", "STONE3", "STONE4", "STONE5", "STONE6", "BRICK1", "BRICK2", "BRICK3", "BRICK4", "BRICK5", "BRICK6", "BRICK7", "BRICK8", "BRICK9", "BRICK10", "BRICK11", "BRICK12", "BIGBRIK1", "BIGBRIK2", "BIGBRIK3", "MARBGRAY" ],
-        "flats": [ "FLAT1", "FLAT14", "FLAT23", "DEM1_1", "DEM1_2" ],
-        "things": [ 30, 32, 27, 34 ],
-        "music": [ "D_STALKS", "D_BETWEE" ]
-      },
-      "hell": {
-        "description": "Thème démoniaque, organique, avec de la chair, des os et de la lave.",
-        "textures": [ "SKIN2", "SKINFACE", "SKINSYMB", "MARBLE1", "MARBLOD1", "FIRELAVA", "SLADWALL", "DBRAIN1", "ASHWALL2", "BROWNGRN" ],
-        "flats": [ "LAVA1", "LAVA2", "LAVA3", "LAVA4", "BLOOD1", "BLOOD2", "BLOOD3", "SFLR6_1", "SFLR6_4" ],
-        "things": [ 3003, 3005, 71, 28, 29, 25, 26, 73, 74, 75, 76, 77, 78 ],
-        "music": [ "D_COUNTD", "D_THE_DA", "D_ROMERO", "D_EVIL" ]
-      },
-      "wood": {
-        "description": "Thème boisé, structures en bois, lambris, bibliothèques.",
-        "textures": [ "WOOD1", "WOOD3", "WOOD4", "WOOD5", "WOOD6", "WOOD7", "WOOD8", "WOOD9", "WOOD10", "WOOD12", "WOODVERT", "WOODMET1", "PANBOOK" ],
-        "flats": [ "FLOOR0_1", "FLOOR0_2" ],
-        "things": [],
-        "music": [ "D_DOOM" ]
-      },
-      "tech": {
-        "description": "Thème technologique, ordinateurs, panneaux de contrôle, bases spatiales.",
-        "textures": [ "TEKWALL1", "TEKWALL4", "TEKWALL6", "COMPBLUE", "COMPTALL", "PANEL1", "PANEL2", "PANEL3", "PANEL4", "PANEL5", "PANEL6", "PANEL7", "PANEL8", "PANEL9", "SPCDOOR1", "SPCDOOR2", "TEKGREN1", "TEKGREN2", "TEKLITE", "TEKLITE2" ],
-        "flats": [ "COMP01", "MFLR8_1", "MFLR8_2", "GRNLITE1" ],
-        "things": [ 85, 86, 72, 68, 16, 64 ],
-        "music": [ "D_SHAWN", "D_IN_CIT", "D_DDTBLU" ]
-      },
-      "dirt_cave": {
-        "description": "Thème de grottes, roches, terre et environnements souterrains naturels.",
-        "textures": [ "ROCK1", "ROCK2", "ROCK3", "ROCK4", "ROCK5", "TANROCK2", "TANROCK3", "TANROCK4", "CEMENT1", "CEMENT4", "CEMENT6", "SLOPPY1", "SLOPPY2" ],
-        "flats": [ "RROCK01", "RROCK02", "RROCK03", "RROCK04", "RROCK05", "RROCK06", "RROCK07", "RROCK08", "GRASS1", "GRASS2" ],
-        "things": [],
-        "music": [ "D_STALKS" ]
-      },
-      "liquid": {
-        "description": "Surfaces et textures d'eau, de lave, de poison ou autres fluides.",
-        "textures": [ "BFALL1", "BFALL2", "BFALL3", "BFALL4", "SFALL1", "SFALL2", "SFALL3", "SFALL4", "FIRELAVA" ],
-        "flats": [ "LAVA1", "LAVA2", "LAVA3", "LAVA4", "NUKAGE1", "NUKAGE2", "NUKAGE3", "SLIME01", "SLIME02", "SLIME03", "SLIME04", "FWATER1", "FWATER2", "FWATER3", "FWATER4" ],
-        "things": [],
-        "music": [ "D_BETWEE" ]
-      },
-      "door": {
-        "description": "Contient toutes les textures fonctionnant comme des portes.",
-        "textures": [ "BIGDOOR1", "BIGDOOR2", "BIGDOOR3", "BIGDOOR4", "BIGDOOR5", "BIGDOOR6", "BIGDOOR7", "DOOR1", "DOOR3", "SPCDOOR1", "SPCDOOR2", "SPCDOOR3", "SPCDOOR4", "ZDOORB1", "ZDOORF1", "EXITDOOR" ],
-        "flats": [],
-        "things": [],
-        "music": []
-      },
-      "switch": {
-        "description": "Contient toutes les textures d'interrupteurs.",
-        "textures": [ "SW1STARG", "SW1BROWN", "SW1METAL", "SW2SKIN", "SW1PANEL", "SW1ROCK", "SW1GSTON", "SW2GSTON", "SW1EXIT", "SW2EXIT" ],
-        "flats": [],
-        "things": [],
-        "music": []
-      },
-      "light_source": {
-        "description": "Contient les textures et flats qui émettent de la lumière.",
-        "textures": [ "LITE3", "LITE5", "LITEBLU1", "LITEBLU4", "TEKLITE", "TEKLITE2", "BRICKLIT" ],
-        "flats": [ "TLITE6_1", "TLITE6_4", "TLITE6_5", "TLITE6_6", "GRNLITE1" ],
-        "things": [ 2028, 85, 86, 34, 70 ],
-        "music": []
-      },
-      "sky": {
-        "description": "Textures de ciel pour les plafonds et les murs extérieurs.",
-        "textures": [ "SKY1", "SKY2", "SKY3" ],
-        "flats": [ "F_SKY1" ],
-        "things": [],
-        "music": [ "D_OPENIN" ]
-      },
-      "support": {
-        "description": "Textures de piliers, poutres et autres structures de soutien.",
-        "textures": [ "SUPPORT2", "SUPPORT3", "PIPE1", "PIPE2", "PIPE4", "PIPE6", "BROWNPIP" ],
-        "flats": [],
-        "things": [ 30, 31, 32, 33, 43, 45, 46, 72 ],
-        "music": []
-      },
-      "panel": {
-        "description": "Panneaux décoratifs ou technologiques.",
-        "textures": [ "PANEL1", "PANEL2", "PANEL3", "PANEL4", "PANEL5", "PANEL6", "PANEL7", "PANEL8", "PANEL9", "COMPTALL", "COMPBLUE", "PANBLACK", "PANBLUE", "PANRED" ],
-        "flats": [],
-        "things": [],
-        "music": []
-      },
-      "key_indicator": {
-        "description": "Textures signalant une couleur de clé (bleu, jaune, rouge).",
-        "textures": [ "DOORBLU", "DOORRED", "DOORYEL", "LITEBLU1", "SW1BLUE", "SW2BLUE" ],
-        "flats": [],
-        "things": [ 5, 13, 6, 40, 38, 39 ],
-        "music": []
-      },
-      "animated": {
-        "description": "Contient des assets explicitement animés (chutes d'eau, flammes, etc.).",
-        "textures": [ "BFALL1", "SFALL1", "FIREBLU1", "FIREBLU2", "FIRELAVA", "FIREWALA", "FIREWALL" ],
-        "flats": [ "LAVA1", "LAVA2", "LAVA3", "LAVA4", "NUKAGE1", "SLIME01", "FWATER1" ],
-        "things": [ 70 ],
-        "music": []
-      }
+    "doom2": {
+        "tags": {
+            "metal": {
+                "description": "Thème industriel, bases métalliques, structures rouillées ou high-tech.",
+                "textures": [ "METAL", "METAL1", "METAL2", "METAL3", "METAL4", "METAL5", "SUPPORT2", "SUPPORT3", "BIGDOOR2", "STARG1", "DOORTRAK", "SILVER1", "TEKBRON1", "TEKBRON2", "IRON1", "IRON2", "IRON3", "IRON4" ],
+                "flats": [ "MFLR8_1", "MFLR8_2", "MFLR8_3", "MFLR8_4", "CEIL3_5", "CEIL3_6", "SFLR7_1", "SFLR7_4", "PLAT1" ],
+                "things": [ 2035, 72, 85, 86, 68 ],
+                "music": [ "D_SHAWN", "D_DDTBLU", "D_IN_CIT" ]
+            },
+            "stone": {
+                "description": "Thème de château, donjon, murs en pierre et en briques.",
+                "textures": [ "STONE", "STONE2", "STONE3", "STONE4", "STONE5", "STONE6", "BSTONE1", "BSTONE2", "BSTONE3", "BRICK1", "BRICK2", "BRICK3", "BRICK4", "BRICK5", "BRICK6", "BRICK7", "BRICK8", "BRICK9", "BRICK10", "BRICK11", "BRICK12", "BIGBRIK1", "BIGBRIK2", "BIGBRIK3", "MARBGRAY", "GSTGARG", "GSTLION" ],
+                "flats": [ "FLAT1", "FLAT14", "FLAT23", "DEM1_1", "DEM1_2", "STEP1", "STEP2" ],
+                "things": [ 30, 32, 27, 34 ],
+                "music": [ "D_STALKS", "D_BETWEE" ]
+            },
+            "hell": {
+                "description": "Thème démoniaque, avec de la chair, des os, du marbre impie et de la lave.",
+                "textures": [ "MARBLE1", "MARBLOD1", "MARBFAC4", "FIRELAVA", "SLADWALL", "DBRAIN1", "ASHWALL2", "SP_FACE1", "SP_FACE2" ],
+                "flats": [ "LAVA1", "LAVA2", "LAVA3", "LAVA4", "BLOOD1", "BLOOD2", "BLOOD3", "SFLR6_1", "SFLR6_4", "DEM1_5", "DEM1_6" ],
+                "things": [ 3003, 3005, 71, 28, 29, 36, 37 ],
+                "music": [ "D_COUNTD", "D_THE_DA", "D_ROMERO", "D_EVIL" ]
+            },
+            "organic": {
+                "description": "Thème organique pur, murs de chair, de peau et d'os.",
+                "textures": [ "SKIN2", "SKINFACE", "SKINSYMB", "SKINCUT", "BROWNGRN", "ASHWALL6" ],
+                "flats": [ "SFLR6_1", "SFLR6_4", "BLOOD1", "BLOOD2", "BLOOD3" ],
+                "things": [ 25, 26, 73, 74, 75, 76, 77, 78 ],
+                "music": [ "D_THE_DA" ]
+            },
+            "wood": {
+                "description": "Thème boisé, structures en bois, lambris, bibliothèques.",
+                "textures": [ "WOOD1", "WOOD3", "WOOD4", "WOOD5", "WOOD6", "WOOD7", "WOOD8", "WOOD9", "WOOD10", "WOOD12", "WOODVERT", "WOODMET1", "PANBOOK", "BRONZE1", "BRONZE2" ],
+                "flats": [ "FLOOR0_1", "FLOOR0_2", "RROCK14", "RROCK15" ],
+                "things": [],
+                "music": [ "D_DOOM" ]
+            },
+            "tech": {
+                "description": "Thème technologique, ordinateurs, panneaux de contrôle, bases spatiales.",
+                "textures": [ "TEKWALL1", "TEKWALL4", "TEKWALL6", "COMPBLUE", "COMPTALL", "PANEL1", "PANEL2", "PANEL3", "PANEL4", "PANEL5", "PANEL6", "PANEL7", "PANEL8", "PANEL9", "SPCDOOR1", "SPCDOOR2", "TEKGREN1", "TEKGREN2", "TEKLITE", "TEKLITE2", "STARG1", "STARG2" ],
+                "flats": [ "COMP01", "MFLR8_1", "MFLR8_2", "GRNLITE1", "TLITE6_1", "TLITE6_4" ],
+                "things": [ 85, 86, 72, 68, 16, 64, 2026 ],
+                "music": [ "D_SHAWN", "D_IN_CIT", "D_DDTBLU" ]
+            },
+            "urban": {
+                "description": "Thème de ville, briques, ciment, et structures urbaines.",
+                "textures": [ "BRICK1", "BRICK2", "BRICK3", "BRICK4", "BRICK5", "BRICK6", "BRICK7", "BRICK8", "BRICK9", "BRICK10", "BRICK11", "BRICK12", "CEMENT1", "CEMENT3", "CEMENT4", "CEMENT6", "CEMENT9", "BRWINDOW" ],
+                "flats": [ "FLAT1", "FLAT14", "FLAT23", "STEP1", "STEP2" ],
+                "things": [ 2035, 2028 ],
+                "music": [ "D_IN_CIT", "D_RUNNIN" ]
+            },
+            "wasteland": {
+                "description": "Thème extérieur, désertique ou post-apocalyptique.",
+                "textures": [ "ROCK1", "ROCK2", "ROCK3", "ROCK4", "ROCK5", "TANROCK2", "TANROCK3", "TANROCK4", "SLOPPY1", "SLOPPY2", "SKY1", "SKY2", "SKY3" ],
+                "flats": [ "RROCK01", "RROCK02", "RROCK03", "RROCK04", "RROCK05", "RROCK06", "RROCK07", "RROCK08", "GRASS1", "GRASS2", "F_SKY1" ],
+                "things": [ 43, 54, 70 ],
+                "music": [ "D_STALKS", "D_OPENIN" ]
+            },
+            "liquid": {
+                "description": "Surfaces et textures d'eau, de lave, de poison ou autres fluides.",
+                "textures": [ "BFALL1", "BFALL2", "BFALL3", "BFALL4", "SFALL1", "SFALL2", "SFALL3", "SFALL4", "FIRELAVA", "SLADPOIS" ],
+                "flats": [ "LAVA1", "LAVA2", "LAVA3", "LAVA4", "NUKAGE1", "NUKAGE2", "NUKAGE3", "SLIME01", "SLIME02", "SLIME03", "SLIME04", "FWATER1", "FWATER2", "FWATER3", "FWATER4" ],
+                "things": [],
+                "music": [ "D_BETWEE" ]
+            },
+            "door": {
+                "description": "Contient toutes les textures fonctionnant comme des portes.",
+                "textures": [ "BIGDOOR1", "BIGDOOR2", "BIGDOOR3", "BIGDOOR4", "BIGDOOR5", "BIGDOOR6", "BIGDOOR7", "DOOR1", "DOOR3", "SPCDOOR1", "SPCDOOR2", "SPCDOOR3", "SPCDOOR4", "ZDOORB1", "ZDOORF1", "EXITDOOR" ],
+                "flats": [],
+                "things": [],
+                "music": []
+            },
+            "switch": {
+                "description": "Contient toutes les textures d'interrupteurs.",
+                "textures": [ "SW1STARG", "SW1BROWN", "SW1METAL", "SW2SKIN", "SW1PANEL", "SW1ROCK", "SW1GSTON", "SW2GSTON", "SW1EXIT", "SW2EXIT", "SW1CMT", "SW1TEK" ],
+                "flats": [],
+                "things": [],
+                "music": []
+            },
+            "light_source": {
+                "description": "Contient les assets qui émettent de la lumière.",
+                "textures": [ "LITE3", "LITE5", "LITEBLU1", "LITEBLU4", "TEKLITE", "TEKLITE2", "BRICKLIT" ],
+                "flats": [ "TLITE6_1", "TLITE6_4", "TLITE6_5", "TLITE6_6", "GRNLITE1" ],
+                "things": [ 2028, 85, 86, 34, 70 ],
+                "music": []
+            },
+            "sky": {
+                "description": "Textures de ciel pour les plafonds et les murs extérieurs.",
+                "textures": [ "SKY1", "SKY2", "SKY3" ],
+                "flats": [ "F_SKY1" ],
+                "things": [],
+                "music": [ "D_OPENIN" ]
+            },
+            "support": {
+                "description": "Textures de piliers, poutres et autres structures de soutien.",
+                "textures": [ "SUPPORT2", "SUPPORT3", "PIPE1", "PIPE2", "PIPE4", "PIPE6", "BROWNPIP" ],
+                "flats": [],
+                "things": [ 30, 31, 32, 33, 43, 45, 46, 72 ],
+                "music": []
+            },
+            "panel": {
+                "description": "Panneaux décoratifs ou technologiques.",
+                "textures": [ "PANEL1", "PANEL2", "PANEL3", "PANEL4", "PANEL5", "PANEL6", "PANEL7", "PANEL8", "PANEL9", "COMPTALL", "COMPBLUE", "PANBLACK", "PANBLUE", "PANRED", "MODWALL1", "MODWALL2" ],
+                "flats": [],
+                "things": [],
+                "music": []
+            },
+            "key_indicator": {
+                "description": "Assets signalant une couleur de clé (bleu, jaune, rouge).",
+                "textures": [ "DOORBLU", "DOORRED", "DOORYEL", "LITEBLU1", "LITEBLU4", "SW1BLUE", "SW2BLUE", "SW1ZIM", "SW2ZIM" ],
+                "flats": [],
+                "things": [ 5, 13, 6, 40, 38, 39 ],
+                "music": []
+            },
+            "animated": {
+                "description": "Contient des assets explicitement animés (chutes d'eau, flammes, etc.).",
+                "textures": [ "BFALL1", "SFALL1", "FIREBLU1", "FIREBLU2", "FIRELAVA", "FIREWALA", "FIREWALL" ],
+                "flats": [ "LAVA1", "LAVA2", "LAVA3", "LAVA4", "NUKAGE1", "SLIME01", "FWATER1" ],
+                "things": [ 70, 26, 49, 63, 71 ],
+                "music": []
+            },
+            "grate": {
+                "description": "Grilles, barreaux et treillis.",
+                "textures": [ "MIDGRATE", "MIDBARS1", "MIDBARS3", "CRATE1", "CRATE2", "CRATELIT" ],
+                "flats": [ "CRATOP1", "CRATOP2", "GATE1", "GATE2", "GATE3", "GATE4" ],
+                "things": [],
+                "music": []
+            },
+            "window": {
+                "description": "Textures qui simulent des fenêtres ou des ouvertures.",
+                "textures": [ "BRWINDOW", "MIDSPACE", "GSTFONT1", "GSTFONT2", "GSTFONT3" ],
+                "flats": [],
+                "things": [],
+                "music": []
+            },
+            "border": {
+                "description": "Textures conçues pour être utilisées comme bordures ou transitions.",
+                "textures": [ "DOORTRAK", "IRON2", "IRON3", "PANBORD1", "PANBORD2", "SKINEDGE", "SILVER2" ],
+                "flats": [],
+                "things": [],
+                "music": []
+            },
+            "signage": {
+                "description": "Signalisation, visages, symboles ou écritures.",
+                "textures": [ "EXITSIGN", "SP_FACE1", "SP_FACE2", "GSTFONT1", "GSTFONT2", "GSTFONT3", "ZZZFACE1", "ZZZFACE2", "ZZZFACE3", "DBRAIN1", "DBRAIN2" ],
+                "flats": [],
+                "things": [],
+                "music": []
+            },
+            "monster_prop": {
+                "description": "Décorations macabres liées aux monstres (cadavres, etc.).",
+                "textures": [],
+                "flats": [],
+                "things": [ 10, 12, 18, 19, 21, 22, 25, 26, 49, 50, 51, 52, 59, 60, 61, 62, 63, 73, 74, 75, 76, 77, 78 ],
+                "music": []
+            },
+            "corrupted": {
+                "description": "Assets qui montrent une corruption démoniaque ou impie.",
+                "textures": [ "SKINSYMB", "MARBLOD1", "BLODRIP1", "BLODRIP2", "SLADSKUL", "SP_DUDE1", "SP_FACE1" ],
+                "flats": [ "BLOOD1", "BLOOD2", "BLOOD3" ],
+                "things": [ 71, 3003, 3005, 3006 ],
+                "music": [ "D_ROMERO", "D_EVIL" ]
+            },
+            "decayed": {
+                "description": "Assets qui montrent de la rouille, de la pourriture ou de l'usure.",
+                "textures": [ "AASHITTY", "ZIMMER1", "ZIMMER2", "ZIMMER4", "SLOPPY1", "SLOPPY2", "BRNPOIS" ],
+                "flats": [ "SLIME05", "SLIME06", "SLIME07", "SLIME08" ],
+                "things": [ 25, 26, 73, 74 ],
+                "music": [ "D_STALKS" ]
+            }
+        }
+    },
+    "heretic": {
+        "tags": {
+            "stone": {
+                "description": "Thème principal d'Heretic, châteaux médiévaux et donjons.",
+                "textures": [ "STONE01", "CASTLE1", "BRICK01", "BRICK02", "BRICK03", "BRICK04", "BRICK05", "MARB01", "MARB02", "MARB03", "CEMENT01" ],
+                "flats": [ "FLAT01", "FLOOR08", "FLOOR09", "FLOOR10", "MARB01", "MARB02" ],
+                "things": [ 29, 47, 27, 28, 37, 38, 39, 40 ],
+                "music": [ "MUS_E1M1", "MUS_E1M2" ]
+            },
+            "wood": {
+                "description": "Structures et murs en bois.",
+                "textures": [ "WOOD01", "WOOD02", "WOOD03", "WOOD04", "WOOD05", "WOOD06", "WOOD07", "WOOD08", "WOOD09", "WOOD10", "WOOD11", "WOOD12" ],
+                "flats": [ "FLAT02", "FLAT03", "FLAT04" ],
+                "things": [ 44 ],
+                "music": [ "MUS_E1M3" ]
+            },
+            "door": {
+                "description": "Textures de portes pour Heretic.",
+                "textures": [ "BIGDOOR1", "BIGDOOR2", "BIGDOOR3", "DOOR01", "DOOR02", "DOOR03", "DOOR04", "DOOR05", "DOOR06", "DOOR07", "DOOR08", "DOOR09", "DOOR10" ],
+                "flats": [],
+                "things": [],
+                "music": []
+            },
+            "switch": {
+                "description": "Textures d'interrupteurs pour Heretic.",
+                "textures": [ "SW01", "SW02", "SW03", "SW04", "SW05", "SW06", "SW07", "SW08", "SW09", "SW10", "SW11", "SW12" ],
+                "flats": [],
+                "things": [],
+                "music": []
+            },
+            "liquid": {
+                "description": "Lave, eau et boue pour Heretic.",
+                "textures": [ "LAVA01", "LAVA02", "WATER01", "WATER02", "SLIME01", "SLIME02" ],
+                "flats": [ "LAVA01", "LAVA02", "LAVA03", "LAVA04", "WATER01", "WATER02", "WATER03", "WATER04", "SLIME01", "SLIME02", "SLIME03", "SLIME04" ],
+                "things": [],
+                "music": []
+            },
+            "light_source": {
+                "description": "Sources de lumière pour Heretic (torches, lustres).",
+                "textures": [ "LITE01", "LITE02", "LITE03", "LITE04", "LITE05" ],
+                "flats": [ "CEIL09", "CEIL10", "CEIL11" ],
+                "things": [ 27, 28, 50, 76 ],
+                "music": []
+            }
+        }
     }
-  },
-  "heretic": {
-    "tags": {
-      "stone": {
-        "description": "Thème principal d'Heretic, châteaux médiévaux et donjons.",
-        "textures": [ "STONE01", "CASTLE1", "BRICK01", "BRICK02", "BRICK03", "BRICK04", "BRICK05" ],
-        "flats": [ "FLAT01", "FLOOR08", "FLOOR09", "FLOOR10" ],
-        "things": [ 29, 47, 27, 28 ],
-        "music": [ "MUS_E1M1", "MUS_E1M2" ]
-      }
-    }
-  }
 }
