@@ -79,7 +79,6 @@ C'est le cœur du format. Il définit une liste d'assets spécifiques (textures,
 | `name`             | Chaîne               | Le nom de l'asset (texture, flat, ou nom de 'thing'). Doit être un nom valide pour le jeu cible.                                          |
 | `type`             | Chaîne               | Le type de token. **Enum**: `"wall"`, `"flat"`, `"object"`, `"connection_action"`.                                                        |
 | `typeId`           | Entier \| `null`     | Si le `type` est `"object"`, ceci est l'identifiant numérique canonique du 'thing'.                                                          |
-| `actionInfo`       | Objet \| `null`      | Si le `type` est `"connection_action"`, cet objet contient les détails de l'action : `special` (Entier) et `properties` (Objet).         |                                                    |
 | `adjacencyRules`   | Tableau d'objets     | Un tableau de règles qui modifient le poids du token en fonction de ses voisins.                                                         |
 
 #### 2.5.1. L'objet AdjacencyRule
