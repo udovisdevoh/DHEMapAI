@@ -133,6 +133,43 @@ Voici un exemple complet et valide qui illustre comment ces concepts s'assemblen
             }
         ]
     },
+    "sectorBehaviorPalette": {
+        "normal": {
+            "description": "Comportement par défaut, aucun effet.",
+            "sectorSpecial": 0,
+            "weight": 100
+        },
+        "flickering_light": {
+            "description": "Lumière qui scintille de manière aléatoire.",
+            "sectorSpecial": 17,
+            "weight": 15
+        },
+        "pulsing_light_slow": {
+            "description": "Lumière qui pulse lentement.",
+            "sectorSpecial": 8,
+            "weight": 10
+        },
+        "secret_area": {
+            "description": "Marque le secteur comme un secret trouvé lors de l'entrée.",
+            "sectorSpecial": 9,
+            "weight": 5
+        },
+        "damage_floor_5_percent": {
+            "description": "Inflige 5% de dégâts par seconde.",
+            "sectorSpecial": 7,
+            "weight": 10
+        },
+        "damage_floor_20_percent": {
+            "description": "Inflige 20% de dégâts par seconde.",
+            "sectorSpecial": 16,
+            "weight": 5
+        },
+        "exit_trigger": {
+            "description": "Met fin au niveau lorsque le joueur meurt dans ce secteur.",
+            "sectorSpecial": 11,
+            "weight": 1
+        }
+    },
     "themePalette": {
         "wall_primary": [
             {
