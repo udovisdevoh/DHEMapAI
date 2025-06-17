@@ -345,16 +345,6 @@ Voici un exemple complet et valide qui illustre comment ces concepts s'assemblen
                     "modifier": 2.0
                 }
             ]
-        },
-        {
-            "name": "Standard Door",
-            "type": "connection_action",
-            "actionInfo": {
-                "special": 1,
-                "properties": null
-            },
-            "baseWeight": 100,
-            "adjacencyRules": []
         }
     ]
 }
