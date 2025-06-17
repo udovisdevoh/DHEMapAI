@@ -1,0 +1,28 @@
+﻿@page
+@model DGenesis.Pages.DGenesisRandomGeneratorModel
+@{
+    ViewData["Title"] = "Générateur Aléatoire";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Générateur D-Genesis Aléatoire</h1>
+    <p>Cliquez sur le bouton pour générer un fichier de thème D-Genesis complet et valide pour Doom 2.</p>
+</div>
+
+<div class="row mt-4">
+    <div class="col-md-12 text-center">
+        <form method="post">
+            <button type="submit" class="btn btn-primary btn-lg">Générer un Fichier Aléatoire</button>
+        </form>
+    </div>
+</div>
+
+@if (!string.IsNullOrEmpty(Model.GeneratedJson))
+{
+    <div class="row mt-4">
+        <div class="col-md-12">
+            <h3>Résultat de la Génération :</h3>
+            <pre><code class="json" style="white-space: pre; display: block; background-color: #f0f0f0; border: 1px solid #ccc; padding: 10px; border-radius: 5px;">@Model.GeneratedJson</code></pre>
+        </div>
+    </div>
+}

@@ -21,6 +21,8 @@ namespace DGenesis
         {
             services.AddRazorPages();
             services.AddSingleton<GameAssetService>();
+            services.AddSingleton<AssetTagService>();
+            services.AddScoped<DGenesisRandomGeneratorService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
