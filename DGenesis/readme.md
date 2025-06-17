@@ -212,7 +212,7 @@ Voici un exemple complet et valide qui illustre comment ces concepts s'assemblen
         ],
         "door_locked": [
             {
-                "name": "DOORBLU",
+                "name": "BIGDOOR2",
                 "weight": 100
             }
         ],
@@ -237,6 +237,24 @@ Voici un exemple complet et valide qui illustre comment ces concepts s'assemblen
         "switch_exit": [
             {
                 "name": "SW1EXIT",
+                "weight": 100
+            }
+        ],
+        "door_indicator_blue": [
+            {
+                "name": "LITEBLU1",
+                "weight": 100
+            }
+        ],
+        "door_indicator_red": [
+            {
+                "name": "LITERED",
+                "weight": 100
+            }
+        ],
+        "door_indicator_yellow": [
+            {
+                "name": "LITE5",
                 "weight": 100
             }
         ]
