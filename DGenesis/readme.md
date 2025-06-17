@@ -48,7 +48,6 @@ Définit les contraintes structurelles et de gameplay de haut niveau.
 | Clé                         | Type             | Description                                                                     | Exemple |
 |-----------------------------|------------------|---------------------------------------------------------------------------------|---------|
 | `roomCount`                 | Entier           | Nombre approximatif de pièces principales à générer.                            | `15`    |
-| `secretRoomPercentage`      | Nombre           | Probabilité (0.0 à 1.0) qu'une pièce soit un secret.                            | `0.15`  |
 | `avgConnectivity`           | Nombre           | Nombre moyen de connexions par pièce. <2 est linéaire, >2.5 est très connecté.   | `2.8`   |
 | `avgFloorHeightDelta`       | Entier           | Différence de hauteur de sol moyenne entre deux pièces connectées.              | `48`    |
 | `avgHeadroom`               | Entier           | Épaisseur verticale moyenne d'un secteur.                                       | `128`   |
@@ -121,7 +120,6 @@ Voici un exemple complet et valide qui illustre comment ces concepts s'assemblen
     },
     "generationParams": {
         "roomCount": 15,
-        "secretRoomPercentage": 0.20,
         "avgConnectivity": 2.8,
         "avgFloorHeightDelta": 48,
         "avgHeadroom": 128,
@@ -180,6 +178,44 @@ Voici un exemple complet et valide qui illustre comment ces concepts s'assemblen
             "description": "Met fin au niveau lorsque le joueur meurt dans ce secteur.",
             "sectorSpecial": 11,
             "weight": 1
+        }
+    },
+    "featurePalette": {
+        "door": {
+            "description": "Une porte standard non verrouillée, actionnée par le joueur.",
+            "weight": 100
+        },
+        "key_door": {
+            "description": "Une progression basée sur une clé et une porte verrouillée.",
+            "weight": 70
+        },
+        "switch_door": {
+            "description": "Une porte qui s'ouvre en activant un interrupteur distant.",
+            "weight": 40
+        },
+        "secret_door": {
+            "description": "Un mur secret qui s'ouvre pour révéler une zone ou un objet.",
+            "weight": 25
+        },
+        "secret_switch": {
+            "description": "Un interrupteur caché qui active un secret (pont, porte, etc.).",
+            "weight": 15
+        },
+        "secret_exit": {
+            "description": "Une sortie de niveau cachée et optionnelle.",
+            "weight": 5
+        },
+        "crushing_ceiling": {
+            "description": "Un piège de plafond qui s'abaisse pour écraser.",
+            "weight": 10
+        },
+        "elevator": {
+            "description": "Un ascenseur pour la progression verticale.",
+            "weight": 35
+        },
+        "teleporter": {
+            "description": "Une paire de téléporteurs reliant deux points de la carte.",
+            "weight": 20
         }
     },
     "themePalette": {
