@@ -7,14 +7,16 @@ namespace DGenesis.Services
 {
     public class DGenesisRandomGeneratorService
     {
-        private readonly AssetTagService _tagService;
+        private readonly AssetThemeService _themeService;
         private readonly GameAssetService _assetService;
+        private readonly AssetFunctionService _functionService; // AJOUT : Injection du nouveau service
         private readonly Random _random = new Random();
 
-        public DGenesisRandomGeneratorService(AssetTagService tagService, GameAssetService assetService)
+        public DGenesisRandomGeneratorService(AssetThemeService themeService, GameAssetService assetService, AssetFunctionService functionService)
         {
-            _tagService = tagService;
+            _themeService = themeService;
             _assetService = assetService;
+            _functionService = functionService;
         }
 
         public DGenesisFile Generate(string game)
@@ -27,23 +29,37 @@ namespace DGenesis.Services
                 FeaturePalette = GenerateFeaturePalette()
             };
 
-            var (themePalette, primaryThemeTag) = GenerateThemePalette(game);
+            var (themePalette, primaryTheme) = GenerateThemePalette(game);
             file.ThemePalette = themePalette;
 
-            file.ThematicTokens = GenerateThematicTokens(game, file.ThemePalette, primaryThemeTag);
+            file.ThematicTokens = GenerateThematicTokens(game, file.ThemePalette, primaryTheme);
 
             return file;
         }
 
         private MapInfo GenerateMapInfo(string game)
         {
-            var musicList = _assetService.GetMusicForGame(game);
+            // La liste des musiques est maintenant filtrée pour s'assurer de sa validité
+            var validMusic = new HashSet<string>(_assetService.GetMusicForGame(game));
+            var thematicMusic = _themeService.GetAssetsForTheme(game, "music")?.Music?
+                .Where(m => validMusic.Contains(m)).ToList() ?? new List<string>();
+
+            string chosenMusic = "";
+            if (thematicMusic.Any())
+            {
+                chosenMusic = thematicMusic[_random.Next(thematicMusic.Count)];
+            }
+            else if (validMusic.Any())
+            {
+                chosenMusic = validMusic.ElementAt(_random.Next(validMusic.Count));
+            }
+
             return new MapInfo
             {
                 Game = game,
                 MapLumpName = GetDefaultMapDetailsForGame(game).MapLumpName,
                 Name = "Generated Level " + _random.Next(100, 999),
-                Music = musicList.Any() ? musicList[_random.Next(musicList.Count)] : ""
+                Music = chosenMusic
             };
         }
 
@@ -109,14 +125,14 @@ namespace DGenesis.Services
             var validThingIdSet = new HashSet<int>(_assetService.GetThingsForGame(game).Select(t => t.TypeId));
             var validMusicSet = new HashSet<string>(_assetService.GetMusicForGame(game));
 
-            var availableThemes = _tagService.GetAvailableThemeTags(game);
+            var availableThemes = _themeService.GetAvailableThemes(game);
             if (!availableThemes.Any()) return (palette, null);
-            string primaryThemeTag = availableThemes[_random.Next(availableThemes.Count)];
+            string primaryTheme = availableThemes[_random.Next(availableThemes.Count)];
 
-            var themeAssets = _tagService.GetAssetsForTag(game, primaryThemeTag);
+            var themeAssets = _themeService.GetAssetsForTheme(game, primaryTheme);
             FilterAssetCollection(themeAssets, validTextureSet, validFlatSet, validThingIdSet, validMusicSet);
 
-            var functionalTags = new Dictionary<string, TaggedAssetCollection>();
+            var functionalTags = new Dictionary<string, ThemedAssetCollection>();
             var functionalTagNames = new[] {
                 "door", "switch", "light_source", "border", "support", "panel", "secret", "exit",
                 "key_indicator_blue", "key_indicator_red", "key_indicator_yellow", "key_indicator_green"
@@ -124,19 +140,19 @@ namespace DGenesis.Services
 
             foreach (var tagName in functionalTagNames)
             {
-                var collection = _tagService.GetAssetsForTag(game, tagName);
+                var collection = _themeService.GetAssetsForTheme(game, tagName);
                 FilterAssetCollection(collection, validTextureSet, validFlatSet, validThingIdSet, validMusicSet);
                 functionalTags[tagName] = collection;
             }
 
             var concepts = new Dictionary<string, (string type, string[] tags)>
             {
-                { "wall_primary", ("texture", new []{ primaryThemeTag }) }, { "wall_accent", ("texture", new []{ primaryThemeTag, "panel" }) },
-                { "wall_support", ("texture", new []{ primaryThemeTag, "support" }) }, { "wall_secret_indicator", ("texture", new []{ primaryThemeTag, "secret" }) },
-                { "wall_panel", ("texture", new []{ primaryThemeTag, "panel" }) }, { "door_frame", ("texture", new []{ primaryThemeTag, "border" }) },
-                { "floor_primary", ("flat", new []{ primaryThemeTag }) }, { "floor_accent", ("flat", new []{ primaryThemeTag }) },
-                { "ceiling_primary", ("flat", new []{ primaryThemeTag }) }, { "ceiling_light_source", ("flat", new []{ "light_source" }) },
-                { "platform_surface", ("flat", new []{ primaryThemeTag }) }, { "door_regular", ("texture", new []{ "door" }) },
+                { "wall_primary", ("texture", new []{ primaryTheme }) }, { "wall_accent", ("texture", new []{ primaryTheme, "panel" }) },
+                { "wall_support", ("texture", new []{ primaryTheme, "support" }) }, { "wall_secret_indicator", ("texture", new []{ primaryTheme, "secret" }) },
+                { "wall_panel", ("texture", new []{ primaryTheme, "panel" }) }, { "door_frame", ("texture", new []{ primaryTheme, "border" }) },
+                { "floor_primary", ("flat", new []{ primaryTheme }) }, { "floor_accent", ("flat", new []{ primaryTheme }) },
+                { "ceiling_primary", ("flat", new []{ primaryTheme }) }, { "ceiling_light_source", ("flat", new []{ "light_source" }) },
+                { "platform_surface", ("flat", new []{ primaryTheme }) }, { "door_regular", ("texture", new []{ "door" }) },
                 { "door_locked", ("texture", new []{ "door" }) }, { "door_exit", ("texture", new []{ "exit", "door" }) },
                 { "switch_utility", ("texture", new []{ "switch" }) }, { "switch_exit", ("texture", new []{ "exit", "switch" }) },
                 { "door_indicator_blue", ("texture", new []{ "key_indicator_blue" }) }, { "door_indicator_red", ("texture", new []{ "key_indicator_red" }) },
@@ -151,7 +167,7 @@ namespace DGenesis.Services
 
                 var baseList = assetType == "texture" ? themeAssets.Textures : themeAssets.Flats;
                 candidates = new List<string>(baseList);
-                foreach (var tag in conceptTags.Where(t => t != primaryThemeTag && functionalTags.ContainsKey(t)))
+                foreach (var tag in conceptTags.Where(t => t != primaryTheme && functionalTags.ContainsKey(t)))
                 {
                     var functionalAssets = assetType == "texture" ? functionalTags[tag].Textures : functionalTags[tag].Flats;
                     candidates = candidates.Intersect(functionalAssets).ToList();
@@ -173,7 +189,7 @@ namespace DGenesis.Services
                     }
                 }
 
-                if (!candidates.Any() && conceptTags.Contains(primaryThemeTag) && conceptTags.Length > 1)
+                if (!candidates.Any() && conceptTags.Contains(primaryTheme) && conceptTags.Length > 1)
                 {
                     candidates = assetType == "texture" ? new List<string>(themeAssets.Textures) : new List<string>(themeAssets.Flats);
                 }
@@ -191,24 +207,24 @@ namespace DGenesis.Services
                     };
                 }
             }
-            return (palette, primaryThemeTag);
+            return (palette, primaryTheme);
         }
 
-        private List<ThematicToken> GenerateThematicTokens(string game, Dictionary<string, List<WeightedAsset>> themePalette, string primaryThemeTag)
+        private List<ThematicToken> GenerateThematicTokens(string game, Dictionary<string, List<WeightedAsset>> themePalette, string primaryTheme)
         {
             var tokens = new List<ThematicToken>();
             var existingAssets = new HashSet<string>();
 
-            foreach (var list in themePalette.Values)
+            foreach (var concept in themePalette)
             {
-                foreach (var asset in list)
+                foreach (var asset in concept.Value)
                 {
                     if (existingAssets.Add(asset.Name))
                     {
                         tokens.Add(new ThematicToken
                         {
                             Name = asset.Name,
-                            Type = GetTokenTypeForAsset(asset.Name, themePalette),
+                            Type = GetTokenType(game, asset.Name),
                             AdjacencyRules = new List<AdjacencyRule>()
                         });
                     }
@@ -218,37 +234,29 @@ namespace DGenesis.Services
             int desiredMonsterCount = _random.Next(4, 9);
             var finalMonsterSelection = new List<GameAssetThing>();
 
-            if (!string.IsNullOrEmpty(primaryThemeTag))
+            if (!string.IsNullOrEmpty(primaryTheme))
             {
                 var allThings = _assetService.GetThingsForGame(game);
-
-                // 1. Obtenir les monstres thématiques
-                var thematicThingIds = new HashSet<int>(_tagService.GetAssetsForTag(game, primaryThemeTag).Things);
-                var allMonsterIds = new HashSet<int>(_tagService.GetAssetsForTag(game, "monster").Things);
+                var thematicThingIds = new HashSet<int>(_themeService.GetAssetsForTheme(game, primaryTheme).Things);
+                var allMonsterIds = new HashSet<int>(_themeService.GetAssetsForTheme(game, "monster").Things);
                 var candidateIds = thematicThingIds.Intersect(allMonsterIds).ToList();
                 var thematicMonsterCandidates = allThings.Where(t => candidateIds.Contains(t.TypeId)).ToList();
 
-                // 2. Ajouter les monstres thématiques uniques à la sélection finale
                 var shuffledThematicMonsters = thematicMonsterCandidates.OrderBy(m => _random.Next()).ToList();
                 finalMonsterSelection.AddRange(shuffledThematicMonsters.Take(desiredMonsterCount));
             }
 
-            // 3. Compléter la sélection si nécessaire avec des monstres non-thématiques
             if (finalMonsterSelection.Count < desiredMonsterCount)
             {
                 int needed = desiredMonsterCount - finalMonsterSelection.Count;
                 var allMonsters = _assetService.GetThingsForGame(game)
-                    .Where(t => _tagService.GetAssetsForTag(game, "monster").Things.Contains(t.TypeId)).ToList();
-
+                    .Where(t => _themeService.GetAssetsForTheme(game, "monster").Things.Contains(t.TypeId)).ToList();
                 var alreadySelectedIds = new HashSet<int>(finalMonsterSelection.Select(m => m.TypeId));
-
                 var fallbackCandidates = allMonsters.Where(m => !alreadySelectedIds.Contains(m.TypeId)).ToList();
                 var shuffledFallbackMonsters = fallbackCandidates.OrderBy(m => _random.Next()).ToList();
-
                 finalMonsterSelection.AddRange(shuffledFallbackMonsters.Take(needed));
             }
 
-            // 4. Ajouter les monstres sélectionnés aux tokens
             foreach (var thing in finalMonsterSelection)
             {
                 if (existingAssets.Add(thing.Name))
@@ -262,12 +270,10 @@ namespace DGenesis.Services
                     });
                 }
             }
-            // FIN de la nouvelle logique
-
             return tokens;
         }
 
-        private void FilterAssetCollection(TaggedAssetCollection collection, HashSet<string> validTextures, HashSet<string> validFlats, HashSet<int> validThings, HashSet<string> validMusic)
+        private void FilterAssetCollection(ThemedAssetCollection collection, HashSet<string> validTextures, HashSet<string> validFlats, HashSet<int> validThings, HashSet<string> validMusic)
         {
             if (collection == null) return;
             collection.Textures = collection.Textures?.Where(t => validTextures.Contains(t)).ToList() ?? new List<string>();
@@ -276,18 +282,32 @@ namespace DGenesis.Services
             collection.Music = collection.Music?.Where(m => validMusic.Contains(m)).ToList() ?? new List<string>();
         }
 
-        private string GetTokenTypeForAsset(string assetName, Dictionary<string, List<WeightedAsset>> themePalette)
+        private string GetTokenType(string game, string assetName)
         {
-            foreach (var kvp in themePalette)
+            string function = _functionService.GetAssetFunction(game, assetName);
+
+            if (function != null)
             {
-                if (kvp.Value.Any(a => a.Name == assetName))
+                // Un asset défini comme un interrupteur est toujours une "connection_action"
+                if (function.StartsWith("switch"))
                 {
-                    if (kvp.Key.StartsWith("switch_")) { return "connection_action"; }
-                    if (kvp.Key.StartsWith("wall_") || kvp.Key.StartsWith("door_")) { return "wall"; }
-                    return "flat";
+                    return "connection_action";
+                }
+                // Un asset défini comme une porte ou une lumière murale est de type "wall"
+                if (function.StartsWith("door") || function.StartsWith("light_source_wall") || function.StartsWith("secret_wall"))
+                {
+                    return "wall";
                 }
             }
-            return "wall";
+
+            // Fallback : si aucune fonction spécifique n'est trouvée, on se base sur la liste principale de l'asset.
+            // C'est utile pour les textures génériques qui n'ont pas de fonction listée.
+            if (_assetService.GetTexturesForGame(game).Contains(assetName))
+            {
+                return "wall";
+            }
+
+            return "flat";
         }
 
         private (string MapLumpName, string Music) GetDefaultMapDetailsForGame(string game)

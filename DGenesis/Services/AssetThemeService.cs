@@ -7,49 +7,49 @@ using System.Text.Json;
 
 namespace DGenesis.Services
 {
-    public class AssetTagService
+    public class AssetThemeService
     {
-        private readonly Dictionary<string, GameTags> _tagDatabase;
+        private readonly Dictionary<string, GameThemes> _themeDatabase;
 
-        public AssetTagService()
+        public AssetThemeService()
         {
             try
             {
-                string filePath = Path.Combine(AppContext.BaseDirectory, "asset_tags.json");
+                string filePath = Path.Combine(AppContext.BaseDirectory, "asset_themes.json");
                 if (File.Exists(filePath))
                 {
                     string jsonString = File.ReadAllText(filePath);
                     var options = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
 
-                    _tagDatabase = JsonSerializer.Deserialize<Dictionary<string, GameTags>>(jsonString, options);
+                    _themeDatabase = JsonSerializer.Deserialize<Dictionary<string, GameThemes>>(jsonString, options);
                 }
                 else
                 {
-                    _tagDatabase = new Dictionary<string, GameTags>();
+                    _themeDatabase = new Dictionary<string, GameThemes>();
                 }
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Erreur lors du chargement de asset_tags.json: {ex.Message}");
-                _tagDatabase = new Dictionary<string, GameTags>();
+                Console.WriteLine($"Erreur lors du chargement de asset_themes.json: {ex.Message}");
+                _themeDatabase = new Dictionary<string, GameThemes>();
             }
         }
 
-        public TaggedAssetCollection GetAssetsForTag(string game, string tag)
+        public ThemedAssetCollection GetAssetsForTheme(string game, string theme)
         {
-            if (_tagDatabase.TryGetValue(game, out var gameTags) &&
-                gameTags.Tags.TryGetValue(tag, out var assetCollection))
+            if (_themeDatabase.TryGetValue(game, out var gameThemes) &&
+                gameThemes.Themes.TryGetValue(theme, out var assetCollection))
             {
                 return assetCollection;
             }
-            return new TaggedAssetCollection();
+            return new ThemedAssetCollection();
         }
 
-        public List<string> GetAvailableThemeTags(string game)
+        public List<string> GetAvailableThemes(string game)
         {
-            if (_tagDatabase.TryGetValue(game, out var gameTags))
+            if (_themeDatabase.TryGetValue(game, out var gameThemes))
             {
-                var functionalAndAttributeTags = new HashSet<string>
+                var functionalAndAttributeThemes = new HashSet<string>
                 {
                     "door", "switch", "light_source", "exit", "secret", "sky",
                     "support", "panel", "animated", "grate", "window", "border", "signage",
@@ -59,8 +59,8 @@ namespace DGenesis.Services
                     "monster"
                 };
 
-                return gameTags.Tags
-                    .Where(t => !functionalAndAttributeTags.Contains(t.Key))
+                return gameThemes.Themes
+                    .Where(t => !functionalAndAttributeThemes.Contains(t.Key))
                     .Select(t => t.Key)
                     .ToList();
             }

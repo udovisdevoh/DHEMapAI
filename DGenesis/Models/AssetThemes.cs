@@ -3,13 +3,13 @@ using System.Text.Json.Serialization;
 
 namespace DGenesis.Models
 {
-    public class GameTags
+    public class GameThemes
     {
-        [JsonPropertyName("tags")]
-        public Dictionary<string, TaggedAssetCollection> Tags { get; set; }
+        [JsonPropertyName("themes")]
+        public Dictionary<string, ThemedAssetCollection> Themes { get; set; }
     }
 
-    public class TaggedAssetCollection
+    public class ThemedAssetCollection
     {
         [JsonPropertyName("description")]
         public string Description { get; set; }

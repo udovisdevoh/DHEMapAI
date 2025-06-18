@@ -1,6 +1,6 @@
 {
     "doom": {
-        "tags": {
+        "themes": {
             "e1_techbase": {
                 "description": "Le style de la base high-tech du premier épisode de Doom.",
                 "textures": [ "TEKWALL1", "TEKWALL2", "TEKWALL3", "TEKWALL4", "STARG1", "STARG2", "METAL", "METAL1", "SUPPORT2", "SUPPORT3", "COMPTALL", "PIPE1", "PIPE2" ],
@@ -101,7 +101,7 @@
         }
     },
     "doom2": {
-        "tags": {
+        "themes": {
             "metal": {
                 "textures": [ "METAL", "METAL1", "METAL2", "METAL3", "METAL4", "METAL5", "SUPPORT2", "SUPPORT3", "BIGDOOR2", "STARG1", "DOORTRAK", "SILVER1", "TEKBRON1", "TEKBRON2" ],
                 "flats": [ "MFLR8_1", "MFLR8_2", "MFLR8_3", "MFLR8_4", "CEIL3_5", "CEIL3_6", "SFLR7_1", "SFLR7_4", "PLAT1" ],
@@ -238,7 +238,7 @@
         }
     },
     "heretic": {
-        "tags": {
+        "themes": {
             "castle": {
                 "textures": [ "CASTLE1", "CASTLE2", "CASTLE3", "CASTLE4", "CASTLE5", "CASTLE6", "CASTLE7", "BRICK01", "BRICK02", "STONE01", "STONE02", "WOOD01", "WOOD02", "GLASS01", "GLASS02" ],
                 "flats": [ "FLAT01", "FLAT02", "FLOOR08", "FLOOR09", "CEIL01", "CEIL02" ],
@@ -315,7 +315,7 @@
         }
     },
     "hexen": {
-        "tags": {
+        "themes": {
             "fortress_decayed": {
                 "textures": [ "CASTLE01", "CASTLE02", "CASTLE03", "CASTLE04", "CASTLE05", "CASTLE06", "CASTLE07", "STONE01", "STONE02", "STONE03", "RUST01", "RUST02", "RUST03", "WOOD01", "WOOD02", "WOOD03", "SUPPORT1", "SUPPORT2", "SUPPORT3" ],
                 "flats": [ "FLOOR01", "FLOOR02", "FLOOR03", "FLOOR04", "FLOOR05", "FLOOR06", "FLAT01", "FLAT02" ],

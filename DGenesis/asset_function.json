@@ -1,0 +1,56 @@
+{
+    "doom": {
+        "door": [ "BIGDOOR1", "BIGDOOR2", "BIGDOOR3", "BIGDOOR4", "BIGDOOR5", "BIGDOOR6", "BIGDOOR7", "DOOR1", "DOOR3" ],
+        "door_blue": [ "DOORBLU", "DOORBLU2" ],
+        "door_red": [ "DOORRED", "DOORRED2" ],
+        "door_yellow": [ "DOORYEL", "DOORYEL2" ],
+        "door_exit": [ "EXITDOOR" ],
+        "switch": [ "SW1BROWN", "SW1GARG", "SW1METAL", "SW1PIPE", "SW1SKIN", "SW1VINE", "SW2BROWN", "SW2GARG", "SW2METAL", "SW2PIPE", "SW2SKIN", "SW2VINE" ],
+        "switch_key_blue": [ "SW1BLUE", "SW2BLUE" ],
+        "switch_key_red": [ "SW1GSTON", "SW2GSTON" ],
+        "switch_key_yellow": [ "SW1GSTON", "SW2GSTON" ],
+        "switch_exit": [ "SW1EXIT", "SW2EXIT" ],
+        "light_source_wall": [ "LITE2", "LITE3", "LITE4", "LITE5", "LITEBLU1", "LITEBLU2", "LITEBLU3", "LITEBLU4", "LITERED" ],
+        "light_source_flat": [ "TLITE6_1", "TLITE6_4", "TLITE6_5", "TLITE6_6" ],
+        "damaging_floor_low": [ "NUKAGE1", "NUKAGE2", "NUKAGE3" ],
+        "damaging_floor_high": [ "LAVA1", "LAVA2", "LAVA3", "LAVA4" ],
+        "secret_wall": [ "SP_DUDE1", "SP_DUDE2", "SP_DUDE3" ]
+    },
+    "doom2": {
+        "door": [ "BIGDOOR1", "BIGDOOR2", "BIGDOOR3", "BIGDOOR4", "BIGDOOR5", "BIGDOOR6", "BIGDOOR7", "DOOR1", "DOOR3", "SPCDOOR1", "SPCDOOR2", "SPCDOOR3", "SPCDOOR4" ],
+        "door_blue": [ "DOORBLU", "DOORBLU2" ],
+        "door_red": [ "DOORRED", "DOORRED2" ],
+        "door_yellow": [ "DOORYEL", "DOORYEL2" ],
+        "door_exit": [ "EXITDOOR" ],
+        "switch": [ "SW1BROWN", "SW1METAL", "SW2SKIN", "SW1PANEL", "SW1ROCK", "SW1GSTON", "SW2GSTON", "SW1CMT", "SW1TEK" ],
+        "switch_key_blue": [ "SW1BLUE", "SW2BLUE" ],
+        "switch_key_red": [ "SW1ZIM", "SW2ZIM" ],
+        "switch_key_yellow": [ "SW1ZIM", "SW2ZIM" ],
+        "switch_exit": [ "SW1EXIT", "SW2EXIT" ],
+        "light_source_wall": [ "LITE3", "LITE5", "LITEBLU1", "LITEBLU4", "TEKLITE", "TEKLITE2", "BRICKLIT" ],
+        "light_source_flat": [ "TLITE6_1", "TLITE6_4", "TLITE6_5", "TLITE6_6", "GRNLITE1" ],
+        "damaging_floor_low": [ "NUKAGE1", "NUKAGE2", "NUKAGE3" ],
+        "damaging_floor_high": [ "LAVA1", "LAVA2", "LAVA3", "LAVA4" ],
+        "secret_wall": [ "SP_DUDE1", "SP_DUDE2", "BRICK11", "BIGBRIK3" ]
+    },
+    "heretic": {
+        "door": [ "BIGDOOR1", "BIGDOOR2", "BIGDOOR3", "DOOR01", "DOOR02", "DOOR03", "DOOR04", "DOOR05", "DOOR06", "DOOR07", "DOOR08", "DOOR09", "DOOR10", "DOOR11", "DOOR12", "DOOR13", "DOOR14", "DOOR15", "DOOR16" ],
+        "door_blue": [ "DOOR17", "DOOR20" ],
+        "door_yellow": [ "DOOR18", "DOOR21" ],
+        "door_green": [ "DOOR19", "DOOR22" ],
+        "door_exit": [ "EXIT01", "EXIT02" ],
+        "switch": [ "SW01", "SW02", "SW03", "SW04", "SW05", "SW06", "SW07", "SW08", "SW09", "SW10", "SW11", "SW12", "SW13", "SW14", "SW15", "SW16", "SW17", "SW18", "SW19", "SW20", "SW21", "SW22", "SW23", "SW24" ],
+        "light_source_wall": [ "LITE01", "LITE02", "LITE03", "LITE04", "LITE05" ],
+        "light_source_flat": [ "CEIL09", "CEIL10", "CEIL11" ],
+        "damaging_floor_low": [ "SLIME01", "SLIME02", "SLIME03", "SLIME04" ],
+        "damaging_floor_high": [ "LAVA01", "LAVA02", "LAVA03", "LAVA04" ]
+    },
+    "hexen": {
+        "door": [ "BIGDOOR1", "DOOR01", "DOOR02", "DOOR03", "DOOR04", "DOOR05", "DOOR06", "DOOR07", "DOOR08", "DOOR09", "DOOR10", "DOOR11", "DOOR12", "DOOR13", "DOOR14", "GATE01", "GATE02", "GATE03", "GATE04" ],
+        "switch": [ "SWITCH01", "SWITCH02", "SWITCH03", "SWITCH04", "SWITCH05", "SWITCH06", "SWITCH07", "SWITCH08" ],
+        "light_source_wall": [ "FLAME_A1", "FLAME_B1" ],
+        "light_source_flat": [ "CEILING4" ],
+        "damaging_floor_high": [ "LAVA01" ],
+        "damaging_floor_low": [ "SWAMP01", "SWAMP02", "SWAMP03", "SWAMP04" ]
+    }
+}

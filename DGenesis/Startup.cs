@@ -21,7 +21,8 @@ namespace DGenesis
         {
             services.AddRazorPages();
             services.AddSingleton<GameAssetService>();
-            services.AddSingleton<AssetTagService>();
+            services.AddSingleton<AssetThemeService>();
+            services.AddSingleton<AssetFunctionService>();
             services.AddScoped<DGenesisRandomGeneratorService>();
         }
 
