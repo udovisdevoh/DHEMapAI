@@ -146,21 +146,52 @@ namespace DGenesis.Services
             foreach (var concept in concepts)
             {
                 var conceptTags = concept.Value.tags;
-                List<string> candidates;
-                if (concept.Value.type == "texture")
+                var assetType = concept.Value.type;
+                List<string> candidates = new List<string>();
+
+                // Tentative 1: Intersection de tous les tags (thème + fonctionnel)
+                var baseList = assetType == "texture" ? themeAssets.Textures : themeAssets.Flats;
+                candidates = new List<string>(baseList);
+                foreach (var tag in conceptTags.Where(t => t != primaryThemeTag && functionalTags.ContainsKey(t)))
                 {
-                    candidates = conceptTags.Contains(primaryThemeTag) ? new List<string>(themeAssets.Textures) : new List<string>(validTextureSet);
-                    foreach (var tag in conceptTags.Where(t => functionalTags.ContainsKey(t))) { candidates = candidates.Intersect(functionalTags[tag].Textures).ToList(); }
-                    if (!candidates.Any() && conceptTags.Length > 1) { var fallbackTag = functionalTags.GetValueOrDefault(conceptTags.Last()); if (fallbackTag != null) candidates = fallbackTag.Textures; }
+                    var functionalAssets = assetType == "texture" ? functionalTags[tag].Textures : functionalTags[tag].Flats;
+                    candidates = candidates.Intersect(functionalAssets).ToList();
                 }
-                else
+
+                // Tentative 2: Fallback aux tags fonctionnels uniquement, si l'intersection a échoué
+                if (!candidates.Any())
                 {
-                    candidates = conceptTags.Contains(primaryThemeTag) ? new List<string>(themeAssets.Flats) : new List<string>(validFlatSet);
-                    foreach (var tag in conceptTags.Where(t => functionalTags.ContainsKey(t))) { candidates = candidates.Intersect(functionalTags[tag].Flats).ToList(); }
-                    if (!candidates.Any() && conceptTags.Length > 1) { var fallbackTag = functionalTags.GetValueOrDefault(conceptTags.Last()); if (fallbackTag != null) candidates = fallbackTag.Flats; }
+                    var functionalConceptTags = conceptTags.Where(t => functionalTags.ContainsKey(t)).ToList();
+                    if (functionalConceptTags.Any())
+                    {
+                        var firstFunctionalTag = functionalTags[functionalConceptTags.First()];
+                        candidates = assetType == "texture" ? new List<string>(firstFunctionalTag.Textures) : new List<string>(firstFunctionalTag.Flats);
+
+                        foreach (var tag in functionalConceptTags.Skip(1))
+                        {
+                            var functionalAssets = assetType == "texture" ? functionalTags[tag].Textures : functionalTags[tag].Flats;
+                            candidates = candidates.Intersect(functionalAssets).ToList();
+                        }
+                    }
                 }
-                if (candidates.Any()) { palette[concept.Key] = new List<WeightedAsset> { new WeightedAsset { Name = candidates[_random.Next(candidates.Count)], Weight = 100 } }; }
+
+                // Tentative 3: Dernier recours, si toujours rien, on prend n'importe quel asset du bon type
+                // Ceci est crucial pour les concepts comme "floor_primary" si le thème n'a pas de flats.
+                if (!candidates.Any())
+                {
+                    candidates = assetType == "texture" ? new List<string>(validTextureSet) : new List<string>(validFlatSet);
+                }
+
+                if (candidates.Any())
+                {
+                    palette[concept.Key] = new List<WeightedAsset>
+                    {
+                        new WeightedAsset { Name = candidates[_random.Next(candidates.Count)], Weight = 100 }
+                    };
+                }
             }
+            // FIN de la nouvelle logique
+
             return (palette, primaryThemeTag);
         }
 
@@ -185,7 +216,6 @@ namespace DGenesis.Services
                 }
             }
 
-            // CORRECTION: Logique de sélection des monstres mise à jour
             var allThings = _assetService.GetThingsForGame(game);
 
             var thematicThingIds = new HashSet<int>(_tagService.GetAssetsForTag(game, primaryThemeTag).Things);
