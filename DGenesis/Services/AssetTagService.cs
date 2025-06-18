@@ -9,7 +9,6 @@ namespace DGenesis.Services
 {
     public class AssetTagService
     {
-        // CHANGEMENT 1: Le type de la base de données est maintenant directement un dictionnaire.
         private readonly Dictionary<string, GameTags> _tagDatabase;
 
         public AssetTagService()
@@ -22,7 +21,6 @@ namespace DGenesis.Services
                     string jsonString = File.ReadAllText(filePath);
                     var options = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
 
-                    // CHANGEMENT 2: On désérialise directement en dictionnaire.
                     _tagDatabase = JsonSerializer.Deserialize<Dictionary<string, GameTags>>(jsonString, options);
                 }
                 else
@@ -32,7 +30,6 @@ namespace DGenesis.Services
             }
             catch (Exception ex)
             {
-                // L'exception JsonException sera beaucoup plus claire maintenant si le JSON est mal formé.
                 Console.WriteLine($"Erreur lors du chargement de asset_tags.json: {ex.Message}");
                 _tagDatabase = new Dictionary<string, GameTags>();
             }
@@ -40,26 +37,26 @@ namespace DGenesis.Services
 
         public TaggedAssetCollection GetAssetsForTag(string game, string tag)
         {
-            // CHANGEMENT 3: L'accès au dictionnaire est maintenant direct.
             if (_tagDatabase.TryGetValue(game, out var gameTags) &&
                 gameTags.Tags.TryGetValue(tag, out var assetCollection))
             {
                 return assetCollection;
             }
-            return new TaggedAssetCollection(); // Retourne une collection vide si non trouvé
+            return new TaggedAssetCollection();
         }
 
         public List<string> GetAvailableThemeTags(string game)
         {
-            // CHANGEMENT 4: L'accès au dictionnaire est maintenant direct ici aussi.
             if (_tagDatabase.TryGetValue(game, out var gameTags))
             {
                 var functionalAndAttributeTags = new HashSet<string>
                 {
-                    "door", "switch", "light_source", "key_indicator", "exit", "secret", "sky",
+                    "door", "switch", "light_source", "exit", "secret", "sky",
                     "support", "panel", "animated", "grate", "window", "border", "signage",
                     "monster_prop", "gore", "corrupted", "decayed", "puzzle_item",
-                    "class_specific", "tapestry", "glass_window"
+                    "class_specific", "tapestry", "glass_window",
+                    "key_indicator_blue", "key_indicator_red", "key_indicator_yellow", "key_indicator_green",
+                    "monster"
                 };
 
                 return gameTags.Tags
