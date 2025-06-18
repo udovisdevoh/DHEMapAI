@@ -8,16 +8,24 @@
 
 ## Source combiner (to combine source code into single files)
 
-combiner_source.ps1
+```
+powershell -File combiner_sources.ps1
+```
 
 ### To combine C# files (using the default):
 
-.\combiner_source.ps1 -Path "C:\Projects\MySolution"
+```
+powershell -File .\combiner_sources.ps1 -Path "C:\Projects\MySolution"
+```
 
 ### To combine Python files:
 
-.\combiner_source.ps1 -Path "C:\Projects\MyPythonApp" -FileFormat "*.py"
+```
+powershell -File .\combiner_sources.ps1 -Path "C:\Projects\MyPythonApp" -FileFormat "*.py"
+```
 
 ### To combine text files:
 
-.\combiner_source.ps1 -Path "C:\MyDocuments" -FileFormat "*.txt"
+```
+powershell -File .\combiner_sources.ps1 -Path "C:\MyDocuments" -FileFormat "*.txt"
+```
