@@ -1,10 +1,8 @@
-## [Documentation du format DGraph](DGenesis/readme.md)
+## [Documentation du format DGenesis](DGenesis/readme.md)
 
-## Documentation du format DGraph
-[DGRAPH.md](DGRAPH.md)
+## [Documentation du format DGraph](DGRAPH.md)
 
-## Documentation du format DHEMap
-[DHEMAP.md](DHEMAP.md)
+## [Documentation du format DHEMap](DHEMAP.md)
 
 ## Source combiner (to combine source code into single files)
 
