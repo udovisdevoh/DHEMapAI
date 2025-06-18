@@ -98,6 +98,27 @@
                 "flats": [],
                 "things": [],
                 "music": []
+            },
+            "key_indicator_blue": {
+                "description": "Assets bleus liés aux clés.",
+                "textures": [ "DOORBLU", "DOORBLU2", "LITEBLU1", "LITEBLU4", "SW1BLUE", "SW2BLUE" ],
+                "flats": [],
+                "things": [ 5, 40 ],
+                "music": []
+            },
+            "key_indicator_red": {
+                "description": "Assets rouges liés aux clés.",
+                "textures": [ "DOORRED", "DOORRED2", "LITERED" ],
+                "flats": [],
+                "things": [ 13, 38 ],
+                "music": []
+            },
+            "key_indicator_yellow": {
+                "description": "Assets jaunes liés aux clés.",
+                "textures": [ "DOORYEL", "DOORYEL2", "LITE5" ],
+                "flats": [],
+                "things": [ 6, 39 ],
+                "music": []
             }
         }
     },
@@ -208,13 +229,6 @@
                 "things": [],
                 "music": []
             },
-            "key_indicator": {
-                "description": "Assets signalant une couleur de clé (bleu, jaune, rouge).",
-                "textures": [ "DOORBLU", "DOORRED", "DOORYEL", "LITEBLU1", "LITEBLU4", "SW1BLUE", "SW2BLUE", "SW1ZIM", "SW2ZIM" ],
-                "flats": [],
-                "things": [ 5, 13, 6, 40, 38, 39 ],
-                "music": []
-            },
             "animated": {
                 "description": "Contient des assets explicitement animés (chutes d'eau, flammes, etc.).",
                 "textures": [ "BFALL1", "SFALL1", "FIREBLU1", "FIREBLU2", "FIRELAVA", "FIREWALA", "FIREWALL" ],
@@ -305,6 +319,27 @@
                 "flats": [ "MFLR8_1", "MFLR8_2" ],
                 "things": [],
                 "music": [ "D_EVIL" ]
+            },
+            "key_indicator_blue": {
+                "description": "Assets bleus liés aux clés.",
+                "textures": [ "DOORBLU", "LITEBLU1", "LITEBLU4", "SW1BLUE", "SW2BLUE" ],
+                "flats": [],
+                "things": [ 5, 40 ],
+                "music": []
+            },
+            "key_indicator_red": {
+                "description": "Assets rouges liés aux clés.",
+                "textures": [ "DOORRED" ],
+                "flats": [],
+                "things": [ 13, 38 ],
+                "music": []
+            },
+            "key_indicator_yellow": {
+                "description": "Assets jaunes liés aux clés.",
+                "textures": [ "DOORYEL", "LITE5" ],
+                "flats": [],
+                "things": [ 6, 39 ],
+                "music": []
             }
         }
     },
@@ -387,13 +422,6 @@
                 "things": [ 27, 28, 50, 76 ],
                 "music": []
             },
-            "key_indicator": {
-                "description": "Assets signalant une couleur de clé (bleu, jaune, vert).",
-                "textures": [ "DOOR17", "DOOR18", "DOOR19", "DOOR20", "DOOR21", "DOOR22" ],
-                "flats": [],
-                "things": [ 79, 80, 73 ],
-                "music": []
-            },
             "glass_window": {
                 "description": "Vitraux et fenêtres en verre coloré.",
                 "textures": [ "GLASS01", "GLASS02", "GLASS03", "GLASS04", "GLASS05", "GLASS06", "WIND01", "WIND02", "WIND03", "WIND04" ],
@@ -414,6 +442,27 @@
                 "flats": [ "MARB01", "MARB02" ],
                 "things": [],
                 "music": [ "MUS_E2M2" ]
+            },
+            "key_indicator_blue": {
+                "description": "Assets bleus liés aux clés.",
+                "textures": [ "DOOR17", "DOOR20" ],
+                "flats": [],
+                "things": [ 79 ],
+                "music": []
+            },
+            "key_indicator_yellow": {
+                "description": "Assets jaunes liés aux clés.",
+                "textures": [ "DOOR18", "DOOR21" ],
+                "flats": [],
+                "things": [ 80 ],
+                "music": []
+            },
+            "key_indicator_green": {
+                "description": "Assets verts liés aux clés.",
+                "textures": [ "DOOR19", "DOOR22" ],
+                "flats": [],
+                "things": [ 73 ],
+                "music": []
             }
         }
     },
