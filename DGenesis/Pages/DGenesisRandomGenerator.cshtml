@@ -11,7 +11,18 @@
 
 <div class="row mt-4">
     <div class="col-md-12 text-center">
-        <form method="post">
+        <form method="post" class="w-50 mx-auto">
+
+            <div class="mb-3">
+                <label for="gameSelect" class="form-label">Choisissez un jeu :</label>
+                <select id="gameSelect" name="SelectedGame" class="form-select" asp-for="SelectedGame">
+                    <option value="doom">Doom</option>
+                    <option value="doom2">Doom 2</option>
+                    <option value="heretic">Heretic</option>
+                    <option value="hexen">Hexen</option>
+                </select>
+            </div>
+
             <button type="submit" class="btn btn-primary btn-lg">Générer un Fichier Aléatoire</button>
         </form>
     </div>
@@ -21,7 +32,7 @@
 {
     <div class="row mt-4">
         <div class="col-md-12">
-            <h3>Résultat de la Génération :</h3>
+            <h3>Résultat de la Génération pour [@Model.SelectedGame.ToUpper()] :</h3>
 
             <div class="text-end mb-2">
                 <button id="copyButton" class="btn btn-sm btn-secondary">Copier vers le presse-papiers</button>
@@ -33,20 +44,16 @@
 
     <script>
         document.getElementById('copyButton').addEventListener('click', function () {
-            // Sélectionner le texte à copier
             const jsonText = document.getElementById('jsonOutput').innerText;
             const button = this;
 
-            // Utiliser l'API du presse-papiers (moderne et sécurisée)
             navigator.clipboard.writeText(jsonText).then(function () {
-                // Succès : changer le texte du bouton et le réinitialiser après 2 secondes
                 const originalText = button.innerText;
                 button.innerText = 'Copié !';
                 setTimeout(function () {
                     button.innerText = originalText;
                 }, 2000);
             }).catch(function (err) {
-                // Gérer les erreurs éventuelles
                 console.error('Erreur lors de la copie dans le presse-papiers : ', err);
                 alert('La copie a échoué. Veuillez utiliser la méthode manuelle.');
             });

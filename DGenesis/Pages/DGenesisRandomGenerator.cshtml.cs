@@ -10,8 +10,13 @@ namespace DGenesis.Pages
     public class DGenesisRandomGeneratorModel : PageModel
     {
         private readonly DGenesisRandomGeneratorService _generatorService;
-        
+
         public string GeneratedJson { get; private set; }
+
+        // NOUVEAUTÉ 1 : Propriété pour recevoir la valeur du menu déroulant
+        // "SelectedGame" correspond à l'attribut "name" de la balise <select>
+        [BindProperty]
+        public string SelectedGame { get; set; } = "doom2"; // "doom2" est la valeur par défaut
 
         public DGenesisRandomGeneratorModel(DGenesisRandomGeneratorService generatorService)
         {
@@ -24,9 +29,8 @@ namespace DGenesis.Pages
 
         public IActionResult OnPost()
         {
-            // Pour l'instant, on génère seulement pour doom2.
-            // On pourra ajouter un sélecteur de jeu plus tard.
-            var dgenesisFile = _generatorService.Generate("doom2");
+            // NOUVEAUTÉ 2 : Utilisation de la propriété "SelectedGame" au lieu d'une valeur codée en dur
+            var dgenesisFile = _generatorService.Generate(SelectedGame);
 
             var options = new JsonSerializerOptions
             {
