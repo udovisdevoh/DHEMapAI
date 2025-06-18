@@ -24,35 +24,35 @@
             },
             "metal": {
                 "description": "Thème industriel, bases métalliques, structures rouillées ou high-tech.",
-                "textures": [ "METAL", "METAL1", "SUPPORT2", "SUPPORT3", "BIGDOOR2", "STARG1", "DOORTRAK" ],
+                "textures": [ "METAL", "METAL1", "SUPPORT2", "SUPPORT3", "BIGDOOR2", "STARG1", "DOORTRAK", "PIPE1", "PIPE2", "PIPE4", "PIPE6" ],
                 "flats": [ "FLAT5_1", "FLAT5_2", "FLAT5_3", "FLAT5_4", "CEIL3_5", "CEIL3_6" ],
-                "things": [ 2035 ],
+                "things": [ 2035, 48 ],
                 "music": [ "D_E1M1", "D_E1M7" ]
             },
             "stone": {
                 "description": "Thème de donjon, murs en pierre et en briques.",
-                "textures": [ "STONE", "STONE2", "STONE3", "GSTONE1", "GSTONE2", "GSTGARG" ],
+                "textures": [ "STONE", "STONE2", "STONE3", "GSTONE1", "GSTONE2", "GSTGARG", "CEMENT1", "CEMENT2", "CEMENT3", "CEMENT4", "CEMENT5", "CEMENT6" ],
                 "flats": [ "FLAT1", "FLAT14", "FLAT23", "STEP1", "STEP2" ],
                 "things": [ 35, 30, 32 ],
                 "music": [ "D_E2M1", "D_E2M6" ]
             },
             "hell": {
                 "description": "Thème démoniaque, avec de la chair, des os, du marbre impie et de la lave.",
-                "textures": [ "MARBLE1", "MARBLOD1", "FIRELAVA", "SLADWALL", "SKULWALL", "SKINSYMB", "SP_FACE1" ],
+                "textures": [ "MARBLE1", "MARBLOD1", "FIRELAVA", "SLADWALL", "SKULWALL", "SKINSYMB", "SP_FACE1", "SKIN2", "SKINFACE", "FIREBLU1", "FIREWALL" ],
                 "flats": [ "LAVA1", "LAVA2", "LAVA3", "LAVA4", "BLOOD1", "BLOOD2", "BLOOD3", "SFLR6_1" ],
                 "things": [ 3003, 3005, 3006, 7, 16, 28, 29, 36, 37 ],
                 "music": [ "D_E2M7", "D_E3M8", "D_E3M2" ]
             },
             "wood": {
                 "description": "Thème boisé, structures en bois, lambris.",
-                "textures": [ "WOOD1", "WOOD3", "WOOD4", "WOOD5", "WOODGARG", "WOODSKUL" ],
-                "flats": [ "FLOOR0_1", "FLOOR0_2" ],
+                "textures": [ "WOOD1", "WOOD3", "WOOD4", "WOOD5", "WOODGARG", "WOODSKUL", "CRATE1", "CRATE2" ],
+                "flats": [ "FLOOR0_1", "FLOOR0_2", "CRATOP1", "CRATOP2" ],
                 "things": [],
                 "music": [ "D_E1M3" ]
             },
             "computer": {
                 "description": "Panneaux de contrôle, ordinateurs et équipements high-tech.",
-                "textures": [ "COMPTALL", "COMPUTE1", "COMPUTE2", "COMPUTE3", "SW1COMP", "SW2COMP" ],
+                "textures": [ "COMPTALL", "COMPUTE1", "COMPUTE2", "COMPUTE3", "SW1COMP", "SW2COMP", "TEKWALL1", "TEKWALL2", "TEKWALL3", "TEKWALL4" ],
                 "flats": [ "COMP01" ],
                 "things": [ 2026 ],
                 "music": [ "D_E1M7" ]
@@ -66,14 +66,14 @@
             },
             "door": {
                 "description": "Contient toutes les textures fonctionnant comme des portes.",
-                "textures": [ "BIGDOOR1", "BIGDOOR2", "BIGDOOR3", "BIGDOOR4", "BIGDOOR5", "BIGDOOR6", "BIGDOOR7", "DOOR1", "DOOR3", "EXITDOOR" ],
+                "textures": [ "BIGDOOR1", "BIGDOOR2", "BIGDOOR3", "BIGDOOR4", "BIGDOOR5", "BIGDOOR6", "BIGDOOR7", "DOOR1", "DOOR3", "EXITDOOR", "DOORBLU", "DOORRED", "DOORYEL" ],
                 "flats": [],
                 "things": [],
                 "music": []
             },
             "switch": {
                 "description": "Contient toutes les textures d'interrupteurs.",
-                "textures": [ "SW1STARG", "SW1BROWN", "SW1METAL", "SW2SKIN", "SW1EXIT", "SW2EXIT" ],
+                "textures": [ "SW1STARG", "SW1BROWN", "SW1METAL", "SW2SKIN", "SW1EXIT", "SW2EXIT", "SW1COMP", "SW2COMP", "SW1BLUE", "SW2BLUE" ],
                 "flats": [],
                 "things": [],
                 "music": []
@@ -82,7 +82,7 @@
                 "description": "Contient les assets qui émettent de la lumière.",
                 "textures": [ "LITE2", "LITE3", "LITE5", "LITEBLU1", "LITEBLU4", "LITERED" ],
                 "flats": [ "TLITE6_1", "TLITE6_4", "TLITE6_5", "TLITE6_6" ],
-                "things": [ 2028, 34, 35 ],
+                "things": [ 2028, 34, 35, 44, 45, 46 ],
                 "music": []
             },
             "exit": {
@@ -95,6 +95,27 @@
             "secret": {
                 "description": "Murs ou mécanismes souvent utilisés pour les secrets.",
                 "textures": [ "SP_DUDE1", "SP_DUDE2", "SP_DUDE3" ],
+                "flats": [],
+                "things": [],
+                "music": []
+            },
+            "panel": {
+                "description": "Panneaux décoratifs ou technologiques.",
+                "textures": [ "COMPTALL", "COMPUTE1", "COMPUTE2", "COMPUTE3" ],
+                "flats": [ "COMP01" ],
+                "things": [],
+                "music": []
+            },
+            "support": {
+                "description": "Piliers, poutres et autres structures de soutien.",
+                "textures": [ "SUPPORT2", "SUPPORT3", "PIPE1", "PIPE2", "PIPE4", "PIPE6", "BROWNPIP" ],
+                "flats": [],
+                "things": [ 30, 31, 32, 33, 36, 37 ],
+                "music": []
+            },
+            "border": {
+                "description": "Textures conçues pour être utilisées comme bordures ou transitions.",
+                "textures": [ "DOORTRAK", "SKINEDGE", "METAL1" ],
                 "flats": [],
                 "things": [],
                 "music": []
@@ -155,7 +176,7 @@
             "wood": {
                 "description": "Thème boisé, structures en bois, lambris, bibliothèques.",
                 "textures": [ "WOOD1", "WOOD3", "WOOD4", "WOOD5", "WOOD6", "WOOD7", "WOOD8", "WOOD9", "WOOD10", "WOOD12", "WOODVERT", "WOODMET1", "PANBOOK", "BRONZE1", "BRONZE2" ],
-                "flats": [ "FLOOR0_1", "FLOOR0_2" ],
+                "flats": [ "FLOOR0_1", "FLOOR0_2", "RROCK14", "RROCK15" ],
                 "things": [],
                 "music": [ "D_DOOM" ]
             },
