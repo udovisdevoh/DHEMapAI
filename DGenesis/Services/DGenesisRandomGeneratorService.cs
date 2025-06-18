@@ -102,7 +102,6 @@ namespace DGenesis.Services
         {
             var palette = new Dictionary<string, List<WeightedAsset>>();
 
-            // ÉTAPE 1: Obtenir la "vérité terrain" depuis GameAssetService
             var validTextureSet = new HashSet<string>(_assetService.GetTexturesForGame(game));
             var validFlatSet = new HashSet<string>(_assetService.GetFlatsForGame(game));
             var validThingIdSet = new HashSet<int>(_assetService.GetThingsForGame(game).Select(t => t.TypeId));
@@ -112,12 +111,14 @@ namespace DGenesis.Services
             if (!availableThemes.Any()) return palette;
             string primaryThemeTag = availableThemes[_random.Next(availableThemes.Count)];
 
-            // ÉTAPE 2: Obtenir les listes "candidates" depuis AssetTagService et les filtrer
             var themeAssets = _tagService.GetAssetsForTag(game, primaryThemeTag);
             FilterAssetCollection(themeAssets, validTextureSet, validFlatSet, validThingIdSet, validMusicSet);
 
             var functionalTags = new Dictionary<string, TaggedAssetCollection>();
-            var functionalTagNames = new[] { "door", "switch", "light_source", "border", "support", "panel", "secret", "key_indicator", "exit" };
+            var functionalTagNames = new[] {
+                "door", "switch", "light_source", "border", "support", "panel", "secret", "exit",
+                "key_indicator_blue", "key_indicator_red", "key_indicator_yellow", "key_indicator_green"
+            };
 
             foreach (var tagName in functionalTagNames)
             {
@@ -126,6 +127,7 @@ namespace DGenesis.Services
                 functionalTags[tagName] = collection;
             }
 
+            // CORRECTION 2: Mise à jour des concepts pour utiliser les tags spécifiques de couleur
             var concepts = new Dictionary<string, (string type, string[] tags)>
             {
                 { "wall_primary", ("texture", new []{ primaryThemeTag }) },
@@ -141,35 +143,54 @@ namespace DGenesis.Services
                 { "platform_surface", ("flat", new []{ primaryThemeTag }) },
                 { "door_regular", ("texture", new []{ "door" }) },
                 { "door_locked", ("texture", new []{ "door" }) },
-                { "door_exit", ("texture", new []{ "door", "exit" }) },
+                { "door_exit", ("texture", new []{ "exit", "door" }) },
                 { "switch_utility", ("texture", new []{ "switch" }) },
-                { "switch_exit", ("texture", new []{ "switch", "exit" }) },
-                { "door_indicator_blue", ("texture", new []{ "key_indicator" }) },
-                { "door_indicator_red", ("texture", new []{ "key_indicator" }) },
-                { "door_indicator_yellow", ("texture", new []{ "key_indicator" }) }
+                { "switch_exit", ("texture", new []{ "exit", "switch" }) },
+                { "door_indicator_blue", ("texture", new []{ "key_indicator_blue" }) },
+                { "door_indicator_red", ("texture", new []{ "key_indicator_red" }) },
+                { "door_indicator_yellow", ("texture", new []{ "key_indicator_yellow" }) }
             };
 
             foreach (var concept in concepts)
             {
+                var conceptTags = concept.Value.tags;
                 List<string> candidates;
-                var baseCollection = concept.Value.tags.Contains(primaryThemeTag) ? themeAssets : functionalTags.GetValueOrDefault(concept.Value.tags.First());
-
-                if (baseCollection == null) continue;
 
                 if (concept.Value.type == "texture")
                 {
-                    candidates = new List<string>(baseCollection.Textures);
-                    foreach (var tag in concept.Value.tags.Where(t => t != primaryThemeTag && functionalTags.ContainsKey(t)))
+                    // Essayer de trouver une intersection entre tous les tags
+                    candidates = conceptTags.Contains(primaryThemeTag)
+                        ? new List<string>(themeAssets.Textures)
+                        : new List<string>(validTextureSet);
+
+                    foreach (var tag in conceptTags.Where(t => functionalTags.ContainsKey(t)))
                     {
                         candidates = candidates.Intersect(functionalTags[tag].Textures).ToList();
+                    }
+
+                    // CORRECTION 3 : Logique de repli (fallback)
+                    if (!candidates.Any() && conceptTags.Length > 1)
+                    {
+                        // Si l'intersection échoue, on réessaie avec seulement le tag fonctionnel le plus important (souvent le dernier)
+                        var fallbackTag = functionalTags.GetValueOrDefault(conceptTags.Last());
+                        if (fallbackTag != null) candidates = fallbackTag.Textures;
                     }
                 }
                 else // flat
                 {
-                    candidates = new List<string>(baseCollection.Flats);
-                    foreach (var tag in concept.Value.tags.Where(t => t != primaryThemeTag && functionalTags.ContainsKey(t)))
+                    candidates = conceptTags.Contains(primaryThemeTag)
+                        ? new List<string>(themeAssets.Flats)
+                        : new List<string>(validFlatSet);
+
+                    foreach (var tag in conceptTags.Where(t => functionalTags.ContainsKey(t)))
                     {
                         candidates = candidates.Intersect(functionalTags[tag].Flats).ToList();
+                    }
+
+                    if (!candidates.Any() && conceptTags.Length > 1)
+                    {
+                        var fallbackTag = functionalTags.GetValueOrDefault(conceptTags.Last());
+                        if (fallbackTag != null) candidates = fallbackTag.Flats;
                     }
                 }
 
@@ -199,7 +220,7 @@ namespace DGenesis.Services
                         tokens.Add(new ThematicToken
                         {
                             Name = asset.Name,
-                            Type = asset.Name.StartsWith("SW") ? "connection_action" : (conceptIsWall(asset.Name, themePalette) ? "wall" : "flat"),
+                            Type = conceptIsWall(asset.Name, themePalette) ? "wall" : "flat",
                             AdjacencyRules = new List<AdjacencyRule>()
                         });
                     }
@@ -228,7 +249,6 @@ namespace DGenesis.Services
             return tokens;
         }
 
-        // ÉTAPE 3: Nouvelle méthode privée pour filtrer les collections d'assets
         private void FilterAssetCollection(TaggedAssetCollection collection, HashSet<string> validTextures, HashSet<string> validFlats, HashSet<int> validThings, HashSet<string> validMusic)
         {
             collection.Textures = collection.Textures.Where(t => validTextures.Contains(t)).ToList();
