@@ -149,7 +149,6 @@ namespace DGenesis.Services
                 var assetType = concept.Value.type;
                 List<string> candidates = new List<string>();
 
-                // Tentative 1: Intersection de tous les tags (thème + fonctionnel)
                 var baseList = assetType == "texture" ? themeAssets.Textures : themeAssets.Flats;
                 candidates = new List<string>(baseList);
                 foreach (var tag in conceptTags.Where(t => t != primaryThemeTag && functionalTags.ContainsKey(t)))
@@ -158,7 +157,6 @@ namespace DGenesis.Services
                     candidates = candidates.Intersect(functionalAssets).ToList();
                 }
 
-                // Tentative 2: Fallback aux tags fonctionnels uniquement, si l'intersection a échoué
                 if (!candidates.Any())
                 {
                     var functionalConceptTags = conceptTags.Where(t => functionalTags.ContainsKey(t)).ToList();
@@ -175,8 +173,11 @@ namespace DGenesis.Services
                     }
                 }
 
-                // Tentative 3: Dernier recours, si toujours rien, on prend n'importe quel asset du bon type
-                // Ceci est crucial pour les concepts comme "floor_primary" si le thème n'a pas de flats.
+                if (!candidates.Any() && conceptTags.Contains(primaryThemeTag) && conceptTags.Length > 1)
+                {
+                    candidates = assetType == "texture" ? new List<string>(themeAssets.Textures) : new List<string>(themeAssets.Flats);
+                }
+
                 if (!candidates.Any())
                 {
                     candidates = assetType == "texture" ? new List<string>(validTextureSet) : new List<string>(validFlatSet);
@@ -190,8 +191,6 @@ namespace DGenesis.Services
                     };
                 }
             }
-            // FIN de la nouvelle logique
-
             return (palette, primaryThemeTag);
         }
 
@@ -216,39 +215,55 @@ namespace DGenesis.Services
                 }
             }
 
-            var allThings = _assetService.GetThingsForGame(game);
+            int desiredMonsterCount = _random.Next(4, 9);
+            var finalMonsterSelection = new List<GameAssetThing>();
 
-            var thematicThingIds = new HashSet<int>(_tagService.GetAssetsForTag(game, primaryThemeTag).Things);
-            var allMonsterIds = new HashSet<int>(_tagService.GetAssetsForTag(game, "monster").Things);
-
-            var candidateIds = thematicThingIds.Intersect(allMonsterIds).ToList();
-
-            // Mécanisme de repli : si aucun monstre ne correspond au thème, utiliser tous les monstres
-            if (!candidateIds.Any())
+            if (!string.IsNullOrEmpty(primaryThemeTag))
             {
-                candidateIds = allMonsterIds.ToList();
+                var allThings = _assetService.GetThingsForGame(game);
+
+                // 1. Obtenir les monstres thématiques
+                var thematicThingIds = new HashSet<int>(_tagService.GetAssetsForTag(game, primaryThemeTag).Things);
+                var allMonsterIds = new HashSet<int>(_tagService.GetAssetsForTag(game, "monster").Things);
+                var candidateIds = thematicThingIds.Intersect(allMonsterIds).ToList();
+                var thematicMonsterCandidates = allThings.Where(t => candidateIds.Contains(t.TypeId)).ToList();
+
+                // 2. Ajouter les monstres thématiques uniques à la sélection finale
+                var shuffledThematicMonsters = thematicMonsterCandidates.OrderBy(m => _random.Next()).ToList();
+                finalMonsterSelection.AddRange(shuffledThematicMonsters.Take(desiredMonsterCount));
             }
 
-            var monsterCandidates = allThings.Where(t => candidateIds.Contains(t.TypeId)).ToList();
-
-            if (monsterCandidates.Any())
+            // 3. Compléter la sélection si nécessaire avec des monstres non-thématiques
+            if (finalMonsterSelection.Count < desiredMonsterCount)
             {
-                int monsterCount = _random.Next(3, 8);
-                for (int i = 0; i < monsterCount; i++)
+                int needed = desiredMonsterCount - finalMonsterSelection.Count;
+                var allMonsters = _assetService.GetThingsForGame(game)
+                    .Where(t => _tagService.GetAssetsForTag(game, "monster").Things.Contains(t.TypeId)).ToList();
+
+                var alreadySelectedIds = new HashSet<int>(finalMonsterSelection.Select(m => m.TypeId));
+
+                var fallbackCandidates = allMonsters.Where(m => !alreadySelectedIds.Contains(m.TypeId)).ToList();
+                var shuffledFallbackMonsters = fallbackCandidates.OrderBy(m => _random.Next()).ToList();
+
+                finalMonsterSelection.AddRange(shuffledFallbackMonsters.Take(needed));
+            }
+
+            // 4. Ajouter les monstres sélectionnés aux tokens
+            foreach (var thing in finalMonsterSelection)
+            {
+                if (existingAssets.Add(thing.Name))
                 {
-                    var thing = monsterCandidates[_random.Next(monsterCandidates.Count)];
-                    if (existingAssets.Add(thing.Name))
+                    tokens.Add(new ThematicToken
                     {
-                        tokens.Add(new ThematicToken
-                        {
-                            Name = thing.Name,
-                            Type = "object",
-                            TypeId = thing.TypeId,
-                            AdjacencyRules = new List<AdjacencyRule>()
-                        });
-                    }
+                        Name = thing.Name,
+                        Type = "object",
+                        TypeId = thing.TypeId,
+                        AdjacencyRules = new List<AdjacencyRule>()
+                    });
                 }
             }
+            // FIN de la nouvelle logique
+
             return tokens;
         }
 
