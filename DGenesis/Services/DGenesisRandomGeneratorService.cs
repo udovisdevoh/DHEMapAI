@@ -27,8 +27,10 @@ namespace DGenesis.Services
                 FeaturePalette = GenerateFeaturePalette()
             };
 
-            file.ThemePalette = GenerateThemePalette(game);
-            file.ThematicTokens = GenerateThematicTokens(game, file.ThemePalette);
+            var (themePalette, primaryThemeTag) = GenerateThemePalette(game);
+            file.ThemePalette = themePalette;
+
+            file.ThematicTokens = GenerateThematicTokens(game, file.ThemePalette, primaryThemeTag);
 
             return file;
         }
@@ -98,7 +100,7 @@ namespace DGenesis.Services
             };
         }
 
-        private Dictionary<string, List<WeightedAsset>> GenerateThemePalette(string game)
+        private (Dictionary<string, List<WeightedAsset>> palette, string themeTag) GenerateThemePalette(string game)
         {
             var palette = new Dictionary<string, List<WeightedAsset>>();
 
@@ -108,7 +110,7 @@ namespace DGenesis.Services
             var validMusicSet = new HashSet<string>(_assetService.GetMusicForGame(game));
 
             var availableThemes = _tagService.GetAvailableThemeTags(game);
-            if (!availableThemes.Any()) return palette;
+            if (!availableThemes.Any()) return (palette, null);
             string primaryThemeTag = availableThemes[_random.Next(availableThemes.Count)];
 
             var themeAssets = _tagService.GetAssetsForTag(game, primaryThemeTag);
@@ -129,24 +131,15 @@ namespace DGenesis.Services
 
             var concepts = new Dictionary<string, (string type, string[] tags)>
             {
-                { "wall_primary", ("texture", new []{ primaryThemeTag }) },
-                { "wall_accent", ("texture", new []{ primaryThemeTag, "panel" }) },
-                { "wall_support", ("texture", new []{ primaryThemeTag, "support" }) },
-                { "wall_secret_indicator", ("texture", new []{ primaryThemeTag, "secret" }) },
-                { "wall_panel", ("texture", new []{ primaryThemeTag, "panel" }) },
-                { "door_frame", ("texture", new []{ primaryThemeTag, "border" }) },
-                { "floor_primary", ("flat", new []{ primaryThemeTag }) },
-                { "floor_accent", ("flat", new []{ primaryThemeTag }) },
-                { "ceiling_primary", ("flat", new []{ primaryThemeTag }) },
-                { "ceiling_light_source", ("flat", new []{ "light_source" }) },
-                { "platform_surface", ("flat", new []{ primaryThemeTag }) },
-                { "door_regular", ("texture", new []{ "door" }) },
-                { "door_locked", ("texture", new []{ "door" }) },
-                { "door_exit", ("texture", new []{ "exit", "door" }) },
-                { "switch_utility", ("texture", new []{ "switch" }) },
-                { "switch_exit", ("texture", new []{ "exit", "switch" }) },
-                { "door_indicator_blue", ("texture", new []{ "key_indicator_blue" }) },
-                { "door_indicator_red", ("texture", new []{ "key_indicator_red" }) },
+                { "wall_primary", ("texture", new []{ primaryThemeTag }) }, { "wall_accent", ("texture", new []{ primaryThemeTag, "panel" }) },
+                { "wall_support", ("texture", new []{ primaryThemeTag, "support" }) }, { "wall_secret_indicator", ("texture", new []{ primaryThemeTag, "secret" }) },
+                { "wall_panel", ("texture", new []{ primaryThemeTag, "panel" }) }, { "door_frame", ("texture", new []{ primaryThemeTag, "border" }) },
+                { "floor_primary", ("flat", new []{ primaryThemeTag }) }, { "floor_accent", ("flat", new []{ primaryThemeTag }) },
+                { "ceiling_primary", ("flat", new []{ primaryThemeTag }) }, { "ceiling_light_source", ("flat", new []{ "light_source" }) },
+                { "platform_surface", ("flat", new []{ primaryThemeTag }) }, { "door_regular", ("texture", new []{ "door" }) },
+                { "door_locked", ("texture", new []{ "door" }) }, { "door_exit", ("texture", new []{ "exit", "door" }) },
+                { "switch_utility", ("texture", new []{ "switch" }) }, { "switch_exit", ("texture", new []{ "exit", "switch" }) },
+                { "door_indicator_blue", ("texture", new []{ "key_indicator_blue" }) }, { "door_indicator_red", ("texture", new []{ "key_indicator_red" }) },
                 { "door_indicator_yellow", ("texture", new []{ "key_indicator_yellow" }) }
             };
 
@@ -154,54 +147,24 @@ namespace DGenesis.Services
             {
                 var conceptTags = concept.Value.tags;
                 List<string> candidates;
-
                 if (concept.Value.type == "texture")
                 {
-                    candidates = conceptTags.Contains(primaryThemeTag)
-                        ? new List<string>(themeAssets.Textures)
-                        : new List<string>(validTextureSet);
-
-                    foreach (var tag in conceptTags.Where(t => functionalTags.ContainsKey(t)))
-                    {
-                        candidates = candidates.Intersect(functionalTags[tag].Textures).ToList();
-                    }
-
-                    if (!candidates.Any() && conceptTags.Length > 1)
-                    {
-                        var fallbackTag = functionalTags.GetValueOrDefault(conceptTags.Last());
-                        if (fallbackTag != null) candidates = fallbackTag.Textures;
-                    }
+                    candidates = conceptTags.Contains(primaryThemeTag) ? new List<string>(themeAssets.Textures) : new List<string>(validTextureSet);
+                    foreach (var tag in conceptTags.Where(t => functionalTags.ContainsKey(t))) { candidates = candidates.Intersect(functionalTags[tag].Textures).ToList(); }
+                    if (!candidates.Any() && conceptTags.Length > 1) { var fallbackTag = functionalTags.GetValueOrDefault(conceptTags.Last()); if (fallbackTag != null) candidates = fallbackTag.Textures; }
                 }
-                else // flat
+                else
                 {
-                    candidates = conceptTags.Contains(primaryThemeTag)
-                        ? new List<string>(themeAssets.Flats)
-                        : new List<string>(validFlatSet);
-
-                    foreach (var tag in conceptTags.Where(t => functionalTags.ContainsKey(t)))
-                    {
-                        candidates = candidates.Intersect(functionalTags[tag].Flats).ToList();
-                    }
-
-                    if (!candidates.Any() && conceptTags.Length > 1)
-                    {
-                        var fallbackTag = functionalTags.GetValueOrDefault(conceptTags.Last());
-                        if (fallbackTag != null) candidates = fallbackTag.Flats;
-                    }
+                    candidates = conceptTags.Contains(primaryThemeTag) ? new List<string>(themeAssets.Flats) : new List<string>(validFlatSet);
+                    foreach (var tag in conceptTags.Where(t => functionalTags.ContainsKey(t))) { candidates = candidates.Intersect(functionalTags[tag].Flats).ToList(); }
+                    if (!candidates.Any() && conceptTags.Length > 1) { var fallbackTag = functionalTags.GetValueOrDefault(conceptTags.Last()); if (fallbackTag != null) candidates = fallbackTag.Flats; }
                 }
-
-                if (candidates.Any())
-                {
-                    palette[concept.Key] = new List<WeightedAsset>
-                    {
-                        new WeightedAsset { Name = candidates[_random.Next(candidates.Count)], Weight = 100 }
-                    };
-                }
+                if (candidates.Any()) { palette[concept.Key] = new List<WeightedAsset> { new WeightedAsset { Name = candidates[_random.Next(candidates.Count)], Weight = 100 } }; }
             }
-            return palette;
+            return (palette, primaryThemeTag);
         }
 
-        private List<ThematicToken> GenerateThematicTokens(string game, Dictionary<string, List<WeightedAsset>> themePalette)
+        private List<ThematicToken> GenerateThematicTokens(string game, Dictionary<string, List<WeightedAsset>> themePalette, string primaryThemeTag)
         {
             var tokens = new List<ThematicToken>();
             var existingAssets = new HashSet<string>();
@@ -222,13 +185,28 @@ namespace DGenesis.Services
                 }
             }
 
-            var things = _assetService.GetThingsForGame(game);
-            if (things.Any())
+            // CORRECTION: Logique de sélection des monstres mise à jour
+            var allThings = _assetService.GetThingsForGame(game);
+
+            var thematicThingIds = new HashSet<int>(_tagService.GetAssetsForTag(game, primaryThemeTag).Things);
+            var allMonsterIds = new HashSet<int>(_tagService.GetAssetsForTag(game, "monster").Things);
+
+            var candidateIds = thematicThingIds.Intersect(allMonsterIds).ToList();
+
+            // Mécanisme de repli : si aucun monstre ne correspond au thème, utiliser tous les monstres
+            if (!candidateIds.Any())
+            {
+                candidateIds = allMonsterIds.ToList();
+            }
+
+            var monsterCandidates = allThings.Where(t => candidateIds.Contains(t.TypeId)).ToList();
+
+            if (monsterCandidates.Any())
             {
                 int monsterCount = _random.Next(3, 8);
                 for (int i = 0; i < monsterCount; i++)
                 {
-                    var thing = things[_random.Next(things.Count)];
+                    var thing = monsterCandidates[_random.Next(monsterCandidates.Count)];
                     if (existingAssets.Add(thing.Name))
                     {
                         tokens.Add(new ThematicToken
@@ -246,10 +224,11 @@ namespace DGenesis.Services
 
         private void FilterAssetCollection(TaggedAssetCollection collection, HashSet<string> validTextures, HashSet<string> validFlats, HashSet<int> validThings, HashSet<string> validMusic)
         {
-            collection.Textures = collection.Textures.Where(t => validTextures.Contains(t)).ToList();
-            collection.Flats = collection.Flats.Where(f => validFlats.Contains(f)).ToList();
-            collection.Things = collection.Things.Where(t => validThings.Contains(t)).ToList();
-            collection.Music = collection.Music.Where(m => validMusic.Contains(m)).ToList();
+            if (collection == null) return;
+            collection.Textures = collection.Textures?.Where(t => validTextures.Contains(t)).ToList() ?? new List<string>();
+            collection.Flats = collection.Flats?.Where(f => validFlats.Contains(f)).ToList() ?? new List<string>();
+            collection.Things = collection.Things?.Where(t => validThings.Contains(t)).ToList() ?? new List<int>();
+            collection.Music = collection.Music?.Where(m => validMusic.Contains(m)).ToList() ?? new List<string>();
         }
 
         private string GetTokenTypeForAsset(string assetName, Dictionary<string, List<WeightedAsset>> themePalette)
@@ -258,21 +237,11 @@ namespace DGenesis.Services
             {
                 if (kvp.Value.Any(a => a.Name == assetName))
                 {
-                    // La vérification la plus spécifique (switch) vient en premier
-                    if (kvp.Key.StartsWith("switch_"))
-                    {
-                        return "connection_action";
-                    }
-                    // Ensuite les autres types de murs
-                    if (kvp.Key.StartsWith("wall_") || kvp.Key.StartsWith("door_"))
-                    {
-                        return "wall";
-                    }
-                    // Si ce n'est aucun des types muraux, c'est un sol/plafond
+                    if (kvp.Key.StartsWith("switch_")) { return "connection_action"; }
+                    if (kvp.Key.StartsWith("wall_") || kvp.Key.StartsWith("door_")) { return "wall"; }
                     return "flat";
                 }
             }
-            // Au cas où (ne devrait pas arriver), on retourne "wall" par défaut
             return "wall";
         }
 
