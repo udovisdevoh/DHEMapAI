@@ -3,142 +3,505 @@
         "tags": {
             "e1_techbase": {
                 "description": "Le style de la base high-tech du premier épisode de Doom.",
-                "textures": [ "TEKWALL1", "TEKWALL2", "TEKWALL3", "TEKWALL4", "STARG1", "STARG2", "METAL", "METAL1", "SUPPORT2", "SUPPORT3", "COMPTALL", "PIPE1", "PIPE2" ],
-                "flats": [ "FLOOR0_1", "FLOOR0_2", "FLOOR0_3", "FLAT5_1", "FLAT5_2", "FLAT5_3", "FLAT5_4", "CEIL1_1", "CEIL1_2" ],
-                "things": [ 3004, 9, 3001, 3002, 58 ],
-                "music": [ "D_E1M1", "D_E1M2", "D_E1M3", "D_E1M4", "D_E1M5", "D_E1M6", "D_E1M7", "D_E1M8" ]
+                "textures": [
+                    "TEKWALL1",
+                    "TEKWALL2",
+                    "TEKWALL3",
+                    "TEKWALL4",
+                    "STARG1",
+                    "STARG2",
+                    "METAL",
+                    "METAL1",
+                    "SUPPORT2",
+                    "SUPPORT3",
+                    "COMPTALL",
+                    "PIPE1",
+                    "PIPE2"
+                ],
+                "flats": [
+                    "FLOOR0_1",
+                    "FLOOR0_2",
+                    "FLOOR0_3",
+                    "FLAT5_1",
+                    "FLAT5_2",
+                    "FLAT5_3",
+                    "FLAT5_4",
+                    "CEIL1_1",
+                    "CEIL1_2"
+                ],
+                "things": [
+                    3004,
+                    9,
+                    3001,
+                    3002,
+                    58,
+                    2035
+                ],
+                "music": [
+                    "D_E1M1",
+                    "D_E1M2",
+                    "D_E1M3",
+                    "D_E1M4",
+                    "D_E1M5",
+                    "D_E1M6",
+                    "D_E1M7",
+                    "D_E1M8"
+                ]
             },
             "e2_hellish_shore": {
                 "description": "Le style des rivages de l'enfer du deuxième épisode, mélange de pierre et de corruption.",
-                "textures": [ "MARBLE1", "MARBLE2", "MARBLE3", "SKIN2", "SKINEDGE", "GSTGARG", "GSTONE1", "GSTONE2", "SHAWN1", "SHAWN2" ],
-                "flats": [ "FLAT1", "FLAT2", "FLAT3", "FLAT4", "SFLR6_1", "SFLR7_1", "LAVA1", "LAVA2", "LAVA3", "LAVA4" ],
-                "things": [ 3005, 3006, 3003 ],
-                "music": [ "D_E2M1", "D_E2M2", "D_E2M3", "D_E2M4", "D_E2M5", "D_E2M6", "D_E2M7", "D_E2M8" ]
+                "textures": [
+                    "MARBLE1",
+                    "MARBLE2",
+                    "MARBLE3",
+                    "SKIN2",
+                    "SKINEDGE",
+                    "GSTGARG",
+                    "GSTONE1",
+                    "GSTONE2",
+                    "SHAWN1",
+                    "SHAWN2"
+                ],
+                "flats": [
+                    "FLAT1",
+                    "FLAT2",
+                    "FLAT3",
+                    "FLAT4",
+                    "SFLR6_1",
+                    "SFLR7_1",
+                    "LAVA1",
+                    "LAVA2",
+                    "LAVA3",
+                    "LAVA4"
+                ],
+                "things": [
+                    3005,
+                    3006,
+                    3003,
+                    3002,
+                    58
+                ],
+                "music": [
+                    "D_E2M1",
+                    "D_E2M2",
+                    "D_E2M3",
+                    "D_E2M4",
+                    "D_E2M5",
+                    "D_E2M6",
+                    "D_E2M7",
+                    "D_E2M8"
+                ]
             },
             "e3_inferno": {
                 "description": "Le style de l'enfer pur du troisième épisode, organique et impie.",
-                "textures": [ "SKULWALL", "SKINSYMB", "FIREWALL", "FIREBLU1", "BROWN1", "BROWN96", "WOODSKUL", "REDWALL" ],
-                "flats": [ "FLAT5_8", "BLOOD1", "BLOOD2", "BLOOD3", "DEM1_1", "DEM1_2" ],
-                "things": [ 3003, 7, 16 ],
-                "music": [ "D_E3M1", "D_E3M2", "D_E3M3", "D_E3M8" ]
+                "textures": [
+                    "SKULWALL",
+                    "SKINSYMB",
+                    "FIREWALL",
+                    "FIREBLU1",
+                    "BROWN1",
+                    "BROWN96",
+                    "WOODSKUL",
+                    "REDWALL"
+                ],
+                "flats": [
+                    "FLAT5_8",
+                    "BLOOD1",
+                    "BLOOD2",
+                    "BLOOD3",
+                    "DEM1_1",
+                    "DEM1_2"
+                ],
+                "things": [
+                    3003,
+                    7,
+                    16,
+                    3005,
+                    3006
+                ],
+                "music": [
+                    "D_E3M1",
+                    "D_E3M2",
+                    "D_E3M3",
+                    "D_E3M8"
+                ]
             },
             "metal": {
                 "description": "Thème industriel, bases métalliques, structures rouillées ou high-tech.",
-                "textures": [ "METAL", "METAL1", "SUPPORT2", "SUPPORT3", "BIGDOOR2", "STARG1", "DOORTRAK", "PIPE1", "PIPE2", "PIPE4", "PIPE6" ],
-                "flats": [ "FLAT5_1", "FLAT5_2", "FLAT5_3", "FLAT5_4", "CEIL3_5", "CEIL3_6" ],
-                "things": [ 2035, 48 ],
-                "music": [ "D_E1M1", "D_E1M7" ]
+                "textures": [
+                    "METAL",
+                    "METAL1",
+                    "SUPPORT2",
+                    "SUPPORT3",
+                    "BIGDOOR2",
+                    "STARG1",
+                    "DOORTRAK",
+                    "PIPE1",
+                    "PIPE2",
+                    "PIPE4",
+                    "PIPE6"
+                ],
+                "flats": [
+                    "FLAT5_1",
+                    "FLAT5_2",
+                    "FLAT5_3",
+                    "FLAT5_4",
+                    "CEIL3_5",
+                    "CEIL3_6"
+                ],
+                "things": [
+                    2035,
+                    48
+                ],
+                "music": [
+                    "D_E1M1",
+                    "D_E1M7"
+                ]
             },
             "stone": {
                 "description": "Thème de donjon, murs en pierre et en briques.",
-                "textures": [ "STONE", "STONE2", "STONE3", "GSTONE1", "GSTONE2", "GSTGARG", "CEMENT1", "CEMENT2", "CEMENT3", "CEMENT4", "CEMENT5", "CEMENT6" ],
-                "flats": [ "FLAT1", "FLAT14", "FLAT23", "STEP1", "STEP2" ],
-                "things": [ 35, 30, 32 ],
-                "music": [ "D_E2M1", "D_E2M6" ]
+                "textures": [
+                    "STONE",
+                    "STONE2",
+                    "STONE3",
+                    "GSTONE1",
+                    "GSTONE2",
+                    "GSTGARG",
+                    "CEMENT1",
+                    "CEMENT2",
+                    "CEMENT3",
+                    "CEMENT4",
+                    "CEMENT5",
+                    "CEMENT6"
+                ],
+                "flats": [
+                    "FLAT1",
+                    "FLAT14",
+                    "FLAT23",
+                    "STEP1",
+                    "STEP2"
+                ],
+                "things": [
+                    35,
+                    30,
+                    32,
+                    3001,
+                    3002
+                ],
+                "music": [
+                    "D_E2M1",
+                    "D_E2M6"
+                ]
             },
             "hell": {
                 "description": "Thème démoniaque, avec de la chair, des os, du marbre impie et de la lave.",
-                "textures": [ "MARBLE1", "MARBLOD1", "FIRELAVA", "SLADWALL", "SKULWALL", "SKINSYMB", "SP_FACE1", "SKIN2", "SKINFACE", "FIREBLU1", "FIREWALL" ],
-                "flats": [ "LAVA1", "LAVA2", "LAVA3", "LAVA4", "BLOOD1", "BLOOD2", "BLOOD3", "SFLR6_1" ],
-                "things": [ 3003, 3005, 3006, 7, 16, 28, 29, 36, 37 ],
-                "music": [ "D_E2M7", "D_E3M8", "D_E3M2" ]
+                "textures": [
+                    "MARBLE1",
+                    "MARBLOD1",
+                    "FIRELAVA",
+                    "SLADWALL",
+                    "SKULWALL",
+                    "SKINSYMB",
+                    "SP_FACE1",
+                    "SKIN2",
+                    "SKINFACE",
+                    "FIREBLU1",
+                    "FIREWALL"
+                ],
+                "flats": [
+                    "LAVA1",
+                    "LAVA2",
+                    "LAVA3",
+                    "LAVA4",
+                    "BLOOD1",
+                    "BLOOD2",
+                    "BLOOD3",
+                    "SFLR6_1"
+                ],
+                "things": [
+                    3003,
+                    3005,
+                    3006,
+                    7,
+                    16,
+                    28,
+                    29,
+                    36,
+                    37
+                ],
+                "music": [
+                    "D_E2M7",
+                    "D_E3M8",
+                    "D_E3M2"
+                ]
             },
             "wood": {
                 "description": "Thème boisé, structures en bois, lambris.",
-                "textures": [ "WOOD1", "WOOD3", "WOOD4", "WOOD5", "WOODGARG", "WOODSKUL", "CRATE1", "CRATE2" ],
-                "flats": [ "FLOOR0_1", "FLOOR0_2", "CRATOP1", "CRATOP2" ],
+                "textures": [
+                    "WOOD1",
+                    "WOOD3",
+                    "WOOD4",
+                    "WOOD5",
+                    "WOODGARG",
+                    "WOODSKUL",
+                    "CRATE1",
+                    "CRATE2"
+                ],
+                "flats": [
+                    "FLOOR0_1",
+                    "FLOOR0_2",
+                    "CRATOP1",
+                    "CRATOP2"
+                ],
                 "things": [],
-                "music": [ "D_E1M3" ]
+                "music": [
+                    "D_E1M3"
+                ]
             },
             "computer": {
                 "description": "Panneaux de contrôle, ordinateurs et équipements high-tech.",
-                "textures": [ "COMPTALL", "COMPUTE1", "COMPUTE2", "COMPUTE3", "SW1COMP", "SW2COMP", "TEKWALL1", "TEKWALL2", "TEKWALL3", "TEKWALL4" ],
-                "flats": [ "COMP01" ],
-                "things": [ 2026 ],
-                "music": [ "D_E1M7" ]
+                "textures": [
+                    "COMPTALL",
+                    "COMPUTE1",
+                    "COMPUTE2",
+                    "COMPUTE3",
+                    "SW1COMP",
+                    "SW2COMP",
+                    "TEKWALL1",
+                    "TEKWALL2",
+                    "TEKWALL3",
+                    "TEKWALL4"
+                ],
+                "flats": [
+                    "COMP01"
+                ],
+                "things": [
+                    2026
+                ],
+                "music": [
+                    "D_E1M7"
+                ]
             },
             "gore": {
                 "description": "Éléments sanglants, démembrés et macabres.",
-                "textures": [ "BLODGR1", "BLODGR2", "BLODGR3", "BLODGR4", "BLODRIP1", "BLODRIP2", "SKINCUT", "SP_DUDE1" ],
-                "flats": [ "BLOOD1", "BLOOD2", "BLOOD3" ],
-                "things": [ 10, 12, 18, 19, 21, 22, 25, 26, 49, 50, 51, 52, 59, 60, 61, 62, 63 ],
+                "textures": [
+                    "BLODGR1",
+                    "BLODGR2",
+                    "BLODGR3",
+                    "BLODGR4",
+                    "BLODRIP1",
+                    "BLODRIP2",
+                    "SKINCUT",
+                    "SP_DUDE1"
+                ],
+                "flats": [
+                    "BLOOD1",
+                    "BLOOD2",
+                    "BLOOD3"
+                ],
+                "things": [
+                    10,
+                    12,
+                    18,
+                    19,
+                    21,
+                    22,
+                    25,
+                    26,
+                    49,
+                    50,
+                    51,
+                    52,
+                    59,
+                    60,
+                    61,
+                    62,
+                    63
+                ],
                 "music": []
             },
             "door": {
                 "description": "Contient toutes les textures fonctionnant comme des portes.",
-                "textures": [ "BIGDOOR1", "BIGDOOR2", "BIGDOOR3", "BIGDOOR4", "BIGDOOR5", "BIGDOOR6", "BIGDOOR7", "DOOR1", "DOOR3", "EXITDOOR", "DOORBLU", "DOORRED", "DOORYEL" ],
+                "textures": [
+                    "BIGDOOR1",
+                    "BIGDOOR2",
+                    "BIGDOOR3",
+                    "BIGDOOR4",
+                    "BIGDOOR5",
+                    "BIGDOOR6",
+                    "BIGDOOR7",
+                    "DOOR1",
+                    "DOOR3",
+                    "EXITDOOR",
+                    "DOORBLU",
+                    "DOORRED",
+                    "DOORYEL"
+                ],
                 "flats": [],
                 "things": [],
                 "music": []
             },
             "switch": {
                 "description": "Contient toutes les textures d'interrupteurs.",
-                "textures": [ "SW1STARG", "SW1BROWN", "SW1METAL", "SW2SKIN", "SW1EXIT", "SW2EXIT", "SW1COMP", "SW2COMP", "SW1BLUE", "SW2BLUE" ],
+                "textures": [
+                    "SW1STARG",
+                    "SW1BROWN",
+                    "SW1METAL",
+                    "SW2SKIN",
+                    "SW1EXIT",
+                    "SW2EXIT",
+                    "SW1COMP",
+                    "SW2COMP",
+                    "SW1BLUE",
+                    "SW2BLUE"
+                ],
                 "flats": [],
                 "things": [],
                 "music": []
             },
             "light_source": {
                 "description": "Contient les assets qui émettent de la lumière.",
-                "textures": [ "LITE2", "LITE3", "LITE5", "LITEBLU1", "LITEBLU4", "LITERED" ],
-                "flats": [ "TLITE6_1", "TLITE6_4", "TLITE6_5", "TLITE6_6" ],
-                "things": [ 2028, 34, 35, 44, 45, 46 ],
+                "textures": [
+                    "LITE2",
+                    "LITE3",
+                    "LITE5",
+                    "LITEBLU1",
+                    "LITEBLU4",
+                    "LITERED"
+                ],
+                "flats": [
+                    "TLITE6_1",
+                    "TLITE6_4",
+                    "TLITE6_5",
+                    "TLITE6_6"
+                ],
+                "things": [
+                    2028,
+                    34,
+                    35,
+                    44,
+                    45,
+                    46
+                ],
                 "music": []
             },
             "exit": {
                 "description": "Assets liés à la sortie du niveau.",
-                "textures": [ "EXITDOOR", "EXITSIGN", "SW1EXIT", "SW2EXIT" ],
+                "textures": [
+                    "EXITDOOR",
+                    "EXITSIGN",
+                    "SW1EXIT",
+                    "SW2EXIT"
+                ],
                 "flats": [],
                 "things": [],
-                "music": [ "D_E1M8", "D_E2M8", "D_E3M8" ]
+                "music": [
+                    "D_E1M8",
+                    "D_E2M8",
+                    "D_E3M8"
+                ]
             },
             "secret": {
                 "description": "Murs ou mécanismes souvent utilisés pour les secrets.",
-                "textures": [ "SP_DUDE1", "SP_DUDE2", "SP_DUDE3" ],
+                "textures": [
+                    "SP_DUDE1",
+                    "SP_DUDE2",
+                    "SP_DUDE3"
+                ],
                 "flats": [],
                 "things": [],
                 "music": []
             },
             "panel": {
                 "description": "Panneaux décoratifs ou technologiques.",
-                "textures": [ "COMPTALL", "COMPUTE1", "COMPUTE2", "COMPUTE3" ],
-                "flats": [ "COMP01" ],
+                "textures": [
+                    "COMPTALL",
+                    "COMPUTE1",
+                    "COMPUTE2",
+                    "COMPUTE3"
+                ],
+                "flats": [
+                    "COMP01"
+                ],
                 "things": [],
                 "music": []
             },
             "support": {
                 "description": "Piliers, poutres et autres structures de soutien.",
-                "textures": [ "SUPPORT2", "SUPPORT3", "PIPE1", "PIPE2", "PIPE4", "PIPE6", "BROWNPIP" ],
+                "textures": [
+                    "SUPPORT2",
+                    "SUPPORT3",
+                    "PIPE1",
+                    "PIPE2",
+                    "PIPE4",
+                    "PIPE6",
+                    "BROWNPIP"
+                ],
                 "flats": [],
-                "things": [ 30, 31, 32, 33, 36, 37 ],
+                "things": [
+                    30,
+                    31,
+                    32,
+                    33,
+                    36,
+                    37
+                ],
                 "music": []
             },
             "border": {
                 "description": "Textures conçues pour être utilisées comme bordures ou transitions.",
-                "textures": [ "DOORTRAK", "SKINEDGE", "METAL1" ],
+                "textures": [
+                    "DOORTRAK",
+                    "SKINEDGE",
+                    "METAL1"
+                ],
                 "flats": [],
                 "things": [],
                 "music": []
             },
             "key_indicator_blue": {
                 "description": "Assets bleus liés aux clés.",
-                "textures": [ "DOORBLU", "DOORBLU2", "LITEBLU1", "LITEBLU4", "SW1BLUE", "SW2BLUE" ],
+                "textures": [
+                    "DOORBLU",
+                    "DOORBLU2",
+                    "LITEBLU1",
+                    "LITEBLU4",
+                    "SW1BLUE",
+                    "SW2BLUE"
+                ],
                 "flats": [],
-                "things": [ 5, 40 ],
+                "things": [
+                    5,
+                    40
+                ],
                 "music": []
             },
             "key_indicator_red": {
                 "description": "Assets rouges liés aux clés.",
-                "textures": [ "DOORRED", "DOORRED2", "LITERED" ],
+                "textures": [
+                    "DOORRED",
+                    "DOORRED2",
+                    "LITERED"
+                ],
                 "flats": [],
-                "things": [ 13, 38 ],
+                "things": [
+                    13,
+                    38
+                ],
                 "music": []
             },
             "key_indicator_yellow": {
                 "description": "Assets jaunes liés aux clés.",
-                "textures": [ "DOORYEL", "DOORYEL2", "LITE5" ],
+                "textures": [
+                    "DOORYEL",
+                    "DOORYEL2",
+                    "LITE5"
+                ],
                 "flats": [],
-                "things": [ 6, 39 ],
+                "things": [
+                    6,
+                    39
+                ],
                 "music": []
             }
         }
@@ -147,140 +510,595 @@
         "tags": {
             "metal": {
                 "description": "Thème industriel, bases métalliques, structures rouillées ou high-tech.",
-                "textures": [ "METAL", "METAL1", "METAL2", "METAL3", "METAL4", "METAL5", "SUPPORT2", "SUPPORT3", "BIGDOOR2", "STARG1", "DOORTRAK", "SILVER1", "TEKBRON1", "TEKBRON2" ],
-                "flats": [ "MFLR8_1", "MFLR8_2", "MFLR8_3", "MFLR8_4", "CEIL3_5", "CEIL3_6", "SFLR7_1", "SFLR7_4", "PLAT1" ],
-                "things": [ 2035, 72, 85, 86, 68 ],
-                "music": [ "D_SHAWN", "D_DDTBLU", "D_IN_CIT" ]
+                "textures": [
+                    "METAL",
+                    "METAL1",
+                    "METAL2",
+                    "METAL3",
+                    "METAL4",
+                    "METAL5",
+                    "SUPPORT2",
+                    "SUPPORT3",
+                    "BIGDOOR2",
+                    "STARG1",
+                    "DOORTRAK",
+                    "SILVER1",
+                    "TEKBRON1",
+                    "TEKBRON2"
+                ],
+                "flats": [
+                    "MFLR8_1",
+                    "MFLR8_2",
+                    "MFLR8_3",
+                    "MFLR8_4",
+                    "CEIL3_5",
+                    "CEIL3_6",
+                    "SFLR7_1",
+                    "SFLR7_4",
+                    "PLAT1"
+                ],
+                "things": [
+                    2035,
+                    72,
+                    85,
+                    86,
+                    68
+                ],
+                "music": [
+                    "D_SHAWN",
+                    "D_DDTBLU",
+                    "D_IN_CIT"
+                ]
             },
             "stone": {
                 "description": "Thème de château, donjon, murs en pierre et en briques.",
-                "textures": [ "STONE", "STONE2", "STONE3", "STONE4", "STONE5", "STONE6", "BSTONE1", "BSTONE2", "BSTONE3", "BRICK1", "BRICK2", "BRICK3", "BRICK4", "BRICK5", "BRICK6", "BRICK7", "BRICK8", "BRICK9", "BRICK10", "BRICK11", "BRICK12", "BIGBRIK1", "BIGBRIK2", "BIGBRIK3", "MARBGRAY", "GSTGARG", "GSTLION" ],
-                "flats": [ "FLAT1", "FLAT14", "FLAT23", "DEM1_1", "DEM1_2", "STEP1", "STEP2" ],
-                "things": [ 30, 32, 27, 34 ],
-                "music": [ "D_STALKS", "D_BETWEE" ]
+                "textures": [
+                    "STONE",
+                    "STONE2",
+                    "STONE3",
+                    "STONE4",
+                    "STONE5",
+                    "STONE6",
+                    "BSTONE1",
+                    "BSTONE2",
+                    "BSTONE3",
+                    "BRICK1",
+                    "BRICK2",
+                    "BRICK3",
+                    "BRICK4",
+                    "BRICK5",
+                    "BRICK6",
+                    "BRICK7",
+                    "BRICK8",
+                    "BRICK9",
+                    "BRICK10",
+                    "BRICK11",
+                    "BRICK12",
+                    "BIGBRIK1",
+                    "BIGBRIK2",
+                    "BIGBRIK3",
+                    "MARBGRAY",
+                    "GSTGARG",
+                    "GSTLION"
+                ],
+                "flats": [
+                    "FLAT1",
+                    "FLAT14",
+                    "FLAT23",
+                    "DEM1_1",
+                    "DEM1_2",
+                    "STEP1",
+                    "STEP2"
+                ],
+                "things": [
+                    30,
+                    32,
+                    27,
+                    34
+                ],
+                "music": [
+                    "D_STALKS",
+                    "D_BETWEE"
+                ]
             },
             "hell": {
                 "description": "Thème démoniaque, avec de la chair, des os, du marbre impie et de la lave.",
-                "textures": [ "MARBLE1", "MARBLOD1", "MARBFAC4", "FIRELAVA", "SLADWALL", "DBRAIN1", "ASHWALL2", "SP_FACE1", "SP_FACE2" ],
-                "flats": [ "LAVA1", "LAVA2", "LAVA3", "LAVA4", "BLOOD1", "BLOOD2", "BLOOD3", "SFLR6_1", "SFLR6_4", "DEM1_5", "DEM1_6" ],
-                "things": [ 3003, 3005, 71, 28, 29, 36, 37, 66, 64 ],
-                "music": [ "D_COUNTD", "D_THE_DA", "D_ROMERO", "D_EVIL" ]
+                "textures": [
+                    "MARBLE1",
+                    "MARBLOD1",
+                    "MARBFAC4",
+                    "FIRELAVA",
+                    "SLADWALL",
+                    "DBRAIN1",
+                    "ASHWALL2",
+                    "SP_FACE1",
+                    "SP_FACE2"
+                ],
+                "flats": [
+                    "LAVA1",
+                    "LAVA2",
+                    "LAVA3",
+                    "LAVA4",
+                    "BLOOD1",
+                    "BLOOD2",
+                    "BLOOD3",
+                    "SFLR6_1",
+                    "SFLR6_4",
+                    "DEM1_5",
+                    "DEM1_6"
+                ],
+                "things": [
+                    3003,
+                    3005,
+                    71,
+                    28,
+                    29,
+                    36,
+                    37,
+                    66,
+                    64,
+                    69
+                ],
+                "music": [
+                    "D_COUNTD",
+                    "D_THE_DA",
+                    "D_ROMERO",
+                    "D_EVIL"
+                ]
             },
             "organic": {
                 "description": "Thème organique pur, murs de chair, de peau et d'os.",
-                "textures": [ "SKIN2", "SKINFACE", "SKINSYMB", "SKINCUT", "BROWNGRN", "ASHWALL6" ],
-                "flats": [ "SFLR6_1", "SFLR6_4", "BLOOD1", "BLOOD2", "BLOOD3" ],
-                "things": [ 25, 26, 73, 74, 75, 76, 77, 78 ],
-                "music": [ "D_THE_DA" ]
+                "textures": [
+                    "SKIN2",
+                    "SKINFACE",
+                    "SKINSYMB",
+                    "SKINCUT",
+                    "BROWNGRN",
+                    "ASHWALL6"
+                ],
+                "flats": [
+                    "SFLR6_1",
+                    "SFLR6_4",
+                    "BLOOD1",
+                    "BLOOD2",
+                    "BLOOD3"
+                ],
+                "things": [
+                    25,
+                    26,
+                    73,
+                    74,
+                    75,
+                    76,
+                    77,
+                    78
+                ],
+                "music": [
+                    "D_THE_DA"
+                ]
             },
             "wood": {
                 "description": "Thème boisé, structures en bois, lambris, bibliothèques.",
-                "textures": [ "WOOD1", "WOOD3", "WOOD4", "WOOD5", "WOOD6", "WOOD7", "WOOD8", "WOOD9", "WOOD10", "WOOD12", "WOODVERT", "WOODMET1", "PANBOOK", "BRONZE1", "BRONZE2" ],
-                "flats": [ "FLOOR0_1", "FLOOR0_2", "RROCK14", "RROCK15" ],
+                "textures": [
+                    "WOOD1",
+                    "WOOD3",
+                    "WOOD4",
+                    "WOOD5",
+                    "WOOD6",
+                    "WOOD7",
+                    "WOOD8",
+                    "WOOD9",
+                    "WOOD10",
+                    "WOOD12",
+                    "WOODVERT",
+                    "WOODMET1",
+                    "PANBOOK",
+                    "BRONZE1",
+                    "BRONZE2"
+                ],
+                "flats": [
+                    "FLOOR0_1",
+                    "FLOOR0_2",
+                    "RROCK14",
+                    "RROCK15"
+                ],
                 "things": [],
-                "music": [ "D_DOOM" ]
+                "music": [
+                    "D_DOOM"
+                ]
             },
             "tech": {
                 "description": "Thème technologique, ordinateurs, panneaux de contrôle, bases spatiales.",
-                "textures": [ "TEKWALL1", "TEKWALL4", "TEKWALL6", "COMPBLUE", "COMPTALL", "PANEL1", "PANEL2", "PANEL3", "PANEL4", "PANEL5", "PANEL6", "PANEL7", "PANEL8", "PANEL9", "SPCDOOR1", "SPCDOOR2", "TEKGREN1", "TEKGREN2", "TEKLITE", "TEKLITE2", "STARG1", "STARG2" ],
-                "flats": [ "COMP01", "MFLR8_1", "MFLR8_2", "GRNLITE1", "TLITE6_1", "TLITE6_4" ],
-                "things": [ 85, 86, 72, 68, 16, 64, 2026, 67 ],
-                "music": [ "D_SHAWN", "D_IN_CIT", "D_DDTBLU" ]
+                "textures": [
+                    "TEKWALL1",
+                    "TEKWALL4",
+                    "TEKWALL6",
+                    "COMPBLUE",
+                    "COMPTALL",
+                    "PANEL1",
+                    "PANEL2",
+                    "PANEL3",
+                    "PANEL4",
+                    "PANEL5",
+                    "PANEL6",
+                    "PANEL7",
+                    "PANEL8",
+                    "PANEL9",
+                    "SPCDOOR1",
+                    "SPCDOOR2",
+                    "TEKGREN1",
+                    "TEKGREN2",
+                    "TEKLITE",
+                    "TEKLITE2",
+                    "STARG1",
+                    "STARG2"
+                ],
+                "flats": [
+                    "COMP01",
+                    "MFLR8_1",
+                    "MFLR8_2",
+                    "GRNLITE1",
+                    "TLITE6_1",
+                    "TLITE6_4"
+                ],
+                "things": [
+                    85,
+                    86,
+                    72,
+                    68,
+                    16,
+                    64,
+                    2026,
+                    67,
+                    65
+                ],
+                "music": [
+                    "D_SHAWN",
+                    "D_IN_CIT",
+                    "D_DDTBLU"
+                ]
             },
             "urban": {
                 "description": "Thème de ville, briques, ciment, et structures urbaines.",
-                "textures": [ "BRICK1", "BRICK2", "BRICK3", "BRICK4", "BRICK5", "BRICK6", "BRICK7", "BRICK8", "BRICK9", "BRICK10", "BRICK11", "BRICK12", "CEMENT1", "CEMENT3", "CEMENT4", "CEMENT6", "CEMENT9", "BRWINDOW" ],
-                "flats": [ "FLAT1", "FLAT14", "FLAT23", "STEP1", "STEP2" ],
-                "things": [ 2035, 2028 ],
-                "music": [ "D_IN_CIT", "D_RUNNIN" ]
+                "textures": [
+                    "BRICK1",
+                    "BRICK2",
+                    "BRICK3",
+                    "BRICK4",
+                    "BRICK5",
+                    "BRICK6",
+                    "BRICK7",
+                    "BRICK8",
+                    "BRICK9",
+                    "BRICK10",
+                    "BRICK11",
+                    "BRICK12",
+                    "CEMENT1",
+                    "CEMENT3",
+                    "CEMENT4",
+                    "CEMENT6",
+                    "CEMENT9",
+                    "BRWINDOW"
+                ],
+                "flats": [
+                    "FLAT1",
+                    "FLAT14",
+                    "FLAT23",
+                    "STEP1",
+                    "STEP2"
+                ],
+                "things": [
+                    2035,
+                    2028,
+                    3004,
+                    9,
+                    65
+                ],
+                "music": [
+                    "D_IN_CIT",
+                    "D_RUNNIN"
+                ]
             },
             "wasteland": {
                 "description": "Thème extérieur, désertique ou post-apocalyptique.",
-                "textures": [ "ROCK1", "ROCK2", "ROCK3", "ROCK4", "ROCK5", "TANROCK2", "TANROCK3", "TANROCK4", "SLOPPY1", "SLOPPY2", "SKY1", "SKY2", "SKY3" ],
-                "flats": [ "RROCK01", "RROCK02", "RROCK03", "RROCK04", "RROCK05", "RROCK06", "RROCK07", "RROCK08", "GRASS1", "GRASS2", "F_SKY1" ],
-                "things": [ 43, 70 ],
-                "music": [ "D_STALKS", "D_OPENIN" ]
+                "textures": [
+                    "ROCK1",
+                    "ROCK2",
+                    "ROCK3",
+                    "ROCK4",
+                    "ROCK5",
+                    "TANROCK2",
+                    "TANROCK3",
+                    "TANROCK4",
+                    "SLOPPY1",
+                    "SLOPPY2",
+                    "SKY1",
+                    "SKY2",
+                    "SKY3"
+                ],
+                "flats": [
+                    "RROCK01",
+                    "RROCK02",
+                    "RROCK03",
+                    "RROCK04",
+                    "RROCK05",
+                    "RROCK06",
+                    "RROCK07",
+                    "RROCK08",
+                    "GRASS1",
+                    "GRASS2",
+                    "F_SKY1"
+                ],
+                "things": [
+                    43,
+                    70
+                ],
+                "music": [
+                    "D_STALKS",
+                    "D_OPENIN"
+                ]
             },
             "liquid": {
                 "description": "Surfaces et textures d'eau, de lave, de poison ou autres fluides.",
-                "textures": [ "BFALL1", "BFALL2", "BFALL3", "BFALL4", "SFALL1", "SFALL2", "SFALL3", "SFALL4", "FIRELAVA", "SLADPOIS" ],
-                "flats": [ "LAVA1", "LAVA2", "LAVA3", "LAVA4", "NUKAGE1", "NUKAGE2", "NUKAGE3", "SLIME01", "SLIME02", "SLIME03", "SLIME04", "FWATER1", "FWATER2", "FWATER3", "FWATER4" ],
+                "textures": [
+                    "BFALL1",
+                    "BFALL2",
+                    "BFALL3",
+                    "BFALL4",
+                    "SFALL1",
+                    "SFALL2",
+                    "SFALL3",
+                    "SFALL4",
+                    "FIRELAVA",
+                    "SLADPOIS"
+                ],
+                "flats": [
+                    "LAVA1",
+                    "LAVA2",
+                    "LAVA3",
+                    "LAVA4",
+                    "NUKAGE1",
+                    "NUKAGE2",
+                    "NUKAGE3",
+                    "SLIME01",
+                    "SLIME02",
+                    "SLIME03",
+                    "SLIME04",
+                    "FWATER1",
+                    "FWATER2",
+                    "FWATER3",
+                    "FWATER4"
+                ],
                 "things": [],
-                "music": [ "D_BETWEE" ]
+                "music": [
+                    "D_BETWEE"
+                ]
             },
             "door": {
                 "description": "Contient toutes les textures fonctionnant comme des portes.",
-                "textures": [ "BIGDOOR1", "BIGDOOR2", "BIGDOOR3", "BIGDOOR4", "BIGDOOR5", "BIGDOOR6", "BIGDOOR7", "DOOR1", "DOOR3", "SPCDOOR1", "SPCDOOR2", "SPCDOOR3", "SPCDOOR4", "ZDOORB1", "ZDOORF1", "EXITDOOR" ],
+                "textures": [
+                    "BIGDOOR1",
+                    "BIGDOOR2",
+                    "BIGDOOR3",
+                    "BIGDOOR4",
+                    "BIGDOOR5",
+                    "BIGDOOR6",
+                    "BIGDOOR7",
+                    "DOOR1",
+                    "DOOR3",
+                    "SPCDOOR1",
+                    "SPCDOOR2",
+                    "SPCDOOR3",
+                    "SPCDOOR4",
+                    "ZDOORB1",
+                    "ZDOORF1",
+                    "EXITDOOR"
+                ],
                 "flats": [],
                 "things": [],
                 "music": []
             },
             "switch": {
                 "description": "Contient toutes les textures d'interrupteurs.",
-                "textures": [ "SW1STARG", "SW1BROWN", "SW1METAL", "SW2SKIN", "SW1PANEL", "SW1ROCK", "SW1GSTON", "SW2GSTON", "SW1EXIT", "SW2EXIT", "SW1CMT", "SW1TEK" ],
+                "textures": [
+                    "SW1STARG",
+                    "SW1BROWN",
+                    "SW1METAL",
+                    "SW2SKIN",
+                    "SW1PANEL",
+                    "SW1ROCK",
+                    "SW1GSTON",
+                    "SW2GSTON",
+                    "SW1EXIT",
+                    "SW2EXIT",
+                    "SW1CMT",
+                    "SW1TEK"
+                ],
                 "flats": [],
                 "things": [],
                 "music": []
             },
             "light_source": {
                 "description": "Contient les assets qui émettent de la lumière.",
-                "textures": [ "LITE3", "LITE5", "LITEBLU1", "LITEBLU4", "TEKLITE", "TEKLITE2", "BRICKLIT" ],
-                "flats": [ "TLITE6_1", "TLITE6_4", "TLITE6_5", "TLITE6_6", "GRNLITE1" ],
-                "things": [ 2028, 85, 86, 34, 70 ],
+                "textures": [
+                    "LITE3",
+                    "LITE5",
+                    "LITEBLU1",
+                    "LITEBLU4",
+                    "TEKLITE",
+                    "TEKLITE2",
+                    "BRICKLIT"
+                ],
+                "flats": [
+                    "TLITE6_1",
+                    "TLITE6_4",
+                    "TLITE6_5",
+                    "TLITE6_6",
+                    "GRNLITE1"
+                ],
+                "things": [
+                    2028,
+                    85,
+                    86,
+                    34,
+                    70
+                ],
                 "music": []
             },
             "sky": {
                 "description": "Textures de ciel pour les plafonds et les murs extérieurs.",
-                "textures": [ "SKY1", "SKY2", "SKY3" ],
-                "flats": [ "F_SKY1" ],
+                "textures": [
+                    "SKY1",
+                    "SKY2",
+                    "SKY3"
+                ],
+                "flats": [
+                    "F_SKY1"
+                ],
                 "things": [],
-                "music": [ "D_OPENIN" ]
+                "music": [
+                    "D_OPENIN"
+                ]
             },
             "support": {
                 "description": "Textures de piliers, poutres et autres structures de soutien.",
-                "textures": [ "SUPPORT2", "SUPPORT3", "PIPE1", "PIPE2", "PIPE4", "PIPE6", "BROWNPIP" ],
+                "textures": [
+                    "SUPPORT2",
+                    "SUPPORT3",
+                    "PIPE1",
+                    "PIPE2",
+                    "PIPE4",
+                    "PIPE6",
+                    "BROWNPIP"
+                ],
                 "flats": [],
-                "things": [ 30, 31, 32, 33, 43, 45, 46, 72 ],
+                "things": [
+                    30,
+                    31,
+                    32,
+                    33,
+                    43,
+                    45,
+                    46,
+                    72
+                ],
                 "music": []
             },
             "panel": {
                 "description": "Panneaux décoratifs ou technologiques.",
-                "textures": [ "PANEL1", "PANEL2", "PANEL3", "PANEL4", "PANEL5", "PANEL6", "PANEL7", "PANEL8", "PANEL9", "COMPTALL", "COMPBLUE", "PANBLACK", "PANBLUE", "PANRED", "MODWALL1", "MODWALL2" ],
+                "textures": [
+                    "PANEL1",
+                    "PANEL2",
+                    "PANEL3",
+                    "PANEL4",
+                    "PANEL5",
+                    "PANEL6",
+                    "PANEL7",
+                    "PANEL8",
+                    "PANEL9",
+                    "COMPTALL",
+                    "COMPBLUE",
+                    "PANBLACK",
+                    "PANBLUE",
+                    "PANRED",
+                    "MODWALL1",
+                    "MODWALL2"
+                ],
                 "flats": [],
                 "things": [],
                 "music": []
             },
             "animated": {
                 "description": "Contient des assets explicitement animés (chutes d'eau, flammes, etc.).",
-                "textures": [ "BFALL1", "SFALL1", "FIREBLU1", "FIREBLU2", "FIRELAVA", "FIREWALA", "FIREWALL" ],
-                "flats": [ "LAVA1", "LAVA2", "LAVA3", "LAVA4", "NUKAGE1", "SLIME01", "FWATER1" ],
-                "things": [ 70, 26, 49, 63, 71 ],
+                "textures": [
+                    "BFALL1",
+                    "SFALL1",
+                    "FIREBLU1",
+                    "FIREBLU2",
+                    "FIRELAVA",
+                    "FIREWALA",
+                    "FIREWALL"
+                ],
+                "flats": [
+                    "LAVA1",
+                    "LAVA2",
+                    "LAVA3",
+                    "LAVA4",
+                    "NUKAGE1",
+                    "SLIME01",
+                    "FWATER1"
+                ],
+                "things": [
+                    70,
+                    26,
+                    49,
+                    63,
+                    71
+                ],
                 "music": []
             },
             "grate": {
                 "description": "Grilles, barreaux et treillis.",
-                "textures": [ "MIDGRATE", "MIDBARS1", "MIDBARS3", "CRATE1", "CRATE2", "CRATELIT" ],
-                "flats": [ "CRATOP1", "CRATOP2", "GATE1", "GATE2", "GATE3", "GATE4" ],
+                "textures": [
+                    "MIDGRATE",
+                    "MIDBARS1",
+                    "MIDBARS3",
+                    "CRATE1",
+                    "CRATE2",
+                    "CRATELIT"
+                ],
+                "flats": [
+                    "CRATOP1",
+                    "CRATOP2",
+                    "GATE1",
+                    "GATE2",
+                    "GATE3",
+                    "GATE4"
+                ],
                 "things": [],
                 "music": []
             },
             "window": {
                 "description": "Textures qui simulent des fenêtres ou des ouvertures.",
-                "textures": [ "BRWINDOW", "MIDSPACE", "GSTFONT1", "GSTFONT2", "GSTFONT3" ],
+                "textures": [
+                    "BRWINDOW",
+                    "MIDSPACE",
+                    "GSTFONT1",
+                    "GSTFONT2",
+                    "GSTFONT3"
+                ],
                 "flats": [],
                 "things": [],
                 "music": []
             },
             "border": {
                 "description": "Textures conçues pour être utilisées comme bordures ou transitions.",
-                "textures": [ "DOORTRAK", "PANBORD1", "PANBORD2", "SKINEDGE", "SILVER2" ],
+                "textures": [
+                    "DOORTRAK",
+                    "PANBORD1",
+                    "PANBORD2",
+                    "SKINEDGE",
+                    "SILVER2"
+                ],
                 "flats": [],
                 "things": [],
                 "music": []
             },
             "signage": {
                 "description": "Signalisation, visages, symboles ou écritures.",
-                "textures": [ "EXITSIGN", "SP_FACE1", "SP_FACE2", "GSTFONT1", "GSTFONT2", "GSTFONT3", "ZZZFACE1", "ZZZFACE2", "ZZZFACE3", "DBRAIN1", "DBRAIN2" ],
+                "textures": [
+                    "EXITSIGN",
+                    "SP_FACE1",
+                    "SP_FACE2",
+                    "GSTFONT1",
+                    "GSTFONT2",
+                    "GSTFONT3",
+                    "ZZZFACE1",
+                    "ZZZFACE2",
+                    "ZZZFACE3",
+                    "DBRAIN1",
+                    "DBRAIN2"
+                ],
                 "flats": [],
                 "things": [],
                 "music": []
@@ -289,77 +1107,224 @@
                 "description": "Décorations macabres liées aux monstres (cadavres, etc.).",
                 "textures": [],
                 "flats": [],
-                "things": [ 10, 12, 18, 19, 21, 22, 25, 26, 49, 50, 51, 52, 59, 60, 61, 62, 63, 73, 74, 75, 76, 77, 78 ],
+                "things": [
+                    10,
+                    12,
+                    18,
+                    19,
+                    21,
+                    22,
+                    25,
+                    26,
+                    49,
+                    50,
+                    51,
+                    52,
+                    59,
+                    60,
+                    61,
+                    62,
+                    63,
+                    73,
+                    74,
+                    75,
+                    76,
+                    77,
+                    78
+                ],
                 "music": []
             },
             "gore": {
                 "description": "Éléments sanglants, démembrés et macabres.",
-                "textures": [ "BLODRIP1", "BLODRIP2", "SLADSKUL" ],
-                "flats": [ "BLOOD1", "BLOOD2", "BLOOD3" ],
-                "things": [ 10, 12, 18, 19, 21, 22, 25, 26, 73, 74, 75, 76, 77, 78 ],
+                "textures": [
+                    "BLODRIP1",
+                    "BLODRIP2",
+                    "SLADSKUL"
+                ],
+                "flats": [
+                    "BLOOD1",
+                    "BLOOD2",
+                    "BLOOD3"
+                ],
+                "things": [
+                    10,
+                    12,
+                    18,
+                    19,
+                    21,
+                    22,
+                    25,
+                    26,
+                    73,
+                    74,
+                    75,
+                    76,
+                    77,
+                    78
+                ],
                 "music": []
             },
             "corrupted": {
                 "description": "Assets qui montrent une corruption démoniaque ou impie.",
-                "textures": [ "SKINSYMB", "MARBLOD1", "BLODRIP1", "BLODRIP2", "SLADSKUL", "SP_DUDE1", "SP_FACE1" ],
-                "flats": [ "BLOOD1", "BLOOD2", "BLOOD3" ],
-                "things": [ 71, 3003, 3005, 3006, 64 ],
-                "music": [ "D_ROMERO", "D_EVIL" ]
+                "textures": [
+                    "SKINSYMB",
+                    "MARBLOD1",
+                    "BLODRIP1",
+                    "BLODRIP2",
+                    "SLADSKUL",
+                    "SP_DUDE1",
+                    "SP_FACE1"
+                ],
+                "flats": [
+                    "BLOOD1",
+                    "BLOOD2",
+                    "BLOOD3"
+                ],
+                "things": [
+                    71,
+                    3003,
+                    3005,
+                    3006,
+                    64
+                ],
+                "music": [
+                    "D_ROMERO",
+                    "D_EVIL"
+                ]
             },
             "decayed": {
                 "description": "Assets qui montrent de la rouille, de la pourriture ou de l'usure.",
-                "textures": [ "AASHITTY", "ZIMMER1", "ZIMMER2", "ZIMMER4", "SLOPPY1", "SLOPPY2", "BRNPOIS" ],
-                "flats": [ "SLIME05", "SLIME06", "SLIME07", "SLIME08" ],
-                "things": [ 25, 26, 73, 74 ],
-                "music": [ "D_STALKS" ]
+                "textures": [
+                    "AASHITTY",
+                    "ZIMMER1",
+                    "ZIMMER2",
+                    "ZIMMER4",
+                    "SLOPPY1",
+                    "SLOPPY2",
+                    "BRNPOIS"
+                ],
+                "flats": [
+                    "SLIME05",
+                    "SLIME06",
+                    "SLIME07",
+                    "SLIME08"
+                ],
+                "things": [
+                    25,
+                    26,
+                    73,
+                    74
+                ],
+                "music": [
+                    "D_STALKS"
+                ]
             },
             "exit": {
                 "description": "Assets liés à la sortie du niveau.",
-                "textures": [ "EXITDOOR", "EXITSIGN", "SW1EXIT", "SW2EXIT" ],
+                "textures": [
+                    "EXITDOOR",
+                    "EXITSIGN",
+                    "SW1EXIT",
+                    "SW2EXIT"
+                ],
                 "flats": [],
                 "things": [],
-                "music": [ "D_VICTOR" ]
+                "music": [
+                    "D_VICTOR"
+                ]
             },
             "secret": {
                 "description": "Murs ou mécanismes souvent utilisés pour les secrets.",
-                "textures": [ "SP_DUDE1", "SP_DUDE2", "BRICK11", "BIGBRIK3" ],
+                "textures": [
+                    "SP_DUDE1",
+                    "SP_DUDE2",
+                    "BRICK11",
+                    "BIGBRIK3"
+                ],
                 "flats": [],
-                "things": [ 87 ],
+                "things": [
+                    87
+                ],
                 "music": []
             },
             "computer": {
                 "description": "Panneaux de contrôle, ordinateurs et équipements high-tech.",
-                "textures": [ "COMPTALL", "COMPBLUE", "SW1COMP", "SW2COMP", "TEKGREN1", "TEKGREN2", "TEKGREN5" ],
-                "flats": [ "COMP01" ],
-                "things": [ 2026 ],
-                "music": [ "D_SHAWN" ]
+                "textures": [
+                    "COMPTALL",
+                    "COMPBLUE",
+                    "SW1COMP",
+                    "SW2COMP",
+                    "TEKGREN1",
+                    "TEKGREN2",
+                    "TEKGREN5"
+                ],
+                "flats": [
+                    "COMP01"
+                ],
+                "things": [
+                    2026
+                ],
+                "music": [
+                    "D_SHAWN"
+                ]
             },
             "marble": {
                 "description": "Textures de marbre, souvent associées à des lieux impies ou des temples.",
-                "textures": [ "MARBLE1", "MARBGRAY", "MARBFAC2", "MARBFAC3", "MARBFAC4" ],
-                "flats": [ "MFLR8_1", "MFLR8_2" ],
+                "textures": [
+                    "MARBLE1",
+                    "MARBGRAY",
+                    "MARBFAC2",
+                    "MARBFAC3",
+                    "MARBFAC4"
+                ],
+                "flats": [
+                    "MFLR8_1",
+                    "MFLR8_2"
+                ],
                 "things": [],
-                "music": [ "D_EVIL" ]
+                "music": [
+                    "D_EVIL"
+                ]
             },
             "key_indicator_blue": {
                 "description": "Assets bleus liés aux clés.",
-                "textures": [ "DOORBLU", "LITEBLU1", "LITEBLU4", "SW1BLUE", "SW2BLUE" ],
+                "textures": [
+                    "DOORBLU",
+                    "LITEBLU1",
+                    "LITEBLU4",
+                    "SW1BLUE",
+                    "SW2BLUE"
+                ],
                 "flats": [],
-                "things": [ 5, 40 ],
+                "things": [
+                    5,
+                    40
+                ],
                 "music": []
             },
             "key_indicator_red": {
                 "description": "Assets rouges liés aux clés.",
-                "textures": [ "DOORRED" ],
+                "textures": [
+                    "DOORRED"
+                ],
                 "flats": [],
-                "things": [ 13, 38 ],
+                "things": [
+                    13,
+                    38
+                ],
                 "music": []
             },
             "key_indicator_yellow": {
                 "description": "Assets jaunes liés aux clés.",
-                "textures": [ "DOORYEL", "LITE5" ],
+                "textures": [
+                    "DOORYEL",
+                    "LITE5"
+                ],
                 "flats": [],
-                "things": [ 6, 39 ],
+                "things": [
+                    6,
+                    39
+                ],
                 "music": []
             }
         }
@@ -368,121 +1333,456 @@
         "tags": {
             "castle": {
                 "description": "Thème de forteresse médiévale, avec pierre, bois et vitraux.",
-                "textures": [ "CASTLE1", "CASTLE2", "CASTLE3", "CASTLE4", "CASTLE5", "CASTLE6", "CASTLE7", "BRICK01", "BRICK02", "STONE01", "STONE02", "WOOD01", "WOOD02", "GLASS01", "GLASS02" ],
-                "flats": [ "FLAT01", "FLAT02", "FLOOR08", "FLOOR09", "CEIL01", "CEIL02" ],
-                "things": [ 28, 76, 47, 29 ],
-                "music": [ "MUS_E1M1", "MUS_E1M2", "MUS_E1M3" ]
+                "textures": [
+                    "CASTLE1",
+                    "CASTLE2",
+                    "CASTLE3",
+                    "CASTLE4",
+                    "CASTLE5",
+                    "CASTLE6",
+                    "CASTLE7",
+                    "BRICK01",
+                    "BRICK02",
+                    "STONE01",
+                    "STONE02",
+                    "WOOD01",
+                    "WOOD02",
+                    "GLASS01",
+                    "GLASS02"
+                ],
+                "flats": [
+                    "FLAT01",
+                    "FLAT02",
+                    "FLOOR08",
+                    "FLOOR09",
+                    "CEIL01",
+                    "CEIL02"
+                ],
+                "things": [
+                    28,
+                    76,
+                    47,
+                    29,
+                    68,
+                    66,
+                    64
+                ],
+                "music": [
+                    "MUS_E1M1",
+                    "MUS_E1M2",
+                    "MUS_E1M3"
+                ]
             },
             "volcanic_hellish": {
                 "description": "Environnements volcaniques et infernaux, avec de la lave et de la roche brûlée.",
-                "textures": [ "LAVA01", "LAVA02", "LAVA03", "LAVA04", "ROCK01", "ROCK02", "ROCK03", "SNAKE01", "SNAKE02" ],
-                "flats": [ "LAVA01", "LAVA02", "LAVA03", "LAVA04", "MFLR01", "MFLR02" ],
-                "things": [ 9, 5, 66, 70 ],
-                "music": [ "MUS_E1M8", "MUS_E2M4" ]
+                "textures": [
+                    "LAVA01",
+                    "LAVA02",
+                    "LAVA03",
+                    "LAVA04",
+                    "ROCK01",
+                    "ROCK02",
+                    "ROCK03",
+                    "SNAKE01",
+                    "SNAKE02"
+                ],
+                "flats": [
+                    "LAVA01",
+                    "LAVA02",
+                    "LAVA03",
+                    "LAVA04",
+                    "MFLR01",
+                    "MFLR02"
+                ],
+                "things": [
+                    9,
+                    5,
+                    66,
+                    70,
+                    6,
+                    15
+                ],
+                "music": [
+                    "MUS_E1M8",
+                    "MUS_E2M4"
+                ]
             },
             "swamp_mossy": {
                 "description": "Environnements marécageux, humides, couverts de mousse et de lianes.",
-                "textures": [ "MOSS01", "MOSS02", "MOSS03", "MOSS04", "VINE01", "VINE02", "VINE03", "SLIME01", "SLIME02" ],
-                "flats": [ "GRASS01", "GRASS02", "SLIME01", "SLIME02", "SLIME03", "SLIME04", "MFLR05", "MFLR06" ],
-                "things": [ 48, 49 ],
-                "music": [ "MUS_E1M4", "MUS_E2M6" ]
+                "textures": [
+                    "MOSS01",
+                    "MOSS02",
+                    "MOSS03",
+                    "MOSS04",
+                    "VINE01",
+                    "VINE02",
+                    "VINE03",
+                    "SLIME01",
+                    "SLIME02"
+                ],
+                "flats": [
+                    "GRASS01",
+                    "GRASS02",
+                    "SLIME01",
+                    "SLIME02",
+                    "SLIME03",
+                    "SLIME04",
+                    "MFLR05",
+                    "MFLR06"
+                ],
+                "things": [
+                    48,
+                    49,
+                    90
+                ],
+                "music": [
+                    "MUS_E1M4",
+                    "MUS_E2M6"
+                ]
             },
             "magic_wizard": {
                 "description": "Tours de sorciers, lieux arcaniques et symboles magiques.",
-                "textures": [ "WIZWALL1", "WIZWALL2", "WIZWALL3", "WIZWALL4", "STAR01", "STAR02", "BRASS1" ],
-                "flats": [ "CEIL05", "CEIL06", "CEIL07", "FLAT17", "FLAT18" ],
-                "things": [ 6, 15, 86 ],
-                "music": [ "MUS_E1M9", "MUS_E2M2" ]
+                "textures": [
+                    "WIZWALL1",
+                    "WIZWALL2",
+                    "WIZWALL3",
+                    "WIZWALL4",
+                    "STAR01",
+                    "STAR02",
+                    "BRASS1"
+                ],
+                "flats": [
+                    "CEIL05",
+                    "CEIL06",
+                    "CEIL07",
+                    "FLAT17",
+                    "FLAT18"
+                ],
+                "things": [
+                    6,
+                    15,
+                    86,
+                    92
+                ],
+                "music": [
+                    "MUS_E1M9",
+                    "MUS_E2M2"
+                ]
             },
             "crypt_undead": {
                 "description": "Thème de crypte, avec des motifs de mort et des morts-vivants.",
-                "textures": [ "SNAKE01", "SNAKE02", "SNAKE03", "SNAKE04", "SNAKE05", "WALL09", "WALL10", "CEMENT01", "CEMENT02" ],
-                "flats": [ "FLAT05", "FLAT06", "FLAT07", "MFLR01", "MFLR02", "MFLR03", "MFLR04" ],
-                "things": [ 64, 65, 6, 51, 17, 24, 25, 26 ],
-                "music": [ "MUS_E1M6", "MUS_E2M7" ]
+                "textures": [
+                    "SNAKE01",
+                    "SNAKE02",
+                    "SNAKE03",
+                    "SNAKE04",
+                    "SNAKE05",
+                    "WALL09",
+                    "WALL10",
+                    "CEMENT01",
+                    "CEMENT02"
+                ],
+                "flats": [
+                    "FLAT05",
+                    "FLAT06",
+                    "FLAT07",
+                    "MFLR01",
+                    "MFLR02",
+                    "MFLR03",
+                    "MFLR04"
+                ],
+                "things": [
+                    64,
+                    65,
+                    6,
+                    51,
+                    17,
+                    24,
+                    25,
+                    26
+                ],
+                "music": [
+                    "MUS_E1M6",
+                    "MUS_E2M7"
+                ]
             },
             "stone": {
                 "description": "Assets génériques en pierre.",
-                "textures": [ "STONE01", "STONE02", "STONE03", "STONE04", "STONE05", "STONE06", "STONE07", "STONE08", "STONE09", "STONE10", "STONE11", "STONE12", "STONE13", "STONE14", "BRICK01", "BRICK02", "BRICK03", "BRICK04", "BRICK05", "BRICK06", "BRICK07", "BRICK08", "BRICK09", "BRICK10", "CEMENT01", "CEMENT02", "CEMENT03", "CEMENT04", "CEMENT05" ],
-                "flats": [ "FLAT01", "FLOOR08", "FLOOR09", "FLOOR10", "MARB01", "MARB02" ],
-                "things": [ 29, 47, 37, 38, 39, 40 ],
-                "music": [ "MUS_E1M1", "MUS_E1M2" ]
+                "textures": [
+                    "STONE01",
+                    "STONE02",
+                    "STONE03",
+                    "STONE04",
+                    "STONE05",
+                    "STONE06",
+                    "STONE07",
+                    "STONE08",
+                    "STONE09",
+                    "STONE10",
+                    "STONE11",
+                    "STONE12",
+                    "STONE13",
+                    "STONE14",
+                    "BRICK01",
+                    "BRICK02",
+                    "BRICK03",
+                    "BRICK04",
+                    "BRICK05",
+                    "BRICK06",
+                    "BRICK07",
+                    "BRICK08",
+                    "BRICK09",
+                    "BRICK10",
+                    "CEMENT01",
+                    "CEMENT02",
+                    "CEMENT03",
+                    "CEMENT04",
+                    "CEMENT05"
+                ],
+                "flats": [
+                    "FLAT01",
+                    "FLOOR08",
+                    "FLOOR09",
+                    "FLOOR10",
+                    "MARB01",
+                    "MARB02"
+                ],
+                "things": [
+                    29,
+                    47,
+                    37,
+                    38,
+                    39,
+                    40
+                ],
+                "music": [
+                    "MUS_E1M1",
+                    "MUS_E1M2"
+                ]
             },
             "wood": {
                 "description": "Structures et murs en bois.",
-                "textures": [ "WOOD01", "WOOD02", "WOOD03", "WOOD04", "WOOD05", "WOOD06", "WOOD07", "WOOD08", "WOOD09", "WOOD10", "WOOD11", "WOOD12" ],
-                "flats": [ "FLAT02", "FLAT03", "FLAT04" ],
-                "things": [ 44 ],
-                "music": [ "MUS_E1M3" ]
+                "textures": [
+                    "WOOD01",
+                    "WOOD02",
+                    "WOOD03",
+                    "WOOD04",
+                    "WOOD05",
+                    "WOOD06",
+                    "WOOD07",
+                    "WOOD08",
+                    "WOOD09",
+                    "WOOD10",
+                    "WOOD11",
+                    "WOOD12"
+                ],
+                "flats": [
+                    "FLAT02",
+                    "FLAT03",
+                    "FLAT04"
+                ],
+                "things": [
+                    44
+                ],
+                "music": [
+                    "MUS_E1M3"
+                ]
             },
             "door": {
                 "description": "Textures de portes pour Heretic.",
-                "textures": [ "BIGDOOR1", "BIGDOOR2", "BIGDOOR3", "DOOR01", "DOOR02", "DOOR03", "DOOR04", "DOOR05", "DOOR06", "DOOR07", "DOOR08", "DOOR09", "DOOR10", "DOOR11", "DOOR12", "DOOR13", "DOOR14", "DOOR15", "DOOR16" ],
+                "textures": [
+                    "BIGDOOR1",
+                    "BIGDOOR2",
+                    "BIGDOOR3",
+                    "DOOR01",
+                    "DOOR02",
+                    "DOOR03",
+                    "DOOR04",
+                    "DOOR05",
+                    "DOOR06",
+                    "DOOR07",
+                    "DOOR08",
+                    "DOOR09",
+                    "DOOR10",
+                    "DOOR11",
+                    "DOOR12",
+                    "DOOR13",
+                    "DOOR14",
+                    "DOOR15",
+                    "DOOR16"
+                ],
                 "flats": [],
                 "things": [],
                 "music": []
             },
             "switch": {
                 "description": "Textures d'interrupteurs pour Heretic.",
-                "textures": [ "SW01", "SW02", "SW03", "SW04", "SW05", "SW06", "SW07", "SW08", "SW09", "SW10", "SW11", "SW12", "SW13", "SW14", "SW15", "SW16", "SW17", "SW18", "SW19", "SW20", "SW21", "SW22", "SW23", "SW24" ],
+                "textures": [
+                    "SW01",
+                    "SW02",
+                    "SW03",
+                    "SW04",
+                    "SW05",
+                    "SW06",
+                    "SW07",
+                    "SW08",
+                    "SW09",
+                    "SW10",
+                    "SW11",
+                    "SW12",
+                    "SW13",
+                    "SW14",
+                    "SW15",
+                    "SW16",
+                    "SW17",
+                    "SW18",
+                    "SW19",
+                    "SW20",
+                    "SW21",
+                    "SW22",
+                    "SW23",
+                    "SW24"
+                ],
                 "flats": [],
                 "things": [],
                 "music": []
             },
             "liquid": {
                 "description": "Lave, eau et boue pour Heretic.",
-                "textures": [ "LAVA01", "LAVA02", "LAVA03", "LAVA04", "WATER01", "WATER02", "WATER03", "SLIME01", "SLIME02" ],
-                "flats": [ "LAVA01", "LAVA02", "LAVA03", "LAVA04", "WATER01", "WATER02", "WATER03", "WATER04", "SLIME01", "SLIME02", "SLIME03", "SLIME04" ],
+                "textures": [
+                    "LAVA01",
+                    "LAVA02",
+                    "LAVA03",
+                    "LAVA04",
+                    "WATER01",
+                    "WATER02",
+                    "WATER03",
+                    "SLIME01",
+                    "SLIME02"
+                ],
+                "flats": [
+                    "LAVA01",
+                    "LAVA02",
+                    "LAVA03",
+                    "LAVA04",
+                    "WATER01",
+                    "WATER02",
+                    "WATER03",
+                    "WATER04",
+                    "SLIME01",
+                    "SLIME02",
+                    "SLIME03",
+                    "SLIME04"
+                ],
                 "things": [],
                 "music": []
             },
             "light_source": {
                 "description": "Sources de lumière pour Heretic (torches, lustres).",
-                "textures": [ "LITE01", "LITE02", "LITE03", "LITE04", "LITE05" ],
-                "flats": [ "CEIL09", "CEIL10", "CEIL11" ],
-                "things": [ 27, 28, 50, 76 ],
+                "textures": [
+                    "LITE01",
+                    "LITE02",
+                    "LITE03",
+                    "LITE04",
+                    "LITE05"
+                ],
+                "flats": [
+                    "CEIL09",
+                    "CEIL10",
+                    "CEIL11"
+                ],
+                "things": [
+                    27,
+                    28,
+                    50,
+                    76
+                ],
                 "music": []
             },
             "glass_window": {
                 "description": "Vitraux et fenêtres en verre coloré.",
-                "textures": [ "GLASS01", "GLASS02", "GLASS03", "GLASS04", "GLASS05", "GLASS06", "WIND01", "WIND02", "WIND03", "WIND04" ],
+                "textures": [
+                    "GLASS01",
+                    "GLASS02",
+                    "GLASS03",
+                    "GLASS04",
+                    "GLASS05",
+                    "GLASS06",
+                    "WIND01",
+                    "WIND02",
+                    "WIND03",
+                    "WIND04"
+                ],
                 "flats": [],
                 "things": [],
                 "music": []
             },
             "tapestry": {
                 "description": "Tapisseries et bannières murales.",
-                "textures": [ "SNAKE01", "SNAKE02", "SNAKE03", "SNAKE04", "SNAKE05", "STAR01", "STAR02" ],
+                "textures": [
+                    "SNAKE01",
+                    "SNAKE02",
+                    "SNAKE03",
+                    "SNAKE04",
+                    "SNAKE05",
+                    "STAR01",
+                    "STAR02"
+                ],
                 "flats": [],
                 "things": [],
                 "music": []
             },
             "marble": {
                 "description": "Le marbre dans Heretic.",
-                "textures": [ "MARB01", "MARB02", "MARB03", "MARB04" ],
-                "flats": [ "MARB01", "MARB02" ],
+                "textures": [
+                    "MARB01",
+                    "MARB02",
+                    "MARB03",
+                    "MARB04"
+                ],
+                "flats": [
+                    "MARB01",
+                    "MARB02"
+                ],
                 "things": [],
-                "music": [ "MUS_E2M2" ]
+                "music": [
+                    "MUS_E2M2"
+                ]
             },
             "key_indicator_blue": {
                 "description": "Assets bleus liés aux clés.",
-                "textures": [ "DOOR17", "DOOR20" ],
+                "textures": [
+                    "DOOR17",
+                    "DOOR20"
+                ],
                 "flats": [],
-                "things": [ 79 ],
+                "things": [
+                    79
+                ],
                 "music": []
             },
             "key_indicator_yellow": {
                 "description": "Assets jaunes liés aux clés.",
-                "textures": [ "DOOR18", "DOOR21" ],
+                "textures": [
+                    "DOOR18",
+                    "DOOR21"
+                ],
                 "flats": [],
-                "things": [ 80 ],
+                "things": [
+                    80
+                ],
                 "music": []
             },
             "key_indicator_green": {
                 "description": "Assets verts liés aux clés.",
-                "textures": [ "DOOR19", "DOOR22" ],
+                "textures": [
+                    "DOOR19",
+                    "DOOR22"
+                ],
                 "flats": [],
-                "things": [ 73 ],
+                "things": [
+                    73
+                ],
                 "music": []
             }
         }
@@ -491,100 +1791,445 @@
         "tags": {
             "fortress_decayed": {
                 "description": "Forteresses en ruine, pierre et métal rouillé, bois usé.",
-                "textures": [ "CASTLE01", "CASTLE02", "CASTLE03", "CASTLE04", "CASTLE05", "CASTLE06", "CASTLE07", "STONE01", "STONE02", "STONE03", "RUST01", "RUST02", "RUST03", "WOOD01", "WOOD02", "WOOD03", "SUPPORT1", "SUPPORT2", "SUPPORT3" ],
-                "flats": [ "FLOOR01", "FLOOR02", "FLOOR03", "FLOOR04", "FLOOR05", "FLOOR06", "FLAT01", "FLAT02" ],
-                "things": [ 10030, 107, 8100, 8064, 8067 ],
-                "music": [ "WINNOWR", "JACHR", "LEVELR" ]
+                "textures": [
+                    "CASTLE01",
+                    "CASTLE02",
+                    "CASTLE03",
+                    "CASTLE04",
+                    "CASTLE05",
+                    "CASTLE06",
+                    "CASTLE07",
+                    "STONE01",
+                    "STONE02",
+                    "STONE03",
+                    "RUST01",
+                    "RUST02",
+                    "RUST03",
+                    "WOOD01",
+                    "WOOD02",
+                    "WOOD03",
+                    "SUPPORT1",
+                    "SUPPORT2",
+                    "SUPPORT3"
+                ],
+                "flats": [
+                    "FLOOR01",
+                    "FLOOR02",
+                    "FLOOR03",
+                    "FLOOR04",
+                    "FLOOR05",
+                    "FLOOR06",
+                    "FLAT01",
+                    "FLAT02"
+                ],
+                "things": [
+                    10030,
+                    107,
+                    115,
+                    8100,
+                    8064,
+                    8067
+                ],
+                "music": [
+                    "WINNOWR",
+                    "JACHR",
+                    "LEVELR"
+                ]
             },
             "swamp": {
                 "description": "Thème du marais, boue, arbres morts, structures délabrées.",
-                "textures": [ "MOSS01", "MOSS02", "MOSS03", "MOSS04", "WOOD04", "WOOD05", "WOOD06" ],
-                "flats": [ "SWAMP01", "SWAMP02", "SWAMP03", "SWAMP04", "MUD01", "GRASS01", "GRASS02" ],
-                "things": [ 121, 120, 24, 25, 60, 88 ],
-                "music": [ "SWAMPR", "DEEPR" ]
+                "textures": [
+                    "MOSS01",
+                    "MOSS02",
+                    "MOSS03",
+                    "MOSS04",
+                    "WOOD04",
+                    "WOOD05",
+                    "WOOD06"
+                ],
+                "flats": [
+                    "SWAMP01",
+                    "SWAMP02",
+                    "SWAMP03",
+                    "SWAMP04",
+                    "MUD01",
+                    "GRASS01",
+                    "GRASS02"
+                ],
+                "things": [
+                    121,
+                    120,
+                    24,
+                    25,
+                    60,
+                    88,
+                    34
+                ],
+                "music": [
+                    "SWAMPR",
+                    "DEEPR"
+                ]
             },
             "ice_frozen": {
                 "description": "Thème de glace et de givre, forteresses gelées.",
-                "textures": [ "ICE01", "ICE02", "ICE03", "ICE04", "ICE05", "CRYSTAL1" ],
-                "flats": [ "ICE01", "ICE02", "ICE03", "ICE04" ],
-                "things": [ 93, 94, 95, 96, 89, 90, 91, 92, 73, 76 ],
-                "music": [ "FALCONR", "WUTZITR" ]
+                "textures": [
+                    "ICE01",
+                    "ICE02",
+                    "ICE03",
+                    "ICE04",
+                    "ICE05",
+                    "CRYSTAL1"
+                ],
+                "flats": [
+                    "ICE01",
+                    "ICE02",
+                    "ICE03",
+                    "ICE04"
+                ],
+                "things": [
+                    93,
+                    94,
+                    95,
+                    96,
+                    89,
+                    90,
+                    91,
+                    92,
+                    73,
+                    76,
+                    8020
+                ],
+                "music": [
+                    "FALCONR",
+                    "WUTZITR"
+                ]
             },
             "chapel_tapestry": {
                 "description": "Intérieurs de chapelles, avec vitraux et tapisseries.",
-                "textures": [ "STAINED1", "STAINED2", "STAINED3", "GLASS01", "GLASS02", "GLASS03", "TAP01", "TAP02", "TAP03", "TAP04", "TAP05", "TAP06", "TAP07", "MARBLE01", "MARBLE02", "MARBLE03" ],
-                "flats": [ "FLOOR20", "FLOOR21", "FLOOR22", "FLOOR23", "FLOOR24", "FLOOR25" ],
-                "things": [ 114, 8065, 8061, 119 ],
-                "music": [ "CHAP_1R", "SIMONR" ]
+                "textures": [
+                    "STAINED1",
+                    "STAINED2",
+                    "STAINED3",
+                    "GLASS01",
+                    "GLASS02",
+                    "GLASS03",
+                    "TAP01",
+                    "TAP02",
+                    "TAP03",
+                    "TAP04",
+                    "TAP05",
+                    "TAP06",
+                    "TAP07",
+                    "MARBLE01",
+                    "MARBLE02",
+                    "MARBLE03"
+                ],
+                "flats": [
+                    "FLOOR20",
+                    "FLOOR21",
+                    "FLOOR22",
+                    "FLOOR23",
+                    "FLOOR24",
+                    "FLOOR25"
+                ],
+                "things": [
+                    114,
+                    8065,
+                    8061,
+                    119
+                ],
+                "music": [
+                    "CHAP_1R",
+                    "SIMONR"
+                ]
             },
             "demon_lava": {
                 "description": "Thème démoniaque et infernal, avec lave et symboles impies.",
-                "textures": [ "DEMON_A1", "DEMON_B1", "LAVA1", "FIREBAK1", "FLAME_A1", "FLAME_B1", "MARBLE05", "MARBLE06", "MARBLE07" ],
-                "flats": [ "LAVA01", "FLAT15", "FLAT16", "FLAT17", "FLAT18", "CEILING5", "CEILING6" ],
-                "things": [ 10060, 8080, 31, 10080, 10200 ],
-                "music": [ "VOIDR", "FOOJAR", "FUBASR" ]
+                "textures": [
+                    "DEMON_A1",
+                    "DEMON_B1",
+                    "LAVA1",
+                    "FIREBAK1",
+                    "FLAME_A1",
+                    "FLAME_B1",
+                    "MARBLE05",
+                    "MARBLE06",
+                    "MARBLE07"
+                ],
+                "flats": [
+                    "LAVA01",
+                    "FLAT15",
+                    "FLAT16",
+                    "FLAT17",
+                    "FLAT18",
+                    "CEILING5",
+                    "CEILING6"
+                ],
+                "things": [
+                    10060,
+                    8080,
+                    31,
+                    10080,
+                    10200,
+                    10100,
+                    10101,
+                    10102
+                ],
+                "music": [
+                    "VOIDR",
+                    "FOOJAR",
+                    "FUBASR"
+                ]
             },
             "stone": {
                 "description": "Assets génériques en pierre.",
-                "textures": [ "STONE01", "STONE02", "STONE03", "STONE04", "STONE05", "STONE06", "STONE07", "STONE08", "STONE09", "STONE10", "STONE11", "STONE12", "BOLDER01", "CAVE01", "CAVE02", "CAVE03", "CAVE04", "CAVE05" ],
-                "flats": [ "FLOOR01", "FLOOR02", "FLOOR03", "FLOOR04", "FLOOR05", "FLOOR06" ],
-                "things": [ 48, 49, 50, 51, 52, 56, 57 ],
-                "music": [ "LEVELR" ]
+                "textures": [
+                    "STONE01",
+                    "STONE02",
+                    "STONE03",
+                    "STONE04",
+                    "STONE05",
+                    "STONE06",
+                    "STONE07",
+                    "STONE08",
+                    "STONE09",
+                    "STONE10",
+                    "STONE11",
+                    "STONE12",
+                    "BOLDER01",
+                    "CAVE01",
+                    "CAVE02",
+                    "CAVE03",
+                    "CAVE04",
+                    "CAVE05"
+                ],
+                "flats": [
+                    "FLOOR01",
+                    "FLOOR02",
+                    "FLOOR03",
+                    "FLOOR04",
+                    "FLOOR05",
+                    "FLOOR06"
+                ],
+                "things": [
+                    48,
+                    49,
+                    50,
+                    51,
+                    52,
+                    56,
+                    57
+                ],
+                "music": [
+                    "LEVELR"
+                ]
             },
             "wood": {
                 "description": "Assets génériques en bois.",
-                "textures": [ "WOOD01", "WOOD02", "WOOD03", "WOOD04", "WOOD05", "WOOD06", "WOOD07", "WOOD08", "WOODGARG", "WOODMET1", "WOODMET2", "WOODMET3" ],
-                "flats": [ "FLAT03", "FLAT04" ],
-                "things": [ 8100, 24, 25, 28, 29, 60 ],
-                "music": [ "JACHR" ]
+                "textures": [
+                    "WOOD01",
+                    "WOOD02",
+                    "WOOD03",
+                    "WOOD04",
+                    "WOOD05",
+                    "WOOD06",
+                    "WOOD07",
+                    "WOOD08",
+                    "WOODGARG",
+                    "WOODMET1",
+                    "WOODMET2",
+                    "WOODMET3"
+                ],
+                "flats": [
+                    "FLAT03",
+                    "FLAT04"
+                ],
+                "things": [
+                    8100,
+                    24,
+                    25,
+                    28,
+                    29,
+                    60
+                ],
+                "music": [
+                    "JACHR"
+                ]
             },
             "metal": {
                 "description": "Assets génériques en métal.",
-                "textures": [ "METAL01", "METAL02", "METAL03", "METAL04", "METAL05", "METAL06", "RUST01", "RUST02", "RUST03", "BRASS01", "BRASS_A1" ],
-                "flats": [ "FLAT09", "FLAT10", "FLAT11", "FLAT12", "FLAT13", "FLAT14" ],
-                "things": [ 8064, 8067, 8065 ],
-                "music": [ "PERCR" ]
+                "textures": [
+                    "METAL01",
+                    "METAL02",
+                    "METAL03",
+                    "METAL04",
+                    "METAL05",
+                    "METAL06",
+                    "RUST01",
+                    "RUST02",
+                    "RUST03",
+                    "BRASS01",
+                    "BRASS_A1"
+                ],
+                "flats": [
+                    "FLAT09",
+                    "FLAT10",
+                    "FLAT11",
+                    "FLAT12",
+                    "FLAT13",
+                    "FLAT14"
+                ],
+                "things": [
+                    8064,
+                    8067,
+                    8065
+                ],
+                "music": [
+                    "PERCR"
+                ]
             },
             "door": {
                 "description": "Textures de portes pour Hexen.",
-                "textures": [ "BIGDOOR1", "DOOR01", "DOOR02", "DOOR03", "DOOR04", "DOOR05", "DOOR06", "DOOR07", "DOOR08", "DOOR09", "DOOR10", "DOOR11", "DOOR12", "DOOR13", "DOOR14", "GATE01", "GATE02", "GATE03", "GATE04" ],
+                "textures": [
+                    "BIGDOOR1",
+                    "DOOR01",
+                    "DOOR02",
+                    "DOOR03",
+                    "DOOR04",
+                    "DOOR05",
+                    "DOOR06",
+                    "DOOR07",
+                    "DOOR08",
+                    "DOOR09",
+                    "DOOR10",
+                    "DOOR11",
+                    "DOOR12",
+                    "DOOR13",
+                    "DOOR14",
+                    "GATE01",
+                    "GATE02",
+                    "GATE03",
+                    "GATE04"
+                ],
                 "flats": [],
                 "things": [],
                 "music": []
             },
             "switch": {
                 "description": "Textures d'interrupteurs pour Hexen.",
-                "textures": [ "SWITCH01", "SWITCH02", "SWITCH03", "SWITCH04", "SWITCH05", "SWITCH06", "SWITCH07", "SWITCH08" ],
+                "textures": [
+                    "SWITCH01",
+                    "SWITCH02",
+                    "SWITCH03",
+                    "SWITCH04",
+                    "SWITCH05",
+                    "SWITCH06",
+                    "SWITCH07",
+                    "SWITCH08"
+                ],
                 "flats": [],
                 "things": [],
                 "music": []
             },
             "liquid": {
                 "description": "Lave, eau et boue pour Hexen.",
-                "textures": [ "LAVA1", "FWATER01", "FWATER02", "FWATER03", "FWATER04", "WATER01", "WATER02", "WATER03", "WATER04", "WATER05", "WATER06" ],
-                "flats": [ "LAVA01", "MUD01", "SWAMP01", "SWAMP02", "SWAMP03", "SWAMP04", "WATER01", "WATER02", "WATER03", "WATER04", "WATER05", "WATER06" ],
+                "textures": [
+                    "LAVA1",
+                    "FWATER01",
+                    "FWATER02",
+                    "FWATER03",
+                    "FWATER04",
+                    "WATER01",
+                    "WATER02",
+                    "WATER03",
+                    "WATER04",
+                    "WATER05",
+                    "WATER06"
+                ],
+                "flats": [
+                    "LAVA01",
+                    "MUD01",
+                    "SWAMP01",
+                    "SWAMP02",
+                    "SWAMP03",
+                    "SWAMP04",
+                    "WATER01",
+                    "WATER02",
+                    "WATER03",
+                    "WATER04",
+                    "WATER05",
+                    "WATER06"
+                ],
                 "things": [],
-                "music": [ "SWAMPR" ]
+                "music": [
+                    "SWAMPR"
+                ]
             },
             "light_source": {
                 "description": "Sources de lumière pour Hexen.",
-                "textures": [ "FLAME_A1", "FLAME_B1" ],
-                "flats": [ "CEILING4" ],
-                "things": [ 8061, 8060, 116, 119 ],
+                "textures": [
+                    "FLAME_A1",
+                    "FLAME_B1"
+                ],
+                "flats": [
+                    "CEILING4"
+                ],
+                "things": [
+                    8061,
+                    8060,
+                    116,
+                    119
+                ],
                 "music": []
             },
             "puzzle_item": {
                 "description": "Objets de quête uniques à Hexen.",
                 "textures": [],
                 "flats": [],
-                "things": [ 8032, 8200, 8031, 9021, 9019, 9020, 9018, 9007, 8035, 8034, 9005, 9009, 8033, 9014, 9015, 9003, 9016, 8038, 9008, 9004, 8037, 9006, 9010, 9017, 8036, 8030, 8039, 9002 ],
-                "music": [ "SECRETR" ]
+                "things": [
+                    8032,
+                    8200,
+                    8031,
+                    9021,
+                    9019,
+                    9020,
+                    9018,
+                    9007,
+                    8035,
+                    8034,
+                    9005,
+                    9009,
+                    8033,
+                    9014,
+                    9015,
+                    9003,
+                    9016,
+                    8038,
+                    9008,
+                    9004,
+                    8037,
+                    9006,
+                    9010,
+                    9017,
+                    8036,
+                    8030,
+                    8039,
+                    9002
+                ],
+                "music": [
+                    "SECRETR"
+                ]
             },
             "class_specific": {
                 "description": "Points de départ pour les différentes classes de joueurs.",
                 "textures": [],
                 "flats": [],
-                "things": [ 100, 101, 102, 103 ],
+                "things": [
+                    100,
+                    101,
+                    102,
+                    103
+                ],
                 "music": []
             }
         }
