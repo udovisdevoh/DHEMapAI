@@ -6,7 +6,7 @@
 
 <div class="text-center">
     <h1 class="display-4">Générateur D-Genesis Aléatoire</h1>
-    <p>Cliquez sur le bouton pour générer un fichier de thème D-Genesis complet et valide pour Doom 2.</p>
+    <p>Cliquez sur le bouton pour générer un fichier de thème D-Genesis complet et valide pour un jeu.</p>
 </div>
 
 <div class="row mt-4">
@@ -22,7 +22,34 @@
     <div class="row mt-4">
         <div class="col-md-12">
             <h3>Résultat de la Génération :</h3>
-            <pre><code class="json" style="white-space: pre; display: block; background-color: #f0f0f0; border: 1px solid #ccc; padding: 10px; border-radius: 5px;">@Model.GeneratedJson</code></pre>
+
+            <div class="text-end mb-2">
+                <button id="copyButton" class="btn btn-sm btn-secondary">Copier vers le presse-papiers</button>
+            </div>
+
+            <pre><code id="jsonOutput" class="json" style="white-space: pre; display: block; background-color: #f0f0f0; border: 1px solid #ccc; padding: 10px; border-radius: 5px;">@Model.GeneratedJson</code></pre>
         </div>
     </div>
+
+    <script>
+        document.getElementById('copyButton').addEventListener('click', function () {
+            // Sélectionner le texte à copier
+            const jsonText = document.getElementById('jsonOutput').innerText;
+            const button = this;
+
+            // Utiliser l'API du presse-papiers (moderne et sécurisée)
+            navigator.clipboard.writeText(jsonText).then(function () {
+                // Succès : changer le texte du bouton et le réinitialiser après 2 secondes
+                const originalText = button.innerText;
+                button.innerText = 'Copié !';
+                setTimeout(function () {
+                    button.innerText = originalText;
+                }, 2000);
+            }).catch(function (err) {
+                // Gérer les erreurs éventuelles
+                console.error('Erreur lors de la copie dans le presse-papiers : ', err);
+                alert('La copie a échoué. Veuillez utiliser la méthode manuelle.');
+            });
+        });
+    </script>
 }
