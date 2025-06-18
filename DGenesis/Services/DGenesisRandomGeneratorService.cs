@@ -127,7 +127,6 @@ namespace DGenesis.Services
                 functionalTags[tagName] = collection;
             }
 
-            // CORRECTION 2: Mise à jour des concepts pour utiliser les tags spécifiques de couleur
             var concepts = new Dictionary<string, (string type, string[] tags)>
             {
                 { "wall_primary", ("texture", new []{ primaryThemeTag }) },
@@ -158,7 +157,6 @@ namespace DGenesis.Services
 
                 if (concept.Value.type == "texture")
                 {
-                    // Essayer de trouver une intersection entre tous les tags
                     candidates = conceptTags.Contains(primaryThemeTag)
                         ? new List<string>(themeAssets.Textures)
                         : new List<string>(validTextureSet);
@@ -168,10 +166,8 @@ namespace DGenesis.Services
                         candidates = candidates.Intersect(functionalTags[tag].Textures).ToList();
                     }
 
-                    // CORRECTION 3 : Logique de repli (fallback)
                     if (!candidates.Any() && conceptTags.Length > 1)
                     {
-                        // Si l'intersection échoue, on réessaie avec seulement le tag fonctionnel le plus important (souvent le dernier)
                         var fallbackTag = functionalTags.GetValueOrDefault(conceptTags.Last());
                         if (fallbackTag != null) candidates = fallbackTag.Textures;
                     }
@@ -202,7 +198,6 @@ namespace DGenesis.Services
                     };
                 }
             }
-
             return palette;
         }
 
@@ -220,7 +215,7 @@ namespace DGenesis.Services
                         tokens.Add(new ThematicToken
                         {
                             Name = asset.Name,
-                            Type = conceptIsWall(asset.Name, themePalette) ? "wall" : "flat",
+                            Type = GetTokenTypeForAsset(asset.Name, themePalette),
                             AdjacencyRules = new List<AdjacencyRule>()
                         });
                     }
@@ -257,19 +252,28 @@ namespace DGenesis.Services
             collection.Music = collection.Music.Where(m => validMusic.Contains(m)).ToList();
         }
 
-        private bool conceptIsWall(string assetName, Dictionary<string, List<WeightedAsset>> themePalette)
+        private string GetTokenTypeForAsset(string assetName, Dictionary<string, List<WeightedAsset>> themePalette)
         {
             foreach (var kvp in themePalette)
             {
                 if (kvp.Value.Any(a => a.Name == assetName))
                 {
-                    if (kvp.Key.StartsWith("wall_") || kvp.Key.StartsWith("door_") || kvp.Key.StartsWith("switch_"))
+                    // La vérification la plus spécifique (switch) vient en premier
+                    if (kvp.Key.StartsWith("switch_"))
                     {
-                        return true;
+                        return "connection_action";
                     }
+                    // Ensuite les autres types de murs
+                    if (kvp.Key.StartsWith("wall_") || kvp.Key.StartsWith("door_"))
+                    {
+                        return "wall";
+                    }
+                    // Si ce n'est aucun des types muraux, c'est un sol/plafond
+                    return "flat";
                 }
             }
-            return false;
+            // Au cas où (ne devrait pas arriver), on retourne "wall" par défaut
+            return "wall";
         }
 
         private (string MapLumpName, string Music) GetDefaultMapDetailsForGame(string game)
