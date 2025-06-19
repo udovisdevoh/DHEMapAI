@@ -1,4 +1,4 @@
-﻿using DGenesis.Models; // Assurez-vous d'avoir un fichier Models/AssetThemes.cs
+﻿using DGenesis.Models;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -7,12 +7,11 @@ using System.Text.Json;
 
 namespace DGenesis.Services
 {
-    // Nouveau modèle pour désérialiser la structure de asset_function.json
     public class FunctionData
     {
-        public List<string> Textures { get; set; }
-        public List<string> Flats { get; set; }
-        public List<int> Things { get; set; }
+        public List<string> Textures { get; set; } = new List<string>();
+        public List<string> Flats { get; set; } = new List<string>();
+        public List<int> Things { get; set; } = new List<int>();
     }
 
     public class AssetFunctionService
@@ -51,7 +50,6 @@ namespace DGenesis.Services
                     var functionName = functionEntry.Key;
                     functionEntry.Value.Textures?.ForEach(asset => assetToFunctionMap[asset] = functionName);
                     functionEntry.Value.Flats?.ForEach(asset => assetToFunctionMap[asset] = functionName);
-                    // Le cache inversé n'est pas pertinent pour les `things` par nom.
                 }
                 _functionCache[gameName] = assetToFunctionMap;
             }
