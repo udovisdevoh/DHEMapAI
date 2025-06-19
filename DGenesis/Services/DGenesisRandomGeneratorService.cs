@@ -45,7 +45,7 @@ namespace DGenesis.Services
                 Game = game,
                 MapLumpName = GetDefaultMapDetailsForGame(game).MapLumpName,
                 Name = "Generated Level " + _random.Next(100, 999),
-                Music = musicList.Any() ? musicList[_random.Next(musicList.Count)] : ""
+                Music = musicList.Any() ? musicList.ElementAt(_random.Next(musicList.Count)) : ""
             };
         }
 
@@ -141,28 +141,47 @@ namespace DGenesis.Services
 
         private string FindAssetForConcept(string game, string assetType, string themeKey, string functionKey, HashSet<string> validTextures, HashSet<string> validFlats)
         {
-            var assetPool = assetType == "texture" ? validTextures : validFlats;
-            var thematicAssetsSource = _themeService.GetAssetsForTheme(game, themeKey);
-            var thematicAssetsPool = new HashSet<string>(assetType == "texture" ? thematicAssetsSource.Textures : thematicAssetsSource.Flats);
+            var masterAssetPool = assetType == "texture" ? validTextures : validFlats;
 
+            // Préparer les listes de candidats thématiques et fonctionnels
+            var thematicAssetSource = _themeService.GetAssetsForTheme(game, themeKey);
+            var thematicCandidates = new HashSet<string>(assetType == "texture" ? thematicAssetSource.Textures : thematicAssetSource.Flats);
+            thematicCandidates.IntersectWith(masterAssetPool); // S'assurer que les assets thématiques sont valides pour ce jeu
+
+            List<string> functionalCandidates = null;
             if (!string.IsNullOrEmpty(functionKey))
             {
-                var functionalAssetsSource = _functionService.GetFunctionData(game, functionKey);
-                var functionalAssets = new HashSet<string>(assetType == "texture" ? functionalAssetsSource.Textures : functionalAssetsSource.Flats);
-
-                var candidates = thematicAssetsPool.Intersect(functionalAssets).ToList();
-                if (candidates.Any()) return candidates[_random.Next(candidates.Count)];
-
-                var functionalCandidates = functionalAssets.Intersect(assetPool).ToList();
-                if (functionalCandidates.Any()) return functionalCandidates[_random.Next(functionalCandidates.Count)];
+                var functionalAssetSource = _functionService.GetFunctionData(game, functionKey);
+                functionalCandidates = (assetType == "texture" ? functionalAssetSource.Textures : functionalAssetSource.Flats)
+                    .Intersect(masterAssetPool).ToList();
             }
 
-            var thematicOnlyCandidates = thematicAssetsPool.Intersect(assetPool).ToList();
-            if (thematicOnlyCandidates.Any()) return thematicOnlyCandidates[_random.Next(thematicOnlyCandidates.Count)];
+            // Tentative 1: Intersection parfaite (Thème + Fonction)
+            if (functionalCandidates != null && functionalCandidates.Any())
+            {
+                var idealCandidates = thematicCandidates.Intersect(functionalCandidates).ToList();
+                if (idealCandidates.Any())
+                {
+                    return idealCandidates[_random.Next(idealCandidates.Count)];
+                }
 
-            if (assetPool.Any()) return assetPool.ElementAt(_random.Next(assetPool.Count));
+                // Tentative 2: Repli sur la Fonction Seule (Priorité la plus haute)
+                return functionalCandidates[_random.Next(functionalCandidates.Count)];
+            }
 
-            return null;
+            // Tentative 3: Thème Seul (pour les concepts sans fonction comme wall_primary)
+            if (thematicCandidates.Any())
+            {
+                return thematicCandidates.ElementAt(_random.Next(thematicCandidates.Count));
+            }
+
+            // Tentative 4: Dernier Recours (n'importe quel asset valide du bon type)
+            if (masterAssetPool.Any())
+            {
+                return masterAssetPool.ElementAt(_random.Next(masterAssetPool.Count));
+            }
+
+            return null; // Ne devrait jamais arriver si le jeu a des assets
         }
 
         private List<ThematicToken> GenerateThematicTokens(string game, Dictionary<string, List<WeightedAsset>> themePalette, string primaryThemeKey)
@@ -192,19 +211,15 @@ namespace DGenesis.Services
             if (!string.IsNullOrEmpty(primaryThemeKey))
             {
                 var allThings = _assetService.GetThingsForGame(game);
-
-                // CORRECTION : Utilisation de GetFunctionData pour obtenir les IDs des monstres
                 var thematicThingIds = new HashSet<int>(_themeService.GetAssetsForTheme(game, primaryThemeKey).Things);
                 var allMonsterIds = new HashSet<int>(_functionService.GetFunctionData(game, "monster").Things);
 
                 var candidateIds = thematicThingIds.Intersect(allMonsterIds).ToList();
 
-                // Repli si l'intersection est vide
                 if (!candidateIds.Any())
                 {
                     candidateIds = allMonsterIds.ToList();
                 }
-
                 var thematicMonsterCandidates = allThings.Where(t => candidateIds.Contains(t.TypeId)).ToList();
 
                 var shuffledThematicMonsters = thematicMonsterCandidates.OrderBy(m => _random.Next()).ToList();
@@ -244,11 +259,15 @@ namespace DGenesis.Services
         {
             string function = _functionService.GetAssetFunction(game, assetName);
 
-            if (function != null && function.StartsWith("switch"))
+            if (function != null)
             {
-                return "connection_action";
+                if (function.StartsWith("switch")) return "connection_action";
+
+                // Les textures de liquides animés doivent être traitées comme des flats
+                if (function.StartsWith("damaging_floor") || function == "animated_liquid") return "flat";
             }
 
+            // Fallback standard
             if (_assetService.GetTexturesForGame(game).Contains(assetName))
             {
                 return "wall";
