@@ -142,30 +142,24 @@ namespace DGenesis.Services
         private string FindAssetForConcept(string game, string assetType, string themeKey, string functionKey, HashSet<string> validTextures, HashSet<string> validFlats)
         {
             var assetPool = assetType == "texture" ? validTextures : validFlats;
+            var thematicAssetsSource = _themeService.GetAssetsForTheme(game, themeKey);
+            var thematicAssetsPool = new HashSet<string>(assetType == "texture" ? thematicAssetsSource.Textures : thematicAssetsSource.Flats);
 
-            // Tentative 1: Intersection Thème + Fonction
             if (!string.IsNullOrEmpty(functionKey))
             {
-                var thematicAssets = new HashSet<string>(assetType == "texture"
-                    ? _themeService.GetAssetsForTheme(game, themeKey).Textures
-                    : _themeService.GetAssetsForTheme(game, themeKey).Flats);
+                var functionalAssetsSource = _functionService.GetFunctionData(game, functionKey);
+                var functionalAssets = new HashSet<string>(assetType == "texture" ? functionalAssetsSource.Textures : functionalAssetsSource.Flats);
 
-                var functionalAssets = new HashSet<string>(_functionService.GetAssetsForFunction(game, functionKey));
-
-                var candidates = thematicAssets.Intersect(functionalAssets).ToList();
+                var candidates = thematicAssetsPool.Intersect(functionalAssets).ToList();
                 if (candidates.Any()) return candidates[_random.Next(candidates.Count)];
 
-                // Tentative 2: Repli sur la Fonction seule
                 var functionalCandidates = functionalAssets.Intersect(assetPool).ToList();
                 if (functionalCandidates.Any()) return functionalCandidates[_random.Next(functionalCandidates.Count)];
             }
 
-            // Tentative 3: Repli sur le Thème seul (pour les concepts sans fonction comme wall_primary)
-            var thematicOnlyCandidates = (assetType == "texture" ? _themeService.GetAssetsForTheme(game, themeKey).Textures : _themeService.GetAssetsForTheme(game, themeKey).Flats)
-                .Intersect(assetPool).ToList();
+            var thematicOnlyCandidates = thematicAssetsPool.Intersect(assetPool).ToList();
             if (thematicOnlyCandidates.Any()) return thematicOnlyCandidates[_random.Next(thematicOnlyCandidates.Count)];
 
-            // Tentative 4: Dernier recours, n'importe quel asset valide du bon type
             if (assetPool.Any()) return assetPool.ElementAt(_random.Next(assetPool.Count));
 
             return null;
@@ -198,10 +192,19 @@ namespace DGenesis.Services
             if (!string.IsNullOrEmpty(primaryThemeKey))
             {
                 var allThings = _assetService.GetThingsForGame(game);
+
+                // CORRECTION : Utilisation de GetFunctionData pour obtenir les IDs des monstres
                 var thematicThingIds = new HashSet<int>(_themeService.GetAssetsForTheme(game, primaryThemeKey).Things);
-                var allMonsterIds = new HashSet<int>(_functionService.GetAssetsForFunction(game, "monster").Select(name => allThings.FirstOrDefault(t => t.Name == name)?.TypeId ?? -1));
+                var allMonsterIds = new HashSet<int>(_functionService.GetFunctionData(game, "monster").Things);
 
                 var candidateIds = thematicThingIds.Intersect(allMonsterIds).ToList();
+
+                // Repli si l'intersection est vide
+                if (!candidateIds.Any())
+                {
+                    candidateIds = allMonsterIds.ToList();
+                }
+
                 var thematicMonsterCandidates = allThings.Where(t => candidateIds.Contains(t.TypeId)).ToList();
 
                 var shuffledThematicMonsters = thematicMonsterCandidates.OrderBy(m => _random.Next()).ToList();
@@ -212,11 +215,12 @@ namespace DGenesis.Services
             {
                 int needed = desiredMonsterCount - finalMonsterSelection.Count;
                 var allMonsters = _assetService.GetThingsForGame(game)
-                    .Where(t => _functionService.GetAssetsForFunction(game, "monster").Contains(t.Name)).ToList();
+                    .Where(t => _functionService.GetFunctionData(game, "monster").Things.Contains(t.TypeId)).ToList();
 
                 var alreadySelectedIds = new HashSet<int>(finalMonsterSelection.Select(m => m.TypeId));
                 var fallbackCandidates = allMonsters.Where(m => !alreadySelectedIds.Contains(m.TypeId)).ToList();
                 var shuffledFallbackMonsters = fallbackCandidates.OrderBy(m => _random.Next()).ToList();
+
                 finalMonsterSelection.AddRange(shuffledFallbackMonsters.Take(needed));
             }
 
@@ -234,15 +238,6 @@ namespace DGenesis.Services
                 }
             }
             return tokens;
-        }
-
-        private void FilterAssetCollection(ThemedAssetCollection collection, HashSet<string> validTextures, HashSet<string> validFlats, HashSet<int> validThings, HashSet<string> validMusic)
-        {
-            if (collection == null) return;
-            collection.Textures = collection.Textures?.Where(t => validTextures.Contains(t)).ToList() ?? new List<string>();
-            collection.Flats = collection.Flats?.Where(f => validFlats.Contains(f)).ToList() ?? new List<string>();
-            collection.Things = collection.Things?.Where(t => validThings.Contains(t)).ToList() ?? new List<int>();
-            collection.Music = collection.Music?.Where(m => validMusic.Contains(m)).ToList() ?? new List<string>();
         }
 
         private string GetTokenType(string game, string assetName)
