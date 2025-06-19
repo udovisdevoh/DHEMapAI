@@ -8,8 +8,10 @@ namespace DGenesis.Services
 {
     public class AssetFunctionService
     {
-        // Cache inversé pour des recherches rapides: Map<game, Map<assetName, functionName>>
+        // Cache pour la recherche inversée (rapide)
         private static readonly Dictionary<string, Dictionary<string, string>> _functionCache = new Dictionary<string, Dictionary<string, string>>();
+        // CORRECTION : Ajout d'une variable pour stocker la base de données originale
+        private static readonly Dictionary<string, Dictionary<string, List<string>>> _functionDatabase = new Dictionary<string, Dictionary<string, List<string>>>();
 
         static AssetFunctionService()
         {
@@ -20,10 +22,13 @@ namespace DGenesis.Services
                 {
                     string jsonString = File.ReadAllText(filePath);
                     var options = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
-                    var functionDatabase = JsonSerializer.Deserialize<Dictionary<string, Dictionary<string, List<string>>>>(jsonString, options);
+                    var database = JsonSerializer.Deserialize<Dictionary<string, Dictionary<string, List<string>>>>(jsonString, options);
 
-                    // Construire le cache inversé
-                    foreach (var gameEntry in functionDatabase)
+                    // On stocke la base de données pour la nouvelle méthode
+                    _functionDatabase = database;
+
+                    // On construit le cache inversé pour l'ancienne méthode
+                    foreach (var gameEntry in database)
                     {
                         var gameName = gameEntry.Key;
                         var assetToFunctionMap = new Dictionary<string, string>();
@@ -52,7 +57,18 @@ namespace DGenesis.Services
             {
                 return function;
             }
-            return null; // Retourne null si aucune fonction spécifique n'est trouvée
+            return null;
+        }
+
+        // CORRECTION : Ajout de la méthode manquante
+        public IEnumerable<string> GetAssetsForFunction(string game, string functionName)
+        {
+            if (_functionDatabase.TryGetValue(game, out var functions) &&
+                functions.TryGetValue(functionName, out var assetList))
+            {
+                return assetList;
+            }
+            return Enumerable.Empty<string>();
         }
     }
 }

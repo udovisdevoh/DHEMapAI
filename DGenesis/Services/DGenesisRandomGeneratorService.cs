@@ -9,7 +9,7 @@ namespace DGenesis.Services
     {
         private readonly AssetThemeService _themeService;
         private readonly GameAssetService _assetService;
-        private readonly AssetFunctionService _functionService; // AJOUT : Injection du nouveau service
+        private readonly AssetFunctionService _functionService;
         private readonly Random _random = new Random();
 
         public DGenesisRandomGeneratorService(AssetThemeService themeService, GameAssetService assetService, AssetFunctionService functionService)
@@ -29,37 +29,23 @@ namespace DGenesis.Services
                 FeaturePalette = GenerateFeaturePalette()
             };
 
-            var (themePalette, primaryTheme) = GenerateThemePalette(game);
+            var (themePalette, primaryThemeKey) = GenerateThemePalette(game);
             file.ThemePalette = themePalette;
 
-            file.ThematicTokens = GenerateThematicTokens(game, file.ThemePalette, primaryTheme);
+            file.ThematicTokens = GenerateThematicTokens(game, file.ThemePalette, primaryThemeKey);
 
             return file;
         }
 
         private MapInfo GenerateMapInfo(string game)
         {
-            // La liste des musiques est maintenant filtrée pour s'assurer de sa validité
-            var validMusic = new HashSet<string>(_assetService.GetMusicForGame(game));
-            var thematicMusic = _themeService.GetAssetsForTheme(game, "music")?.Music?
-                .Where(m => validMusic.Contains(m)).ToList() ?? new List<string>();
-
-            string chosenMusic = "";
-            if (thematicMusic.Any())
-            {
-                chosenMusic = thematicMusic[_random.Next(thematicMusic.Count)];
-            }
-            else if (validMusic.Any())
-            {
-                chosenMusic = validMusic.ElementAt(_random.Next(validMusic.Count));
-            }
-
+            var musicList = _assetService.GetMusicForGame(game);
             return new MapInfo
             {
                 Game = game,
                 MapLumpName = GetDefaultMapDetailsForGame(game).MapLumpName,
                 Name = "Generated Level " + _random.Next(100, 999),
-                Music = chosenMusic
+                Music = musicList.Any() ? musicList[_random.Next(musicList.Count)] : ""
             };
         }
 
@@ -116,101 +102,76 @@ namespace DGenesis.Services
             };
         }
 
-        private (Dictionary<string, List<WeightedAsset>> palette, string themeTag) GenerateThemePalette(string game)
+        private (Dictionary<string, List<WeightedAsset>> palette, string themeKey) GenerateThemePalette(string game)
         {
             var palette = new Dictionary<string, List<WeightedAsset>>();
 
-            var validTextureSet = new HashSet<string>(_assetService.GetTexturesForGame(game));
-            var validFlatSet = new HashSet<string>(_assetService.GetFlatsForGame(game));
-            var validThingIdSet = new HashSet<int>(_assetService.GetThingsForGame(game).Select(t => t.TypeId));
-            var validMusicSet = new HashSet<string>(_assetService.GetMusicForGame(game));
+            var validTextures = new HashSet<string>(_assetService.GetTexturesForGame(game));
+            var validFlats = new HashSet<string>(_assetService.GetFlatsForGame(game));
 
             var availableThemes = _themeService.GetAvailableThemeKeys(game);
             if (!availableThemes.Any()) return (palette, null);
-            string primaryTheme = availableThemes[_random.Next(availableThemes.Count)];
+            string primaryThemeKey = availableThemes[_random.Next(availableThemes.Count)];
 
-            var themeAssets = _themeService.GetAssetsForTheme(game, primaryTheme);
-            FilterAssetCollection(themeAssets, validTextureSet, validFlatSet, validThingIdSet, validMusicSet);
-
-            var functionalTags = new Dictionary<string, ThemedAssetCollection>();
-            var functionalTagNames = new[] {
-                "door", "switch", "light_source", "border", "support", "panel", "secret", "exit",
-                "key_indicator_blue", "key_indicator_red", "key_indicator_yellow", "key_indicator_green"
-            };
-
-            foreach (var tagName in functionalTagNames)
+            var concepts = new Dictionary<string, (string type, string function)>
             {
-                var collection = _themeService.GetAssetsForTheme(game, tagName);
-                FilterAssetCollection(collection, validTextureSet, validFlatSet, validThingIdSet, validMusicSet);
-                functionalTags[tagName] = collection;
-            }
-
-            var concepts = new Dictionary<string, (string type, string[] tags)>
-            {
-                { "wall_primary", ("texture", new []{ primaryTheme }) }, { "wall_accent", ("texture", new []{ primaryTheme, "panel" }) },
-                { "wall_support", ("texture", new []{ primaryTheme, "support" }) }, { "wall_secret_indicator", ("texture", new []{ primaryTheme, "secret" }) },
-                { "wall_panel", ("texture", new []{ primaryTheme, "panel" }) }, { "door_frame", ("texture", new []{ primaryTheme, "border" }) },
-                { "floor_primary", ("flat", new []{ primaryTheme }) }, { "floor_accent", ("flat", new []{ primaryTheme }) },
-                { "ceiling_primary", ("flat", new []{ primaryTheme }) }, { "ceiling_light_source", ("flat", new []{ "light_source" }) },
-                { "platform_surface", ("flat", new []{ primaryTheme }) }, { "door_regular", ("texture", new []{ "door" }) },
-                { "door_locked", ("texture", new []{ "door" }) }, { "door_exit", ("texture", new []{ "exit", "door" }) },
-                { "switch_utility", ("texture", new []{ "switch" }) }, { "switch_exit", ("texture", new []{ "exit", "switch" }) },
-                { "door_indicator_blue", ("texture", new []{ "key_indicator_blue" }) }, { "door_indicator_red", ("texture", new []{ "key_indicator_red" }) },
-                { "door_indicator_yellow", ("texture", new []{ "key_indicator_yellow" }) }
+                { "wall_primary", ("texture", null) }, { "wall_accent", ("texture", "panel") },
+                { "wall_support", ("texture", "support") }, { "wall_secret_indicator", ("texture", "secret_wall") },
+                { "wall_panel", ("texture", "panel") }, { "door_frame", ("texture", "border") },
+                { "floor_primary", ("flat", null) }, { "floor_accent", ("flat", null) },
+                { "ceiling_primary", ("flat", null) }, { "ceiling_light_source", ("flat", "light_source_flat") },
+                { "platform_surface", ("flat", null) }, { "door_regular", ("texture", "door") },
+                { "door_locked", ("texture", "door") }, { "door_exit", ("texture", "door_exit") },
+                { "switch_utility", ("texture", "switch") }, { "switch_exit", ("texture", "switch_exit") },
+                { "door_indicator_blue", ("texture", "door_blue") }, { "door_indicator_red", ("texture", "door_red") },
+                { "door_indicator_yellow", ("texture", "door_yellow") }
             };
 
             foreach (var concept in concepts)
             {
-                var conceptTags = concept.Value.tags;
-                var assetType = concept.Value.type;
-                List<string> candidates = new List<string>();
-
-                var baseList = assetType == "texture" ? themeAssets.Textures : themeAssets.Flats;
-                candidates = new List<string>(baseList);
-                foreach (var tag in conceptTags.Where(t => t != primaryTheme && functionalTags.ContainsKey(t)))
+                string assetName = FindAssetForConcept(game, concept.Value.type, primaryThemeKey, concept.Value.function, validTextures, validFlats);
+                if (!string.IsNullOrEmpty(assetName))
                 {
-                    var functionalAssets = assetType == "texture" ? functionalTags[tag].Textures : functionalTags[tag].Flats;
-                    candidates = candidates.Intersect(functionalAssets).ToList();
-                }
-
-                if (!candidates.Any())
-                {
-                    var functionalConceptTags = conceptTags.Where(t => functionalTags.ContainsKey(t)).ToList();
-                    if (functionalConceptTags.Any())
-                    {
-                        var firstFunctionalTag = functionalTags[functionalConceptTags.First()];
-                        candidates = assetType == "texture" ? new List<string>(firstFunctionalTag.Textures) : new List<string>(firstFunctionalTag.Flats);
-
-                        foreach (var tag in functionalConceptTags.Skip(1))
-                        {
-                            var functionalAssets = assetType == "texture" ? functionalTags[tag].Textures : functionalTags[tag].Flats;
-                            candidates = candidates.Intersect(functionalAssets).ToList();
-                        }
-                    }
-                }
-
-                if (!candidates.Any() && conceptTags.Contains(primaryTheme) && conceptTags.Length > 1)
-                {
-                    candidates = assetType == "texture" ? new List<string>(themeAssets.Textures) : new List<string>(themeAssets.Flats);
-                }
-
-                if (!candidates.Any())
-                {
-                    candidates = assetType == "texture" ? new List<string>(validTextureSet) : new List<string>(validFlatSet);
-                }
-
-                if (candidates.Any())
-                {
-                    palette[concept.Key] = new List<WeightedAsset>
-                    {
-                        new WeightedAsset { Name = candidates[_random.Next(candidates.Count)], Weight = 100 }
-                    };
+                    palette[concept.Key] = new List<WeightedAsset> { new WeightedAsset { Name = assetName, Weight = 100 } };
                 }
             }
-            return (palette, primaryTheme);
+
+            return (palette, primaryThemeKey);
         }
 
-        private List<ThematicToken> GenerateThematicTokens(string game, Dictionary<string, List<WeightedAsset>> themePalette, string primaryTheme)
+        private string FindAssetForConcept(string game, string assetType, string themeKey, string functionKey, HashSet<string> validTextures, HashSet<string> validFlats)
+        {
+            var assetPool = assetType == "texture" ? validTextures : validFlats;
+
+            // Tentative 1: Intersection Thème + Fonction
+            if (!string.IsNullOrEmpty(functionKey))
+            {
+                var thematicAssets = new HashSet<string>(assetType == "texture"
+                    ? _themeService.GetAssetsForTheme(game, themeKey).Textures
+                    : _themeService.GetAssetsForTheme(game, themeKey).Flats);
+
+                var functionalAssets = new HashSet<string>(_functionService.GetAssetsForFunction(game, functionKey));
+
+                var candidates = thematicAssets.Intersect(functionalAssets).ToList();
+                if (candidates.Any()) return candidates[_random.Next(candidates.Count)];
+
+                // Tentative 2: Repli sur la Fonction seule
+                var functionalCandidates = functionalAssets.Intersect(assetPool).ToList();
+                if (functionalCandidates.Any()) return functionalCandidates[_random.Next(functionalCandidates.Count)];
+            }
+
+            // Tentative 3: Repli sur le Thème seul (pour les concepts sans fonction comme wall_primary)
+            var thematicOnlyCandidates = (assetType == "texture" ? _themeService.GetAssetsForTheme(game, themeKey).Textures : _themeService.GetAssetsForTheme(game, themeKey).Flats)
+                .Intersect(assetPool).ToList();
+            if (thematicOnlyCandidates.Any()) return thematicOnlyCandidates[_random.Next(thematicOnlyCandidates.Count)];
+
+            // Tentative 4: Dernier recours, n'importe quel asset valide du bon type
+            if (assetPool.Any()) return assetPool.ElementAt(_random.Next(assetPool.Count));
+
+            return null;
+        }
+
+        private List<ThematicToken> GenerateThematicTokens(string game, Dictionary<string, List<WeightedAsset>> themePalette, string primaryThemeKey)
         {
             var tokens = new List<ThematicToken>();
             var existingAssets = new HashSet<string>();
@@ -234,11 +195,12 @@ namespace DGenesis.Services
             int desiredMonsterCount = _random.Next(4, 9);
             var finalMonsterSelection = new List<GameAssetThing>();
 
-            if (!string.IsNullOrEmpty(primaryTheme))
+            if (!string.IsNullOrEmpty(primaryThemeKey))
             {
                 var allThings = _assetService.GetThingsForGame(game);
-                var thematicThingIds = new HashSet<int>(_themeService.GetAssetsForTheme(game, primaryTheme).Things);
-                var allMonsterIds = new HashSet<int>(_themeService.GetAssetsForTheme(game, "monster").Things);
+                var thematicThingIds = new HashSet<int>(_themeService.GetAssetsForTheme(game, primaryThemeKey).Things);
+                var allMonsterIds = new HashSet<int>(_functionService.GetAssetsForFunction(game, "monster").Select(name => allThings.FirstOrDefault(t => t.Name == name)?.TypeId ?? -1));
+
                 var candidateIds = thematicThingIds.Intersect(allMonsterIds).ToList();
                 var thematicMonsterCandidates = allThings.Where(t => candidateIds.Contains(t.TypeId)).ToList();
 
@@ -250,7 +212,8 @@ namespace DGenesis.Services
             {
                 int needed = desiredMonsterCount - finalMonsterSelection.Count;
                 var allMonsters = _assetService.GetThingsForGame(game)
-                    .Where(t => _themeService.GetAssetsForTheme(game, "monster").Things.Contains(t.TypeId)).ToList();
+                    .Where(t => _functionService.GetAssetsForFunction(game, "monster").Contains(t.Name)).ToList();
+
                 var alreadySelectedIds = new HashSet<int>(finalMonsterSelection.Select(m => m.TypeId));
                 var fallbackCandidates = allMonsters.Where(m => !alreadySelectedIds.Contains(m.TypeId)).ToList();
                 var shuffledFallbackMonsters = fallbackCandidates.OrderBy(m => _random.Next()).ToList();
@@ -286,22 +249,11 @@ namespace DGenesis.Services
         {
             string function = _functionService.GetAssetFunction(game, assetName);
 
-            if (function != null)
+            if (function != null && function.StartsWith("switch"))
             {
-                // Un asset défini comme un interrupteur est toujours une "connection_action"
-                if (function.StartsWith("switch"))
-                {
-                    return "connection_action";
-                }
-                // Un asset défini comme une porte ou une lumière murale est de type "wall"
-                if (function.StartsWith("door") || function.StartsWith("light_source_wall") || function.StartsWith("secret_wall"))
-                {
-                    return "wall";
-                }
+                return "connection_action";
             }
 
-            // Fallback : si aucune fonction spécifique n'est trouvée, on se base sur la liste principale de l'asset.
-            // C'est utile pour les textures génériques qui n'ont pas de fonction listée.
             if (_assetService.GetTexturesForGame(game).Contains(assetName))
             {
                 return "wall";
