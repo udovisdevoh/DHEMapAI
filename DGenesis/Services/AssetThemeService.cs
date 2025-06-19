@@ -35,32 +35,46 @@ namespace DGenesis.Services
             }
         }
 
-        public ThemedAssetCollection GetAssetsForTheme(string game, string theme)
+        public ThemedAssetCollection GetAssetsForTheme(string game, string themeKey)
         {
             if (_themeDatabase.TryGetValue(game, out var gameThemes) &&
-                gameThemes.Themes.TryGetValue(theme, out var assetCollection))
+                gameThemes.Themes.TryGetValue(themeKey, out var assetCollection))
             {
                 return assetCollection;
             }
             return new ThemedAssetCollection();
         }
 
-        public List<string> GetAvailableThemes(string game)
+        public List<string> GetAvailableThemeKeys(string game)
         {
             if (_themeDatabase.TryGetValue(game, out var gameThemes))
             {
-                var functionalAndAttributeThemes = new HashSet<string>
+                // CORRECTION FINALE : La liste d'exclusion est mise à jour selon votre décision.
+                // Seuls les tags purement fonctionnels ou techniques sont exclus.
+                var functionalAndAttributeTags = new HashSet<string>
                 {
-                    "door", "switch", "light_source", "exit", "secret", "sky",
-                    "support", "panel", "animated", "grate", "window", "border", "signage",
-                    "monster_prop", "gore", "corrupted", "decayed", "puzzle_item",
-                    "class_specific", "tapestry", "glass_window",
-                    "key_indicator_blue", "key_indicator_red", "key_indicator_yellow", "key_indicator_green",
-                    "monster"
+                    // Tags fonctionnels de base retirés par l'utilisateur
+                    "door",
+                    "switch",
+                    "key_indicator_blue",
+                    "key_indicator_red",
+                    "key_indicator_yellow",
+                    "key_indicator_green",
+                    "monster",
+
+                    // Tags retirés suite à votre dernière décision
+                    "animated",
+                    "signage",
+
+                    // Autres tags purement fonctionnels que nous gardons exclus
+                    "exit",
+                    "secret",
+                    "puzzle_item",
+                    "class_specific"
                 };
 
                 return gameThemes.Themes
-                    .Where(t => !functionalAndAttributeThemes.Contains(t.Key))
+                    .Where(t => !functionalAndAttributeTags.Contains(t.Key))
                     .Select(t => t.Key)
                     .ToList();
             }

@@ -125,7 +125,7 @@ namespace DGenesis.Services
             var validThingIdSet = new HashSet<int>(_assetService.GetThingsForGame(game).Select(t => t.TypeId));
             var validMusicSet = new HashSet<string>(_assetService.GetMusicForGame(game));
 
-            var availableThemes = _themeService.GetAvailableThemes(game);
+            var availableThemes = _themeService.GetAvailableThemeKeys(game);
             if (!availableThemes.Any()) return (palette, null);
             string primaryTheme = availableThemes[_random.Next(availableThemes.Count)];
 

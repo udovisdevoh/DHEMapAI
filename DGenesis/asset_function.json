@@ -14,7 +14,13 @@
         "light_source_flat": [ "TLITE6_1", "TLITE6_4", "TLITE6_5", "TLITE6_6" ],
         "damaging_floor_low": [ "NUKAGE1", "NUKAGE2", "NUKAGE3" ],
         "damaging_floor_high": [ "LAVA1", "LAVA2", "LAVA3", "LAVA4" ],
-        "secret_wall": [ "SP_DUDE1", "SP_DUDE2", "SP_DUDE3" ]
+        "secret_wall": [ "SP_DUDE1", "SP_DUDE2", "SP_DUDE3" ],
+        "support": [ "SUPPORT2", "SUPPORT3", "PIPE1", "PIPE2", "PIPE4", "PIPE6", "BROWNPIP" ],
+        "panel": [ "COMPTALL", "COMPUTE1", "COMPUTE2", "COMPUTE3" ],
+        "border": [ "DOORTRAK", "SKINEDGE", "METAL1" ],
+        "grate": [ "MIDGRATE" ],
+        "signage": [ "EXITSIGN", "SP_FACE1" ],
+        "animated": [ "FIREBLU1", "FIREBLU2", "FIRELAVA", "FIREWALL", "NUKAGE1", "NUKAGE2", "NUKAGE3", "LAVA1", "LAVA2", "LAVA3", "LAVA4", "FWATER1", "FWATER2", "FWATER3", "FWATER4" ]
     },
     "doom2": {
         "door": [ "BIGDOOR1", "BIGDOOR2", "BIGDOOR3", "BIGDOOR4", "BIGDOOR5", "BIGDOOR6", "BIGDOOR7", "DOOR1", "DOOR3", "SPCDOOR1", "SPCDOOR2", "SPCDOOR3", "SPCDOOR4" ],
@@ -31,7 +37,14 @@
         "light_source_flat": [ "TLITE6_1", "TLITE6_4", "TLITE6_5", "TLITE6_6", "GRNLITE1" ],
         "damaging_floor_low": [ "NUKAGE1", "NUKAGE2", "NUKAGE3" ],
         "damaging_floor_high": [ "LAVA1", "LAVA2", "LAVA3", "LAVA4" ],
-        "secret_wall": [ "SP_DUDE1", "SP_DUDE2", "BRICK11", "BIGBRIK3" ]
+        "secret_wall": [ "SP_DUDE1", "SP_DUDE2", "BRICK11", "BIGBRIK3" ],
+        "support": [ "SUPPORT2", "SUPPORT3", "PIPE1", "PIPE2", "PIPE4", "PIPE6", "BROWNPIP" ],
+        "panel": [ "PANEL1", "PANEL2", "PANEL3", "PANEL4", "PANEL5", "PANEL6", "PANEL7", "PANEL8", "PANEL9", "COMPTALL", "COMPBLUE", "PANBLACK", "PANRED", "MODWALL1" ],
+        "border": [ "DOORTRAK", "PANBORD1", "PANBORD2", "SKINEDGE", "SILVER2" ],
+        "grate": [ "MIDGRATE", "MIDBARS1", "MIDBARS3", "CRATE1", "CRATE2", "CRATELIT", "CRATOP1", "CRATOP2", "GATE1", "GATE2", "GATE3", "GATE4" ],
+        "window": [ "BRWINDOW", "MIDSPACE" ],
+        "signage": [ "EXITSIGN", "SP_FACE1", "SP_FACE2", "GSTFONT1", "GSTFONT2", "GSTFONT3", "ZZZFACE1", "ZZZFACE2", "DBRAIN1", "DBRAIN2" ],
+        "animated": [ "BFALL1", "SFALL1", "FIREBLU1", "FIREBLU2", "FIRELAVA", "FIREWALA", "FIREWALL", "LAVA1", "NUKAGE1", "SLIME01", "FWATER1" ]
     },
     "heretic": {
         "door": [ "BIGDOOR1", "BIGDOOR2", "BIGDOOR3", "DOOR01", "DOOR02", "DOOR03", "DOOR04", "DOOR05", "DOOR06", "DOOR07", "DOOR08", "DOOR09", "DOOR10", "DOOR11", "DOOR12", "DOOR13", "DOOR14", "DOOR15", "DOOR16" ],
@@ -43,7 +56,12 @@
         "light_source_wall": [ "LITE01", "LITE02", "LITE03", "LITE04", "LITE05" ],
         "light_source_flat": [ "CEIL09", "CEIL10", "CEIL11" ],
         "damaging_floor_low": [ "SLIME01", "SLIME02", "SLIME03", "SLIME04" ],
-        "damaging_floor_high": [ "LAVA01", "LAVA02", "LAVA03", "LAVA04" ]
+        "damaging_floor_high": [ "LAVA01", "LAVA02", "LAVA03", "LAVA04" ],
+        "support": [ "BRASS1", "MET04", "MET05", "MET06" ],
+        "panel": [ "MET01", "MET02", "MET03" ],
+        "window": [ "GLASS01", "GLASS02", "GLASS03", "GLASS04", "GLASS05", "GLASS06", "WIND01", "WIND02", "WIND03", "WIND04" ],
+        "border": [ "WALL05", "WALL06" ],
+        "animated": [ "LAVA01", "WATER01", "SLIME01" ]
     },
     "hexen": {
         "door": [ "BIGDOOR1", "DOOR01", "DOOR02", "DOOR03", "DOOR04", "DOOR05", "DOOR06", "DOOR07", "DOOR08", "DOOR09", "DOOR10", "DOOR11", "DOOR12", "DOOR13", "DOOR14", "GATE01", "GATE02", "GATE03", "GATE04" ],
@@ -51,6 +69,11 @@
         "light_source_wall": [ "FLAME_A1", "FLAME_B1" ],
         "light_source_flat": [ "CEILING4" ],
         "damaging_floor_high": [ "LAVA01" ],
-        "damaging_floor_low": [ "SWAMP01", "SWAMP02", "SWAMP03", "SWAMP04" ]
+        "damaging_floor_low": [ "SWAMP01", "SWAMP02", "SWAMP03", "SWAMP04" ],
+        "support": [ "SUPPORT1", "SUPPORT2", "SUPPORT3", "SUPPORT4" ],
+        "panel": [ "WALL20", "METAL01", "METAL02" ],
+        "border": [ "WALL02", "BRASS_A1" ],
+        "window": [ "GLASS01", "GLASS02", "GLASS03", "STAINED1", "STAINED2", "STAINED3" ],
+        "animated": [ "FWATER01", "LAVA1", "WATER01" ]
     }
 }
