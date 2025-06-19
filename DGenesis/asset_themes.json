@@ -64,40 +64,6 @@
                 "things": [ 10, 12, 18, 19, 21, 22, 25, 26, 49, 50, 51, 52, 59, 60, 61, 62, 63 ],
                 "music": []
             },
-            "door": { "textures": [ "BIGDOOR1", "BIGDOOR2", "BIGDOOR3", "BIGDOOR4", "BIGDOOR5", "BIGDOOR6", "BIGDOOR7", "DOOR1", "DOOR3", "EXITDOOR", "DOORBLU", "DOORRED", "DOORYEL" ] },
-            "switch": { "textures": [ "SW1STARG", "SW1BROWN", "SW1METAL", "SW2SKIN", "SW1EXIT", "SW2EXIT", "SW1COMP", "SW2COMP", "SW1BLUE", "SW2BLUE" ] },
-            "light_source": {
-                "textures": [ "LITE2", "LITE3", "LITE5", "LITEBLU1", "LITEBLU4", "LITERED" ],
-                "flats": [ "TLITE6_1", "TLITE6_4", "TLITE6_5", "TLITE6_6" ],
-                "things": [ 2028, 34, 35, 44, 45, 46 ]
-            },
-            "exit": {
-                "textures": [ "EXITDOOR", "EXITSIGN", "SW1EXIT", "SW2EXIT" ],
-                "music": [ "D_E1M8", "D_E2M8", "D_E3M8" ]
-            },
-            "secret": { "textures": [ "SP_DUDE1", "SP_DUDE2", "SP_DUDE3" ] },
-            "panel": {
-                "textures": [ "COMPTALL", "COMPUTE1", "COMPUTE2", "COMPUTE3" ],
-                "flats": [ "COMP01" ]
-            },
-            "support": {
-                "textures": [ "SUPPORT2", "SUPPORT3", "PIPE1", "PIPE2", "PIPE4", "PIPE6", "BROWNPIP" ],
-                "things": [ 30, 31, 32, 33, 36, 37 ]
-            },
-            "border": { "textures": [ "DOORTRAK", "SKINEDGE", "METAL1" ] },
-            "key_indicator_blue": {
-                "textures": [ "DOORBLU", "DOORBLU2", "LITEBLU1", "LITEBLU4", "SW1BLUE", "SW2BLUE" ],
-                "things": [ 5, 40 ]
-            },
-            "key_indicator_red": {
-                "textures": [ "DOORRED", "DOORRED2", "LITERED" ],
-                "things": [ 13, 38 ]
-            },
-            "key_indicator_yellow": {
-                "textures": [ "DOORYEL", "DOORYEL2", "LITE5" ],
-                "things": [ 6, 39 ]
-            },
-            "monster": { "things": [ 3004, 9, 3001, 3002, 58, 3005, 3006, 3003, 7, 16 ] }
         }
     },
     "doom2": {
@@ -156,36 +122,11 @@
                 "things": [],
                 "music": [ "D_BETWEE" ]
             },
-            "door": { "textures": [ "BIGDOOR1", "BIGDOOR2", "BIGDOOR3", "BIGDOOR4", "BIGDOOR5", "BIGDOOR6", "BIGDOOR7", "DOOR1", "DOOR3", "SPCDOOR1", "SPCDOOR2", "SPCDOOR3", "SPCDOOR4", "ZDOORB1", "ZDOORF1", "EXITDOOR" ] },
-            "switch": { "textures": [ "SW1STARG", "SW1BROWN", "SW1METAL", "SW2SKIN", "SW1PANEL", "SW1ROCK", "SW1GSTON", "SW2GSTON", "SW1EXIT", "SW2EXIT", "SW1CMT", "SW1TEK" ] },
-            "light_source": {
-                "textures": [ "LITE3", "LITE5", "LITEBLU1", "LITEBLU4", "TEKLITE", "TEKLITE2", "BRICKLIT" ],
-                "flats": [ "TLITE6_1", "TLITE6_4", "TLITE6_5", "TLITE6_6", "GRNLITE1" ],
-                "things": [ 2028, 85, 86, 34, 70 ]
-            },
             "sky": {
                 "textures": [ "SKY1", "SKY2", "SKY3" ],
                 "flats": [ "F_SKY1" ],
                 "music": [ "D_OPENIN" ]
             },
-            "support": {
-                "textures": [ "SUPPORT2", "SUPPORT3", "PIPE1", "PIPE2", "PIPE4", "PIPE6", "BROWNPIP" ],
-                "things": [ 30, 31, 32, 33, 43, 45, 46, 72 ]
-            },
-            "panel": { "textures": [ "PANEL1", "PANEL2", "PANEL3", "PANEL4", "PANEL5", "PANEL6", "PANEL7", "PANEL8", "PANEL9", "COMPTALL", "COMPBLUE", "PANBLACK", "PANBLUE", "PANRED", "MODWALL1", "MODWALL2" ] },
-            "animated": {
-                "textures": [ "BFALL1", "SFALL1", "FIREBLU1", "FIREBLU2", "FIRELAVA", "FIREWALA", "FIREWALL" ],
-                "flats": [ "LAVA1", "LAVA2", "LAVA3", "LAVA4", "NUKAGE1", "SLIME01", "FWATER1" ],
-                "things": [ 70, 26, 49, 63, 71 ]
-            },
-            "grate": {
-                "textures": [ "MIDGRATE", "MIDBARS1", "MIDBARS3", "CRATE1", "CRATE2", "CRATELIT" ],
-                "flats": [ "CRATOP1", "CRATOP2", "GATE1", "GATE2", "GATE3", "GATE4" ]
-            },
-            "window": { "textures": [ "BRWINDOW", "MIDSPACE", "GSTFONT1", "GSTFONT2", "GSTFONT3" ] },
-            "border": { "textures": [ "DOORTRAK", "PANBORD1", "PANBORD2", "SKINEDGE", "SILVER2" ] },
-            "signage": { "textures": [ "EXITSIGN", "SP_FACE1", "SP_FACE2", "GSTFONT1", "GSTFONT2", "GSTFONT3", "ZZZFACE1", "ZZZFACE2", "ZZZFACE3", "DBRAIN1", "DBRAIN2" ] },
-            "monster_prop": { "things": [ 10, 12, 18, 19, 21, 22, 25, 26, 49, 50, 51, 52, 59, 60, 61, 62, 63, 73, 74, 75, 76, 77, 78 ] },
             "gore": {
                 "textures": [ "BLODRIP1", "BLODRIP2", "SLADSKUL" ],
                 "flats": [ "BLOOD1", "BLOOD2", "BLOOD3" ],
@@ -203,14 +144,6 @@
                 "things": [ 25, 26, 73, 74 ],
                 "music": [ "D_STALKS" ]
             },
-            "exit": {
-                "textures": [ "EXITDOOR", "EXITSIGN", "SW1EXIT", "SW2EXIT" ],
-                "music": [ "D_VICTOR" ]
-            },
-            "secret": {
-                "textures": [ "SP_DUDE1", "SP_DUDE2", "BRICK11", "BIGBRIK3" ],
-                "things": [ 87 ]
-            },
             "computer": {
                 "textures": [ "COMPTALL", "COMPBLUE", "SW1COMP", "SW2COMP", "TEKGREN1", "TEKGREN2", "TEKGREN5" ],
                 "flats": [ "COMP01" ],
@@ -221,20 +154,7 @@
                 "textures": [ "MARBLE1", "MARBGRAY", "MARBFAC2", "MARBFAC3", "MARBFAC4" ],
                 "flats": [ "MFLR8_1", "MFLR8_2" ],
                 "music": [ "D_EVIL" ]
-            },
-            "key_indicator_blue": {
-                "textures": [ "DOORBLU", "LITEBLU1", "LITEBLU4", "SW1BLUE", "SW2BLUE" ],
-                "things": [ 5, 40 ]
-            },
-            "key_indicator_red": {
-                "textures": [ "DOORRED" ],
-                "things": [ 13, 38 ]
-            },
-            "key_indicator_yellow": {
-                "textures": [ "DOORYEL", "LITE5" ],
-                "things": [ 6, 39 ]
-            },
-            "monster": { "things": [ 3004, 9, 65, 3001, 3002, 58, 3006, 3005, 71, 69, 3003, 68, 66, 67, 64, 7, 16, 88 ] }
+            }
         }
     },
     "heretic": {
@@ -281,37 +201,16 @@
                 "things": [ 44 ],
                 "music": [ "MUS_E1M3" ]
             },
-            "door": { "textures": [ "BIGDOOR1", "BIGDOOR2", "BIGDOOR3", "DOOR01", "DOOR02", "DOOR03", "DOOR04", "DOOR05", "DOOR06", "DOOR07", "DOOR08", "DOOR09", "DOOR10", "DOOR11", "DOOR12", "DOOR13", "DOOR14", "DOOR15", "DOOR16" ] },
-            "switch": { "textures": [ "SW01", "SW02", "SW03", "SW04", "SW05", "SW06", "SW07", "SW08", "SW09", "SW10", "SW11", "SW12", "SW13", "SW14", "SW15", "SW16", "SW17", "SW18", "SW19", "SW20", "SW21", "SW22", "SW23", "SW24" ] },
             "liquid": {
                 "textures": [ "LAVA01", "LAVA02", "LAVA03", "LAVA04", "WATER01", "WATER02", "WATER03", "SLIME01", "SLIME02" ],
                 "flats": [ "LAVA01", "LAVA02", "LAVA03", "LAVA04", "WATER01", "WATER02", "WATER03", "WATER04", "SLIME01", "SLIME02", "SLIME03", "SLIME04" ]
             },
-            "light_source": {
-                "textures": [ "LITE01", "LITE02", "LITE03", "LITE04", "LITE05" ],
-                "flats": [ "CEIL09", "CEIL10", "CEIL11" ],
-                "things": [ 27, 28, 50, 76 ]
-            },
-            "glass_window": { "textures": [ "GLASS01", "GLASS02", "GLASS03", "GLASS04", "GLASS05", "GLASS06", "WIND01", "WIND02", "WIND03", "WIND04" ] },
             "tapestry": { "textures": [ "SNAKE01", "SNAKE02", "SNAKE03", "SNAKE04", "SNAKE05", "STAR01", "STAR02" ] },
             "marble": {
                 "textures": [ "MARB01", "MARB02", "MARB03", "MARB04" ],
                 "flats": [ "MARB01", "MARB02" ],
                 "music": [ "MUS_E2M2" ]
-            },
-            "key_indicator_blue": {
-                "textures": [ "DOOR17", "DOOR20" ],
-                "things": [ 79 ]
-            },
-            "key_indicator_yellow": {
-                "textures": [ "DOOR18", "DOOR21" ],
-                "things": [ 80 ]
-            },
-            "key_indicator_green": {
-                "textures": [ "DOOR19", "DOOR22" ],
-                "things": [ 73 ]
-            },
-            "monster": { "things": [ 7, 15, 5, 66, 68, 69, 45, 46, 64, 65, 92, 90, 6, 9, 70 ] }
+            }
         }
     },
     "hexen": {
@@ -364,24 +263,11 @@
                 "things": [ 8064, 8067, 8065 ],
                 "music": [ "PERCR" ]
             },
-            "door": { "textures": [ "BIGDOOR1", "DOOR01", "DOOR02", "DOOR03", "DOOR04", "DOOR05", "DOOR06", "DOOR07", "DOOR08", "DOOR09", "DOOR10", "DOOR11", "DOOR12", "DOOR13", "DOOR14", "GATE01", "GATE02", "GATE03", "GATE04" ] },
-            "switch": { "textures": [ "SWITCH01", "SWITCH02", "SWITCH03", "SWITCH04", "SWITCH05", "SWITCH06", "SWITCH07", "SWITCH08" ] },
             "liquid": {
                 "textures": [ "LAVA1", "FWATER01", "FWATER02", "FWATER03", "FWATER04", "WATER01", "WATER02", "WATER03", "WATER04", "WATER05", "WATER06" ],
                 "flats": [ "LAVA01", "MUD01", "SWAMP01", "SWAMP02", "SWAMP03", "SWAMP04", "WATER01", "WATER02", "WATER03", "WATER04", "WATER05", "WATER06" ],
                 "music": [ "SWAMPR" ]
-            },
-            "light_source": {
-                "textures": [ "FLAME_A1", "FLAME_B1" ],
-                "flats": [ "CEILING4" ],
-                "things": [ 8061, 8060, 116, 119 ]
-            },
-            "puzzle_item": {
-                "things": [ 8032, 8200, 8031, 9021, 9019, 9020, 9018, 9007, 8035, 8034, 9005, 9009, 8033, 9014, 9015, 9003, 9016, 8038, 9008, 9004, 8037, 9006, 9010, 9017, 8036, 8030, 8039, 9002 ],
-                "music": [ "SECRETR" ]
-            },
-            "class_specific": { "things": [ 100, 101, 102, 103 ] },
-            "monster": { "things": [ 10060, 8080, 31, 107, 114, 10030, 10080, 10200, 10100, 10101, 10102, 34, 115, 121, 120, 8020 ] }
+            }
         }
     }
 }
