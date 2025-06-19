@@ -24,6 +24,13 @@ namespace DGenesis
             services.AddSingleton<AssetThemeService>();
             services.AddSingleton<AssetFunctionService>();
             services.AddScoped<DGenesisRandomGeneratorService>();
+            services.AddScoped<DGraphGeneratorService>();
+            services.AddScoped<DGraphLayoutService>();
+            services.AddScoped<DGraphUntanglerService>();
+            services.AddScoped<DGraphRoleAssignmentService>();
+            services.AddScoped<DGraphPathfindingService>();
+            services.AddScoped<DGraphChaosService>();
+            services.AddScoped<DGraphFinalizeService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

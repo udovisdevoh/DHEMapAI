@@ -1,0 +1,92 @@
+﻿@page
+@model DGenesis.Pages.DGraphGeneratorModel
+@{
+    ViewData["Title"] = "D-Graph Generator";
+}
+
+@* Injection du script de visualisation *@
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/svg-pan-zoom@3.6.1/dist/svg-pan-zoom.min.js"></script>
+    <script src="~/js/graph-visualizer.js"></script>
+    <script>
+        // Transférer les données JSON du modèle C# vers le JavaScript
+        const graphData = @(Model.GeneratedDGraphJson != null ? Html.Raw(Model.GeneratedDGraphJson) : "null");
+
+        if (graphData) {
+            // Initialiser la visualisation avec les données
+            const visualizer = new GraphVisualizer("#graph-container");
+            visualizer.render(graphData);
+
+            // Gérer le bouton de copie
+            document.getElementById('copy-json-btn').addEventListener('click', () => {
+                navigator.clipboard.writeText(JSON.stringify(graphData, null, 2))
+                    .then(() => {
+                        const btn = document.getElementById('copy-json-btn');
+                        const originalText = btn.textContent;
+                        btn.textContent = 'Copié !';
+                        setTimeout(() => { btn.textContent = originalText; }, 2000);
+                    })
+                    .catch(err => console.error('Erreur lors de la copie', err));
+            });
+        }
+    </script>
+}
+
+@* Injection du CSS *@
+<head>
+    <link rel="stylesheet" href="~/css/graph-visualizer.css" />
+</head>
+
+<h1>Générateur de Graphe Planaire (D-Graph)</h1>
+<p>Utilisez ce formulaire pour générer un graphe qui servira de base pour un niveau.</p>
+
+<div class="row">
+    <div class="col-md-4">
+        <section>
+            <form method="post">
+                <h4>Paramètres de Génération</h4>
+                <hr />
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="TotalNodes" class="control-label">Nombre total de nœuds</label>
+                    <input asp-for="TotalNodes" class="form-control" type="number" min="3" max="100" />
+                    <span asp-validation-for="TotalNodes" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="LockedPairs" class="control-label">Nombre de paires verrouillées</label>
+                    <input asp-for="LockedPairs" class="form-control" type="number" min="0" max="20" />
+                    <span asp-validation-for="LockedPairs" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="ExitNodes" class="control-label">Nombre de sorties</label>
+                    <input asp-for="ExitNodes" class="form-control" type="number" min="1" max="5" />
+                    <span asp-validation-for="ExitNodes" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">Générer le Graphe</button>
+                </div>
+            </form>
+        </section>
+
+        @if (Model.GeneratedDGraphJson != null)
+        {
+            <section class="mt-4">
+                <h4>Résultat .dgraph.json</h4>
+                <hr />
+                <textarea id="json-output" class="json-output-area" readonly>@Model.GeneratedDGraphJson</textarea>
+                <button id="copy-json-btn" class="btn btn-secondary mt-2">Copier le JSON</button>
+            </section>
+        }
+    </div>
+
+    <div class="col-md-8">
+        <h4>Visualisation du Graphe</h4>
+        <hr />
+        <div id="graph-container" class="graph-container-box">
+            @if (Model.GeneratedDGraphJson == null)
+            {
+                <div class="placeholder-text">La visualisation du graphe apparaîtra ici après la génération.</div>
+            }
+        </div>
+    </div>
+</div>
