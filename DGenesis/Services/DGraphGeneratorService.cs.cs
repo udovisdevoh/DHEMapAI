@@ -42,24 +42,33 @@ namespace DGenesis.Services
                     var (graph, nodeDepths) = GenerateTopology(currentNodesToGenerate);
                     if (graph.Nodes.Count < 2) continue;
 
-                    // PIPELINE DE GÉNÉRATION GÉOMÉTRIQUE
-                    // 1. Placement initial rigide
+                    // ETAPE 1: Placement initial rigide
                     _layoutService.AssignLayout(graph, nodeDepths);
 
-                    // 2. Disposition organique et espacement nœud-nœud
+                    // --- NOUVELLE MICRO-ÉTAPE : BRISER LA SYMÉTRIE ---
+                    // On ajoute une perturbation infime pour éviter les cas dégénérés (lignes droites).
+                    // C'est le "grain de sable" qui permet au chaos de fonctionner correctement.
+                    foreach (var node in graph.Nodes)
+                    {
+                        node.Position.X += (_random.NextDouble() - 0.5) * 0.1;
+                        node.Position.Y += (_random.NextDouble() - 0.5) * 0.1;
+                    }
+                    // --- FIN DE LA MICRO-ÉTAPE ---
+
+                    // ETAPE 2: Disposition organique et espacement nœud-nœud
                     _chaosService.ApplyChaos(graph);
 
-                    // 3. Polissage final : espacement nœud-arête (peut créer des croisements)
+                    // ETAPE 3: Polissage final : espacement nœud-arête
                     _finalizeService.EnforceNodeEdgeSpacing(graph);
 
-                    // 4. GARANT DE LA PLANARITÉ : Le désenchevêtrement passe en dernier !
+                    // ETAPE 4: GARANT DE LA PLANARITÉ : Le désenchevêtrement passe en dernier
                     bool untangleSuccess = _untanglerService.TryUntangleGraph(graph);
 
                     if (untangleSuccess)
                     {
                         Console.WriteLine("Toutes les étapes géométriques réussies.");
 
-                        // 5. Assignation des rôles sur le graphe final et propre
+                        // ETAPE 5: Assignation des rôles sur le graphe final et propre
                         _roleAssignmentService.AssignRoles(graph, exitNodes, lockedPairs);
 
                         Console.WriteLine($"Génération terminée avec succès avec {graph.Nodes.Count} nœuds.");
@@ -76,7 +85,7 @@ namespace DGenesis.Services
             return new DGraph();
         }
 
-        // ... Le reste du fichier (GenerateTopology, etc.) reste inchangé ...
+        // ... Le reste du fichier reste inchangé ...
         private (DGraph, Dictionary<int, int>) GenerateTopology(int totalNodes)
         {
             var graph = new DGraph();
