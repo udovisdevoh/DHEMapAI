@@ -144,28 +144,21 @@ namespace DGenesis.Services
             var masterAssetPool = assetType == "texture" ? validTextures : validFlats;
             var thematicAssetSource = _themeService.GetAssetsForTheme(game, themeKey);
             var thematicCandidates = new HashSet<string>(assetType == "texture" ? thematicAssetSource.Textures : thematicAssetSource.Flats);
-
-            // S'assurer que les assets thématiques sont valides pour ce jeu
             thematicCandidates.IntersectWith(masterAssetPool);
 
-            // Si le concept a une fonction (ex: "door", "switch_exit")
             if (!string.IsNullOrEmpty(functionKey))
             {
-                // On cherche d'abord la fonction spécifique (ex: "door_exit"), puis on se rabat sur la générique (ex: "door") si elle n'existe pas.
                 var specificFunctionData = _functionService.GetFunctionData(game, functionKey);
                 var specificFunctionalAssets = assetType == "texture" ? specificFunctionData.Textures : specificFunctionData.Flats;
 
                 if (specificFunctionalAssets.Any())
                 {
-                    // Tentative 1: Thème + Fonction spécifique
                     var idealCandidates = thematicCandidates.Intersect(specificFunctionalAssets).ToList();
                     if (idealCandidates.Any()) return idealCandidates[_random.Next(idealCandidates.Count)];
 
-                    // Tentative 2: Fonction spécifique seule
                     return specificFunctionalAssets[_random.Next(specificFunctionalAssets.Count)];
                 }
 
-                // Tentative 3 (Fallback) : Thème + Fonction générique (ex: chercher un "switch" si "switch_exit" échoue)
                 string genericFunctionKey = functionKey.Split('_').First();
                 if (genericFunctionKey != functionKey)
                 {
@@ -181,17 +174,8 @@ namespace DGenesis.Services
                 }
             }
 
-            // Pour les concepts sans fonction (ex: "wall_primary") ou si tout le reste a échoué
-            if (thematicCandidates.Any())
-            {
-                return thematicCandidates.ElementAt(_random.Next(thematicCandidates.Count));
-            }
-
-            // Dernier recours absolu
-            if (masterAssetPool.Any())
-            {
-                return masterAssetPool.ElementAt(_random.Next(masterAssetPool.Count));
-            }
+            if (thematicCandidates.Any()) return thematicCandidates.ElementAt(_random.Next(thematicCandidates.Count));
+            if (masterAssetPool.Any()) return masterAssetPool.ElementAt(_random.Next(masterAssetPool.Count));
 
             return null;
         }
@@ -201,6 +185,7 @@ namespace DGenesis.Services
             var tokens = new List<ThematicToken>();
             var existingAssets = new HashSet<string>();
 
+            // Étape 1 : Créer les tokens de base à partir de la palette
             foreach (var concept in themePalette)
             {
                 foreach (var asset in concept.Value)
@@ -217,28 +202,25 @@ namespace DGenesis.Services
                 }
             }
 
+            // Étape 2 : Ajouter les monstres thématiques
+            var allThings = _assetService.GetThingsForGame(game);
+            var thematicThingIds = new HashSet<int>(_themeService.GetAssetsForTheme(game, primaryThemeKey).Things);
+            var allMonsterIds = new HashSet<int>(_functionService.GetFunctionData(game, "monster").Things);
+            var candidateIds = thematicThingIds.Intersect(allMonsterIds).ToList();
+            if (!candidateIds.Any() && allMonsterIds.Any()) { candidateIds = allMonsterIds.ToList(); }
+            var monsterCandidates = allThings.Where(t => candidateIds.Contains(t.TypeId)).ToList();
+
             int desiredMonsterCount = _random.Next(4, 9);
             var finalMonsterSelection = new List<GameAssetThing>();
-
-            if (!string.IsNullOrEmpty(primaryThemeKey))
+            if (monsterCandidates.Any())
             {
-                var allThings = _assetService.GetThingsForGame(game);
-                var thematicThingIds = new HashSet<int>(_themeService.GetAssetsForTheme(game, primaryThemeKey).Things);
-                var allMonsterIds = new HashSet<int>(_functionService.GetFunctionData(game, "monster").Things);
-                var candidateIds = thematicThingIds.Intersect(allMonsterIds).ToList();
-
-                if (!candidateIds.Any()) { candidateIds = allMonsterIds.ToList(); }
-
-                var thematicMonsterCandidates = allThings.Where(t => candidateIds.Contains(t.TypeId)).ToList();
-                var shuffledThematicMonsters = thematicMonsterCandidates.OrderBy(m => _random.Next()).ToList();
+                var shuffledThematicMonsters = monsterCandidates.OrderBy(m => _random.Next()).ToList();
                 finalMonsterSelection.AddRange(shuffledThematicMonsters.Take(desiredMonsterCount));
             }
-
             if (finalMonsterSelection.Count < desiredMonsterCount)
             {
                 int needed = desiredMonsterCount - finalMonsterSelection.Count;
-                var allMonsters = _assetService.GetThingsForGame(game)
-                    .Where(t => _functionService.GetFunctionData(game, "monster").Things.Contains(t.TypeId)).ToList();
+                var allMonsters = allThings.Where(t => allMonsterIds.Contains(t.TypeId)).ToList();
                 var alreadySelectedIds = new HashSet<int>(finalMonsterSelection.Select(m => m.TypeId));
                 var fallbackCandidates = allMonsters.Where(m => !alreadySelectedIds.Contains(m.TypeId)).ToList();
                 var shuffledFallbackMonsters = fallbackCandidates.OrderBy(m => _random.Next()).ToList();
@@ -258,24 +240,51 @@ namespace DGenesis.Services
                     });
                 }
             }
+
+            // CORRECTION : Étape 3 - Génération des AdjacencyRules
+            var paletteTokens = tokens.Where(t => t.Type == "wall" || t.Type == "flat").ToList();
+            if (paletteTokens.Count < 2) return tokens; // Pas assez de tokens pour créer des règles
+
+            foreach (var tokenA in tokens)
+            {
+                // On ne crée des règles que pour les textures/flats, pas pour les monstres pour l'instant
+                if (tokenA.Type != "wall" && tokenA.Type != "flat") continue;
+
+                int numberOfRules = _random.Next(2, 4); // Chaque token sera lié à 2 ou 3 autres
+
+                for (int i = 0; i < numberOfRules; i++)
+                {
+                    // Choisir un autre token au hasard dans la palette (qui n'est pas lui-même)
+                    var otherTokens = paletteTokens.Where(t => t.Name != tokenA.Name).ToList();
+                    if (!otherTokens.Any()) continue;
+
+                    var tokenB = otherTokens[_random.Next(otherTokens.Count)];
+
+                    // Éviter les règles en double
+                    if (tokenA.AdjacencyRules.Any(r => r.AdjacentTo == tokenB.Name)) continue;
+
+                    // Créer une règle avec un modificateur positif aléatoire
+                    var rule = new AdjacencyRule
+                    {
+                        AdjacentTo = tokenB.Name,
+                        Modifier = Math.Round(1.5 + _random.NextDouble() * 2.5, 2) // Modificateur entre 1.5 et 4.0
+                    };
+                    tokenA.AdjacencyRules.Add(rule);
+                }
+            }
+
             return tokens;
         }
 
         private string GetTokenType(string game, string assetName)
         {
             string function = _functionService.GetAssetFunction(game, assetName);
-
             if (function != null)
             {
                 if (function.StartsWith("switch")) return "connection_action";
                 if (function.StartsWith("damaging_floor") || function == "light_source_flat" || function == "animated") return "flat";
             }
-
-            if (_assetService.GetTexturesForGame(game).Contains(assetName))
-            {
-                return "wall";
-            }
-
+            if (_assetService.GetTexturesForGame(game).Contains(assetName)) return "wall";
             return "flat";
         }
 
