@@ -18,6 +18,7 @@ namespace DGenesis.Services
         private const double GlobalMergeFactor = 0.10;
         private const int ATTEMPTS_PER_COMPLEXITY = 5;
         private const int MINIMUM_NODES = 4;
+        private const double DEGENERATE_GRAPH_THRESHOLD = 0.60;
 
         public DGraphGeneratorService(DGraphLayoutService layoutService, DGraphUntanglerService untanglerService, DGraphRoleAssignmentService roleAssignmentService, DGraphChaosService chaosService, DGraphFinalizeService finalizeService)
         {
@@ -33,6 +34,7 @@ namespace DGenesis.Services
             int currentNodesToGenerate = requestedNodes;
             while (currentNodesToGenerate >= MINIMUM_NODES)
             {
+                Console.WriteLine($"--- Début de la génération pour une complexité de {currentNodesToGenerate} nœuds ---");
                 for (int attempt = 1; attempt <= ATTEMPTS_PER_COMPLEXITY; attempt++)
                 {
                     Console.WriteLine($"... Tentative #{attempt}/{ATTEMPTS_PER_COMPLEXITY} pour {currentNodesToGenerate} nœuds.");
@@ -43,32 +45,21 @@ namespace DGenesis.Services
                     _layoutService.AssignLayout(graph, nodeDepths);
                     _chaosService.ApplyChaos(graph);
 
-                    // --- NOUVELLE BOUCLE DE CONVERGENCE ---
                     int refinementIterations = 0;
                     const int MAX_REFINEMENT_ITERATIONS = 10;
                     bool geometryChangedInLastPass;
-
                     do
                     {
-                        // On suppose que rien ne va changer
                         geometryChangedInLastPass = false;
-
-                        // Étape A : On applique l'espacement
                         bool spacingChanged = _finalizeService.EnforceNodeEdgeSpacing(graph);
                         if (spacingChanged) geometryChangedInLastPass = true;
 
-                        // Étape B : On corrige les croisements que l'espacement a pu créer
-                        bool untanglingChanged = _untanglerService.TryUntangleGraph(graph);
-                        if (!untanglingChanged)
-                        {
-                            // L'untangler a échoué (timeout), cette tentative de génération est un échec
-                            goto next_attempt; // Saute à la prochaine tentative de la boucle for
-                        }
+                        bool untangleSuccess = _untanglerService.TryUntangleGraph(graph);
+                        if (!untangleSuccess) goto next_attempt;
 
-                        // On vérifie si l'untangler a dû ajouter un nœud, ce qui est un changement de géométrie
-                        // Une manière simple de le savoir est de vérifier si la dernière passe a trouvé un croisement
-                        // Pour l'instant, on suppose que si l'espacement a changé, on doit revérifier.
-                        // Cette logique est suffisante pour la convergence.
+                        // On considère que si l'espacement a changé, on doit revérifier
+                        // car cela aurait pu créer un nouveau croisement résolu par l'untangler.
+                        // C'est une condition simple mais efficace pour la convergence.
 
                         refinementIterations++;
                     } while (geometryChangedInLastPass && refinementIterations < MAX_REFINEMENT_ITERATIONS);
@@ -79,16 +70,33 @@ namespace DGenesis.Services
                         goto next_attempt;
                     }
 
-                    // Le graphe est maintenant stable, espacé ET planaire.
                     Console.WriteLine("Raffinement géométrique terminé avec succès.");
 
-                    _finalizeService.NormalizeAndCenter(graph);
-                    _roleAssignmentService.AssignRoles(graph, exitNodes, lockedPairs);
+                    // --- LOGIQUE FINALE D'ASSIGNATION ET VALIDATION ---
+                    bool rolesAssignedSuccessfully = false;
+                    for (int roleAttempt = 0; roleAttempt < 20; roleAttempt++) // 20 essais pour trouver une assignation de rôles valide
+                    {
+                        if (_roleAssignmentService.TryAssignRoles(graph, exitNodes, lockedPairs))
+                        {
+                            rolesAssignedSuccessfully = true;
+                            Console.WriteLine($"Assignation des rôles réussie à la tentative #{roleAttempt + 1}.");
+                            break;
+                        }
+                    }
 
-                    Console.WriteLine($"Génération terminée avec succès avec {graph.Nodes.Count} nœuds.");
-                    return graph;
+                    if (rolesAssignedSuccessfully)
+                    {
+                        _finalizeService.NormalizeAndCenter(graph);
+                        Console.WriteLine($"Génération terminée avec succès avec {graph.Nodes.Count} nœuds.");
+                        return graph;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Échec de l'assignation des rôles (aucune configuration faisable trouvée). Nouvelle tentative de génération...");
+                        goto next_attempt;
+                    }
 
-                next_attempt:; // Label pour le goto
+                next_attempt:;
                 }
 
                 Console.WriteLine($"[AVERTISSEMENT] Impossible de générer un graphe stable avec {currentNodesToGenerate} nœuds. Essai avec {currentNodesToGenerate - 1}.");
