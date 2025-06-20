@@ -1,0 +1,93 @@
+﻿@page
+@model DGenesis.Pages.DShapeGeneratorModel
+@{
+    ViewData["Title"] = "DShape Generator";
+}
+
+@* Le lien CSS est placé en premier pour un rendu correct. *@
+<link rel="stylesheet" href="~/css/polygon-visualizer.css" asp-append-version="true" />
+
+<h1>Générateur de Forme (DShape)</h1>
+<p>Utilisez ce formulaire pour générer un polygone aléatoire qui servira de base pour la géométrie d'un secteur.</p>
+
+<div class="row">
+    <div class="col-md-4">
+        <section>
+            <form method="post">
+                <h4>Paramètres de Génération</h4>
+                <hr />
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                <div class="form-group mb-2">
+                    <label asp-for="VertexCount" class="control-label">Nombre de sommets</label>
+                    <input asp-for="VertexCount" type="number" min="3" max="50" class="form-control" />
+                </div>
+
+                <div class="form-group mb-2">
+                    <label asp-for="SymmetryAxes" class="control-label">Axes de symétrie</label>
+                    <input asp-for="SymmetryAxes" type="number" min="0" max="12" class="form-control" />
+                </div>
+
+                <div class="form-group mb-2">
+                    <label asp-for="Size" class="control-label">Taille (Rayon moyen)</label>
+                    <input asp-for="Size" type="number" min="32" max="1024" class="form-control" />
+                </div>
+
+                <div class="form-group mb-3">
+                    <label asp-for="Irregularity" class="control-label">Irrégularité (0.0 à 1.0)</label>
+                    <input asp-for="Irregularity" type="range" min="0" max="1" step="0.05" class="form-range" />
+                </div>
+
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">Générer la Forme</button>
+                </div>
+            </form>
+        </section>
+
+        @if (Model.GeneratedDShapeJson != null)
+        {
+            <section class="mt-4">
+                <h4>Résultat .ds.json</h4>
+                <hr />
+                <textarea id="json-output" class="json-output-area" readonly>@Model.GeneratedDShapeJson</textarea>
+                <button id="copy-json-btn" class="btn btn-secondary mt-2">Copier le JSON</button>
+            </section>
+        }
+    </div>
+
+    <div class="col-md-8">
+        <h4>Visualisation de la Forme</h4>
+        <hr />
+        <div id="shape-container" class="shape-container-box">
+            @if (Model.GeneratedDShapeJson == null)
+            {
+                <div class="placeholder-text">La visualisation de la forme apparaîtra ici après la génération.</div>
+            }
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/svg-pan-zoom@3.6.1/dist/svg-pan-zoom.min.js"></script>
+    @* L'attribut asp-append-version="true" est crucial pour l'invalidation du cache. *@
+    <script src="~/js/polygon-visualizer.js" asp-append-version="true"></script>
+    <script>
+        const shapeData = @(Model.GeneratedDShapeJson != null ? Html.Raw(Model.GeneratedDShapeJson) : "null");
+
+        if (shapeData) {
+            const visualizer = new PolygonVisualizer("#shape-container");
+            visualizer.render(shapeData);
+
+            document.getElementById('copy-json-btn').addEventListener('click', () => {
+                navigator.clipboard.writeText(JSON.stringify(shapeData, null, 2))
+                    .then(() => {
+                        const btn = document.getElementById('copy-json-btn');
+                        const originalText = btn.textContent;
+                        btn.textContent = 'Copié !';
+                        setTimeout(() => { btn.textContent = originalText; }, 2000);
+                    })
+                    .catch(err => console.error('Erreur lors de la copie', err));
+            });
+        }
+    </script>
+}
