@@ -31,6 +31,9 @@
     }
 
     _createTooltip() {
+        if (this.tooltip) {
+            this.tooltip.remove();
+        }
         this.tooltip = document.createElement("div");
         this.tooltip.className = "graph-tooltip";
         document.body.appendChild(this.tooltip);
@@ -58,10 +61,8 @@
         const { nodes, edges } = graphData;
         const nodeMap = new Map(nodes.map(n => [n.id, n]));
 
-        // Calculer la viewBox pour centrer le graphe
         this.svg.setAttribute("viewBox", this._calculateViewBox(nodes));
 
-        // 1. Dessiner les arêtes (d'abord, pour qu'elles soient en dessous des nœuds)
         edges.forEach(edge => {
             const sourceNode = nodeMap.get(edge.source);
             const targetNode = nodeMap.get(edge.target);
@@ -76,7 +77,6 @@
             }
         });
 
-        // 2. Dessiner les nœuds
         nodes.forEach(node => {
             const circle = document.createElementNS(this.svgNS, "circle");
             circle.setAttribute("cx", node.position.x);
@@ -86,11 +86,39 @@
             circle.setAttribute("class", "node");
             circle.dataset.id = node.id;
 
-            // Événements pour l'infobulle
+            // --- LOGIQUE DE SURBRILLANCE MISE À JOUR ---
             circle.addEventListener('mouseover', (e) => {
+                const partnerIds = new Set();
+
+                // Si on survole un nœud qui déverrouille...
+                if (node.unlocks && node.unlocks.length > 0) {
+                    node.unlocks.forEach(id => partnerIds.add(id));
+                }
+
+                // Si on survole un nœud verrouillé...
+                if (node.type === 'locked') {
+                    const unlockerNode = nodes.find(n => n.unlocks?.includes(node.id));
+                    if (unlockerNode) {
+                        partnerIds.add(unlockerNode.id);
+                    }
+                }
+
+                // Appliquer le style de surbrillance
+                if (partnerIds.size > 0) {
+                    // Mettre le nœud survolé en surbrillance
+                    e.currentTarget.classList.add('highlight-partner');
+                    // Mettre tous les partenaires en surbrillance
+                    partnerIds.forEach(id => {
+                        const partnerElement = this.zoomGroup.querySelector(`circle[data-id='${id}']`);
+                        if (partnerElement) {
+                            partnerElement.classList.add('highlight-partner');
+                        }
+                    });
+                }
+
+                // Logique de l'infobulle (inchangée)
                 let tooltipContent = `<b>ID:</b> ${node.id}<br><b>Type:</b> ${node.type}`;
                 if (node.type === 'locked') {
-                    // Trouver qui déverrouille ce nœud
                     const unlocker = nodes.find(n => n.unlocks?.includes(node.id));
                     if (unlocker) {
                         tooltipContent += `<br><b>Déverrouillé par:</b> Nœud ${unlocker.id}`;
@@ -102,18 +130,26 @@
 
                 this.tooltip.innerHTML = tooltipContent;
                 this.tooltip.style.display = 'block';
-                this.tooltip.style.left = `${e.pageX + 15}px`;
-                this.tooltip.style.top = `${e.pageY + 15}px`;
             });
 
             circle.addEventListener('mouseout', () => {
+                // Retirer la surbrillance de tous les nœuds
+                this.zoomGroup.querySelectorAll('.highlight-partner').forEach(el => {
+                    el.classList.remove('highlight-partner');
+                });
+
                 this.tooltip.style.display = 'none';
+            });
+            // --- FIN DE LA LOGIQUE MISE À JOUR ---
+
+            circle.addEventListener('mousemove', (e) => {
+                this.tooltip.style.left = `${e.pageX + 15}px`;
+                this.tooltip.style.top = `${e.pageY + 15}px`;
             });
 
             this.zoomGroup.appendChild(circle);
         });
 
-        // Activer le pan & zoom
         svgPanZoom(this.svg, {
             panEnabled: true,
             controlIconsEnabled: true,

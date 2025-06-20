@@ -29,13 +29,19 @@
     stroke: #34495e;
     stroke-width: 2;
     cursor: pointer;
-    transition: transform 0.1s ease-in-out;
+    transition: transform 0.1s ease-in-out, stroke 0.2s ease-in-out, stroke-width 0.2s ease-in-out;
     transform-origin: center;
     transform-box: fill-box;
 }
 
     .node:hover {
         transform: scale(1.2);
+    }
+
+    /* NOUVELLE CLASSE POUR LA SURBRILLANCE */
+    .node.highlight-partner {
+        stroke: #f1c40f; /* Un jaune doré bien visible */
+        stroke-width: 4px;
     }
 
 .graph-tooltip {

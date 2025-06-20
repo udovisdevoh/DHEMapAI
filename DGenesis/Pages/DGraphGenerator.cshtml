@@ -4,10 +4,10 @@
     ViewData["Title"] = "D-Graph Generator";
 }
 
-@* Injection du script de visualisation *@
+@* Injection du script de visualisation avec cache busting *@
 @section Scripts {
     <script src="https://cdn.jsdelivr.net/npm/svg-pan-zoom@3.6.1/dist/svg-pan-zoom.min.js"></script>
-    <script src="~/js/graph-visualizer.js"></script>
+    <script src="~/js/graph-visualizer.js" asp-append-version="true"></script> @* <-- ATTRIBUT AJOUTÉ ICI *@
     <script>
         // Transférer les données JSON du modèle C# vers le JavaScript
         const graphData = @(Model.GeneratedDGraphJson != null ? Html.Raw(Model.GeneratedDGraphJson) : "null");
@@ -32,9 +32,9 @@
     </script>
 }
 
-@* Injection du CSS *@
+@* Injection du CSS avec cache busting *@
 <head>
-    <link rel="stylesheet" href="~/css/graph-visualizer.css" />
+    <link rel="stylesheet" href="~/css/graph-visualizer.css" asp-append-version="true" /> @* <-- ATTRIBUT AJOUTÉ ICI *@
 </head>
 
 <h1>Générateur de Graphe Planaire (D-Graph)</h1>
