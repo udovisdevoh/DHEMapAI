@@ -37,7 +37,7 @@
         return `${minX} ${minY} ${width} ${height}`;
     }
 
-    render(shapeData, symmetryAxes = 0) {
+    render(shapeData, symmetryAxes = 0, symmetryAngle = 0) {
         if (!shapeData || !shapeData.vertices || shapeData.vertices.length < 3) return;
 
         this._createSVG();
@@ -49,12 +49,11 @@
         if (symmetryAxes > 0) {
             const viewBoxParts = viewBox.split(' ').map(parseFloat);
             const lineLength = Math.max(viewBoxParts[2], viewBoxParts[3]) * 0.6;
+            const angleOffsetRad = symmetryAngle * Math.PI / 180.0;
 
             for (let i = 0; i < symmetryAxes; i++) {
-                // CORRECTION : On supprime la condition spéciale pour "symmetryAxes === 1".
-                // La formule générale est maintenant correcte pour tous les cas (1, 2, 4...)
-                // car elle correspond au nouvel algorithme unifié de génération.
-                const angle = (i * Math.PI) / symmetryAxes;
+                // On ajoute l'offset de l'angle de symétrie pour dessiner l'axe
+                const angle = (i * Math.PI) / symmetryAxes + angleOffsetRad;
 
                 const axisLine = document.createElementNS(this.svgNS, "line");
 

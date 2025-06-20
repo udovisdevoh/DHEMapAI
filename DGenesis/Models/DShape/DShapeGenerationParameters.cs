@@ -18,5 +18,8 @@ namespace DGenesis.Models
 
         [Display(Name = "Irrégularité (0.0 à 1.0)")]
         public double Irregularity { get; set; } = 0.25;
+
+        [Display(Name = "Angle de la symétrie (°)")]
+        public double SymmetryAngle { get; set; } = 0;
     }
 }

@@ -35,6 +35,11 @@
                     </select>
                 </div>
 
+                <div class="form-group mb-2" id="symmetryAngleGroup">
+                    <label asp-for="GenParams.SymmetryAngle" class="control-label"></label>
+                    <input asp-for="GenParams.SymmetryAngle" type="range" min="0" max="360" step="1" class="form-range" />
+                </div>
+
                 <div class="form-group mb-2">
                     <label asp-for="GenParams.Size" class="control-label"></label>
                     <input asp-for="GenParams.Size" type="number" min="32" max="1024" class="form-control" />
@@ -96,10 +101,13 @@
     <script>
         const shapeData = @(Model.GeneratedDShapeJson != null ? Html.Raw(Model.GeneratedDShapeJson) : "null");
         const symmetryAxes = @Model.GenParams.SymmetryAxes;
+        // On récupère aussi l'angle de la symétrie pour le passer au visualisateur
+        const symmetryAngle = @Model.GenParams.SymmetryAngle;
 
         if (shapeData) {
             const visualizer = new PolygonVisualizer("#shape-container");
-            visualizer.render(shapeData, symmetryAxes);
+            // On passe l'angle au visualisateur pour qu'il dessine les axes correctement
+            visualizer.render(shapeData, symmetryAxes, symmetryAngle);
 
             document.getElementById('copy-json-btn').addEventListener('click', () => {
                 navigator.clipboard.writeText(JSON.stringify(shapeData, null, 2))
@@ -113,19 +121,28 @@
             });
         }
 
+        // Logique pour cacher/montrer les options de symétrie
         const axesInput = document.getElementById('symmetryAxesInput');
         const typeGroup = document.getElementById('symmetryTypeGroup');
+        const angleGroup = document.getElementById('symmetryAngleGroup');
 
-        function toggleSymmetryType() {
-            if (axesInput.value > 1) {
+        function toggleSymmetryOptions() {
+            const axesValue = parseInt(axesInput.value, 10);
+            if (axesValue > 0) {
+                angleGroup.style.display = 'block';
+            } else {
+                angleGroup.style.display = 'none';
+            }
+
+            if (axesValue > 1) {
                 typeGroup.style.display = 'block';
             } else {
                 typeGroup.style.display = 'none';
             }
         }
 
-        axesInput.addEventListener('input', toggleSymmetryType);
-        document.addEventListener('DOMContentLoaded', toggleSymmetryType);
+        axesInput.addEventListener('input', toggleSymmetryOptions);
+        document.addEventListener('DOMContentLoaded', toggleSymmetryOptions);
 
     </script>
 }
