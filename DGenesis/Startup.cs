@@ -1,4 +1,5 @@
 using DGenesis.Services;
+using DGenesis.Services.Deformations;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -32,6 +33,7 @@ namespace DGenesis
             services.AddScoped<DGraphChaosService>();
             services.AddScoped<DGraphFinalizeService>();
             services.AddScoped<DShapeGeneratorService>();
+            services.AddScoped<DShapeDeformationService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

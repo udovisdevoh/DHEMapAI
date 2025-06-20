@@ -9,87 +9,80 @@ namespace DGenesis.Services
     {
         private readonly Random _random = new Random();
 
-        public DShape Generate(int vertexCount, int symmetryAxes, double size, double irregularity, string symmetryType)
+        public DShape Generate(DShapeGenerationParameters genParams)
         {
             var shape = new DShape
             {
                 Name = $"random_shape_{DateTime.Now.Ticks}",
-                Description = $"Shape with {vertexCount} vertices, {symmetryAxes} symmetry axes ({symmetryType}), size {size}, and irregularity {irregularity}."
+                Description = $"Forme avec {genParams.VertexCount} sommets, {genParams.SymmetryAxes} {(genParams.SymmetryAxes == 1 ? "axe" : "axes")} de symétrie ({genParams.SymmetryType}), taille {genParams.Size}, et irrégularité {genParams.Irregularity}."
             };
 
-            shape.Vertices = GenerateVertices(vertexCount, symmetryAxes, size, irregularity, symmetryType);
+            shape.Vertices = GenerateVertices(genParams);
 
             if (IsPolygonSelfIntersecting(shape.Vertices))
             {
-                shape.Description += " [WARNING: Self-intersecting]";
+                shape.Description += " [AVERTISSEMENT: Auto-intersection]";
             }
 
             return shape;
         }
 
-        private List<DShapeVertex> GenerateVertices(int vertexCount, int symmetryAxes, double size, double irregularity, string symmetryType)
+        /// <summary>
+        /// Aiguille vers la méthode de génération appropriée en fonction des paramètres.
+        /// </summary>
+        private List<DShapeVertex> GenerateVertices(DShapeGenerationParameters genParams)
         {
-            if (vertexCount < 3) return new List<DShapeVertex>();
+            if (genParams.VertexCount < 3) return new List<DShapeVertex>();
 
-            symmetryAxes = Math.Max(0, symmetryAxes);
-            List<DShapeVertex> resultVertices;
-
-            if (symmetryAxes > 0 && symmetryType == "Axial")
+            if (genParams.SymmetryAxes > 0 && genParams.SymmetryType == "Axial")
             {
-                resultVertices = GenerateAxialSymmetryRobust(vertexCount, symmetryAxes, size, irregularity);
+                return GenerateAxialSymmetryRobust(genParams.VertexCount, genParams.SymmetryAxes, genParams.Size, genParams.Irregularity);
             }
-            else if (symmetryAxes > 0 && symmetryType == "Rotational")
+            else if (genParams.SymmetryAxes > 0 && genParams.SymmetryType == "Rotational")
             {
-                resultVertices = GenerateRotationalSymmetry(vertexCount, symmetryAxes, size, irregularity);
+                return GenerateRotationalSymmetry(genParams.VertexCount, genParams.SymmetryAxes, genParams.Size, genParams.Irregularity);
             }
             else
             {
-                resultVertices = GenerateNoSymmetry(vertexCount, size, irregularity);
+                return GenerateNoSymmetry(genParams.VertexCount, genParams.Size, genParams.Irregularity);
             }
-
-            return resultVertices.Select(v => new DShapeVertex { X = Math.Round(v.X, 2), Y = Math.Round(v.Y, 2) }).ToList();
         }
 
-        // --- NOUVEL ALGORITHME DE SYMÉTRIE AXIALE, UNIQUE ET ROBUSTE ---
+        /// <summary>
+        /// ALGORITHME FINAL : Génère une forme avec N axes de symétrie miroir de manière robuste.
+        /// </summary>
         private List<DShapeVertex> GenerateAxialSymmetryRobust(int vertexCount, int symmetryAxes, double size, double irregularity)
         {
             var vertices = new List<DShapeVertex>();
             var radii = new double[vertexCount];
 
-            // 1. Déterminer le nombre de "pointes de tarte" (wedges) dans le polygone.
             int wedgeCount = 2 * symmetryAxes;
-            // 2. Calculer le nombre de points uniques à générer pour la première moitié d'une pointe.
             int basePointsCount = (int)Math.Ceiling((double)vertexCount / wedgeCount);
+            if (basePointsCount < 1) basePointsCount = 1;
 
-            // 3. Générer les rayons (distances) pour ces points de base.
             var baseRadii = new List<double>();
             for (int i = 0; i < basePointsCount; i++)
             {
                 baseRadii.Add(size * (1 - _random.NextDouble() * irregularity));
             }
 
-            // 4. Construire la liste complète et symétrique de tous les rayons.
             for (int i = 0; i < vertexCount; i++)
             {
                 double progress = (double)i / vertexCount;
                 double wedgeProgress = progress * wedgeCount;
                 int currentWedgeIndex = (int)Math.Floor(wedgeProgress);
 
-                // Position relative dans la demi-pointe de tarte (entre 0.0 et 1.0)
                 double posInWedge = wedgeProgress - currentWedgeIndex;
 
-                // Si la pointe est une réflexion miroir, on lit les rayons de base en sens inverse.
                 if (currentWedgeIndex % 2 == 1)
                 {
                     posInWedge = 1 - posInWedge;
                 }
 
-                // Trouver l'index correspondant dans la liste de rayons de base.
-                int baseRadiiIndex = (int)Math.Floor(posInWedge * (basePointsCount - 1));
-                radii[i] = baseRadii[Math.Max(0, baseRadiiIndex)];
+                int baseRadiiIndex = (int)Math.Round(posInWedge * (basePointsCount - 1));
+                radii[i] = baseRadii[Math.Max(0, Math.Min(basePointsCount - 1, baseRadiiIndex))];
             }
 
-            // 5. Créer les sommets en utilisant les rayons symétriques et des angles réguliers.
             double angleStep = 2 * Math.PI / vertexCount;
             for (int i = 0; i < vertexCount; i++)
             {
@@ -100,6 +93,9 @@ namespace DGenesis.Services
             return vertices;
         }
 
+        /// <summary>
+        /// Génère une forme sans aucune symétrie.
+        /// </summary>
         private List<DShapeVertex> GenerateNoSymmetry(int vertexCount, double size, double irregularity)
         {
             var vertices = new List<DShapeVertex>();
@@ -113,6 +109,9 @@ namespace DGenesis.Services
             return vertices;
         }
 
+        /// <summary>
+        /// Génère une forme avec une symétrie de rotation (pivote autour du centre).
+        /// </summary>
         private List<DShapeVertex> GenerateRotationalSymmetry(int vertexCount, int symmetryAxes, double size, double irregularity)
         {
             var vertices = new List<DShapeVertex>();
@@ -141,6 +140,9 @@ namespace DGenesis.Services
             return vertices;
         }
 
+        /// <summary>
+        /// Vérifie si le polygone se croise lui-même.
+        /// </summary>
         private bool IsPolygonSelfIntersecting(List<DShapeVertex> vertices)
         {
             if (vertices.Count <= 3) return false;
@@ -150,6 +152,7 @@ namespace DGenesis.Services
                 var q1 = vertices[(i + 1) % vertices.Count];
                 for (int j = i + 1; j < vertices.Count; j++)
                 {
+                    // Ne pas tester les arêtes adjacentes
                     if ((i == 0 && j == vertices.Count - 1) || (j + 1) % vertices.Count == i) continue;
 
                     var p2 = vertices[j];
@@ -160,13 +163,16 @@ namespace DGenesis.Services
             return false;
         }
 
+        /// <summary>
+        /// Vérifie si deux segments de droite [p1, q1] et [p2, q2] s'intersectent.
+        /// </summary>
         private bool DoLineSegmentsIntersect(DShapeVertex p1, DShapeVertex q1, DShapeVertex p2, DShapeVertex q2)
         {
             static int Orientation(DShapeVertex p, DShapeVertex q, DShapeVertex r)
             {
                 double val = (q.Y - p.Y) * (r.X - q.X) - (q.X - p.X) * (r.Y - q.Y);
-                if (Math.Abs(val) < 1e-10) return 0;
-                return (val > 0) ? 1 : 2;
+                if (Math.Abs(val) < 1e-10) return 0; // Colinéaire
+                return (val > 0) ? 1 : 2; // Horaire ou Anti-horaire
             }
 
             int o1 = Orientation(p1, q1, p2);
@@ -174,11 +180,14 @@ namespace DGenesis.Services
             int o3 = Orientation(p2, q2, p1);
             int o4 = Orientation(p2, q2, q1);
 
+            // Cas général où les segments se croisent
             if (o1 != 0 && o2 != 0 && o3 != 0 && o4 != 0)
             {
                 if (o1 != o2 && o3 != o4) return true;
             }
 
+            // Les cas spéciaux (colinéaires) sont ignorés pour la simplicité,
+            // car ils sont rares avec des coordonnées en double.
             return false;
         }
     }

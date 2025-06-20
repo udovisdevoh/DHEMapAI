@@ -4,7 +4,6 @@
     ViewData["Title"] = "DShape Generator";
 }
 
-@* Le lien CSS est placé en premier pour un rendu correct. *@
 <link rel="stylesheet" href="~/css/polygon-visualizer.css" asp-append-version="true" />
 
 <h1>Générateur de Forme (DShape)</h1>
@@ -19,31 +18,43 @@
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
                 <div class="form-group mb-2">
-                    <label asp-for="VertexCount" class="control-label"></label>
-                    <input asp-for="VertexCount" type="number" min="3" max="50" class="form-control" />
+                    <label asp-for="GenParams.VertexCount" class="control-label"></label>
+                    <input asp-for="GenParams.VertexCount" type="number" min="3" max="50" class="form-control" />
                 </div>
 
                 <div class="form-group mb-2">
-                    <label asp-for="SymmetryAxes" class="control-label"></label>
-                    <input asp-for="SymmetryAxes" type="number" min="0" max="12" class="form-control" id="symmetryAxesInput" />
+                    <label asp-for="GenParams.SymmetryAxes" class="control-label"></label>
+                    <input asp-for="GenParams.SymmetryAxes" type="number" min="0" max="12" class="form-control" id="symmetryAxesInput" />
                 </div>
 
                 <div class="form-group mb-2" id="symmetryTypeGroup">
-                    <label asp-for="SymmetryType" class="control-label"></label>
-                    <select asp-for="SymmetryType" class="form-select">
+                    <label asp-for="GenParams.SymmetryType" class="control-label"></label>
+                    <select asp-for="GenParams.SymmetryType" class="form-select">
                         <option value="Axial">Axiale (Miroir)</option>
                         <option value="Rotational">Rotationnelle (Point)</option>
                     </select>
                 </div>
 
                 <div class="form-group mb-2">
-                    <label asp-for="Size" class="control-label">Taille (Rayon moyen)</label>
-                    <input asp-for="Size" type="number" min="32" max="1024" class="form-control" />
+                    <label asp-for="GenParams.Size" class="control-label"></label>
+                    <input asp-for="GenParams.Size" type="number" min="32" max="1024" class="form-control" />
                 </div>
 
                 <div class="form-group mb-3">
-                    <label asp-for="Irregularity" class="control-label">Irrégularité (0.0 à 1.0)</label>
-                    <input asp-for="Irregularity" type="range" min="0" max="1" step="0.05" class="form-range" />
+                    <label asp-for="GenParams.Irregularity" class="control-label"></label>
+                    <input asp-for="GenParams.Irregularity" type="range" min="0" max="1" step="0.05" class="form-range" />
+                </div>
+
+                <h4 class="mt-4">Déformations Post-Traitement</h4>
+                <hr />
+
+                <div class="form-group mb-3">
+                    <label asp-for="DefParams.StretchX" class="control-label"></label>
+                    <input asp-for="DefParams.StretchX" type="range" min="0.25" max="4" step="0.05" class="form-range" />
+                </div>
+                <div class="form-group mb-3">
+                    <label asp-for="DefParams.StretchY" class="control-label"></label>
+                    <input asp-for="DefParams.StretchY" type="range" min="0.25" max="4" step="0.05" class="form-range" />
                 </div>
 
                 <div class="form-group">
@@ -80,7 +91,7 @@
     <script src="~/js/polygon-visualizer.js" asp-append-version="true"></script>
     <script>
         const shapeData = @(Model.GeneratedDShapeJson != null ? Html.Raw(Model.GeneratedDShapeJson) : "null");
-        const symmetryAxes = @Model.SymmetryAxes;
+        const symmetryAxes = @Model.GenParams.SymmetryAxes;
 
         if (shapeData) {
             const visualizer = new PolygonVisualizer("#shape-container");

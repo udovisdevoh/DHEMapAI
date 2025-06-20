@@ -1,8 +1,9 @@
 using DGenesis.Models;
 using DGenesis.Services;
+using DGenesis.Services.Deformations;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using System.ComponentModel.DataAnnotations;
+using System;
 using System.Text.Encodings.Web;
 using System.Text.Json;
 
@@ -11,37 +12,24 @@ namespace DGenesis.Pages
     public class DShapeGeneratorModel : PageModel
     {
         private readonly DShapeGeneratorService _generatorService;
+        private readonly DShapeDeformationService _deformationService;
 
         [BindProperty]
-        [Display(Name = "Nombre de sommets")]
-        public int VertexCount { get; set; } = 8;
+        public DShapeGenerationParameters GenParams { get; set; } = new DShapeGenerationParameters();
 
         [BindProperty]
-        [Display(Name = "Axes de symétrie")]
-        public int SymmetryAxes { get; set; } = 0;
+        public DShapeDeformationParameters DefParams { get; set; } = new DShapeDeformationParameters();
 
-        [BindProperty]
-        [Display(Name = "Type de Symétrie")]
-        public string SymmetryType { get; set; } = "Axial";
-
-        [BindProperty]
-        [Display(Name = "Taille")]
-        public double Size { get; set; } = 256;
-
-        [BindProperty]
-        [Display(Name = "Irrégularité")]
-        public double Irregularity { get; set; } = 0.25;
 
         public string GeneratedDShapeJson { get; private set; }
 
-        public DShapeGeneratorModel(DShapeGeneratorService generatorService)
+        public DShapeGeneratorModel(DShapeGeneratorService generatorService, DShapeDeformationService deformationService)
         {
             _generatorService = generatorService;
+            _deformationService = deformationService;
         }
 
-        public void OnGet()
-        {
-        }
+        public void OnGet() { }
 
         public IActionResult OnPost()
         {
@@ -50,7 +38,17 @@ namespace DGenesis.Pages
                 return Page();
             }
 
-            var dshape = _generatorService.Generate(VertexCount, SymmetryAxes, Size, Irregularity, SymmetryType);
+            // Étape 1: Générer la forme de base
+            var dshape = _generatorService.Generate(GenParams);
+
+            // Étape 2: Appliquer les déformations
+            _deformationService.Apply(dshape, DefParams);
+
+            // Arrondir les valeurs finales après toutes les transformations
+            dshape.Vertices.ForEach(v => {
+                v.X = Math.Round(v.X, 2);
+                v.Y = Math.Round(v.Y, 2);
+            });
 
             var options = new JsonSerializerOptions
             {
