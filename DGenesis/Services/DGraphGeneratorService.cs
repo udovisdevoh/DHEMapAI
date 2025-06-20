@@ -31,25 +31,45 @@ namespace DGenesis.Services
         public DGraph Generate(int requestedNodes, int lockedPairs, int exitNodes)
         {
             int currentNodesToGenerate = requestedNodes;
+
             while (currentNodesToGenerate >= MINIMUM_NODES)
             {
+                Console.WriteLine($"--- Début de la génération pour une complexité de {currentNodesToGenerate} nœuds ---");
                 for (int attempt = 1; attempt <= ATTEMPTS_PER_COMPLEXITY; attempt++)
                 {
+                    Console.WriteLine($"... Tentative #{attempt}/{ATTEMPTS_PER_COMPLEXITY} pour {currentNodesToGenerate} nœuds.");
+
                     var (graph, nodeDepths) = GenerateTopology(currentNodesToGenerate);
                     if (graph.Nodes.Count < 2) continue;
+
+                    // Le pipeline est maintenant universel et robuste
+                    // 1. Placement initial grossier (sera ignoré par le ChaosService pour les ancres)
                     _layoutService.AssignLayout(graph, nodeDepths);
-                    foreach (var node in graph.Nodes) { node.Position.X += (_random.NextDouble() - 0.5) * 0.1; node.Position.Y += (_random.NextDouble() - 0.5) * 0.1; }
+
+                    // 2. Le ChaosService avec ancres crée la disposition 2D finale
                     _chaosService.ApplyChaos(graph);
+
+                    // 3. Polissage final pour l'espacement nœud-arête
                     _finalizeService.EnforceNodeEdgeSpacing(graph);
+
+                    // 4. Garantie finale de la planarité
                     bool untangleSuccess = _untanglerService.TryUntangleGraph(graph);
+
                     if (untangleSuccess)
                     {
+                        Console.WriteLine("Toutes les étapes géométriques réussies.");
                         _roleAssignmentService.AssignRoles(graph, exitNodes, lockedPairs);
+                        Console.WriteLine($"Génération terminée avec succès avec {graph.Nodes.Count} nœuds.");
                         return graph;
                     }
+                    Console.WriteLine("Échec du désenchevêtrement. Nouvelle tentative...");
                 }
+
+                Console.WriteLine($"[AVERTISSEMENT] Impossible de générer un graphe stable avec {currentNodesToGenerate} nœuds. Essai avec {currentNodesToGenerate - 1}.");
                 currentNodesToGenerate--;
             }
+
+            Console.WriteLine($"[ERREUR] Échec de la génération du graphe après avoir essayé jusqu'à {MINIMUM_NODES} nœuds.");
             return new DGraph();
         }
 
@@ -58,16 +78,13 @@ namespace DGenesis.Services
             var graph = new DGraph();
             var nodeDepths = new Dictionary<int, int>();
             if (totalNodes < 1) return (graph, nodeDepths);
-
             var existingEdges = new HashSet<Tuple<int, int>>();
-
             var nodesToProcess = new Queue<DGraphNode>();
             var firstNode = new DGraphNode { Id = 0, Type = "standard" };
             graph.Nodes.Add(firstNode);
             nodesToProcess.Enqueue(firstNode);
             nodeDepths[firstNode.Id] = 0;
             int nextNodeId = 1;
-
             while (nodesToProcess.Count > 0 && nextNodeId < totalNodes)
             {
                 var currentNode = nodesToProcess.Dequeue();
@@ -87,7 +104,6 @@ namespace DGenesis.Services
                     nextNodeId++;
                 }
             }
-
             int globalMergesToAdd = (int)(totalNodes * GlobalMergeFactor);
             int safetyBreak = 0;
             for (int i = 0; i < globalMergesToAdd && safetyBreak < 100; i++)
