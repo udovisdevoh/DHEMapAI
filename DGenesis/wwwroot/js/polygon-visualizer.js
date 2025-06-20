@@ -46,21 +46,15 @@
         const viewBox = this._calculateViewBox(vertices);
         this.svg.setAttribute("viewBox", viewBox);
 
-        // Dessiner les axes de symétrie EN PREMIER pour qu'ils soient en arrière-plan
         if (symmetryAxes > 0) {
             const viewBoxParts = viewBox.split(' ').map(parseFloat);
             const lineLength = Math.max(viewBoxParts[2], viewBoxParts[3]) * 0.6;
 
             for (let i = 0; i < symmetryAxes; i++) {
-                let angle;
-                // CORRECTION : On traite le cas de 1 axe séparément
-                if (symmetryAxes === 1) {
-                    // La génération utilise un axe vertical, donc on le dessine à 90 degrés (PI / 2 radians).
-                    angle = Math.PI / 2;
-                } else {
-                    // La logique radiale pour 2+ axes est correcte.
-                    angle = (i * Math.PI) / symmetryAxes;
-                }
+                // CORRECTION : On supprime la condition spéciale pour "symmetryAxes === 1".
+                // La formule générale est maintenant correcte pour tous les cas (1, 2, 4...)
+                // car elle correspond au nouvel algorithme unifié de génération.
+                const angle = (i * Math.PI) / symmetryAxes;
 
                 const axisLine = document.createElementNS(this.svgNS, "line");
 
@@ -84,7 +78,6 @@
 
         this.zoomGroup.appendChild(polygon);
 
-        // Ajouter des points sur les sommets pour mieux visualiser
         vertices.forEach(v => {
             const circle = document.createElementNS(this.svgNS, "circle");
             circle.setAttribute("cx", v.x);
