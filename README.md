@@ -2,6 +2,8 @@
 
 ## [Documentation du format DGraph](DGRAPH.md)
 
+## [Documentation du format DShape](DSHAPE.md)
+
 ## [Documentation du format DHEMap](DHEMAP.md)
 
 ## Source combiner (to combine source code into single files)
