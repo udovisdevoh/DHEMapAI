@@ -52,7 +52,16 @@
             const lineLength = Math.max(viewBoxParts[2], viewBoxParts[3]) * 0.6;
 
             for (let i = 0; i < symmetryAxes; i++) {
-                const angle = (i * Math.PI) / symmetryAxes;
+                let angle;
+                // CORRECTION : On traite le cas de 1 axe séparément
+                if (symmetryAxes === 1) {
+                    // La génération utilise un axe vertical, donc on le dessine à 90 degrés (PI / 2 radians).
+                    angle = Math.PI / 2;
+                } else {
+                    // La logique radiale pour 2+ axes est correcte.
+                    angle = (i * Math.PI) / symmetryAxes;
+                }
+
                 const axisLine = document.createElementNS(this.svgNS, "line");
 
                 const x1 = lineLength * Math.cos(angle);
