@@ -31,34 +31,71 @@ namespace DGenesis.Services
         public DGraph Generate(int requestedNodes, int lockedPairs, int exitNodes)
         {
             int currentNodesToGenerate = requestedNodes;
-
             while (currentNodesToGenerate >= MINIMUM_NODES)
             {
                 for (int attempt = 1; attempt <= ATTEMPTS_PER_COMPLEXITY; attempt++)
                 {
+                    Console.WriteLine($"... Tentative #{attempt}/{ATTEMPTS_PER_COMPLEXITY} pour {currentNodesToGenerate} nœuds.");
+
                     var (graph, nodeDepths) = GenerateTopology(currentNodesToGenerate);
                     if (graph.Nodes.Count < 2) continue;
 
                     _layoutService.AssignLayout(graph, nodeDepths);
                     _chaosService.ApplyChaos(graph);
-                    _finalizeService.EnforceNodeEdgeSpacing(graph);
-                    bool untangleSuccess = _untanglerService.TryUntangleGraph(graph);
 
-                    if (untangleSuccess)
+                    // --- NOUVELLE BOUCLE DE CONVERGENCE ---
+                    int refinementIterations = 0;
+                    const int MAX_REFINEMENT_ITERATIONS = 10;
+                    bool geometryChangedInLastPass;
+
+                    do
                     {
-                        // --- AJOUT DE LA DERNIÈRE ÉTAPE ---
-                        // On normalise la taille du graphe avant d'assigner les rôles
-                        _finalizeService.NormalizeAndCenter(graph);
+                        // On suppose que rien ne va changer
+                        geometryChangedInLastPass = false;
 
-                        _roleAssignmentService.AssignRoles(graph, exitNodes, lockedPairs);
+                        // Étape A : On applique l'espacement
+                        bool spacingChanged = _finalizeService.EnforceNodeEdgeSpacing(graph);
+                        if (spacingChanged) geometryChangedInLastPass = true;
 
-                        Console.WriteLine($"Génération terminée avec succès avec {graph.Nodes.Count} nœuds.");
-                        return graph;
+                        // Étape B : On corrige les croisements que l'espacement a pu créer
+                        bool untanglingChanged = _untanglerService.TryUntangleGraph(graph);
+                        if (!untanglingChanged)
+                        {
+                            // L'untangler a échoué (timeout), cette tentative de génération est un échec
+                            goto next_attempt; // Saute à la prochaine tentative de la boucle for
+                        }
+
+                        // On vérifie si l'untangler a dû ajouter un nœud, ce qui est un changement de géométrie
+                        // Une manière simple de le savoir est de vérifier si la dernière passe a trouvé un croisement
+                        // Pour l'instant, on suppose que si l'espacement a changé, on doit revérifier.
+                        // Cette logique est suffisante pour la convergence.
+
+                        refinementIterations++;
+                    } while (geometryChangedInLastPass && refinementIterations < MAX_REFINEMENT_ITERATIONS);
+
+                    if (refinementIterations >= MAX_REFINEMENT_ITERATIONS)
+                    {
+                        Console.WriteLine("La boucle de raffinement n'a pas convergé. Nouvelle tentative...");
+                        goto next_attempt;
                     }
+
+                    // Le graphe est maintenant stable, espacé ET planaire.
+                    Console.WriteLine("Raffinement géométrique terminé avec succès.");
+
+                    _finalizeService.NormalizeAndCenter(graph);
+                    _roleAssignmentService.AssignRoles(graph, exitNodes, lockedPairs);
+
+                    Console.WriteLine($"Génération terminée avec succès avec {graph.Nodes.Count} nœuds.");
+                    return graph;
+
+                next_attempt:; // Label pour le goto
                 }
+
+                Console.WriteLine($"[AVERTISSEMENT] Impossible de générer un graphe stable avec {currentNodesToGenerate} nœuds. Essai avec {currentNodesToGenerate - 1}.");
                 currentNodesToGenerate--;
             }
 
+            Console.WriteLine($"[ERREUR] Échec de la génération du graphe après avoir essayé jusqu'à {MINIMUM_NODES} nœuds.");
             return new DGraph();
         }
 
