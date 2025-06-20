@@ -37,13 +37,35 @@
         return `${minX} ${minY} ${width} ${height}`;
     }
 
-    render(shapeData) {
+    render(shapeData, symmetryAxes = 0) {
         if (!shapeData || !shapeData.vertices || shapeData.vertices.length < 3) return;
 
         this._createSVG();
         const { vertices } = shapeData;
 
-        this.svg.setAttribute("viewBox", this._calculateViewBox(vertices));
+        const viewBox = this._calculateViewBox(vertices);
+        this.svg.setAttribute("viewBox", viewBox);
+
+        // Dessiner les axes de symétrie EN PREMIER pour qu'ils soient en arrière-plan
+        if (symmetryAxes > 0) {
+            const viewBoxParts = viewBox.split(' ').map(parseFloat);
+            const lineLength = Math.max(viewBoxParts[2], viewBoxParts[3]) * 0.6;
+
+            for (let i = 0; i < symmetryAxes; i++) {
+                const angle = (i * Math.PI) / symmetryAxes;
+                const axisLine = document.createElementNS(this.svgNS, "line");
+
+                const x1 = lineLength * Math.cos(angle);
+                const y1 = lineLength * Math.sin(angle);
+
+                axisLine.setAttribute("x1", x1);
+                axisLine.setAttribute("y1", y1);
+                axisLine.setAttribute("x2", -x1);
+                axisLine.setAttribute("y2", -y1);
+                axisLine.setAttribute("class", "symmetry-axis");
+                this.zoomGroup.appendChild(axisLine);
+            }
+        }
 
         const polygon = document.createElementNS(this.svgNS, "polygon");
 

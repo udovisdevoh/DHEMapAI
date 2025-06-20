@@ -73,10 +73,13 @@
     <script src="~/js/polygon-visualizer.js" asp-append-version="true"></script>
     <script>
         const shapeData = @(Model.GeneratedDShapeJson != null ? Html.Raw(Model.GeneratedDShapeJson) : "null");
+        // On récupère le nombre d'axes de symétrie depuis le modèle
+        const symmetryAxes = @Model.SymmetryAxes;
 
         if (shapeData) {
             const visualizer = new PolygonVisualizer("#shape-container");
-            visualizer.render(shapeData);
+            // On passe le nombre d'axes à la fonction render
+            visualizer.render(shapeData, symmetryAxes);
 
             document.getElementById('copy-json-btn').addEventListener('click', () => {
                 navigator.clipboard.writeText(JSON.stringify(shapeData, null, 2))
