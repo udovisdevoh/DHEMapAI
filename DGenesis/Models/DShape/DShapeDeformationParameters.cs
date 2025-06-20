@@ -9,5 +9,8 @@ namespace DGenesis.Models
 
         [Display(Name = "Étirement Y")]
         public double StretchY { get; set; } = 1.0;
+
+        [Display(Name = "Angle de l'étirement (°)")]
+        public double StretchAngle { get; set; } = 0;
     }
 }
