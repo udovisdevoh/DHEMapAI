@@ -85,7 +85,6 @@ namespace DGenesis.Services
             return new DGraph();
         }
 
-        // ... Le reste du fichier reste inchangé ...
         private (DGraph, Dictionary<int, int>) GenerateTopology(int totalNodes)
         {
             var graph = new DGraph();
