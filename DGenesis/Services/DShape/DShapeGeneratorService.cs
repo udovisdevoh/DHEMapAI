@@ -14,7 +14,7 @@ namespace DGenesis.Services
             var shape = new DShape
             {
                 Name = $"random_shape_{DateTime.Now.Ticks}",
-                Description = $"Forme avec {genParams.VertexCount} sommets, {genParams.SymmetryAxes} {(genParams.SymmetryAxes == 1 ? "axe" : "axes")} de symétrie ({genParams.SymmetryType}) à {genParams.SymmetryAngle}°, taille {genParams.Size}, et irrégularité {genParams.Irregularity}."
+                Description = $"Forme avec {genParams.VertexCount} sommets, {genParams.SymmetryAxes} {(genParams.SymmetryAxes == 1 ? "axe" : "axes")} de symétrie ({genParams.SymmetryType}) à {genParams.SymmetryAngle}°, etc."
             };
 
             shape.Vertices = GenerateVertices(genParams);
@@ -49,42 +49,46 @@ namespace DGenesis.Services
         {
             var vertices = new List<DShapeVertex>();
             var radii = new double[genParams.VertexCount];
+            var angularOffsets = new double[genParams.VertexCount];
             double symmetryAngleRad = genParams.SymmetryAngle * Math.PI / 180.0;
 
             int wedgeCount = 2 * genParams.SymmetryAxes;
             int basePointsCount = (int)Math.Ceiling((double)genParams.VertexCount / wedgeCount);
             if (basePointsCount < 1) basePointsCount = 1;
 
+            // Création des gabarits symétriques pour les rayons ET les décalages angulaires
             var baseRadii = new List<double>();
+            var baseAngularOffsets = new List<double>();
             for (int i = 0; i < basePointsCount; i++)
             {
-                baseRadii.Add(genParams.Size * (1 - _random.NextDouble() * genParams.Irregularity));
+                baseRadii.Add(genParams.Size * (1 - _random.NextDouble() * genParams.RadialVariation));
+                // Le décalage est une petite valeur aléatoire, contrôlée par AngularVariation
+                baseAngularOffsets.Add((_random.NextDouble() - 0.5) * genParams.AngularVariation);
             }
 
+            // Construction des listes complètes et symétriques
             for (int i = 0; i < genParams.VertexCount; i++)
             {
                 double progress = (double)i / genParams.VertexCount;
                 double wedgeProgress = progress * wedgeCount;
                 int currentWedgeIndex = (int)Math.Floor(wedgeProgress);
-
                 double posInWedge = wedgeProgress - currentWedgeIndex;
+                if (currentWedgeIndex % 2 == 1) posInWedge = 1 - posInWedge;
 
-                if (currentWedgeIndex % 2 == 1)
-                {
-                    posInWedge = 1 - posInWedge;
-                }
+                int baseIndex = (int)Math.Round(posInWedge * (basePointsCount - 1));
+                baseIndex = Math.Max(0, Math.Min(basePointsCount - 1, baseIndex));
 
-                int baseRadiiIndex = (int)Math.Round(posInWedge * (basePointsCount - 1));
-                radii[i] = baseRadii[Math.Max(0, Math.Min(basePointsCount - 1, baseRadiiIndex))];
+                radii[i] = baseRadii[baseIndex];
+                angularOffsets[i] = baseAngularOffsets[baseIndex];
             }
 
             double angleStep = 2 * Math.PI / genParams.VertexCount;
             for (int i = 0; i < genParams.VertexCount; i++)
             {
-                double angle = i * angleStep + symmetryAngleRad;
+                // Application du décalage angulaire (multiplié par l'intervalle pour le rendre proportionnel)
+                double angle = i * angleStep + (angularOffsets[i] * angleStep) + symmetryAngleRad;
                 vertices.Add(new DShapeVertex { X = radii[i] * Math.Cos(angle), Y = radii[i] * Math.Sin(angle) });
             }
-
             return vertices;
         }
 
@@ -94,8 +98,8 @@ namespace DGenesis.Services
             double angleStep = 2 * Math.PI / genParams.VertexCount;
             for (int i = 0; i < genParams.VertexCount; i++)
             {
-                double radius = genParams.Size * (1 - _random.NextDouble() * genParams.Irregularity);
-                double angle = i * angleStep + (angleStep * (_random.NextDouble() - 0.5) * genParams.Irregularity);
+                double radius = genParams.Size * (1 - _random.NextDouble() * genParams.RadialVariation);
+                double angle = i * angleStep + (angleStep * (_random.NextDouble() - 0.5) * genParams.AngularVariation);
                 vertices.Add(new DShapeVertex { X = radius * Math.Cos(angle), Y = radius * Math.Sin(angle) });
             }
             return vertices;
@@ -111,14 +115,14 @@ namespace DGenesis.Services
 
             for (int i = 0; i < baseVerticesCount; i++)
             {
-                double radius = genParams.Size * (1 - _random.NextDouble() * genParams.Irregularity);
-                double angle = i * angleStep; // L'angle de base est relatif à la première "pointe"
+                double radius = genParams.Size * (1 - _random.NextDouble() * genParams.RadialVariation);
+                // Le décalage angulaire est appliqué directement sur les points de base
+                double angle = i * angleStep + (angleStep * (_random.NextDouble() - 0.5) * genParams.AngularVariation);
                 baseVertices.Add(new DShapeVertex { X = radius * Math.Cos(angle), Y = radius * Math.Sin(angle) });
             }
 
             for (int i = 0; i < genParams.SymmetryAxes; i++)
             {
-                // La rotation globale de la symétrie est appliquée ici
                 double rotationAngle = i * (2 * Math.PI / genParams.SymmetryAxes) + symmetryAngleRad;
                 foreach (var baseVertex in baseVertices)
                 {
@@ -155,8 +159,8 @@ namespace DGenesis.Services
             static int Orientation(DShapeVertex p, DShapeVertex q, DShapeVertex r)
             {
                 double val = (q.Y - p.Y) * (r.X - q.X) - (q.X - p.X) * (r.Y - q.Y);
-                if (Math.Abs(val) < 1e-10) return 0; // Colinéaire
-                return (val > 0) ? 1 : 2; // Horaire ou Anti-horaire
+                if (Math.Abs(val) < 1e-10) return 0;
+                return (val > 0) ? 1 : 2;
             }
 
             int o1 = Orientation(p1, q1, p2);

@@ -16,8 +16,11 @@ namespace DGenesis.Models
         [Display(Name = "Taille (Rayon moyen)")]
         public double Size { get; set; } = 256;
 
-        [Display(Name = "Irrégularité (0.0 à 1.0)")]
-        public double Irregularity { get; set; } = 0.25;
+        [Display(Name = "Variation Radiale (Piquant)")]
+        public double RadialVariation { get; set; } = 0.25;
+
+        [Display(Name = "Variation Angulaire (Espacement)")]
+        public double AngularVariation { get; set; } = 0.0;
 
         [Display(Name = "Angle de la symétrie (°)")]
         public double SymmetryAngle { get; set; } = 0;
