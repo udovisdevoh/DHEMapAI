@@ -9,15 +9,15 @@ namespace DGenesis.Services
     {
         private readonly Random _random = new Random();
 
-        public DShape Generate(int vertexCount, int symmetryAxes, double size, double irregularity)
+        public DShape Generate(int vertexCount, int symmetryAxes, double size, double irregularity, string symmetryType)
         {
             var shape = new DShape
             {
                 Name = $"random_shape_{DateTime.Now.Ticks}",
-                Description = $"Shape with {vertexCount} vertices, {symmetryAxes} symmetry axes, size {size}, and irregularity {irregularity}."
+                Description = $"Shape with {vertexCount} vertices, {symmetryAxes} symmetry axes ({symmetryType}), size {size}, and irregularity {irregularity}."
             };
 
-            shape.Vertices = GenerateVertices(vertexCount, symmetryAxes, size, irregularity);
+            shape.Vertices = GenerateVertices(vertexCount, symmetryAxes, size, irregularity, symmetryType);
 
             if (IsPolygonSelfIntersecting(shape.Vertices))
             {
@@ -27,87 +27,118 @@ namespace DGenesis.Services
             return shape;
         }
 
-        private List<DShapeVertex> GenerateVertices(int vertexCount, int symmetryAxes, double size, double irregularity)
+        private List<DShapeVertex> GenerateVertices(int vertexCount, int symmetryAxes, double size, double irregularity, string symmetryType)
         {
-            var vertices = new List<DShapeVertex>();
-            if (vertexCount < 3) return vertices;
+            if (vertexCount < 3) return new List<DShapeVertex>();
 
             symmetryAxes = Math.Max(0, symmetryAxes);
+            List<DShapeVertex> resultVertices;
 
-            // --- NOUVELLE LOGIQUE DÉDIÉE POUR 1 AXE DE SYMÉTRIE ---
-            if (symmetryAxes == 1)
+            if (symmetryAxes > 0 && symmetryType == "Axial")
             {
-                var rightSidePoints = new List<DShapeVertex>();
-                // Le nombre de points à générer sur un côté (sans compter les ancrages sur l'axe)
-                int pointsPerSide = (vertexCount - (vertexCount % 2 == 0 ? 2 : 1)) / 2;
-
-                // Point d'ancrage supérieur sur l'axe Y
-                vertices.Add(new DShapeVertex { X = 0, Y = size * (1 - _random.NextDouble() * irregularity * 0.5) });
-
-                // Générer les points du côté droit, du haut vers le bas
-                if (pointsPerSide > 0)
-                {
-                    double angleStep = Math.PI / (pointsPerSide + 1);
-                    for (int i = 1; i <= pointsPerSide; i++)
-                    {
-                        double angle = (Math.PI / 2) - (i * angleStep) + (angleStep * (_random.NextDouble() - 0.5) * irregularity);
-                        double radius = size * (1 - _random.NextDouble() * irregularity);
-                        rightSidePoints.Add(new DShapeVertex { X = radius * Math.Cos(angle), Y = radius * Math.Sin(angle) });
-                    }
-                    vertices.AddRange(rightSidePoints);
-                }
-
-                // Point d'ancrage inférieur (seulement si le nombre de sommets est pair)
-                if (vertexCount % 2 == 0)
-                {
-                    vertices.Add(new DShapeVertex { X = 0, Y = -size * (1 - _random.NextDouble() * irregularity * 0.5) });
-                }
-
-                // Ajouter les points du côté gauche (miroirs des points du côté droit, en ordre INVERSE)
-                for (int i = rightSidePoints.Count - 1; i >= 0; i--)
-                {
-                    vertices.Add(new DShapeVertex { X = -rightSidePoints[i].X, Y = rightSidePoints[i].Y });
-                }
+                resultVertices = GenerateAxialSymmetryRobust(vertexCount, symmetryAxes, size, irregularity);
             }
-            // --- FIN DE LA NOUVELLE LOGIQUE ---
-            else if (symmetryAxes > 1)
+            else if (symmetryAxes > 0 && symmetryType == "Rotational")
             {
-                // Génération symétrique radiale (inchangée)
-                int baseVerticesCount = (int)Math.Ceiling((double)vertexCount / symmetryAxes);
-                var baseVertices = new List<DShapeVertex>();
-                double angleStep = (2 * Math.PI / symmetryAxes) / baseVerticesCount;
-
-                for (int i = 0; i < baseVerticesCount; i++)
-                {
-                    double radius = size * (1 - _random.NextDouble() * irregularity);
-                    double angle = i * angleStep;
-                    baseVertices.Add(new DShapeVertex { X = radius * Math.Cos(angle), Y = radius * Math.Sin(angle) });
-                }
-
-                for (int i = 0; i < symmetryAxes; i++)
-                {
-                    double rotationAngle = i * (2 * Math.PI / symmetryAxes);
-                    foreach (var baseVertex in baseVertices)
-                    {
-                        if (vertices.Count >= vertexCount) break;
-                        double x = baseVertex.X * Math.Cos(rotationAngle) - baseVertex.Y * Math.Sin(rotationAngle);
-                        double y = baseVertex.X * Math.Sin(rotationAngle) + baseVertex.Y * Math.Cos(rotationAngle);
-                        vertices.Add(new DShapeVertex { X = x, Y = y });
-                    }
-                }
+                resultVertices = GenerateRotationalSymmetry(vertexCount, symmetryAxes, size, irregularity);
             }
-            else // Génération non-symétrique (0 axe)
+            else
             {
-                double angleStep = 2 * Math.PI / vertexCount;
-                for (int i = 0; i < vertexCount; i++)
-                {
-                    double radius = size * (1 - _random.NextDouble() * irregularity);
-                    double angle = i * angleStep + (angleStep * (_random.NextDouble() - 0.5) * irregularity);
-                    vertices.Add(new DShapeVertex { X = radius * Math.Cos(angle), Y = radius * Math.Sin(angle) });
-                }
+                resultVertices = GenerateNoSymmetry(vertexCount, size, irregularity);
             }
 
-            return vertices.Select(v => new DShapeVertex { X = Math.Round(v.X, 2), Y = Math.Round(v.Y, 2) }).ToList();
+            return resultVertices.Select(v => new DShapeVertex { X = Math.Round(v.X, 2), Y = Math.Round(v.Y, 2) }).ToList();
+        }
+
+        // --- NOUVEL ALGORITHME DE SYMÉTRIE AXIALE, UNIQUE ET ROBUSTE ---
+        private List<DShapeVertex> GenerateAxialSymmetryRobust(int vertexCount, int symmetryAxes, double size, double irregularity)
+        {
+            var vertices = new List<DShapeVertex>();
+            var radii = new double[vertexCount];
+
+            // 1. Déterminer le nombre de "pointes de tarte" (wedges) dans le polygone.
+            int wedgeCount = 2 * symmetryAxes;
+            // 2. Calculer le nombre de points uniques à générer pour la première moitié d'une pointe.
+            int basePointsCount = (int)Math.Ceiling((double)vertexCount / wedgeCount);
+
+            // 3. Générer les rayons (distances) pour ces points de base.
+            var baseRadii = new List<double>();
+            for (int i = 0; i < basePointsCount; i++)
+            {
+                baseRadii.Add(size * (1 - _random.NextDouble() * irregularity));
+            }
+
+            // 4. Construire la liste complète et symétrique de tous les rayons.
+            for (int i = 0; i < vertexCount; i++)
+            {
+                double progress = (double)i / vertexCount;
+                double wedgeProgress = progress * wedgeCount;
+                int currentWedgeIndex = (int)Math.Floor(wedgeProgress);
+
+                // Position relative dans la demi-pointe de tarte (entre 0.0 et 1.0)
+                double posInWedge = wedgeProgress - currentWedgeIndex;
+
+                // Si la pointe est une réflexion miroir, on lit les rayons de base en sens inverse.
+                if (currentWedgeIndex % 2 == 1)
+                {
+                    posInWedge = 1 - posInWedge;
+                }
+
+                // Trouver l'index correspondant dans la liste de rayons de base.
+                int baseRadiiIndex = (int)Math.Floor(posInWedge * (basePointsCount - 1));
+                radii[i] = baseRadii[Math.Max(0, baseRadiiIndex)];
+            }
+
+            // 5. Créer les sommets en utilisant les rayons symétriques et des angles réguliers.
+            double angleStep = 2 * Math.PI / vertexCount;
+            for (int i = 0; i < vertexCount; i++)
+            {
+                double angle = i * angleStep;
+                vertices.Add(new DShapeVertex { X = radii[i] * Math.Cos(angle), Y = radii[i] * Math.Sin(angle) });
+            }
+
+            return vertices;
+        }
+
+        private List<DShapeVertex> GenerateNoSymmetry(int vertexCount, double size, double irregularity)
+        {
+            var vertices = new List<DShapeVertex>();
+            double angleStep = 2 * Math.PI / vertexCount;
+            for (int i = 0; i < vertexCount; i++)
+            {
+                double radius = size * (1 - _random.NextDouble() * irregularity);
+                double angle = i * angleStep + (angleStep * (_random.NextDouble() - 0.5) * irregularity);
+                vertices.Add(new DShapeVertex { X = radius * Math.Cos(angle), Y = radius * Math.Sin(angle) });
+            }
+            return vertices;
+        }
+
+        private List<DShapeVertex> GenerateRotationalSymmetry(int vertexCount, int symmetryAxes, double size, double irregularity)
+        {
+            var vertices = new List<DShapeVertex>();
+            int baseVerticesCount = (int)Math.Ceiling((double)vertexCount / symmetryAxes);
+            var baseVertices = new List<DShapeVertex>();
+            double angleStep = (2 * Math.PI / symmetryAxes) / baseVerticesCount;
+
+            for (int i = 0; i < baseVerticesCount; i++)
+            {
+                double radius = size * (1 - _random.NextDouble() * irregularity);
+                double angle = i * angleStep;
+                baseVertices.Add(new DShapeVertex { X = radius * Math.Cos(angle), Y = radius * Math.Sin(angle) });
+            }
+
+            for (int i = 0; i < symmetryAxes; i++)
+            {
+                double rotationAngle = i * (2 * Math.PI / symmetryAxes);
+                foreach (var baseVertex in baseVertices)
+                {
+                    if (vertices.Count >= vertexCount) break;
+                    double x = baseVertex.X * Math.Cos(rotationAngle) - baseVertex.Y * Math.Sin(rotationAngle);
+                    double y = baseVertex.X * Math.Sin(rotationAngle) + baseVertex.Y * Math.Cos(rotationAngle);
+                    vertices.Add(new DShapeVertex { X = x, Y = y });
+                }
+            }
+            return vertices;
         }
 
         private bool IsPolygonSelfIntersecting(List<DShapeVertex> vertices)

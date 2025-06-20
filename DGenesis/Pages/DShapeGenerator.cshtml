@@ -19,13 +19,21 @@
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
                 <div class="form-group mb-2">
-                    <label asp-for="VertexCount" class="control-label">Nombre de sommets</label>
+                    <label asp-for="VertexCount" class="control-label"></label>
                     <input asp-for="VertexCount" type="number" min="3" max="50" class="form-control" />
                 </div>
 
                 <div class="form-group mb-2">
-                    <label asp-for="SymmetryAxes" class="control-label">Axes de symétrie</label>
-                    <input asp-for="SymmetryAxes" type="number" min="0" max="12" class="form-control" />
+                    <label asp-for="SymmetryAxes" class="control-label"></label>
+                    <input asp-for="SymmetryAxes" type="number" min="0" max="12" class="form-control" id="symmetryAxesInput" />
+                </div>
+
+                <div class="form-group mb-2" id="symmetryTypeGroup">
+                    <label asp-for="SymmetryType" class="control-label"></label>
+                    <select asp-for="SymmetryType" class="form-select">
+                        <option value="Axial">Axiale (Miroir)</option>
+                        <option value="Rotational">Rotationnelle (Point)</option>
+                    </select>
                 </div>
 
                 <div class="form-group mb-2">
@@ -69,16 +77,13 @@
 
 @section Scripts {
     <script src="https://cdn.jsdelivr.net/npm/svg-pan-zoom@3.6.1/dist/svg-pan-zoom.min.js"></script>
-    @* L'attribut asp-append-version="true" est crucial pour l'invalidation du cache. *@
     <script src="~/js/polygon-visualizer.js" asp-append-version="true"></script>
     <script>
         const shapeData = @(Model.GeneratedDShapeJson != null ? Html.Raw(Model.GeneratedDShapeJson) : "null");
-        // On récupère le nombre d'axes de symétrie depuis le modèle
         const symmetryAxes = @Model.SymmetryAxes;
 
         if (shapeData) {
             const visualizer = new PolygonVisualizer("#shape-container");
-            // On passe le nombre d'axes à la fonction render
             visualizer.render(shapeData, symmetryAxes);
 
             document.getElementById('copy-json-btn').addEventListener('click', () => {
@@ -92,5 +97,21 @@
                     .catch(err => console.error('Erreur lors de la copie', err));
             });
         }
+
+        // Petit script pour cacher/montrer le type de symétrie
+        const axesInput = document.getElementById('symmetryAxesInput');
+        const typeGroup = document.getElementById('symmetryTypeGroup');
+
+        function toggleSymmetryType() {
+            if (axesInput.value > 1) {
+                typeGroup.style.display = 'block';
+            } else {
+                typeGroup.style.display = 'none';
+            }
+        }
+
+        axesInput.addEventListener('input', toggleSymmetryType);
+        document.addEventListener('DOMContentLoaded', toggleSymmetryType);
+
     </script>
 }

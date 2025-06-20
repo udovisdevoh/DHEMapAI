@@ -21,6 +21,10 @@ namespace DGenesis.Pages
         public int SymmetryAxes { get; set; } = 0;
 
         [BindProperty]
+        [Display(Name = "Type de Symétrie")]
+        public string SymmetryType { get; set; } = "Axial";
+
+        [BindProperty]
         [Display(Name = "Taille")]
         public double Size { get; set; } = 256;
 
@@ -46,7 +50,7 @@ namespace DGenesis.Pages
                 return Page();
             }
 
-            var dshape = _generatorService.Generate(VertexCount, SymmetryAxes, Size, Irregularity);
+            var dshape = _generatorService.Generate(VertexCount, SymmetryAxes, Size, Irregularity, SymmetryType);
 
             var options = new JsonSerializerOptions
             {
