@@ -31,57 +31,25 @@ namespace DGenesis.Services
         public DGraph Generate(int requestedNodes, int lockedPairs, int exitNodes)
         {
             int currentNodesToGenerate = requestedNodes;
-
             while (currentNodesToGenerate >= MINIMUM_NODES)
             {
-                Console.WriteLine($"--- Début de la génération pour une complexité de {currentNodesToGenerate} nœuds ---");
                 for (int attempt = 1; attempt <= ATTEMPTS_PER_COMPLEXITY; attempt++)
                 {
-                    Console.WriteLine($"... Tentative #{attempt}/{ATTEMPTS_PER_COMPLEXITY} pour {currentNodesToGenerate} nœuds.");
-
                     var (graph, nodeDepths) = GenerateTopology(currentNodesToGenerate);
                     if (graph.Nodes.Count < 2) continue;
-
-                    // ETAPE 1: Placement initial rigide
                     _layoutService.AssignLayout(graph, nodeDepths);
-
-                    // --- NOUVELLE MICRO-ÉTAPE : BRISER LA SYMÉTRIE ---
-                    // On ajoute une perturbation infime pour éviter les cas dégénérés (lignes droites).
-                    // C'est le "grain de sable" qui permet au chaos de fonctionner correctement.
-                    foreach (var node in graph.Nodes)
-                    {
-                        node.Position.X += (_random.NextDouble() - 0.5) * 0.1;
-                        node.Position.Y += (_random.NextDouble() - 0.5) * 0.1;
-                    }
-                    // --- FIN DE LA MICRO-ÉTAPE ---
-
-                    // ETAPE 2: Disposition organique et espacement nœud-nœud
+                    foreach (var node in graph.Nodes) { node.Position.X += (_random.NextDouble() - 0.5) * 0.1; node.Position.Y += (_random.NextDouble() - 0.5) * 0.1; }
                     _chaosService.ApplyChaos(graph);
-
-                    // ETAPE 3: Polissage final : espacement nœud-arête
                     _finalizeService.EnforceNodeEdgeSpacing(graph);
-
-                    // ETAPE 4: GARANT DE LA PLANARITÉ : Le désenchevêtrement passe en dernier
                     bool untangleSuccess = _untanglerService.TryUntangleGraph(graph);
-
                     if (untangleSuccess)
                     {
-                        Console.WriteLine("Toutes les étapes géométriques réussies.");
-
-                        // ETAPE 5: Assignation des rôles sur le graphe final et propre
                         _roleAssignmentService.AssignRoles(graph, exitNodes, lockedPairs);
-
-                        Console.WriteLine($"Génération terminée avec succès avec {graph.Nodes.Count} nœuds.");
                         return graph;
                     }
-                    Console.WriteLine("Échec du désenchevêtrement après les passes de polissage. Nouvelle tentative...");
                 }
-
-                Console.WriteLine($"[AVERTISSEMENT] Impossible de générer un graphe stable avec {currentNodesToGenerate} nœuds. Essai avec {currentNodesToGenerate - 1}.");
                 currentNodesToGenerate--;
             }
-
-            Console.WriteLine($"[ERREUR] Échec de la génération du graphe après avoir essayé jusqu'à {MINIMUM_NODES} nœuds.");
             return new DGraph();
         }
 
@@ -90,12 +58,16 @@ namespace DGenesis.Services
             var graph = new DGraph();
             var nodeDepths = new Dictionary<int, int>();
             if (totalNodes < 1) return (graph, nodeDepths);
+
+            var existingEdges = new HashSet<Tuple<int, int>>();
+
             var nodesToProcess = new Queue<DGraphNode>();
             var firstNode = new DGraphNode { Id = 0, Type = "standard" };
             graph.Nodes.Add(firstNode);
             nodesToProcess.Enqueue(firstNode);
             nodeDepths[firstNode.Id] = 0;
             int nextNodeId = 1;
+
             while (nodesToProcess.Count > 0 && nextNodeId < totalNodes)
             {
                 var currentNode = nodesToProcess.Dequeue();
@@ -104,41 +76,39 @@ namespace DGenesis.Services
                 {
                     var newNode = new DGraphNode { Id = nextNodeId, Type = "standard" };
                     graph.Nodes.Add(newNode);
-                    graph.Edges.Add(new DGraphEdge { Source = currentNode.Id, Target = newNode.Id });
+                    AddEdge(graph, existingEdges, currentNode.Id, newNode.Id);
                     nodeDepths[newNode.Id] = nodeDepths[currentNode.Id] + 1;
                     if (_random.NextDouble() < LocalMergeChance)
                     {
-                        var potentialMergeNodes = graph.Nodes.Where(n => n.Id != newNode.Id && n.Id != currentNode.Id && Math.Abs(nodeDepths.GetValueOrDefault(n.Id, -99) - nodeDepths[newNode.Id]) <= 1 && !AreNodesConnected(graph, newNode.Id, n.Id)).ToList();
-                        if (potentialMergeNodes.Count > 0)
-                        {
-                            var mergeTarget = potentialMergeNodes[_random.Next(potentialMergeNodes.Count)];
-                            graph.Edges.Add(new DGraphEdge { Source = newNode.Id, Target = mergeTarget.Id });
-                        }
+                        var potentialMergeNodes = graph.Nodes.Where(n => n.Id != newNode.Id && n.Id != currentNode.Id && Math.Abs(nodeDepths.GetValueOrDefault(n.Id, -99) - nodeDepths[newNode.Id]) <= 1 && !AreNodesConnected(existingEdges, newNode.Id, n.Id)).ToList();
+                        if (potentialMergeNodes.Any()) AddEdge(graph, existingEdges, newNode.Id, potentialMergeNodes[_random.Next(potentialMergeNodes.Count)].Id);
                     }
                     nodesToProcess.Enqueue(newNode);
                     nextNodeId++;
                 }
             }
+
             int globalMergesToAdd = (int)(totalNodes * GlobalMergeFactor);
             int safetyBreak = 0;
             for (int i = 0; i < globalMergesToAdd && safetyBreak < 100; i++)
             {
                 var nodeA = graph.Nodes[_random.Next(graph.Nodes.Count)];
                 var nodeB = graph.Nodes[_random.Next(graph.Nodes.Count)];
-                if (nodeA.Id == nodeB.Id || AreNodesConnected(graph, nodeA.Id, nodeB.Id))
-                {
-                    i--;
-                    safetyBreak++;
-                    continue;
-                }
-                graph.Edges.Add(new DGraphEdge { Source = nodeA.Id, Target = nodeB.Id });
+                if (nodeA.Id == nodeB.Id || AreNodesConnected(existingEdges, nodeA.Id, nodeB.Id)) { i--; safetyBreak++; continue; }
+                AddEdge(graph, existingEdges, nodeA.Id, nodeB.Id);
             }
             return (graph, nodeDepths);
         }
 
-        private bool AreNodesConnected(DGraph graph, int nodeId1, int nodeId2)
+        private void AddEdge(DGraph graph, HashSet<Tuple<int, int>> existingEdges, int id1, int id2)
         {
-            return graph.Edges.Any(e => (e.Source == nodeId1 && e.Target == nodeId2) || (e.Source == nodeId2 && e.Target == nodeId1));
+            graph.Edges.Add(new DGraphEdge { Source = id1, Target = id2 });
+            existingEdges.Add(new Tuple<int, int>(Math.Min(id1, id2), Math.Max(id1, id2)));
+        }
+
+        private bool AreNodesConnected(HashSet<Tuple<int, int>> existingEdges, int id1, int id2)
+        {
+            return existingEdges.Contains(new Tuple<int, int>(Math.Min(id1, id2), Math.Max(id1, id2)));
         }
     }
 }
