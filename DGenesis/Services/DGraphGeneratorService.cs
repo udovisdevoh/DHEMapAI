@@ -34,42 +34,31 @@ namespace DGenesis.Services
 
             while (currentNodesToGenerate >= MINIMUM_NODES)
             {
-                Console.WriteLine($"--- Début de la génération pour une complexité de {currentNodesToGenerate} nœuds ---");
                 for (int attempt = 1; attempt <= ATTEMPTS_PER_COMPLEXITY; attempt++)
                 {
-                    Console.WriteLine($"... Tentative #{attempt}/{ATTEMPTS_PER_COMPLEXITY} pour {currentNodesToGenerate} nœuds.");
-
                     var (graph, nodeDepths) = GenerateTopology(currentNodesToGenerate);
                     if (graph.Nodes.Count < 2) continue;
 
-                    // Le pipeline est maintenant universel et robuste
-                    // 1. Placement initial grossier (sera ignoré par le ChaosService pour les ancres)
                     _layoutService.AssignLayout(graph, nodeDepths);
-
-                    // 2. Le ChaosService avec ancres crée la disposition 2D finale
                     _chaosService.ApplyChaos(graph);
-
-                    // 3. Polissage final pour l'espacement nœud-arête
                     _finalizeService.EnforceNodeEdgeSpacing(graph);
-
-                    // 4. Garantie finale de la planarité
                     bool untangleSuccess = _untanglerService.TryUntangleGraph(graph);
 
                     if (untangleSuccess)
                     {
-                        Console.WriteLine("Toutes les étapes géométriques réussies.");
+                        // --- AJOUT DE LA DERNIÈRE ÉTAPE ---
+                        // On normalise la taille du graphe avant d'assigner les rôles
+                        _finalizeService.NormalizeAndCenter(graph);
+
                         _roleAssignmentService.AssignRoles(graph, exitNodes, lockedPairs);
+
                         Console.WriteLine($"Génération terminée avec succès avec {graph.Nodes.Count} nœuds.");
                         return graph;
                     }
-                    Console.WriteLine("Échec du désenchevêtrement. Nouvelle tentative...");
                 }
-
-                Console.WriteLine($"[AVERTISSEMENT] Impossible de générer un graphe stable avec {currentNodesToGenerate} nœuds. Essai avec {currentNodesToGenerate - 1}.");
                 currentNodesToGenerate--;
             }
 
-            Console.WriteLine($"[ERREUR] Échec de la génération du graphe après avoir essayé jusqu'à {MINIMUM_NODES} nœuds.");
             return new DGraph();
         }
 
