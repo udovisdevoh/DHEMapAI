@@ -34,6 +34,7 @@ namespace DGenesis
             services.AddScoped<DGraphFinalizeService>();
             services.AddScoped<DShapeGeneratorService>();
             services.AddScoped<DShapeDeformationService>();
+            services.AddScoped<DGraphStrategicPlacementService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

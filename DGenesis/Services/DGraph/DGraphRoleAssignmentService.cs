@@ -8,95 +8,67 @@ namespace DGenesis.Services
     public class DGraphRoleAssignmentService
     {
         private readonly DGraphPathfindingService _pathfinder;
+        private readonly DGraphStrategicPlacementService _placementService; // <-- Injection
         private readonly Random _random = new Random();
 
-        public DGraphRoleAssignmentService(DGraphPathfindingService pathfinder)
+        public DGraphRoleAssignmentService(DGraphPathfindingService pathfinder, DGraphStrategicPlacementService placementService)
         {
             _pathfinder = pathfinder;
+            _placementService = placementService; // <-- Injection
         }
 
         public bool TryAssignRoles(DGraph graph, int requestedExitNodes, int requestedLockedPairs)
         {
             if (graph.Nodes.Count < 2) return false;
 
-            // Réinitialiser tous les nœuds
             foreach (var node in graph.Nodes)
             {
                 node.Type = "standard";
                 node.Unlocks = null;
             }
 
-            var availableNodes = graph.Nodes.ToList();
-            var adjacencyList = BuildAdjacencyList(graph);
+            // --- LOGIQUE ENTIÈREMENT REVUE ---
+            // 1. Obtenir les placements stratégiques garantis d'être espacés
+            var (startNodeId, exitNodeIds) = _placementService.FindStrategicPlacements(graph, requestedExitNodes);
 
-            // --- NOUVELLE LOGIQUE D'ASSIGNATION STRATÉGIQUE ---
+            if (startNodeId == -1 || !exitNodeIds.Any()) return false; // Placement impossible
 
-            // 1. Assigner le départ au hasard
-            var startNode = availableNodes[_random.Next(availableNodes.Count)];
-            startNode.Type = "start";
-            availableNodes.Remove(startNode);
+            var nodeDict = graph.Nodes.ToDictionary(n => n.Id);
 
-            // 2. Assigner les sorties en se basant sur la distance du départ
-            var distancesFromStart = _pathfinder.FindAllDistances(adjacencyList, startNode.Id);
-            var exitNodes = new List<DGraphNode>();
-
-            // On s'assure qu'il y a des nœuds atteignables pour y placer une sortie
-            if (distancesFromStart.Count <= 1) return false;
-
-            // La première sortie est la plus éloignée
-            var furthestNodeId = distancesFromStart.OrderByDescending(kvp => kvp.Value).First().Key;
-            var furthestNode = graph.Nodes.First(n => n.Id == furthestNodeId);
-            furthestNode.Type = "exit";
-            exitNodes.Add(furthestNode);
-            availableNodes.Remove(furthestNode);
-
-            // Les sorties suivantes sont choisies pour être également loin
-            while (exitNodes.Count < requestedExitNodes && availableNodes.Any())
+            // 2. Assigner les rôles de départ et de sorties
+            nodeDict[startNodeId].Type = "start";
+            foreach (var exitId in exitNodeIds)
             {
-                // On prend les 20% des nœuds les plus éloignés comme candidats potentiels
-                int candidateCount = Math.Max(1, (int)(distancesFromStart.Count * 0.2));
-                var potentialExitIds = distancesFromStart.OrderByDescending(kvp => kvp.Value)
-                                                         .Select(kvp => kvp.Key)
-                                                         .Where(id => availableNodes.Any(n => n.Id == id))
-                                                         .Take(candidateCount)
-                                                         .ToList();
-                if (!potentialExitIds.Any()) break;
-
-                var nextExitId = potentialExitIds[_random.Next(potentialExitIds.Count)];
-                var nextExitNode = graph.Nodes.First(n => n.Id == nextExitId);
-                nextExitNode.Type = "exit";
-                exitNodes.Add(nextExitNode);
-                availableNodes.Remove(nextExitNode);
+                nodeDict[exitId].Type = "exit";
             }
 
-            // 3. Assigner les paires Clé/Serrure dans l'espace restant
-            var keyNodes = new List<DGraphNode>();
-            var lockNodes = new List<DGraphNode>();
+            // 3. Assigner les clés/serrures aux nœuds restants
+            var availableNodes = graph.Nodes
+                                    .Where(n => n.Type == "standard")
+                                    .ToList();
+
             for (int i = 0; i < requestedLockedPairs && availableNodes.Count >= 2; i++)
             {
                 var lockedNode = availableNodes[_random.Next(availableNodes.Count)];
                 lockedNode.Type = "locked";
-                lockNodes.Add(lockedNode);
                 availableNodes.Remove(lockedNode);
 
                 var unlockerNode = availableNodes[_random.Next(availableNodes.Count)];
                 unlockerNode.Unlocks = new List<int> { lockedNode.Id };
-                keyNodes.Add(unlockerNode);
                 availableNodes.Remove(unlockerNode);
             }
-
             // --- FIN DE LA NOUVELLE LOGIQUE ---
 
-            // Validation finale (inchangée)
-            var primaryExit = exitNodes.First();
-            var solvablePath = _pathfinder.FindSolvablePath(graph, startNode.Id, primaryExit.Id);
+            // 4. Validation finale (inchangée)
+            var primaryExit = nodeDict[exitNodeIds.First()];
+            var solvablePath = _pathfinder.FindSolvablePath(graph, startNodeId, primaryExit.Id);
             if (!solvablePath.Any())
             {
                 Console.WriteLine("Validation échouée : Le chemin vers la sortie est infaisable.");
                 return false;
             }
 
-            if (!IsGraphFullyExplorable(graph, startNode.Id))
+            if (!IsGraphFullyExplorable(graph, startNodeId))
             {
                 Console.WriteLine("Validation échouée : Tous les nœuds ne sont pas accessibles.");
                 return false;
