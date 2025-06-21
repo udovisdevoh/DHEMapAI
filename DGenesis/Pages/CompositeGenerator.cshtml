@@ -14,7 +14,6 @@
         <form method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
-            @* Champ caché pour mémoriser le preset actif *@
             <input type="hidden" asp-for="ActivePresetKey" id="activePresetKeyInput" />
 
             <section>
@@ -22,14 +21,16 @@
 
                 <div class="mb-2">
                     <label asp-for="PresetScale" class="form-label">Échelle des Préréglages</label>
-                    @* Le champ est maintenant lié au modèle avec asp-for *@
                     <input type="number" id="presetScale" class="form-control" step="50" oninput="updatePreset()" asp-for="PresetScale">
                 </div>
 
+                @* Ajout des nouveaux boutons Y et X *@
                 <div class="btn-group btn-group-sm mb-1" role="group">
                     <button type="button" class="btn btn-outline-secondary" id="preset-btn-L" onclick="setPreset('L')">L</button>
                     <button type="button" class="btn btn-outline-secondary" id="preset-btn-T" onclick="setPreset('T')">T</button>
+                    <button type="button" class="btn btn-outline-secondary" id="preset-btn-Y" onclick="setPreset('Y')">Y</button>
                     <button type="button" class="btn btn-outline-secondary" id="preset-btn-Plus" onclick="setPreset('Plus')">+</button>
+                    <button type="button" class="btn btn-outline-secondary" id="preset-btn-X" onclick="setPreset('X')">X</button>
                 </div>
                 <textarea asp-for="InputDGraphJson" class="json-output-area" style="height: 150px;"></textarea>
             </section>
@@ -98,7 +99,6 @@
             });
         }
 
-        // On récupère le preset actif depuis le modèle pour restaurer l'état
         let activePresetKey = '@Model.ActivePresetKey';
         const activePresetKeyInput = document.getElementById('activePresetKeyInput');
 
@@ -111,8 +111,18 @@
                 nodes: [ {id: 0, x: 0, y: 0}, {id: 1, x: 0, y: 1}, {id: 2, x: -1, y: 1}, {id: 3, x: 1, y: 1} ],
                 edges: [ {s: 0, t: 1}, {s: 1, t: 2}, {s: 1, t: 3} ]
             },
+            // NOUVEAU PRÉRÉGLAGE 'Y'
+            'Y': {
+                nodes: [ {id: 0, x: 0, y: 0}, {id: 1, x: 0, y: 1}, {id: 2, x: -0.7071, y: 1.7071}, {id: 3, x: 0.7071, y: 1.7071} ],
+                edges: [ {s: 0, t: 1}, {s: 1, t: 2}, {s: 1, t: 3} ]
+            },
             'Plus': {
                 nodes: [ {id: 0, x: 0, y: 0}, {id: 1, x: 0, y: 1}, {id: 2, x: 0, y: -1}, {id: 3, x: 1, y: 0}, {id: 4, x: -1, y: 0} ],
+                edges: [ {s: 0, t: 1}, {s: 0, t: 2}, {s: 0, t: 3}, {s: 0, t: 4} ]
+            },
+            // NOUVEAU PRÉRÉGLAGE 'X'
+            'X': {
+                nodes: [ {id: 0, x: 0, y: 0}, {id: 1, x: 0.7071, y: 0.7071}, {id: 2, x: -0.7071, y: 0.7071}, {id: 3, x: -0.7071, y: -0.7071}, {id: 4, x: 0.7071, y: -0.7071} ],
                 edges: [ {s: 0, t: 1}, {s: 0, t: 2}, {s: 0, t: 3}, {s: 0, t: 4} ]
             }
         };
@@ -138,7 +148,7 @@
 
         function setPreset(key) {
             activePresetKey = key;
-            activePresetKeyInput.value = key; // On met à jour le champ caché
+            activePresetKeyInput.value = key;
 
             document.querySelectorAll('.btn-group .btn').forEach(btn => btn.classList.remove('active'));
             document.getElementById(`preset-btn-${key}`).classList.add('active');
@@ -146,17 +156,12 @@
             updatePreset();
         }
 
-        // Au chargement de la page, on restaure l'état des boutons et du JSON
         document.addEventListener('DOMContentLoaded', () => {
-            // Appliquer la classe 'active' au bon bouton
             document.querySelectorAll('.btn-group .btn').forEach(btn => btn.classList.remove('active'));
             const activeButton = document.getElementById(`preset-btn-${activePresetKey}`);
             if (activeButton) {
                 activeButton.classList.add('active');
             }
-
-            // Mettre à jour le JSON si le formulaire est vide (premier chargement)
-            // Sinon, le JSON du modèle sera déjà affiché et correct.
             if (!document.getElementById('InputDGraphJson').value) {
                  updatePreset();
             }
