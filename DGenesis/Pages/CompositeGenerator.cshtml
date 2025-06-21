@@ -1,0 +1,95 @@
+﻿@page
+@model DGenesis.Pages.CompositeGeneratorModel
+@{
+    ViewData["Title"] = "Générateur de Forme Composite";
+}
+
+<link rel="stylesheet" href="~/css/polygon-visualizer.css" asp-append-version="true" />
+
+<h1>@ViewData["Title"]</h1>
+<p>Définissez un squelette (D-Graph), configurez les paramètres des pièces, et générez une forme complexe fusionnée.</p>
+
+<div class="row">
+    <div class="col-md-5">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <section>
+                <h5>1. Squelette de la Forme (D-Graph)</h5>
+                <div class="btn-group btn-group-sm mb-1" role="group">
+                    <button type="button" class="btn btn-outline-secondary" onclick="setPreset('L')">L</button>
+                    <button type="button" class="btn btn-outline-secondary" onclick="setPreset('T')">T</button>
+                    <button type="button" class="btn btn-outline-secondary" onclick="setPreset('Plus')">+</button>
+                </div>
+                <textarea asp-for="InputDGraphJson" class="json-output-area" style="height: 150px;"></textarea>
+            </section>
+
+            <section class="mt-3">
+                <h5>2. Paramètres des Pièces Individuelles</h5>
+                @* On pourrait mettre les sliders ici, ou les garder dans un partial view *@
+                <p class="text-muted small">Les paramètres ci-dessous s'appliqueront à chaque "pièce" générée sur les noeuds du squelette.</p>
+                <a asp-page="/DShapeGenerator" target="_blank">Ouvrir le générateur simple pour ajuster...</a>
+            </section>
+
+            <section class="mt-3">
+                <h5>3. Générer</h5>
+                <button type="submit" class="btn btn-primary w-100">Générer la Forme Composite</button>
+            </section>
+        </form>
+
+        @if (Model.OutputDShapeJson != null)
+        {
+            <section class="mt-4">
+                <h4>Résultat Fusionné (D-Shape)</h4>
+                <hr />
+                <textarea id="json-output" class="json-output-area" readonly>@Model.OutputDShapeJson</textarea>
+                <button id="copy-json-btn" class="btn btn-secondary mt-2">Copier le JSON</button>
+            </section>
+        }
+    </div>
+
+    <div class="col-md-7">
+        <h4>Visualisation</h4>
+        <hr />
+        <div id="shape-container" class="shape-container-box" style="height: 80vh;">
+            @if (Model.OutputDShapeJson == null)
+            {
+                <div class="placeholder-text">La forme composite apparaîtra ici.</div>
+            }
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/svg-pan-zoom@3.6.1/dist/svg-pan-zoom.min.js"></script>
+    <script src="~/js/polygon-visualizer.js" asp-append-version="true"></script>
+    <script>
+        const shapeData = @(Model.OutputDShapeJson != null ? Html.Raw(Model.OutputDShapeJson) : "null");
+
+        if (shapeData) {
+            const visualizer = new PolygonVisualizer("#shape-container");
+            visualizer.render(shapeData, 0, 0); // Pas d'axes de symétrie à afficher sur la forme finale
+
+            document.getElementById('copy-json-btn').addEventListener('click', () => {
+                navigator.clipboard.writeText(JSON.stringify(shapeData, null, 2))
+                    .then(() => {
+                        const btn = document.getElementById('copy-json-btn');
+                        const originalText = btn.textContent;
+                        btn.textContent = 'Copié !';
+                        setTimeout(() => { btn.textContent = originalText; }, 2000);
+                    });
+            });
+        }
+
+        const presets = {
+            'L': `{\n  "nodes": [\n    { "id": 0, "position": { "x": 0, "y": 0 } },\n    { "id": 1, "position": { "x": 0, "y": 400 } },\n    { "id": 2, "position": { "x": 400, "y": 0 } }\n  ],\n  "edges": [\n    { "source": 0, "target": 1 },\n    { "source": 0, "target": 2 }\n  ]\n}`,
+            'T': `{\n  "nodes": [\n    { "id": 0, "position": { "x": 0, "y": 0 } },\n    { "id": 1, "position": { "x": 0, "y": 400 } },\n    { "id": 2, "position": { "x": -400, "y": 400 } },\n    { "id": 3, "position": { "x": 400, "y": 400 } }\n  ],\n  "edges": [\n    { "source": 0, "target": 1 },\n    { "source": 1, "target": 2 },\n    { "source": 1, "target": 3 }\n  ]\n}`,
+            'Plus': `{\n  "nodes": [\n    { "id": 0, "position": { "x": 0, "y": 0 } },\n    { "id": 1, "position": { "x": 0, "y": 400 } },\n    { "id": 2, "position": { "x": 0, "y": -400 } },\n    { "id": 3, "position": { "x": 400, "y": 0 } },\n    { "id": 4, "position": { "x": -400, "y": 0 } }\n  ],\n  "edges": [\n    { "source": 0, "target": 1 },\n    { "source": 0, "target": 2 },\n    { "source": 0, "target": 3 },\n    { "source": 0, "target": 4 }\n  ]\n}`
+        };
+
+        function setPreset(key) {
+            document.getElementById('InputDGraphJson').value = presets[key];
+        }
+
+    </script>
+}
