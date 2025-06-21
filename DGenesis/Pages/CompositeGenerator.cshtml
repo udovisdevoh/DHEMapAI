@@ -14,21 +14,38 @@
         <form method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
+            @* Champ caché pour mémoriser le preset actif *@
+            <input type="hidden" asp-for="ActivePresetKey" id="activePresetKeyInput" />
+
             <section>
                 <h5>1. Squelette de la Forme (D-Graph)</h5>
+
+                <div class="mb-2">
+                    <label asp-for="PresetScale" class="form-label">Échelle des Préréglages</label>
+                    @* Le champ est maintenant lié au modèle avec asp-for *@
+                    <input type="number" id="presetScale" class="form-control" step="50" oninput="updatePreset()" asp-for="PresetScale">
+                </div>
+
                 <div class="btn-group btn-group-sm mb-1" role="group">
-                    <button type="button" class="btn btn-outline-secondary" onclick="setPreset('L')">L</button>
-                    <button type="button" class="btn btn-outline-secondary" onclick="setPreset('T')">T</button>
-                    <button type="button" class="btn btn-outline-secondary" onclick="setPreset('Plus')">+</button>
+                    <button type="button" class="btn btn-outline-secondary" id="preset-btn-L" onclick="setPreset('L')">L</button>
+                    <button type="button" class="btn btn-outline-secondary" id="preset-btn-T" onclick="setPreset('T')">T</button>
+                    <button type="button" class="btn btn-outline-secondary" id="preset-btn-Plus" onclick="setPreset('Plus')">+</button>
                 </div>
                 <textarea asp-for="InputDGraphJson" class="json-output-area" style="height: 150px;"></textarea>
             </section>
 
             <section class="mt-3">
                 <h5>2. Paramètres des Pièces Individuelles</h5>
-                @* On pourrait mettre les sliders ici, ou les garder dans un partial view *@
-                <p class="text-muted small">Les paramètres ci-dessous s'appliqueront à chaque "pièce" générée sur les noeuds du squelette.</p>
-                <a asp-page="/DShapeGenerator" target="_blank">Ouvrir le générateur simple pour ajuster...</a>
+                <p class="text-muted small">Utilisez le <a href="/DShapeGenerator" target="_blank">Générateur de Forme Simple</a> pour expérimenter avec les paramètres ci-dessous et voir leur effet sur une pièce.</p>
+
+                <div class="form-group mb-2">
+                    <label asp-for="GenParams.VertexCount" class="control-label"></label>
+                    <input asp-for="GenParams.VertexCount" type="number" min="3" max="50" class="form-control" />
+                </div>
+                <div class="form-group mb-2">
+                    <label asp-for="GenParams.Size" class="control-label"></label>
+                    <input asp-for="GenParams.Size" type="number" min="32" max="1024" class="form-control" />
+                </div>
             </section>
 
             <section class="mt-3">
@@ -68,7 +85,7 @@
 
         if (shapeData) {
             const visualizer = new PolygonVisualizer("#shape-container");
-            visualizer.render(shapeData, 0, 0); // Pas d'axes de symétrie à afficher sur la forme finale
+            visualizer.render(shapeData, 0, 0);
 
             document.getElementById('copy-json-btn').addEventListener('click', () => {
                 navigator.clipboard.writeText(JSON.stringify(shapeData, null, 2))
@@ -81,15 +98,69 @@
             });
         }
 
-        const presets = {
-            'L': `{\n  "nodes": [\n    { "id": 0, "position": { "x": 0, "y": 0 } },\n    { "id": 1, "position": { "x": 0, "y": 400 } },\n    { "id": 2, "position": { "x": 400, "y": 0 } }\n  ],\n  "edges": [\n    { "source": 0, "target": 1 },\n    { "source": 0, "target": 2 }\n  ]\n}`,
-            'T': `{\n  "nodes": [\n    { "id": 0, "position": { "x": 0, "y": 0 } },\n    { "id": 1, "position": { "x": 0, "y": 400 } },\n    { "id": 2, "position": { "x": -400, "y": 400 } },\n    { "id": 3, "position": { "x": 400, "y": 400 } }\n  ],\n  "edges": [\n    { "source": 0, "target": 1 },\n    { "source": 1, "target": 2 },\n    { "source": 1, "target": 3 }\n  ]\n}`,
-            'Plus': `{\n  "nodes": [\n    { "id": 0, "position": { "x": 0, "y": 0 } },\n    { "id": 1, "position": { "x": 0, "y": 400 } },\n    { "id": 2, "position": { "x": 0, "y": -400 } },\n    { "id": 3, "position": { "x": 400, "y": 0 } },\n    { "id": 4, "position": { "x": -400, "y": 0 } }\n  ],\n  "edges": [\n    { "source": 0, "target": 1 },\n    { "source": 0, "target": 2 },\n    { "source": 0, "target": 3 },\n    { "source": 0, "target": 4 }\n  ]\n}`
+        // On récupère le preset actif depuis le modèle pour restaurer l'état
+        let activePresetKey = '@Model.ActivePresetKey';
+        const activePresetKeyInput = document.getElementById('activePresetKeyInput');
+
+        const presetStructures = {
+            'L': {
+                nodes: [ {id: 0, x: 0, y: 0}, {id: 1, x: 0, y: 1}, {id: 2, x: 1, y: 0} ],
+                edges: [ {s: 0, t: 1}, {s: 0, t: 2} ]
+            },
+            'T': {
+                nodes: [ {id: 0, x: 0, y: 0}, {id: 1, x: 0, y: 1}, {id: 2, x: -1, y: 1}, {id: 3, x: 1, y: 1} ],
+                edges: [ {s: 0, t: 1}, {s: 1, t: 2}, {s: 1, t: 3} ]
+            },
+            'Plus': {
+                nodes: [ {id: 0, x: 0, y: 0}, {id: 1, x: 0, y: 1}, {id: 2, x: 0, y: -1}, {id: 3, x: 1, y: 0}, {id: 4, x: -1, y: 0} ],
+                edges: [ {s: 0, t: 1}, {s: 0, t: 2}, {s: 0, t: 3}, {s: 0, t: 4} ]
+            }
         };
 
-        function setPreset(key) {
-            document.getElementById('InputDGraphJson').value = presets[key];
+        function updatePreset() {
+            const scale = parseFloat(document.getElementById('presetScale').value) || 400;
+            const structure = presetStructures[activePresetKey];
+            if (!structure) return;
+
+            const dgraphObject = {
+                nodes: structure.nodes.map(n => ({
+                    id: n.id,
+                    position: { x: n.x * scale, y: n.y * scale }
+                })),
+                edges: structure.edges.map(e => ({
+                    source: e.s,
+                    target: e.t
+                }))
+            };
+
+            document.getElementById('InputDGraphJson').value = JSON.stringify(dgraphObject, null, 2);
         }
+
+        function setPreset(key) {
+            activePresetKey = key;
+            activePresetKeyInput.value = key; // On met à jour le champ caché
+
+            document.querySelectorAll('.btn-group .btn').forEach(btn => btn.classList.remove('active'));
+            document.getElementById(`preset-btn-${key}`).classList.add('active');
+
+            updatePreset();
+        }
+
+        // Au chargement de la page, on restaure l'état des boutons et du JSON
+        document.addEventListener('DOMContentLoaded', () => {
+            // Appliquer la classe 'active' au bon bouton
+            document.querySelectorAll('.btn-group .btn').forEach(btn => btn.classList.remove('active'));
+            const activeButton = document.getElementById(`preset-btn-${activePresetKey}`);
+            if (activeButton) {
+                activeButton.classList.add('active');
+            }
+
+            // Mettre à jour le JSON si le formulaire est vide (premier chargement)
+            // Sinon, le JSON du modèle sera déjà affiché et correct.
+            if (!document.getElementById('InputDGraphJson').value) {
+                 updatePreset();
+            }
+        });
 
     </script>
 }

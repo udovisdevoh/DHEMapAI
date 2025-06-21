@@ -22,6 +22,14 @@ namespace DGenesis.Pages
         [BindProperty]
         public DShapeDeformationParameters DefParams { get; set; } = new DShapeDeformationParameters();
 
+        // NOUVELLES PROPRIÉTÉS POUR CONSERVER L'ÉTAT
+        [BindProperty]
+        public double PresetScale { get; set; } = 400;
+
+        [BindProperty]
+        public string ActivePresetKey { get; set; } = "L";
+
+
         public string OutputDShapeJson { get; private set; }
 
         public CompositeGeneratorModel(DCompositeGeneratorService compositeGenerator)
@@ -31,13 +39,12 @@ namespace DGenesis.Pages
 
         public void OnGet()
         {
-            // Pré-remplir avec un exemple de squelette en 'L'
-            InputDGraphJson = "{\n  \"nodes\": [\n    { \"id\": 0, \"position\": { \"x\": 0, \"y\": 0 } },\n    { \"id\": 1, \"position\": { \"x\": 0, \"y\": 400 } },\n    { \"id\": 2, \"position\": { \"x\": 400, \"y\": 0 } }\n  ],\n  \"edges\": [\n    { \"source\": 0, \"target\": 1 },\n    { \"source\": 0, \"target\": 2 }\n  ]\n}";
+            // L'initialisation se fait maintenant entièrement en JS pour la cohérence
         }
 
         public IActionResult OnPost()
         {
-            if (!ModelState.IsValid || string.IsNullOrWhiteSpace(InputDGraphJson))
+            if (!ModelState.IsValid)
             {
                 return Page();
             }
