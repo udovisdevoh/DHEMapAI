@@ -1,9 +1,11 @@
 ﻿using DGenesis.Models;
-using DGenesis.Models.DGraph;
 using DGenesis.Services.Deformations;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+
+// Ajout du using pour DGraph qui est utilisé comme squelette
+using DGraph = DGenesis.Models.DGraph.DGraph;
 
 namespace DGenesis.Services.Composite
 {
@@ -12,15 +14,18 @@ namespace DGenesis.Services.Composite
         private readonly DShapeGeneratorService _shapeGenerator;
         private readonly DShapeDeformationService _deformationService;
         private readonly DShapeFusionService _fusionService;
+        private readonly PolygonRepairService _repairService;
 
         public DCompositeGeneratorService(
             DShapeGeneratorService shapeGenerator,
             DShapeDeformationService deformationService,
-            DShapeFusionService fusionService)
+            DShapeFusionService fusionService,
+            PolygonRepairService repairService)
         {
             _shapeGenerator = shapeGenerator;
             _deformationService = deformationService;
             _fusionService = fusionService;
+            _repairService = repairService;
         }
 
         public DShape Generate(DGraph skeleton, DShapeGenerationParameters roomParams, DShapeDeformationParameters deformParams)
@@ -30,7 +35,7 @@ namespace DGenesis.Services.Composite
 
             var rooms = new Dictionary<int, DShape>();
 
-            // 1. Générer une "pièce" (DShape) pour chaque noeud du squelette
+            // 1. Générer, déformer et placer une "pièce" (DShape) pour chaque noeud du squelette.
             foreach (var node in skeleton.Nodes)
             {
                 var baseShape = _shapeGenerator.Generate(roomParams);
@@ -45,49 +50,49 @@ namespace DGenesis.Services.Composite
                 rooms[node.Id] = baseShape;
             }
 
+            // S'il n'y a qu'une seule pièce, pas besoin de fusionner ou réparer.
             if (skeleton.Nodes.Count == 1)
             {
-                return rooms[skeleton.Nodes.First().Id];
+                return rooms.Values.First();
             }
 
-            // 2. Fusionner les pièces en suivant les arêtes du squelette
-            DShape compositeShape = null;
-            var processedEdges = new HashSet<Tuple<int, int>>();
+            // 2. Fusionner les pièces en suivant les arêtes du squelette.
+            // On utilise un parcours de graphe pour s'assurer que tout est connecté logiquement.
+            var nodesToProcess = new Queue<int>(new[] { skeleton.Nodes.First().Id });
+            var processedNodes = new HashSet<int>(nodesToProcess);
+            DShape compositeShape = rooms[nodesToProcess.Peek()];
 
-            // On utilise un parcours de graphe pour s'assurer que tout est connecté logiquement
-            var queue = new Queue<int>();
-            queue.Enqueue(skeleton.Nodes.First().Id);
-            var visitedNodes = new HashSet<int> { skeleton.Nodes.First().Id };
-            compositeShape = rooms[skeleton.Nodes.First().Id];
-
-            while (queue.Any())
+            while (nodesToProcess.Any())
             {
-                var currentNodeId = queue.Dequeue();
+                int currentNodeId = nodesToProcess.Dequeue();
                 var neighbors = skeleton.Edges
-                    .Where(e => e.Source == currentNodeId || e.Target == currentNodeId)
-                    .Select(e => e.Source == currentNodeId ? e.Target : e.Source);
+                                      .Where(e => e.Source == currentNodeId || e.Target == currentNodeId)
+                                      .Select(e => e.Source == currentNodeId ? e.Target : e.Source);
 
                 foreach (var neighborId in neighbors)
                 {
-                    if (!visitedNodes.Contains(neighborId))
+                    if (!processedNodes.Contains(neighborId))
                     {
                         compositeShape = _fusionService.Fuse(compositeShape, rooms[neighborId]);
-                        visitedNodes.Add(neighborId);
-                        queue.Enqueue(neighborId);
+                        processedNodes.Add(neighborId);
+                        nodesToProcess.Enqueue(neighborId);
                     }
                 }
             }
 
-            // Arrondi final après toutes les transformations et fusions
-            compositeShape.Vertices.ForEach(v => {
+            // 3. ÉTAPE FINALE : Réparation du polygone fusionné pour enlever les auto-intersections.
+            var finalShape = _repairService.Repair(compositeShape);
+
+            // 4. Arrondi des coordonnées après toutes les transformations.
+            finalShape.Vertices.ForEach(v => {
                 v.X = Math.Round(v.X, 2);
                 v.Y = Math.Round(v.Y, 2);
             });
 
-            compositeShape.Name = "composite_shape";
-            compositeShape.Description = $"Composite shape from a {skeleton.Nodes.Count}-node skeleton.";
+            finalShape.Name = "composite_shape_repaired";
+            finalShape.Description = $"Composite shape from a {skeleton.Nodes.Count}-node skeleton, repaired.";
 
-            return compositeShape;
+            return finalShape;
         }
     }
 }

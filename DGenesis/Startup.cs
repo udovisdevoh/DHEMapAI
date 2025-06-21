@@ -38,6 +38,7 @@ namespace DGenesis
             services.AddScoped<DGraphStrategicPlacementService>();
             services.AddScoped<DCompositeGeneratorService>();
             services.AddScoped<DShapeFusionService>();
+            services.AddScoped<PolygonRepairService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

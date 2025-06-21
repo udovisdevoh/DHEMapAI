@@ -32,6 +32,8 @@ namespace DGenesis.Services.Composite
             }
 
             // 2. "Recoudre" les listes de sommets pour créer un nouveau polygone unique
+            // C'est la logique simple qui crée une forme en "8", produisant des intersections
+            // qui seront ensuite traitées par le PolygonRepairService.
             var newVertices = new List<DShapeVertex>();
 
             // Ajouter la première partie de la forme A
