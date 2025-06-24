@@ -1,0 +1,116 @@
+﻿using DGenesis.Models.DGraph;
+using DGenesis.Models.DPolyGraph;
+using DGenesis.Models.Geometry;
+using DGenesis.Services.Geometric;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace DGenesis.Services
+{
+    public class SectorLayoutService
+    {
+        private readonly PolygonClippingService _clippingService;
+
+        public SectorLayoutService(PolygonClippingService clippingService)
+        {
+            _clippingService = clippingService;
+        }
+
+        public Dictionary<int, List<DPolyVertex>> GenerateLayout(IReadOnlyList<DGraphNode> nodes)
+        {
+            if (nodes.Count < 2)
+            {
+                if (nodes.Count == 1)
+                {
+                    var singleNodeResults = new Dictionary<int, List<DPolyVertex>>();
+                    singleNodeResults[nodes[0].Id] = BoundingBoxToPolygon(CalculateBoundingBox(nodes));
+                    return singleNodeResults;
+                }
+                return new Dictionary<int, List<DPolyVertex>>();
+            }
+
+            var boundingBox = CalculateBoundingBox(nodes);
+            var results = new Dictionary<int, List<DPolyVertex>>();
+
+            foreach (var node in nodes)
+            {
+                List<DPolyVertex> nodePolygon = BoundingBoxToPolygon(boundingBox);
+
+                foreach (var otherNode in nodes)
+                {
+                    if (node.Id == otherNode.Id) continue;
+
+                    var p1 = new DPolyVertex { X = node.Position.X, Y = node.Position.Y };
+                    var p2 = new DPolyVertex { X = otherNode.Position.X, Y = otherNode.Position.Y };
+
+                    var midPoint = new DPolyVertex { X = (p1.X + p2.X) / 2, Y = (p1.Y + p2.Y) / 2 };
+                    var perpendicularVector = new DPolyVertex { X = p1.Y - p2.Y, Y = p2.X - p1.X };
+
+                    // CORRECTION 1: Utilisation d'un grand scalaire constant pour la stabilité.
+                    double largeScalar = 10000.0;
+                    var pA = new DPolyVertex { X = midPoint.X - perpendicularVector.X * largeScalar, Y = midPoint.Y - perpendicularVector.Y * largeScalar };
+                    var pB = new DPolyVertex { X = midPoint.X + perpendicularVector.X * largeScalar, Y = midPoint.Y + perpendicularVector.Y * largeScalar };
+
+                    var clipLine = new Line { Point1 = pA, Point2 = pB };
+
+                    nodePolygon = _clippingService.Clip(nodePolygon, clipLine);
+                }
+
+                // CORRECTION 2: On trie les sommets du polygone final pour garantir une forme convexe.
+                var sortedPolygon = SortVerticesOfConvexPolygon(nodePolygon);
+                results[node.Id] = sortedPolygon.Select(v => new DPolyVertex { X = Math.Round(v.X, 2), Y = Math.Round(v.Y, 2) }).ToList();
+            }
+
+            return results;
+        }
+
+        // Nouvelle méthode pour trier les sommets d'un polygone convexe
+        private List<DPolyVertex> SortVerticesOfConvexPolygon(List<DPolyVertex> polygon)
+        {
+            if (polygon == null || polygon.Count < 3)
+            {
+                return polygon; // Pas assez de points pour former un polygone
+            }
+
+            // 1. Trouver le centroïde (point central) du polygone
+            double centroidX = 0, centroidY = 0;
+            foreach (var vertex in polygon)
+            {
+                centroidX += vertex.X;
+                centroidY += vertex.Y;
+            }
+            centroidX /= polygon.Count;
+            centroidY /= polygon.Count;
+
+            // 2. Trier les sommets en fonction de l'angle qu'ils forment avec le centroïde
+            return polygon.OrderBy(v => Math.Atan2(v.Y - centroidY, v.X - centroidX)).ToList();
+        }
+
+        private BoundingBox CalculateBoundingBox(IReadOnlyList<DGraphNode> nodes)
+        {
+            var allX = nodes.Select(n => n.Position.X).ToList();
+            var allY = nodes.Select(n => n.Position.Y).ToList();
+            double padding = 1000;
+
+            return new BoundingBox
+            {
+                MinX = (allX.Any() ? allX.Min() : 0) - padding,
+                MaxX = (allX.Any() ? allX.Max() : 0) + padding,
+                MinY = (allY.Any() ? allY.Min() : 0) - padding,
+                MaxY = (allY.Any() ? allY.Max() : 0) + padding
+            };
+        }
+
+        private List<DPolyVertex> BoundingBoxToPolygon(BoundingBox box)
+        {
+            return new List<DPolyVertex>
+            {
+                new DPolyVertex { X = box.MinX, Y = box.MinY },
+                new DPolyVertex { X = box.MaxX, Y = box.MinY },
+                new DPolyVertex { X = box.MaxX, Y = box.MaxY },
+                new DPolyVertex { X = box.MinX, Y = box.MaxY }
+            };
+        }
+    }
+}

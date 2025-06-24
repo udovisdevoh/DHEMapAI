@@ -1,6 +1,7 @@
 using DGenesis.Services;
 using DGenesis.Services.Composite;
 using DGenesis.Services.Deformations;
+using DGenesis.Services.Geometric;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -39,6 +40,8 @@ namespace DGenesis
             services.AddScoped<DCompositeGeneratorService>();
             services.AddScoped<DShapeFusionService>();
             services.AddScoped<PolygonRepairService>();
+            services.AddScoped<SectorLayoutService>();
+            services.AddScoped<PolygonClippingService>();
             services.AddScoped<DPolyGraphGeneratorService>();
         }
 

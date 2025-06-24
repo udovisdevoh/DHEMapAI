@@ -8,29 +8,37 @@ namespace DGenesis.Services
 {
     public class DPolyGraphGeneratorService
     {
-        private readonly Random _random = new Random();
+        private readonly SectorLayoutService _layoutService; // NOUVEAU
+
+        // Le service de layout est maintenant injecté
+        public DPolyGraphGeneratorService(SectorLayoutService layoutService)
+        {
+            _layoutService = layoutService;
+        }
 
         public DPolyGraph Generate(DGraph dGraph)
         {
             var polyGraph = new DPolyGraph();
             var lockToKeyMap = new Dictionary<int, int>();
 
-            // Première passe pour créer les secteurs et mapper les relations de déverrouillage
+            // ÉTAPE 1: Générer la géométrie non-superposée
+            var polygonLayout = _layoutService.GenerateLayout(dGraph.Nodes);
+
+            // ÉTAPE 2: Créer les secteurs et mapper les relations
             foreach (var node in dGraph.Nodes)
             {
                 var sector = new DPolySector
                 {
                     Id = node.Id,
                     Type = node.Type,
-                    Polygon = GenerateRandomPolygon(node.Position)
+                    // Utilise le polygone généré par le service de layout
+                    Polygon = polygonLayout.ContainsKey(node.Id) ? polygonLayout[node.Id] : new List<DPolyVertex>()
                 };
 
-                // Si le noeud DGraph a une liste "Unlocks", on prend le premier pour la relation 1-1
                 if (node.Unlocks != null && node.Unlocks.Any())
                 {
                     int lockedId = node.Unlocks.First();
                     sector.UnlocksSector = lockedId;
-                    // On mappe la relation pour la passe suivante
                     if (!lockToKeyMap.ContainsKey(lockedId))
                     {
                         lockToKeyMap.Add(lockedId, node.Id);
@@ -40,7 +48,7 @@ namespace DGenesis.Services
                 polyGraph.Sectors.Add(sector);
             }
 
-            // Deuxième passe pour assigner la propriété "unlockedBySector"
+            // ÉTAPE 3: Assigner la propriété "unlockedBySector"
             foreach (var sector in polyGraph.Sectors)
             {
                 if (lockToKeyMap.TryGetValue(sector.Id, out int keyId))
@@ -50,32 +58,6 @@ namespace DGenesis.Services
             }
 
             return polyGraph;
-        }
-
-        private List<DPolyVertex> GenerateRandomPolygon(Position center, int minVertices = 4, int maxVertices = 7, double minRadius = 80.0, double maxRadius = 160.0)
-        {
-            int vertexCount = _random.Next(minVertices, maxVertices + 1);
-            var angles = new List<double>();
-
-            for (int i = 0; i < vertexCount; i++)
-            {
-                angles.Add(_random.NextDouble() * 2 * Math.PI);
-            }
-            // Trier les angles assure que le polygone ne se croise pas lui-même (il sera "étoilé")
-            angles.Sort();
-
-            var vertices = new List<DPolyVertex>();
-            foreach (var angle in angles)
-            {
-                double radius = minRadius + _random.NextDouble() * (maxRadius - minRadius);
-                vertices.Add(new DPolyVertex
-                {
-                    X = Math.Round(center.X + radius * Math.Cos(angle), 2),
-                    Y = Math.Round(center.Y + radius * Math.Sin(angle), 2)
-                });
-            }
-
-            return vertices;
         }
     }
 }
