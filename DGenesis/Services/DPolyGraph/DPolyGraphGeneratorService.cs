@@ -27,7 +27,7 @@ namespace DGenesis.Services
             var nodeMap = dGraph.Nodes.ToDictionary(n => n.Id);
             int voidNodeId = -1;
 
-            // --- NOUVELLE ÉTAPE 0: Ajout de vides de séparation ---
+            // ÉTAPE 0: Ajout de vides de séparation
             var existingEdges = new HashSet<Tuple<int, int>>();
             foreach (var edge in dGraph.Edges)
             {
@@ -35,8 +35,6 @@ namespace DGenesis.Services
             }
 
             var originalNodes = dGraph.Nodes;
-            // Un seuil de distance, si deux nœuds sont plus proches que ça, ils sont "trop proches"
-            // Ce seuil pourrait être dynamique, mais une constante est un bon début.
             double proximityThreshold = 150.0;
 
             for (int i = 0; i < originalNodes.Count; i++)
@@ -46,11 +44,9 @@ namespace DGenesis.Services
                     var nodeA = originalNodes[i];
                     var nodeB = originalNodes[j];
 
-                    // Vérifier si une arête existe entre A et B
                     var edgeTuple = new Tuple<int, int>(Math.Min(nodeA.Id, nodeB.Id), Math.Max(nodeA.Id, nodeB.Id));
                     if (existingEdges.Contains(edgeTuple)) continue;
 
-                    // S'il n'y a pas d'arête, vérifier s'ils sont trop proches
                     double distSq = Math.Pow(nodeA.Position.X - nodeB.Position.X, 2) + Math.Pow(nodeA.Position.Y - nodeB.Position.Y, 2);
                     if (distSq < proximityThreshold * proximityThreshold)
                     {
@@ -68,8 +64,7 @@ namespace DGenesis.Services
                 }
             }
 
-
-            // --- ÉTAPE 1: Ajout des vides intérieurs (cours) ---
+            // ÉTAPE 1: Ajout des vides intérieurs (cours)
             var cycles = _graphAnalysisService.FindSimpleCycles(dGraph, 3, dGraph.Nodes.Count);
             foreach (var cycle in cycles)
             {
@@ -95,7 +90,7 @@ namespace DGenesis.Services
                 });
             }
 
-            // --- ÉTAPE 2: Ajout des vides extérieurs ---
+            // ÉTAPE 2: Ajout des vides extérieurs
             var bbox = CalculateBoundingBox(dGraph.Nodes);
             int externalVoids = _random.Next(2, 5);
             for (int i = 0; i < externalVoids; i++)
@@ -115,7 +110,7 @@ namespace DGenesis.Services
                 });
             }
 
-            // --- Le reste du processus reste identique ---
+            // ÉTAPE 3: Génération de la géométrie Voronoï pure avec TOUS les nœuds
             var polygonLayout = _layoutService.GenerateLayout(allNodes);
             var polyGraph = new DPolyGraph();
             var lockToKeyMap = new Dictionary<int, int>();
@@ -141,10 +136,12 @@ namespace DGenesis.Services
                 polyGraph.Sectors.Add(sector);
             }
 
-            int corridorIdCounter = -200; // Démarrer plus bas pour éviter conflit avec autres voids
+            // ÉTAPE 4: Générer les corridors pour les connexions manquantes
+            int corridorIdCounter = -200;
             var corridors = _corridorService.GenerateCorridors(dGraph, polyGraph, ref corridorIdCounter);
             polyGraph.Sectors.AddRange(corridors);
 
+            // ÉTAPE 5: Finalisation des relations
             foreach (var sector in polyGraph.Sectors)
             {
                 if (lockToKeyMap.TryGetValue(sector.Id, out int keyId))
@@ -153,6 +150,7 @@ namespace DGenesis.Services
                 }
             }
 
+            // ÉTAPE 6: Filtrer les secteurs "void"
             polyGraph.Sectors = polyGraph.Sectors.Where(s => s.Type != "void").ToList();
 
             return polyGraph;

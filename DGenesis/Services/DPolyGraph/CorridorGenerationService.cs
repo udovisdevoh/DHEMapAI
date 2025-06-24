@@ -19,6 +19,7 @@ namespace DGenesis.Services
 
             foreach (var edge in graph.Edges)
             {
+                // Vérifie si les polygones sont déjà adjacents géométriquement
                 bool isAdjacent = existingAdjacencies.ContainsKey(edge.Source) && existingAdjacencies[edge.Source].Contains(edge.Target);
 
                 if (!isAdjacent)
@@ -53,6 +54,8 @@ namespace DGenesis.Services
             var adjacencies = new Dictionary<int, HashSet<int>>();
             var sectors = polyMap.Values.ToList();
 
+            foreach (var s in sectors) { adjacencies[s.Id] = new HashSet<int>(); }
+
             for (int i = 0; i < sectors.Count; i++)
             {
                 for (int j = i + 1; j < sectors.Count; j++)
@@ -60,19 +63,36 @@ namespace DGenesis.Services
                     var sectorA = sectors[i];
                     var sectorB = sectors[j];
 
-                    if (!adjacencies.ContainsKey(sectorA.Id)) adjacencies[sectorA.Id] = new HashSet<int>();
-                    if (!adjacencies.ContainsKey(sectorB.Id)) adjacencies[sectorB.Id] = new HashSet<int>();
-
-                    int sharedVertices = sectorA.Polygon.Count(vA => sectorB.Polygon.Any(vB => Math.Abs(vA.X - vB.X) < 0.1 && Math.Abs(vA.Y - vB.Y) < 0.1));
-
-                    if (sharedVertices >= 2)
+                    // Itération sur chaque arête du polygone A
+                    for (int k = 0; k < sectorA.Polygon.Count; k++)
                     {
-                        adjacencies[sectorA.Id].Add(sectorB.Id);
-                        adjacencies[sectorB.Id].Add(sectorA.Id);
+                        var pA1 = sectorA.Polygon[k];
+                        var pA2 = sectorA.Polygon[(k + 1) % sectorA.Polygon.Count];
+
+                        // Itération sur chaque arête du polygone B
+                        for (int l = 0; l < sectorB.Polygon.Count; l++)
+                        {
+                            var pB1 = sectorB.Polygon[l];
+                            var pB2 = sectorB.Polygon[(l + 1) % sectorB.Polygon.Count];
+
+                            // Une arête est partagée si ses points de départ/fin correspondent dans l'ordre inverse
+                            if (ArePointsClose(pA1, pB2) && ArePointsClose(pA2, pB1))
+                            {
+                                adjacencies[sectorA.Id].Add(sectorB.Id);
+                                adjacencies[sectorB.Id].Add(sectorA.Id);
+                                goto next_sector_pair; // Optimisation: passer à la prochaine paire de secteurs
+                            }
+                        }
                     }
+                next_sector_pair:;
                 }
             }
             return adjacencies;
+        }
+
+        private bool ArePointsClose(DPolyVertex p1, DPolyVertex p2, double tolerance = 0.1)
+        {
+            return Math.Abs(p1.X - p2.X) < tolerance && Math.Abs(p1.Y - p2.Y) < tolerance;
         }
 
         private void FindClosestPoints(List<DPolyVertex> polyA, List<DPolyVertex> polyB, out DPolyVertex pointA, out DPolyVertex pointB)
@@ -81,7 +101,7 @@ namespace DGenesis.Services
             pointA = null;
             pointB = null;
 
-            if (polyA == null || polyB == null) return;
+            if (polyA == null || polyB == null || !polyA.Any() || !polyB.Any()) return;
 
             foreach (var vA in polyA)
             {
