@@ -17,7 +17,6 @@ namespace DGenesis.Services
             _clippingService = clippingService;
         }
 
-        // La méthode ne prend plus que la liste de nœuds
         public Dictionary<int, List<DPolyVertex>> GenerateLayout(IReadOnlyList<DGraphNode> allNodes)
         {
             if (allNodes.Count < 2)
@@ -38,8 +37,7 @@ namespace DGenesis.Services
             {
                 List<DPolyVertex> nodePolygon = BoundingBoxToPolygon(boundingBox);
 
-                // CORRECTION : On revient à la logique de Voronoï pur en clippant contre TOUS les autres nœuds.
-                // Cela garantit l'absence de chevauchement.
+                // Implémentation du Voronoï pur : on coupe par rapport à TOUS les autres nœuds.
                 foreach (var otherNode in allNodes)
                 {
                     if (node.Id == otherNode.Id) continue;
@@ -60,8 +58,6 @@ namespace DGenesis.Services
                 }
 
                 var sortedPolygon = SortVerticesOfConvexPolygon(nodePolygon);
-
-                // Le rétrécissement n'est plus nécessaire ici.
                 results[node.Id] = sortedPolygon.Select(v => new DPolyVertex { X = Math.Round(v.X, 2), Y = Math.Round(v.Y, 2) }).ToList();
             }
 

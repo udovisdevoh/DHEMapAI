@@ -11,7 +11,9 @@ namespace DGenesis.Services
         public List<DPolySector> GenerateCorridors(DGraph graph, DPolyGraph polyGraph, ref int corridorIdCounter)
         {
             var corridors = new List<DPolySector>();
-            var polyMap = polyGraph.Sectors.ToDictionary(s => s.Id);
+            var polyMap = polyGraph.Sectors.Where(s => s.Id >= 0).ToDictionary(s => s.Id);
+
+            if (polyMap.Count == 0) return corridors;
 
             var existingAdjacencies = FindGeometricAdjacencies(polyMap);
 
@@ -21,6 +23,8 @@ namespace DGenesis.Services
 
                 if (!isAdjacent)
                 {
+                    if (!polyMap.ContainsKey(edge.Source) || !polyMap.ContainsKey(edge.Target)) continue;
+
                     var polyA = polyMap[edge.Source].Polygon;
                     var polyB = polyMap[edge.Target].Polygon;
 
@@ -29,12 +33,15 @@ namespace DGenesis.Services
                     if (closestPointA != null && closestPointB != null)
                     {
                         var corridorPolygon = CreateCorridorPolygon(closestPointA, closestPointB, 32.0); // Largeur du corridor : 32 unités
-                        corridors.Add(new DPolySector
+                        if (corridorPolygon.Any())
                         {
-                            Id = corridorIdCounter--,
-                            Type = "corridor",
-                            Polygon = corridorPolygon
-                        });
+                            corridors.Add(new DPolySector
+                            {
+                                Id = corridorIdCounter--,
+                                Type = "corridor",
+                                Polygon = corridorPolygon
+                            });
+                        }
                     }
                 }
             }
@@ -56,7 +63,6 @@ namespace DGenesis.Services
                     if (!adjacencies.ContainsKey(sectorA.Id)) adjacencies[sectorA.Id] = new HashSet<int>();
                     if (!adjacencies.ContainsKey(sectorB.Id)) adjacencies[sectorB.Id] = new HashSet<int>();
 
-                    // Deux polygones sont adjacents s'ils partagent au moins 2 sommets (une arête)
                     int sharedVertices = sectorA.Polygon.Count(vA => sectorB.Polygon.Any(vB => Math.Abs(vA.X - vB.X) < 0.1 && Math.Abs(vA.Y - vB.Y) < 0.1));
 
                     if (sharedVertices >= 2)
@@ -74,6 +80,8 @@ namespace DGenesis.Services
             double minDistanceSq = double.MaxValue;
             pointA = null;
             pointB = null;
+
+            if (polyA == null || polyB == null) return;
 
             foreach (var vA in polyA)
             {
