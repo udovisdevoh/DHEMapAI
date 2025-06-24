@@ -44,6 +44,7 @@ namespace DGenesis
             services.AddScoped<PolygonClippingService>();
             services.AddScoped<DPolyGraphGeneratorService>();
             services.AddScoped<GraphAnalysisService>();
+            services.AddScoped<CorridorGenerationService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

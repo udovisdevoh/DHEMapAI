@@ -9,9 +9,10 @@
             standard: "#3498db",
             start: "#2ecc71",
             exit: "#e74c3c",
-            locked: "#95a5a6"
+            locked: "#95a5a6",
+            corridor: "#f39c12" // Couleur pour les corridors
         };
-        this.highlightColor = "#f1c40f"; // Jaune pour la surbrillance
+        this.highlightColor = "#e67e22"; // Une couleur de surbrillance plus vive
     }
 
     _createSVG() {
@@ -59,7 +60,6 @@
 
         this._createSVG();
         const { sectors } = polyGraphData;
-        const sectorMap = new Map(sectors.map(s => [s.id, s]));
 
         this.svg.setAttribute("viewBox", this._calculateViewBox(sectors));
 
@@ -75,9 +75,9 @@
             // Logique de surbrillance
             polygon.addEventListener('mouseover', () => {
                 let partnerId = null;
-                if (sector.unlocksSector) {
+                if (sector.unlocksSector != null) {
                     partnerId = sector.unlocksSector;
-                } else if (sector.unlockedBySector) {
+                } else if (sector.unlockedBySector != null) {
                     partnerId = sector.unlockedBySector;
                 }
 

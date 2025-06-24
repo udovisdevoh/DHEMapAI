@@ -10,13 +10,15 @@ namespace DGenesis.Services
     public class DPolyGraphGeneratorService
     {
         private readonly SectorLayoutService _layoutService;
-        private readonly GraphAnalysisService _graphAnalysisService; // NOUVEAU
+        private readonly GraphAnalysisService _graphAnalysisService;
+        private readonly CorridorGenerationService _corridorService;
         private readonly Random _random = new Random();
 
-        public DPolyGraphGeneratorService(SectorLayoutService layoutService, GraphAnalysisService graphAnalysisService)
+        public DPolyGraphGeneratorService(SectorLayoutService layoutService, GraphAnalysisService graphAnalysisService, CorridorGenerationService corridorService)
         {
             _layoutService = layoutService;
-            _graphAnalysisService = graphAnalysisService; // NOUVEAU
+            _graphAnalysisService = graphAnalysisService;
+            _corridorService = corridorService;
         }
 
         public DPolyGraph Generate(DGraph dGraph)
@@ -26,14 +28,17 @@ namespace DGenesis.Services
             int voidNodeId = -1;
 
             // --- ÉTAPE 1: Ajout des vides intérieurs (cours) ---
-            var cycles = _graphAnalysisService.FindSimpleCycles(dGraph, 3, 5);
+            var cycles = _graphAnalysisService.FindSimpleCycles(dGraph, 3, dGraph.Nodes.Count);
             foreach (var cycle in cycles)
             {
                 double centroidX = 0, centroidY = 0;
                 foreach (var nodeId in cycle)
                 {
-                    centroidX += nodeMap[nodeId].Position.X;
-                    centroidY += nodeMap[nodeId].Position.Y;
+                    if (nodeMap.ContainsKey(nodeId))
+                    {
+                        centroidX += nodeMap[nodeId].Position.X;
+                        centroidY += nodeMap[nodeId].Position.Y;
+                    }
                 }
 
                 allNodes.Add(new DGraphNode
@@ -68,7 +73,7 @@ namespace DGenesis.Services
                 });
             }
 
-            // --- ÉTAPE 3: Génération de la géométrie avec TOUS les nœuds ---
+            // --- ÉTAPE 3: Génération de la géométrie Voronoï pure avec TOUS les nœuds ---
             var polygonLayout = _layoutService.GenerateLayout(allNodes);
             var polyGraph = new DPolyGraph();
             var lockToKeyMap = new Dictionary<int, int>();
@@ -94,7 +99,13 @@ namespace DGenesis.Services
                 polyGraph.Sectors.Add(sector);
             }
 
-            // --- ÉTAPE 4: Finalisation ---
+            // --- ÉTAPE 4: Générer les corridors pour les connexions manquantes ---
+            int corridorIdCounter = -100; // Un compteur d'ID distinct pour les corridors
+            var corridors = _corridorService.GenerateCorridors(dGraph, polyGraph, ref corridorIdCounter);
+            polyGraph.Sectors.AddRange(corridors);
+
+
+            // --- ÉTAPE 5: Finalisation des relations ---
             foreach (var sector in polyGraph.Sectors)
             {
                 if (lockToKeyMap.TryGetValue(sector.Id, out int keyId))
@@ -102,6 +113,9 @@ namespace DGenesis.Services
                     sector.UnlockedBySector = keyId;
                 }
             }
+
+            // --- ÉTAPE 6: Filtrer UNIQUEMENT les secteurs "void" ---
+            polyGraph.Sectors = polyGraph.Sectors.Where(s => s.Type != "void").ToList();
 
             return polyGraph;
         }

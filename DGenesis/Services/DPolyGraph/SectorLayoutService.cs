@@ -17,27 +17,30 @@ namespace DGenesis.Services
             _clippingService = clippingService;
         }
 
-        public Dictionary<int, List<DPolyVertex>> GenerateLayout(IReadOnlyList<DGraphNode> nodes)
+        // La méthode ne prend plus que la liste de nœuds
+        public Dictionary<int, List<DPolyVertex>> GenerateLayout(IReadOnlyList<DGraphNode> allNodes)
         {
-            if (nodes.Count < 2)
+            if (allNodes.Count < 2)
             {
-                if (nodes.Count == 1)
+                if (allNodes.Count == 1)
                 {
                     var singleNodeResults = new Dictionary<int, List<DPolyVertex>>();
-                    singleNodeResults[nodes[0].Id] = BoundingBoxToPolygon(CalculateBoundingBox(nodes));
+                    singleNodeResults[allNodes[0].Id] = BoundingBoxToPolygon(CalculateBoundingBox(allNodes));
                     return singleNodeResults;
                 }
                 return new Dictionary<int, List<DPolyVertex>>();
             }
 
-            var boundingBox = CalculateBoundingBox(nodes);
+            var boundingBox = CalculateBoundingBox(allNodes);
             var results = new Dictionary<int, List<DPolyVertex>>();
 
-            foreach (var node in nodes)
+            foreach (var node in allNodes)
             {
                 List<DPolyVertex> nodePolygon = BoundingBoxToPolygon(boundingBox);
 
-                foreach (var otherNode in nodes)
+                // CORRECTION : On revient à la logique de Voronoï pur en clippant contre TOUS les autres nœuds.
+                // Cela garantit l'absence de chevauchement.
+                foreach (var otherNode in allNodes)
                 {
                     if (node.Id == otherNode.Id) continue;
 
@@ -47,7 +50,6 @@ namespace DGenesis.Services
                     var midPoint = new DPolyVertex { X = (p1.X + p2.X) / 2, Y = (p1.Y + p2.Y) / 2 };
                     var perpendicularVector = new DPolyVertex { X = p1.Y - p2.Y, Y = p2.X - p1.X };
 
-                    // CORRECTION 1: Utilisation d'un grand scalaire constant pour la stabilité.
                     double largeScalar = 10000.0;
                     var pA = new DPolyVertex { X = midPoint.X - perpendicularVector.X * largeScalar, Y = midPoint.Y - perpendicularVector.Y * largeScalar };
                     var pB = new DPolyVertex { X = midPoint.X + perpendicularVector.X * largeScalar, Y = midPoint.Y + perpendicularVector.Y * largeScalar };
@@ -57,33 +59,22 @@ namespace DGenesis.Services
                     nodePolygon = _clippingService.Clip(nodePolygon, clipLine);
                 }
 
-                // CORRECTION 2: On trie les sommets du polygone final pour garantir une forme convexe.
                 var sortedPolygon = SortVerticesOfConvexPolygon(nodePolygon);
+
+                // Le rétrécissement n'est plus nécessaire ici.
                 results[node.Id] = sortedPolygon.Select(v => new DPolyVertex { X = Math.Round(v.X, 2), Y = Math.Round(v.Y, 2) }).ToList();
             }
 
             return results;
         }
 
-        // Nouvelle méthode pour trier les sommets d'un polygone convexe
         private List<DPolyVertex> SortVerticesOfConvexPolygon(List<DPolyVertex> polygon)
         {
-            if (polygon == null || polygon.Count < 3)
-            {
-                return polygon; // Pas assez de points pour former un polygone
-            }
+            if (polygon == null || polygon.Count < 3) return polygon;
 
-            // 1. Trouver le centroïde (point central) du polygone
-            double centroidX = 0, centroidY = 0;
-            foreach (var vertex in polygon)
-            {
-                centroidX += vertex.X;
-                centroidY += vertex.Y;
-            }
-            centroidX /= polygon.Count;
-            centroidY /= polygon.Count;
+            double centroidX = polygon.Average(v => v.X);
+            double centroidY = polygon.Average(v => v.Y);
 
-            // 2. Trier les sommets en fonction de l'angle qu'ils forment avec le centroïde
             return polygon.OrderBy(v => Math.Atan2(v.Y - centroidY, v.X - centroidX)).ToList();
         }
 
